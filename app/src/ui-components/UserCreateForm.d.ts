@@ -1,0 +1,66 @@
+/***************************************************************************
+ * The contents of this file were generated with Amplify Studio.           *
+ * Please refrain from making any modifications to this file.              *
+ * Any changes to this file will be overwritten when running amplify pull. *
+ **************************************************************************/
+
+import * as React from "react";
+import { GridProps, SwitchFieldProps, TextFieldProps } from "@aws-amplify/ui-react";
+import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+export declare type ValidationResponse = {
+    hasError: boolean;
+    errorMessage?: string;
+};
+export declare type ValidationFunction<T> = (value: T, validationResponse: ValidationResponse) => ValidationResponse | Promise<ValidationResponse>;
+export declare type UserCreateFormInputValues = {
+    name?: string;
+    email?: string;
+    update?: string;
+    filePath?: string;
+    strength?: number;
+    isBusiness?: boolean;
+    location?: string;
+    bio?: string;
+    parentBrand?: string;
+    isVerified?: boolean;
+    industry?: string;
+};
+export declare type UserCreateFormValidationValues = {
+    name?: ValidationFunction<string>;
+    email?: ValidationFunction<string>;
+    update?: ValidationFunction<string>;
+    filePath?: ValidationFunction<string>;
+    strength?: ValidationFunction<number>;
+    isBusiness?: ValidationFunction<boolean>;
+    location?: ValidationFunction<string>;
+    bio?: ValidationFunction<string>;
+    parentBrand?: ValidationFunction<string>;
+    isVerified?: ValidationFunction<boolean>;
+    industry?: ValidationFunction<string>;
+};
+export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
+export declare type UserCreateFormOverridesProps = {
+    UserCreateFormGrid?: PrimitiveOverrideProps<GridProps>;
+    name?: PrimitiveOverrideProps<TextFieldProps>;
+    email?: PrimitiveOverrideProps<TextFieldProps>;
+    update?: PrimitiveOverrideProps<TextFieldProps>;
+    filePath?: PrimitiveOverrideProps<TextFieldProps>;
+    strength?: PrimitiveOverrideProps<TextFieldProps>;
+    isBusiness?: PrimitiveOverrideProps<SwitchFieldProps>;
+    location?: PrimitiveOverrideProps<TextFieldProps>;
+    bio?: PrimitiveOverrideProps<TextFieldProps>;
+    parentBrand?: PrimitiveOverrideProps<TextFieldProps>;
+    isVerified?: PrimitiveOverrideProps<SwitchFieldProps>;
+    industry?: PrimitiveOverrideProps<TextFieldProps>;
+} & EscapeHatchProps;
+export declare type UserCreateFormProps = React.PropsWithChildren<{
+    overrides?: UserCreateFormOverridesProps | undefined | null;
+} & {
+    clearOnSuccess?: boolean;
+    onSubmit?: (fields: UserCreateFormInputValues) => UserCreateFormInputValues;
+    onSuccess?: (fields: UserCreateFormInputValues) => void;
+    onError?: (fields: UserCreateFormInputValues, errorMessage: string) => void;
+    onChange?: (fields: UserCreateFormInputValues) => UserCreateFormInputValues;
+    onValidate?: UserCreateFormValidationValues;
+} & React.CSSProperties>;
+export default function UserCreateForm(props: UserCreateFormProps): React.ReactElement;

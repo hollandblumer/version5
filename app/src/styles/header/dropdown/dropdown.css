@@ -1,0 +1,33 @@
+.dropdown-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown {
+  width: 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background: none;
+}
+
+.dropdown-box {
+  background: rgb(255, 255, 255);
+  position: absolute;
+  margin-top: 3.9rem;
+  width: 9rem;
+  height: 5rem;
+  margin-left: -2rem;
+  background: none;
+}
+
+.sign-out-button {
+  border: none;
+  background: #2f2f2f;
+  background: #8c8577;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+}

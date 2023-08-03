@@ -1,0 +1,48 @@
+type Verification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  suggestion: String
+  milestone: String
+  userApprovalName: String
+  isVerified: Boolean
+  filePathApproval: String
+  brandName: String
+  userDisapprovalName: String
+  filePathDisapproval: String
+}
+
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  email: String
+  update: String
+  filePath: String
+  strength: Int
+  isBusiness: Boolean
+  location: String
+  bio: String
+  parentBrand: String
+  isVerified: Boolean
+  industry: String
+  Suggestions: [Suggestion] @manyToMany(relationName: "UserSuggestion")
+
+}
+
+type Suggestion @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  businessName: String
+  suggestion: String
+  verified: Boolean
+  icon: String
+  unique: Boolean
+  show: Boolean
+  compliment: Boolean
+  users: [User] @manyToMany(relationName: "UserSuggestion")
+}
+
+type Milestone @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  suggestion: String
+  milestone: String
+  brandName: String
+} 

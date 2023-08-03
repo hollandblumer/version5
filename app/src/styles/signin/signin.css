@@ -1,0 +1,186 @@
+@import "@aws-amplify/ui-react/styles.css";
+.signin-logo {
+  font-family: "hippie-mojo";
+  color: #aa7950;
+  font-size: 80pt;
+  font-weight: 300;
+  text-align: center;
+}
+
+.signin-beta {
+  font-family: "itc-souvenir";
+  text-align: center;
+  color: #a27a55;
+  color: #aa7950;
+  font-size: 20pt;
+  /*   font-size: 21px; this was also a very pretty size that worked with font size above*/
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -1.6rem;
+}
+
+.signin-info-logo {
+  font-family: cursive;
+  font-size: 15pt;
+  font-weight: 600;
+  margin-left: 0.245rem;
+}
+
+.signin-header-logo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background: #f7f6f0;
+  border-radius: 0.7rem 0.7rem 0 0;
+  margin-top: -5rem;
+  /*   box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px; need this code if I ever decide to add shadow again*/
+  padding-bottom: 0.4rem;
+}
+
+.background-footer {
+  background: #f9f7f3;
+}
+
+.amplify-button {
+  background: #ad937a;
+  background: #aba9a6;
+  background: #ad937a;
+  border: none;
+}
+
+.amplify-button:hover {
+  background: gray;
+  border: none;
+}
+
+[data-amplify-router] {
+  box-shadow: none;
+  border-radius: 0 0 0.7rem 0.7rem;
+}
+
+[data-amplify-authenticator] [data-amplify-router] {
+  box-shadow: 0px 0px 0px 0px #f7f6f0;
+  background: none;
+  border: none;
+  padding: none;
+  width: 40rem;
+  margin-left: -5rem;
+}
+
+[data-amplify-container] {
+  border: none;
+  padding: none;
+}
+
+[data-amplify-authenticator][data-variation=modal] {
+  background: #e7e6e0;
+  background: url(../../assets/images/Background25.jpg);
+  background-size: 100% 100%;
+}
+
+.amplify-input.amplify-field-group__control {
+  background: #dedede;
+  background: white;
+  background: none;
+  border-bottom: 1px solid grey;
+  padding-left: 0;
+  box-shadow: none;
+}
+
+.amplify-input {
+  border-radius: 0px 0px 0px 0px;
+}
+
+.amplify-field-group__control.amplify-field__show-password {
+  color: #dddddd;
+  background: none;
+  height: 2.6rem;
+  border-bottom: 1px solid gray;
+  border-radius: 0px 0px 0px 0px;
+}
+
+.amplify-button.amplify-field-group__control.amplify-button--primary.amplify-button--fullwidth {
+  color: #272626;
+  color: white;
+  background: linear-gradient(-45deg, #edebe0, #1c1c1b);
+  animation: gradient 4s ease infinite;
+  background-size: 100% 100%;
+  height: 5vh;
+  background: #b48f6e;
+  background: #e8e6da;
+  background: #cec4af;
+  border: none;
+}
+
+[data-amplify-authenticator] {
+  opacity: 1;
+}
+
+[data-amplify-router-content] {
+  box-shadow: none;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+.amplify-tabs-item[data-state=inactive] {
+  color: #181a1d;
+  background: #cec4af;
+  background: #b48f6e;
+  background: rgb(165, 123, 85);
+  background: #d9d6cc;
+  background: #a3774d;
+  background: none;
+  background-size: 100% 100%;
+  border: none;
+  text-align: left;
+}
+
+.amplify-tabs-item:first-child {
+  font-size: 50px;
+  font-weight: 400;
+}
+
+.amplify-tabs-item[data-state=active] {
+  text-align: left;
+  border: none;
+}
+
+.amplify-tabs {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  box-shadow: none;
+  padding-left: 1rem;
+}
+
+.create-account-form {
+  text-align: center;
+}
+
+.create-account-form-button {
+  font-weight: 700;
+  display: inline;
+  text-decoration: none;
+  color: gray;
+}
+
+a {
+  text-decoration: none;
+}

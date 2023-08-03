@@ -1,0 +1,67 @@
+.dirt-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0rem 3rem 5rem 3rem;
+}
+
+.featured-brands {
+  font-family: "basis-grotesque-med";
+  font-size: 15pt;
+  color: #a9784f;
+}
+
+.dirt-content {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 15rem;
+  width: 100%;
+  flex: 1;
+}
+
+.more-dirt {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: #ddd3c4;
+  background: url(../../../../assets/images/faintbackground.png);
+  background: rgb(219, 211, 198);
+  background: rgb(219, 211, 198);
+  background: #d4c6af;
+  background: #cbb796;
+  background: rgb(160, 117, 88);
+  background: rgba(163, 123, 86, 0.808);
+  background: rgba(174, 168, 159, 0.6039215686);
+  background: #aea89f;
+  background: rgb(220, 219, 213);
+  background: #d0c5b4;
+  background: #d4c6af;
+  background: rgba(163, 123, 86, 0.808);
+  background: #dbd3c5;
+  background: #e0d8c7;
+  background: rgb(168, 148, 124);
+  background: rgba(117, 99, 78, 0.4509803922);
+  background: rgb(232, 226, 215);
+  background: #817d6c;
+  background: #c4bca6;
+  background: #eae1c8;
+  background: rgba(183, 177, 167, 0.8274509804);
+  background: #a89f91;
+  background: #e4e2da;
+  background: #e0e0d4;
+  background: #e9e5dc;
+  background: #d1cfc8;
+  background: #b7b1a7;
+  background-size: 400% 400%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  /*  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; */
+}

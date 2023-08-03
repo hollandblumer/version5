@@ -1,0 +1,235 @@
+.milestone-box {
+  margin-right: 1.2rem;
+  margin-left: 1.2rem;
+  margin-bottom: 2rem;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-top: 1.7rem;
+  flex: 1;
+  border-radius: 0.3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.milestone-headline {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.milestone-counter-line {
+  color: #8e8e8e;
+  display: flex;
+  flex-direction: row;
+  margin-left: 0.6rem;
+}
+
+.milestone-update {
+  height: 7.8rem;
+  height: 100px;
+  display: inline-block;
+  // margin: 3rem 0.4rem 2.5rem 0.4rem;
+}
+
+.milestone-businessname {
+  font-size: 18px;
+  color: #20201f;
+  font-weight: 500;
+}
+
+.current-milestone {
+  color: rgb(82, 80, 77);
+  margin-top: 1rem;
+  font-size: 15pt;
+  font-family: "SF Pro";
+  font-weight: 500;
+  overflow-x: scroll;
+  height: 2rem;
+}
+
+.milestone-suggestion {
+  font-size: 14pt;
+  color: #5c5848;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.see-more-milestone {
+  text-align: end;
+  width: 100%;
+  margin-left: -0.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 13pt;
+  color: #8c8c8c;
+  font-size: 10pt;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.actual-milestone {
+  color: #5c5848;
+  font-weight: 500;
+  font-size: 19px;
+  text-decoration: underline;
+}
+
+.actual-milestone-suggestion {
+  color: rgb(81, 81, 81);
+  color: #20201f;
+  color: #5c5848;
+  font-weight: 500;
+  font-size: 19px;
+  text-decoration: underline;
+}
+
+.milestone-box::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+.milestone-box::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 1);
+  border-radius: 100vw;
+  margin-block: 0.2em;
+}
+
+.milestone-box::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 1);
+  background: #c7bfaf;
+
+  // background-image: url(../../../assets/images/mainbackground.png); looked really good imo
+  border-radius: 100vw;
+}
+
+.milestone-active {
+  background: url(../../../assets/images/speckletexture.png);
+  background-size: 300% 300%;
+  //prettiest one so far
+  background: rgb(236, 233, 224);
+  background: #ebe7e1;
+  background: #e3d9c2;
+  background: #e9e5dc;
+  background: url("../../../assets/images/trial8.png");
+  background: #e9e5dc;
+  background: none;
+  background-size: 100% 100%;
+  // background: #e8e6da;
+  color: #0e150e;
+  border-radius: 0.3rem 0.3rem 0 0;
+  // box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.04);
+  // width: 17.3rem; this looked good
+  width: 30rem;
+  width: 450px;
+}
+
+.corner {
+  border-radius: 0.3rem 0.3rem 0 0;
+}
+
+.milestone-inactive {
+  background: rgb(236, 233, 224);
+
+  border-radius: 0.3rem 0.3rem 0 0;
+  // box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.04);
+  width: 17.3rem;
+  width: 30rem;
+  width: 450px;
+  background: #ebe7e1;
+
+  background: url("../../../assets/images/backgroundtrial5.png");
+  background: #e9e5dc;
+  background: none;
+  background-size: 100% 100%;
+}
+
+.milestone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 12pt;
+  border-radius: 0.4rem;
+  border: 1px solid #eeeeee;
+  margin-right: 1rem;
+  box-shadow: 0px 0px 20px 0px rgba(172, 124, 83, 0.15);
+}
+
+.milestone-padding {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+}
+
+.milestone-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.milestone-subtle-suggestion-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #c5c0c0;
+  color: #8c8c8c;
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  // margin: 0.2rem 0.4rem;
+  height: 35px;
+}
+
+.milestone-grey {
+  color: rgb(81, 81, 81);
+  color: #8c8c8c;
+  font-size: 18px;
+  font-weight: 450;
+}
+
+.milestone-follower-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+  height: 90px;
+  border-top: 1px solid white;
+}
+
+.milestone-like-share {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.milestone-like-share > * {
+  margin-right: 0.6rem;
+}
+
+.milestone-icon {
+  margin-left: 0.3rem;
+  background: #e9e5dc;
+  background: #efeee9;
+  border-radius: 50%;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

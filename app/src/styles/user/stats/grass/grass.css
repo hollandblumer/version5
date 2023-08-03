@@ -1,0 +1,23 @@
+.grass {
+  width: 45rem;
+  height: 5rem;
+  text-align: center;
+  margin: 0rem auto;
+}
+
+.grass svg {
+  fill: #5d9345;
+  fill: #5bab5c;
+  animation: skew 3s infinite;
+  transform: skew;
+  animation-direction: alternate;
+}
+
+@keyframes skew {
+  0% {
+    transform: skewX(13deg) translate(-7px);
+  }
+  100% {
+    transform: skewX(-13deg) translate(7px);
+  }
+}

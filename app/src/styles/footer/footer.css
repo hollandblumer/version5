@@ -1,0 +1,17 @@
+.footer {
+  height: 4rem;
+  width: 100%;
+  color: #8c8c8c;
+  font-weight: 500;
+  border-top: 0.5px solid #f7f7f5;
+  border-top: 0.5px solid white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #e9e5dc;
+  background: #8c8577;
+}
+
+.footer-text {
+  margin: 2rem;
+}

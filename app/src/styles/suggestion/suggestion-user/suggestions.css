@@ -1,0 +1,97 @@
+.suggestion-box {
+  max-height: 30rem;
+  height: 28rem;
+  overflow-y: scroll;
+  margin-right: 2rem;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+  padding-top: 0px;
+  padding-bottom: 1px;
+  flex: 1;
+}
+
+.suggestion-box::-webkit-scrollbar {
+  width: 0.3em;
+}
+
+.suggestion-box::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+  border-radius: 100vw;
+  margin-block: 0.2em;
+}
+
+.suggestion-box::-webkit-scrollbar-thumb {
+  background: rgb(255, 255, 255);
+  background: #c7bfaf;
+  background: rgb(231, 230, 225);
+  border-radius: 100vw;
+}
+
+.suggestion-core {
+  background: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.suggestion-core-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  color: #272626;
+  margin-left: -0.2rem;
+}
+
+.suggestion-active {
+  background: #dcd8cd;
+  background: url(../../../assets/images/speckletexture.png);
+  background-size: 300% 300%;
+  background: #dcdbd4;
+  background: #dbd8ce;
+  background: #f4f3f0;
+  background: #edece3;
+  background: #efeeea;
+  background: #ebe8e0;
+  background: #f8f7f4;
+  background: #fafafa;
+  background: rgb(248, 244, 233);
+  background: rgb(236, 233, 224);
+  background: #f4f2ea;
+  background: #f8f6f3;
+  background: #f8f5ed;
+  background: #f7f6f0;
+  background: #f4f2ea;
+  height: 7rem;
+  /*   box-shadow: rgba(27, 
+  31, 35, 0.04) 0px 1px 0px,
+    rgba(255, 255, 255, 0.25) 0px 1px 0px inset; */
+  /*  
+  margin-bottom: 0.2rem;
+  box-shadow: #ebece7 0px 1px 2px 0px;*/
+  /*  border-bottom: 0.2px solid #e9e5dc; //deleted these borders on 4/27
+  border-left: 0.2px solid #e9e5dc; */
+}
+
+.corner {
+  border-radius: 0.3rem 0.3rem 0 0;
+  margin-top: 0.2rem;
+}
+
+.suggestion-inactive {
+  background: #f3f2f0;
+  background: #f9f7f0;
+  background: rgb(244, 242, 234);
+  background: rgb(236, 233, 224);
+  background: #f4f2ea;
+  background: rgb(250, 249, 242);
+  background: #f8f6f3;
+  background: #f8f5ed;
+  background: #f4f2ea;
+  background: #f7f6f0;
+  background: #f8f5ed;
+  height: 7rem;
+  /*   border-bottom: 0.2px solid #ebe7e1; //color that worked and is beautiful before promo
+  border: 0.2px 0.2px solid #ebe7e1; //color that worked and is beautiful before promo */
+}

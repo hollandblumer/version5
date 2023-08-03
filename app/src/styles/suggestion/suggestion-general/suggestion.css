@@ -1,0 +1,254 @@
+.like-share {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+div.like-share > * {
+  margin-left: 0.5rem;
+}
+
+.brand-username {
+  font-weight: 600;
+}
+
+.suggestion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 12pt;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  border: none;
+  color: #8e8e8e;
+}
+
+.suggestion-text {
+  width: 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.suggestion-content-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+div.suggestion-content-container > * {
+  margin-right: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.suggestion-avatar {
+  margin-right: 5px;
+}
+
+.suggestion {
+  display: flex;
+  flex-direction: row;
+  font-weight: 500;
+  margin-left: -0.05rem;
+  color: #272626;
+}
+
+.actual-suggestion {
+  width: 12rem;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+
+.subtle-suggestion-info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #c5c0c0;
+  color: #8c8c8c;
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  margin: 0.1rem 0.4rem;
+}
+
+.suggestion-content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  margin: 0.2rem 0.4rem 0.3rem 0.4rem;
+}
+
+.supporter-container {
+  border-radius: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 5rem;
+}
+
+.avatar {
+  margin-left: -22px;
+}
+
+.icon {
+  margin-right: 0.3rem;
+  margin-left: 0.1rem;
+  background: #e9e5dc;
+  background: #efeee9;
+  border-radius: 50%;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.white-icon {
+  margin-right: 0.3rem;
+  margin-left: 0.1rem;
+  background: white;
+  background: #e9e5dc;
+  background: rgb(237, 233, 223);
+  background: #efeee9;
+  border-radius: 50%;
+  width: 2.3rem;
+  height: 2.3rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-length {
+  margin-left: -39px;
+  position: relative;
+  z-index: 10;
+  background: #ad937a;
+  background: #d4c4b0;
+  background: #b6a98c;
+  background-color: rgba(126, 126, 126, 0.6);
+  background-color: rgba(140, 140, 140, 0.7);
+  background-color: rgba(119, 119, 119, 0.7);
+  background: rgba(229, 223, 205, 0.7);
+  background-color: rgba(140, 140, 140, 0.8);
+  /*   background: url(../../../assets/images/faintbackground.png);
+  background-size: 300% 600%; */
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  font-weight: 300;
+  height: 2.4rem;
+  width: 2.4rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 12pt;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.follower-count {
+  text-align: center;
+}
+
+.single-chart {
+  justify-content: space-around;
+}
+
+.circular-chart {
+  height: 2.5rem;
+  max-width: 2.5rem;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #ddd;
+  stroke-width: 1;
+}
+
+.circle {
+  fill: none;
+  stroke-width: 1;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+.circular-chart.orange .circle {
+  stroke: #5d9345;
+}
+
+.circular-chart.green .circle {
+  stroke: #4cc790;
+}
+
+.circular-chart.blue .circle {
+  stroke: #3c9ee5;
+}
+
+.update {
+  fill: #efefef;
+  font-family: neutratext;
+  font-size: 0.8em;
+  margin-left: 0.5rem;
+}
+
+.percentage {
+  fill: #666;
+  font-family: neutratext;
+  font-size: 0.12em;
+  text-anchor: middle;
+}
+
+.progress {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: #e0d8c7;
+  background: rgba(213, 195, 167, 0.8117647059);
+  background: rgb(216, 206, 188);
+  background: #d4c6af;
+  background: #e9e5dc;
+  background: rgb(237, 233, 223);
+  background: #e9e5dc;
+  background: #e0d8c7;
+  background: rgb(236, 233, 224);
+  background: #f7f6f0;
+  color: #272626;
+  width: 7rem;
+  height: 2rem;
+  border-radius: 0.3rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 11pt;
+  font-weight: 600;
+}
+
+.progress-white {
+  background: rgba(213, 195, 167, 0.8117647059);
+  background: rgb(219, 211, 198);
+  background: #e9e5dc;
+  background: #d4c6af;
+  background: #e0d8c7;
+  background: rgb(237, 233, 223);
+  background: #efeee9;
+  background: #e9e5dc;
+  background: #f7f6f0;
+}

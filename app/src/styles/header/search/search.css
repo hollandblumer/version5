@@ -1,0 +1,121 @@
+.search-panel {
+  background: #aa7950;
+  background: #e5d9bf;
+  background: #f4f2ea;
+  background: #e9e5dc;
+  background: #e7e6e0;
+  flex: 0.5;
+  border-right: 0.2px solid #e9e5dc;
+  position: absolute;
+  z-index: 1000;
+  height: 100vh;
+  width: 40rem;
+}
+
+.no-panel {
+  width: 0%;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search-input {
+  border: none;
+  color: #8e8e8e;
+  font-size: medium;
+  margin-left: 2.5px;
+  outline-width: 0;
+  letter-spacing: 0.3px;
+  font-size: 13pt;
+  background: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.xbutton {
+  border: none;
+  background: none;
+}
+
+.searches {
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.searchList {
+  border-bottom: 1px solid #eeeeee;
+  width: 100%;
+  margin-top: 0.3rem;
+}
+
+.search-button {
+  margin-top: 0.3rem;
+  border: none;
+  background: #f4f2ea;
+  background: none;
+  padding-bottom: 10px;
+  width: 100%;
+  color: rgb(117, 116, 116);
+}
+
+.search-button:hover {
+  color: #2f2f2f;
+}
+
+.magnifying-button {
+  border: none;
+  background: none;
+  height: 10vh;
+}
+
+.suggestionSearchListContainer {
+  height: 13rem;
+  overflow-y: scroll;
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.suggestionSearchList {
+  border-bottom: 1px solid #e9e5dc;
+  width: 100%;
+  margin-top: 0.3rem;
+}
+
+.suggestionSearchList button {
+  border: none;
+  background: none;
+}
+
+.search-form {
+  padding: 5px 5px 5px 5px;
+  background: #efefef;
+  background: #e9e5dc;
+  z-index: 90;
+  border-radius: 0.6rem;
+  margin: 1rem 0.3rem 0.2rem 0.3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+::selection {
+  color: none;
+  background: none;
+}
+
+.exit-search {
+  padding: 0.6rem 0.8rem 0.6rem 0.8rem;
+  border-radius: 50%;
+  border: 1px solid #e9e5dc;
+}
+
+.search-divider {
+  width: 100%;
+  border-bottom: 1px solid #eeeeee;
+  height: 1rem;
+}
