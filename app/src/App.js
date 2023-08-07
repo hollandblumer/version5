@@ -2,14 +2,14 @@ import "./App.css";
 import { useState, useEffect, useRef, React } from "react";
 import {
   withAuthenticator,
-  AmplifySignOut,
-  useTheme,
+
 } from "@aws-amplify/ui-react";
 import { DataStore } from "@aws-amplify/datastore";
 import { User, Suggestion } from "./models";
 import { Auth } from "@aws-amplify/auth";
 import { SignInHeader } from "./components/signin/SignInHeader";
 import { SignInFooter } from "./components/signin/SignInFooter";
+import { ResetPasswordHeader } from "./components/signin/ResetPasswordHeader";
 import Header from "./components/signin/Header";
 import Home from "./pages/home/Home";
 import Footer2 from "./components/footer/Footer2";
@@ -30,7 +30,7 @@ import { faMagnifyingGlass, faHome } from "@fortawesome/free-solid-svg-icons";
 import LoaderImage from "./assets/images/loader-image.png";
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { I18n } from "aws-amplify";
-import { SignUp } from "@aws-amplify/ui-react";
+import SignInComponent from "./components/signin/SignInComponent"
 
 function App() {
   const videoRef = useRef();
@@ -49,6 +49,14 @@ function App() {
 
   const [fade, setFade] = useState(false);
   const [moveUp, setMoveUp] = useState(false);
+
+  const [labelHidden, setLabelHidden] = useState(false);
+
+
+
+
+
+
 
   const [hover, setHover] = useState(false);
   const onHover = () => {
@@ -120,35 +128,7 @@ function App() {
       console.log(err);
     }
   };
-  const [givenName, setGivenName] = useState("");
-  const [familyName, setFamilyName] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const handleSignUp = async () => {
-    try {
-      // Check if passwords match
-      if (password !== confirmPassword) {
-        // Handle password mismatch error
-        return;
-      }
-
-      // Perform the sign-up logic here using Amplify Auth
-      const signUpResult = await Auth.signUp({
-  
-        attributes: {
-          given_name: givenName,
-          family_name: familyName,
-        },
-        username: email,
-        password: password,
-      });
-         // Handle success or navigate to the next page
-    } catch (error) {
-      // Handle sign-up errors
-      console.error("Error signing up:", error);
-    }
-  };
+ 
 
   return (
     <div className="App">
@@ -251,40 +231,7 @@ function App() {
         </Routes>
       </div>
 
-      <div>
-        <input
-          type="text"
-          placeholder="First Name"
-          value={givenName}
-          onChange={(e) => setGivenName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Last Name"
-          value={familyName}
-          onChange={(e) => setFamilyName(e.target.value)}
-        />
-          <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
-        <button onClick={handleSignUp}>Sign Up</button>
-      </div>
-
+      
       {/*    <button
           onClick={async () => {
             await Auth.signOut();
@@ -295,6 +242,8 @@ function App() {
         >
           Sign Out{" "}
         </button> */}
+
+        
     </div>
   );
 }
@@ -306,27 +255,101 @@ I18n.putVocabulariesForLanguage("en", {
 export default withAuthenticator(App, {
   components: {
     Header,
+  
     SignIn: {
       Header: SignInHeader,
       Footer: SignInFooter,
     },
+    SignUp: {
+      Header: SignInHeader,
+      Footer: SignInFooter,
+    },
+    ResetPassword: {
+      Header: ResetPasswordHeader,
+    },
   },
 
-  hideSignUp: false,
+  hideSignUp: true,
 
   formFields: {
-    signUp: {
+
+    forceNewPassword: {
+     password: {
+        labelHidden: true,
+        placeholder: "Enter New Password",
+        isRequired: true,
+        order: 1
+      },
+
+      confirm_password: {
+        labelHidden: true,
+        placeholder: "Confirm Password",
+        isRequired: true,
+        order: 2
+      },
+
       given_name: {
         labelHidden: true,
-        placeholder: "given_name",
+        placeholder: "First Name",
+        isRequired: true,
+        order: 3
+      },
+
+      family_name: {
+        labelHidden: true,
+        placeholder: "Last Name",
+        isRequired: true,
+        order: 4
+      }
+
+
+    },
+
+    resetPassword: {
+      username: {
+        labelHidden: true,
+        placeholder: "Enter your email",
+        isRequired: true,
+       
+     
+     
+      }
+  
+     
+    },
+  
+    signUp: {
+        email: {
+        labelHidden: true,
+        placeholder: "Email",
         isRequired: true,
         label: "First Name",
       },
+      password :{
+        labelHidden: true,
+        placeholder: "Password",
+        isRequired: true,
+        label: "First Name",
+      },
+        confirm_password :{
+        labelHidden: true,
+        placeholder: "Confirm Password",
+        isRequired: true,
+        label: "First Name",
+      },
+      given_name: {
+        labelHidden: true,
+        placeholder: "First Name",
+        isRequired: true,
+        label: "First Name",
+        order: 1,
+      },
      family_name: {
         labelHidden: true,
-        placeholder: "family_name",
+        placeholder: "Last Name",
         isRequired: true,
         label: "Last Name:",
+        order: 2,
       },
 
     
@@ -340,14 +363,19 @@ export default withAuthenticator(App, {
         labelHidden: true,
         placeholder: "Email",
         isRequired: true,
-        label: "Username:",
+       
       },
       password: {
         labelHidden: true,
         placeholder: "Password",
         isRequired: true,
-        label: "Password:",
+       
       },
     },
+
+   
   },
+
+
+ 
 });

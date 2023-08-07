@@ -52,9 +52,12 @@ function Header2({ url, user }) {
 export default withAuthenticator(Header2, {
   components: {
     Logo,
+  
     SignIn: {
       Header: SignInHeader,
+     
       Footer: SignInFooter,
     },
+
   },
 });

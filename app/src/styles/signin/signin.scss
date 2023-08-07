@@ -26,7 +26,8 @@
 
 .signin-info-logo {
   font-family: cursive;
-  font-size: 15pt;
+  // font-size: 15pt; worked before
+  font-size: 13.5pt;
   font-weight: 600;
   margin-left: 0.245rem;
 }
@@ -85,7 +86,7 @@
 
 [data-amplify-authenticator][data-variation="modal"] {
   background: #e7e6e0;
-  background: url(../../assets/images/Background25.jpg);
+  background: url(../../assets/images/Background.jpg);
   background-size: 100% 100%;
 }
 
@@ -158,12 +159,18 @@
   background-size: 100% 100%;
   border: none;
   text-align: left;
+ 
 }
 
-.amplify-tabs-item:first-child {
+.amplify-tabs-item:first-child  {
   font-size: 50px;
   font-weight: 400;
+ 
 }
+
+
+
+
 .amplify-tabs-item[data-state="active"] {
   text-align: left;
   border: none;
@@ -190,4 +197,65 @@
 
 a {
   text-decoration: none;
+}
+
+
+
+
+.amplify-form-section-header-create-account {
+  display: none; /* Hide the original "Create Account" text */
+  
+  &::after {
+    content: "Don't have an account? Create one"; /* Your custom text */
+    display: inline-block;
+    margin-left: 5px; /* Add some spacing if needed */
+  }
+}
+
+.amplify-alert--error {
+  color: #4e443c;
+  background: none;
+  
+}
+
+.amplify-alert {
+  align-items: left;
+
+
+  justify-content: left;
+  padding-block: 0px;
+  padding-inline: 0px;
+}
+
+.amplify-button--link {
+  background: none;
+
+}
+
+.amplify-button--link:hover {
+  background: none;
+
+}
+
+.email-label {
+  display: none;
+}
+
+.login-title {
+  color: #393737;
+  color: #4e443c;
+  color: #aa7950;
+  font-size: 20pt;
+  font-family: "itc-souvenir";
+  margin-left: 2rem;
+  margin-bottom: -1.1rem;
+}
+
+.reset-password-title {
+  color: #393737;
+  color: #4e443c;
+  color: #aa7950;
+  font-size: 20pt;
+  font-family: "itc-souvenir";
+  margin-bottom: -.7rem;
 }

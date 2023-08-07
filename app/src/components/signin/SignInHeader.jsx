@@ -1,12 +1,16 @@
-import { Heading, useTheme } from "@aws-amplify/ui-react";
+import { Heading, useTheme, Authenticator, } from "@aws-amplify/ui-react";
 import "../../styles/signin/signin.css";
+import { useState } from "react";
 
 export function SignInHeader() {
   const { tokens } = useTheme();
 
   return (
-    <Heading level={3} padding={`${tokens.space.xl} ${tokens.space.xl} 0`}>
+    <div>  
+    <div className="login-title" padding={`0 0 0`}>
       Login{" "}
-    </Heading>
+    </div>
+    {/* Additional buttons or components for other custom tabs */}
+{/*  <Authenticator tab="signIn" /> */} </div>
   );
 }
