@@ -1,4 +1,5 @@
-import { Image, useTheme } from "@aws-amplify/ui-react";
+import { useTheme } from "@aws-amplify/ui-react";
+import TidioWrapper from "../../TidioWrapper";
 
 export function Logo() {
   const { tokens } = useTheme();
@@ -8,7 +9,7 @@ export function Logo() {
       <div className="signin-logo"> Divot </div>
       <div className="signin-beta">
         Beta
-        <div className="signin-info-logo">ⓘ</div>
+        <TidioWrapper/>
       </div>
     </div>
   );

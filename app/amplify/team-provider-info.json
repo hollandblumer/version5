@@ -9,7 +9,8 @@
       "UnauthRoleName": "amplify-divot-staging-152833-unauthRole",
       "StackName": "amplify-divot-staging-152833",
       "StackId": "arn:aws:cloudformation:us-east-1:354285736167:stack/amplify-divot-staging-152833/683ca8b0-3212-11ee-a171-120a3d43a61f",
-      "AmplifyAppId": "d5z7fsw8tghew"
+      "AmplifyAppId": "d5z7fsw8tghew",
+      "AuthTriggerTemplateURL": "https://s3.amazonaws.com/amplify-divot-staging-152833-deployment/amplify-cfn-templates/auth/auth-trigger-cloudformation-template.json"
     },
     "categories": {
       "auth": {
@@ -17,6 +18,12 @@
       },
       "api": {
         "Divot": {}
+      },
+      "function": {
+        "DivotPostConfirmation": {
+          "deploymentBucketName": "amplify-divot-staging-152833-deployment",
+          "s3Key": "amplify-builds/DivotPostConfirmation-356e723551312b62314b-build.zip"
+        }
       }
     }
   }

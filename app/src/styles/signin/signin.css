@@ -82,7 +82,7 @@
 
 [data-amplify-authenticator][data-variation=modal] {
   background: #e7e6e0;
-  background: url(../../assets/images/Background.jpg);
+  background: url(../../assets/images/Background-2.jpeg);
   background-size: 100% 100%;
 }
 
@@ -168,6 +168,7 @@
   border: none;
   box-shadow: none;
   padding-left: 1rem;
+  display: none;
 }
 
 .create-account-form {
@@ -235,4 +236,52 @@ a {
   font-size: 20pt;
   font-family: "itc-souvenir";
   margin-bottom: -0.7rem;
+}
+
+.reset-password-link {
+  color: #767676;
+  font-size: 16px;
+}
+
+.sign-in-return-link {
+  color: #1d1c1c;
+  color: #4e443c;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-button--small {
+  color: #1d1c1c;
+  color: #4e443c;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.signin-info-message {
+  position: absolute;
+  left: 58vw;
+  top: 280px;
+  z-index: 1050;
+  color: #aa7950;
+  font-family: "Helvetica Neue";
+  font-size: medium;
+  font-weight: 500;
+}
+
+.signup-brand-form-link {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+  color: #4e443c;
+  font-family: "Helvetica Neue";
+  font-size: 13pt;
+  font-weight: 500;
+}
+
+.info-wrapper {
+  /* Other styles for info-wrapper and Tidio widget positioning */
+}
+
+.info-logo {
+  cursor: pointer;
 }

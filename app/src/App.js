@@ -10,12 +10,15 @@ import { Auth } from "@aws-amplify/auth";
 import { SignInHeader } from "./components/signin/SignInHeader";
 import { SignInFooter } from "./components/signin/SignInFooter";
 import { ResetPasswordHeader } from "./components/signin/ResetPasswordHeader";
+import { SignUpHeader } from "./components/signup/SignUpHeader";
+import { SignUpFooter} from "./components/signup/SignUpFooter";
+import { SignUpEmailForm } from "./components/signup/SignUpEmailForm";
 import Header from "./components/signin/Header";
 import Home from "./pages/home/Home";
 import Footer2 from "./components/footer/Footer2";
 import Header2 from "./components/header/Header2";
 import { Amplify, Storage } from "aws-amplify";
-import { Routes, Route, Navigate, Link } from "react-router-dom";
+import { Routes, Route, Navigate, Link, useLocation } from "react-router-dom";
 import AddBrand from "./components/brand/AddBrand";
 import Dashboard from "./Dashboard";
 import Movie from "./assets/videos/logo.mp4";
@@ -31,6 +34,8 @@ import LoaderImage from "./assets/images/loader-image.png";
 import { OverlayTrigger, Popover } from "react-bootstrap";
 import { I18n } from "aws-amplify";
 import SignInComponent from "./components/signin/SignInComponent"
+import { Helmet } from 'react-helmet';
+import TidioWrapper from './TidioWrapper'; 
 
 function App() {
   const videoRef = useRef();
@@ -53,7 +58,8 @@ function App() {
   const [labelHidden, setLabelHidden] = useState(false);
 
 
-
+  const location = useLocation();
+  const path = location.pathname;
 
 
 
@@ -132,7 +138,7 @@ function App() {
 
   return (
     <div className="App">
-    
+        
       {/* <div className="overlay">
         <div
           className={`image-container ${fade ? "fade" : ""} ${
@@ -181,13 +187,7 @@ function App() {
               <div className="logo">Divot</div>{" "}
               <div className="beta">
                 Beta
-                <div
-                  className="info-logo"
-                  onMouseEnter={onHover}
-                  onMouseLeave={onLeave}
-                >
-                  ⓘ
-                </div>
+               <TidioWrapper/>
               </div>
               {hover ? (
                 <div className="info-message">
@@ -222,8 +222,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route
             path="/:name"
-            element={<Dashboard user={user} email={email} id={userIDString} />}
-          />
+            element={
+              path !== "/signup" ? (
+                <Dashboard user={user} email={email} id={userIDString} />
+              ) : <SignUpEmailForm />
+            }          />
 
           <Route path="/brand-form" element={<AddBrand />} />
 
@@ -261,15 +264,15 @@ export default withAuthenticator(App, {
       Footer: SignInFooter,
     },
     SignUp: {
-      Header: SignInHeader,
-      Footer: SignInFooter,
+      Header: SignUpHeader,
+      Footer: SignUpFooter,
     },
     ResetPassword: {
       Header: ResetPasswordHeader,
     },
   },
 
-  hideSignUp: true,
+  hideSignUp: false,
 
   formFields: {
 
@@ -300,7 +303,8 @@ export default withAuthenticator(App, {
         placeholder: "Last Name",
         isRequired: true,
         order: 4
-      }
+      },
+  
 
 
     },
@@ -351,10 +355,6 @@ export default withAuthenticator(App, {
         label: "Last Name:",
         order: 2,
       },
-
-    
-   
-
 
     },
 
