@@ -14,3 +14,5 @@ export function SignInHeader() {
 {/*  <Authenticator tab="signIn" /> */} </div>
   );
 }
+
+export default SignInHeader;

@@ -27,7 +27,7 @@ function Dropdown({ url, user }) {
           setShowDropdown(!showDropdown);
         }}
       >
-        <Link to={`/${user}`} replace>
+        <Link to={`/${user}`}>
           {" "}
           <Avatar
             sx={{}}
@@ -45,13 +45,18 @@ function Dropdown({ url, user }) {
         <div className="dropdown-box">
           {" "}
           <Link to={`/`} replace>
-            <button
-              className="sign-out-button"
-              onClick={async () => {
+          <button
+            className="sign-out-button"
+            onClick={async () => {
+              try {
                 await Auth.signOut();
-                await DataStore.clear();
                 window.location.reload(false);
-              }}
+                await DataStore.clear();
+               
+              } catch (error) {
+                console.error('Error signing out:', error);
+              }
+            }}
             >
               Sign Out{" "}
             </button>

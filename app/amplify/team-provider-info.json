@@ -22,7 +22,7 @@
       "function": {
         "DivotPostConfirmation": {
           "deploymentBucketName": "amplify-divot-staging-152833-deployment",
-          "s3Key": "amplify-builds/DivotPostConfirmation-356e723551312b62314b-build.zip"
+          "s3Key": "amplify-builds/DivotPostConfirmation-5832347250456c465334-build.zip"
         }
       }
     }

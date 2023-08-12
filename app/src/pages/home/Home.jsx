@@ -45,17 +45,19 @@ function Home() {
           {/*   <div className="search-container">
           <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" color="#212121" />
         </div> */}
-          {/*  <img
-            src={MagnifyingGlass}
-            className="magnifying-glass"
-            alt="Logo image"
-          /> */}
+        
 
           <div className="home-search-form-box">
+
             <form onChange={createSearch}>
+            <img
+              src={MagnifyingGlass}
+              className="magnifying-glass"
+              alt="Logo image"
+          /> 
               <input
                 // autoFocus
-                className="search-input"
+                className="home-search-input"
                 type="text"
                 placeholder="Search"
                 value={search}

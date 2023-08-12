@@ -16,3 +16,5 @@ export function SignUpHeader() {
 {/*  <Authenticator tab="signIn" /> */} </div>
   );
 }
+
+export default SignUpHeader;

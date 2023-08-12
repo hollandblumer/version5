@@ -67,7 +67,8 @@
   align-items: center;
   justify-content: space-between;
   margin-top: -1.3rem;
-  z-index: 10001;
+ 
+ 
 }
 
 .info-logo {
@@ -82,4 +83,32 @@
   left: 55vw;
   top: 100px;
   z-index: 1050;
+}
+
+
+.header-search {
+  display: flex;
+  width: 6rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+ 
+
+}
+
+.home-link{
+  margin-left: .7rem;
+}
+
+
+.header-icons {
+  display: flex;
+  width: 6rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bell-icon {
+  margin-left: .7rem;
 }

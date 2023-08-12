@@ -17,6 +17,7 @@ exports.handler = async (event, context) => {
         'updatedAt': { S: date.toISOString() },
         'email': { S: event.request.userAttributes.email },
         'name': { S: event.userName },
+        'hasCompletedForm': { BOOL: false },
         'isVerified': { N: '0' } //basically is the user approved to continue to see content
       },
       TableName: process.env.API_DIVOT_USERTABLE_NAME

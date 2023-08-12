@@ -2,6 +2,7 @@ import "./App.css";
 import { useState, useEffect, useRef, React } from "react";
 import {
   withAuthenticator,
+  
 
 } from "@aws-amplify/ui-react";
 import { DataStore } from "@aws-amplify/datastore";
@@ -36,6 +37,9 @@ import { I18n } from "aws-amplify";
 import SignInComponent from "./components/signin/SignInComponent"
 import { Helmet } from 'react-helmet';
 import TidioWrapper from './TidioWrapper'; 
+import CompleteProfile from "./components/signin/CompleteProfile";
+
+
 
 function App() {
   const videoRef = useRef();
@@ -63,7 +67,6 @@ function App() {
 
 
 
-
   const [hover, setHover] = useState(false);
   const onHover = () => {
     setHover(true);
@@ -76,23 +79,17 @@ function App() {
   DataStore.start();
 
   useEffect(() => {
+
+    checkAuthStatus();
+
     const getData = async () => {
       try {
+
         getUsername();
         getEmail();
-        /*  const info = await Auth.currentAuthenticatedUser();
-        const uname = info.idToken.payload["cognito:username"];
-
-   */
         const info = await Auth.currentSession();
         const uname = info.idToken.payload["cognito:username"];
-        setFade(true);
-        setTimeout(() => {
-          setMoveUp(true);
-          setTimeout(() => {
-            setFade(false);
-          }, 1000); // Adjust the fade out duration as needed
-        }, 3000);
+      
 
         const signedInUserData = await DataStore.query(User, (post) =>
           post.name.eq(uname)
@@ -107,6 +104,7 @@ function App() {
 
         const signedFiledAccessURL = await Storage.get(signedUserFilePath);
         setSignedProfileURL(signedFiledAccessURL);
+
       } catch (err) {
         console.error(err);
       }
@@ -114,6 +112,16 @@ function App() {
 
     getData();
   }, []);
+
+  const checkAuthStatus = async () => {
+    try {
+      const user = await Auth.currentAuthenticatedUser();
+      setLoggedIn(true);
+    } catch (error) {
+      setLoggedIn(false);
+    }
+  };
+
 
   const getUsername = async () => {
     try {
@@ -175,7 +183,7 @@ function App() {
                   color="#b7b1a7"
                 />
               )}
-              <div>
+              <div className="home-link">
                 <Link to={`/`} replace>
                   {" "}
                   <FontAwesomeIcon icon={faHome} color="#b7b1a7" size="lg" />
@@ -189,18 +197,14 @@ function App() {
                 Beta
                <TidioWrapper/>
               </div>
-              {hover ? (
-                <div className="info-message">
-                  This is a beta version, which means there may be some issues
-                  with it
-                </div>
-              ) : (
-                <></>
-              )}
+             
             </div>
             <div className="header-icons">
-              <Dropdown url={signedProfileURL} user={user} />
-              <FontAwesomeIcon icon={faBell} color="#b7b1a7" size="lg" />
+
+             
+             {loggedIn? ( <Dropdown url={signedProfileURL} user={user} /> ):(<Link to="/sign-in">Sign In</Link> )}
+              {loggedIn? (<FontAwesomeIcon className= "bell-icon" icon={faBell} color="#b7b1a7" size="lg" />):(<div></div>)}
+
             </div>
           </div>
         </div>
@@ -215,6 +219,7 @@ function App() {
         ) : (
           <div></div>
         )}
+
         <Routes>
           {/* <Route path="/home" element={<Navigate to={Home} />} /> */}
 
@@ -223,13 +228,14 @@ function App() {
           <Route
             path="/:name"
             element={
-              path !== "/signup" ? (
+              loggedIn && path !== '/sign-in' && path !=='/complete-profile' && path !== '/brand-form' ?  (
                 <Dashboard user={user} email={email} id={userIDString} />
-              ) : <SignUpEmailForm />
+              ) :  <Dashboard user={user} email={email} id={userIDString} />
             }          />
 
           <Route path="/brand-form" element={<AddBrand />} />
-
+          <Route path="/sign-in" element={< SignInComponent/>} />
+          <Route path="/complete-profile" element={<CompleteProfile/>} />
           {/* {isBusiness? (<Route path ='/:name' element={ <BrandDashboard user={user} email={email}/>  }/>):(<Route path ='/:name' element={ <UserDashboard user={user} email={email}/>}/>)} */}
         </Routes>
       </div>
@@ -251,11 +257,13 @@ function App() {
   );
 }
 
-I18n.putVocabulariesForLanguage("en", {
-  "Sign In": "Sign In", // Tab header
-});
 
-export default withAuthenticator(App, {
+
+export default App;
+
+
+
+/* export default withAuthenticator(App, {
   components: {
     Header,
   
@@ -379,3 +387,4 @@ export default withAuthenticator(App, {
 
  
 });
+ */

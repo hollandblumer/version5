@@ -7,3 +7,4 @@ export function ResetPasswordHeader() {
   )
 }
 
+export default ResetPasswordHeader;
