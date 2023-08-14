@@ -84,6 +84,7 @@ export const onCreateUser = /* GraphQL */ `
       bio
       parentBrand
       isVerified
+      hasCompletedForm
       industry
       Suggestions {
         nextToken
@@ -113,6 +114,7 @@ export const onUpdateUser = /* GraphQL */ `
       bio
       parentBrand
       isVerified
+      hasCompletedForm
       industry
       Suggestions {
         nextToken
@@ -142,6 +144,7 @@ export const onDeleteUser = /* GraphQL */ `
       bio
       parentBrand
       isVerified
+      hasCompletedForm
       industry
       Suggestions {
         nextToken
@@ -312,6 +315,7 @@ export const onCreateUserSuggestion = /* GraphQL */ `
         bio
         parentBrand
         isVerified
+        hasCompletedForm
         industry
         createdAt
         updatedAt
@@ -365,6 +369,7 @@ export const onUpdateUserSuggestion = /* GraphQL */ `
         bio
         parentBrand
         isVerified
+        hasCompletedForm
         industry
         createdAt
         updatedAt
@@ -418,6 +423,7 @@ export const onDeleteUserSuggestion = /* GraphQL */ `
         bio
         parentBrand
         isVerified
+        hasCompletedForm
         industry
         createdAt
         updatedAt

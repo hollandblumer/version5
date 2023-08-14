@@ -7,14 +7,15 @@ import { Auth } from "@aws-amplify/auth";
 import { DataStore } from "@aws-amplify/datastore";
 import { Link, useNavigate } from "react-router-dom";
 
-function Dropdown({ url, user }) {
+function Dropdown({ url, username }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
 
-  const goLink = (user) => {
-    navigate(`/${user}`);
+  const goLink = (username) => {
+    navigate(`/${username}`);
     refreshPage();
   };
+  
   function refreshPage() {
     window.location.reload(false);
   }
@@ -27,13 +28,13 @@ function Dropdown({ url, user }) {
           setShowDropdown(!showDropdown);
         }}
       >
-        <Link to={`/${user}`}>
+        <Link to={`/${username}`}>
           {" "}
           <Avatar
             sx={{}}
             src={url}
             onClick={() => {
-              goLink(user);
+              goLink(username);
             }}
           />
         </Link>

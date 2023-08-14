@@ -25,5 +25,11 @@ export type AmplifyDependentResourcesAttributes = {
       "Name": "string",
       "Region": "string"
     }
+  },
+  "storage": {
+    "s3divotstorage": {
+      "BucketName": "string",
+      "Region": "string"
+    }
   }
 }

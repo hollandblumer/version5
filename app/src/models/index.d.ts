@@ -64,6 +64,7 @@ type EagerUser = {
   readonly bio?: string | null;
   readonly parentBrand?: string | null;
   readonly isVerified?: boolean | null;
+  readonly hasCompletedForm?: boolean | null;
   readonly industry?: string | null;
   readonly Suggestions?: (UserSuggestion | null)[] | null;
   readonly createdAt?: string | null;
@@ -86,6 +87,7 @@ type LazyUser = {
   readonly bio?: string | null;
   readonly parentBrand?: string | null;
   readonly isVerified?: boolean | null;
+  readonly hasCompletedForm?: boolean | null;
   readonly industry?: string | null;
   readonly Suggestions: AsyncCollection<UserSuggestion>;
   readonly createdAt?: string | null;

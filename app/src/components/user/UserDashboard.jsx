@@ -21,7 +21,7 @@ import {
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 
-function UserDashboard({ user, email }) {
+function UserDashboard({ cognitoID, email, id }) {
   const { name } = useParams();
   const [suggestions, setSuggestions] = useState([]);
   const [userId, setUserId] = useState([]);
@@ -35,7 +35,8 @@ function UserDashboard({ user, email }) {
   const [impact, setImpact] = useState(false);
 
   const [showActivity, setShowActivity] = useState(true);
-  const { username } = user;
+  const { username } = cognitoID;
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -124,7 +125,7 @@ function UserDashboard({ user, email }) {
           bio={userBio}
         />
 
-        <Stats brandArray={uniqueArray} user={user} />
+        <Stats brandArray={uniqueArray} user={username} />
       </div>
 
       {/*     <div class="tab-container">
@@ -300,4 +301,4 @@ function UserDashboard({ user, email }) {
   );
 }
 
-export default withAuthenticator(UserDashboard);
+export default UserDashboard;

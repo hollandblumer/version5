@@ -24,6 +24,7 @@ export declare type UserUpdateFormInputValues = {
     bio?: string;
     parentBrand?: string;
     isVerified?: boolean;
+    hasCompletedForm?: boolean;
     industry?: string;
 };
 export declare type UserUpdateFormValidationValues = {
@@ -37,6 +38,7 @@ export declare type UserUpdateFormValidationValues = {
     bio?: ValidationFunction<string>;
     parentBrand?: ValidationFunction<string>;
     isVerified?: ValidationFunction<boolean>;
+    hasCompletedForm?: ValidationFunction<boolean>;
     industry?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -52,6 +54,7 @@ export declare type UserUpdateFormOverridesProps = {
     bio?: PrimitiveOverrideProps<TextFieldProps>;
     parentBrand?: PrimitiveOverrideProps<TextFieldProps>;
     isVerified?: PrimitiveOverrideProps<SwitchFieldProps>;
+    hasCompletedForm?: PrimitiveOverrideProps<SwitchFieldProps>;
     industry?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UserUpdateFormProps = React.PropsWithChildren<{

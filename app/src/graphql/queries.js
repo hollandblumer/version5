@@ -102,6 +102,7 @@ export const getUser = /* GraphQL */ `
       bio
       parentBrand
       isVerified
+      hasCompletedForm
       industry
       Suggestions {
         nextToken
@@ -136,6 +137,7 @@ export const listUsers = /* GraphQL */ `
         bio
         parentBrand
         isVerified
+        hasCompletedForm
         industry
         createdAt
         updatedAt
@@ -175,6 +177,7 @@ export const syncUsers = /* GraphQL */ `
         bio
         parentBrand
         isVerified
+        hasCompletedForm
         industry
         createdAt
         updatedAt
@@ -368,6 +371,7 @@ export const getUserSuggestion = /* GraphQL */ `
         bio
         parentBrand
         isVerified
+        hasCompletedForm
         industry
         createdAt
         updatedAt

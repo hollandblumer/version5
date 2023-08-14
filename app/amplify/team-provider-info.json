@@ -24,6 +24,9 @@
           "deploymentBucketName": "amplify-divot-staging-152833-deployment",
           "s3Key": "amplify-builds/DivotPostConfirmation-5832347250456c465334-build.zip"
         }
+      },
+      "storage": {
+        "s3divotstorage": {}
       }
     }
   }

@@ -39,6 +39,7 @@ export default function UserCreateForm(props) {
     bio: "",
     parentBrand: "",
     isVerified: false,
+    hasCompletedForm: false,
     industry: "",
   };
   const [name, setName] = React.useState(initialValues.name);
@@ -53,6 +54,9 @@ export default function UserCreateForm(props) {
     initialValues.parentBrand
   );
   const [isVerified, setIsVerified] = React.useState(initialValues.isVerified);
+  const [hasCompletedForm, setHasCompletedForm] = React.useState(
+    initialValues.hasCompletedForm
+  );
   const [industry, setIndustry] = React.useState(initialValues.industry);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -66,6 +70,7 @@ export default function UserCreateForm(props) {
     setBio(initialValues.bio);
     setParentBrand(initialValues.parentBrand);
     setIsVerified(initialValues.isVerified);
+    setHasCompletedForm(initialValues.hasCompletedForm);
     setIndustry(initialValues.industry);
     setErrors({});
   };
@@ -80,6 +85,7 @@ export default function UserCreateForm(props) {
     bio: [],
     parentBrand: [],
     isVerified: [],
+    hasCompletedForm: [],
     industry: [],
   };
   const runValidationTasks = async (
@@ -118,6 +124,7 @@ export default function UserCreateForm(props) {
           bio,
           parentBrand,
           isVerified,
+          hasCompletedForm,
           industry,
         };
         const validationResponses = await Promise.all(
@@ -183,6 +190,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand,
               isVerified,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -217,6 +225,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand,
               isVerified,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -251,6 +260,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand,
               isVerified,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -285,6 +295,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand,
               isVerified,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -323,6 +334,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand,
               isVerified,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -357,6 +369,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand,
               isVerified,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -391,6 +404,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand,
               isVerified,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -425,6 +439,7 @@ export default function UserCreateForm(props) {
               bio: value,
               parentBrand,
               isVerified,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -459,6 +474,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand: value,
               isVerified,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -493,6 +509,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand,
               isVerified: value,
+              hasCompletedForm,
               industry,
             };
             const result = onChange(modelFields);
@@ -507,6 +524,41 @@ export default function UserCreateForm(props) {
         errorMessage={errors.isVerified?.errorMessage}
         hasError={errors.isVerified?.hasError}
         {...getOverrideProps(overrides, "isVerified")}
+      ></SwitchField>
+      <SwitchField
+        label="Has completed form"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={hasCompletedForm}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              name,
+              email,
+              update,
+              filePath,
+              strength,
+              isBusiness,
+              location,
+              bio,
+              parentBrand,
+              isVerified,
+              hasCompletedForm: value,
+              industry,
+            };
+            const result = onChange(modelFields);
+            value = result?.hasCompletedForm ?? value;
+          }
+          if (errors.hasCompletedForm?.hasError) {
+            runValidationTasks("hasCompletedForm", value);
+          }
+          setHasCompletedForm(value);
+        }}
+        onBlur={() => runValidationTasks("hasCompletedForm", hasCompletedForm)}
+        errorMessage={errors.hasCompletedForm?.errorMessage}
+        hasError={errors.hasCompletedForm?.hasError}
+        {...getOverrideProps(overrides, "hasCompletedForm")}
       ></SwitchField>
       <TextField
         label="Industry"
@@ -527,6 +579,7 @@ export default function UserCreateForm(props) {
               bio,
               parentBrand,
               isVerified,
+              hasCompletedForm,
               industry: value,
             };
             const result = onChange(modelFields);

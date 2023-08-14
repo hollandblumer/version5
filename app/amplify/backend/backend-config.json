@@ -91,5 +91,12 @@
         }
       ]
     }
+  },
+  "storage": {
+    "s3divotstorage": {
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "S3"
+    }
   }
 }

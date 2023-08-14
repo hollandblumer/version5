@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3divotstorage",
+  "bucketName": "divot-storage",
+  "policyUUID": "4f0262cf",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

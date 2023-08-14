@@ -8,6 +8,7 @@ import BrandDashboard from "./components/brand/BrandDashboard";
 import Footer2 from "./components/footer/Footer2";
 
 function Dashboard({ user, email, id }) {
+ 
   const { name } = useParams();
 
   const [isBusiness, setIsBusiness] = useState(false);
@@ -26,14 +27,15 @@ function Dashboard({ user, email, id }) {
     };
     getData();
   }, []);
-
+console.log(user.username);
   return (
     <div className="dashboard-content">
       <div className="dashboard">
         {isBusiness ? (
-          <BrandDashboard user={user.username} email={email} id={id} />
+          <BrandDashboard cognitoID={user.username} email={email} id={id} />
         ) : (
-          <UserDashboard user={user.username} email={email} id={id} />
+          
+          <UserDashboard cognitoID={user.username} email={email} id={id} />
         )}
       </div>
       <Footer2 />
