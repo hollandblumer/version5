@@ -11,6 +11,7 @@ import BrandInfo from "./brand-info/BrandInfo";
 import { Storage } from "aws-amplify";
 import Icon from "../icon/Icon";
 import "../../styles/brand/dashboard/brand-dashboard.css";
+import "../../styles/brand/top-charts/top-charts.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLeaf,

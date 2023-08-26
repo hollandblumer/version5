@@ -4,14 +4,16 @@ import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faLocationDot,
+  faCompass,
   faCircleCheck,
-  faIndustry,
   faCircleQuestion,
   faArrowUpRightFromSquare,
   faEllipsis,
   faEnvelope,
+  faIndustry,
+  faBuilding,
 } from "@fortawesome/free-solid-svg-icons";
+
 import "../../../styles/brand/info/brand-info.css";
 
 function BrandInfo({
@@ -55,7 +57,8 @@ function BrandInfo({
                 <FontAwesomeIcon
                   icon={faCircleCheck}
                   size="sm"
-                  color="#37252C"
+                  color="#5bab5c"
+                  style={{ marginLeft: "5px" }}
                 />
               </>
             )}
@@ -81,23 +84,34 @@ function BrandInfo({
             <div className="grey">part of</div> <b>{parentBrand}</b>
           </div>
         )}
+
         <div className="detailed-brand-info-row">
           {location ? (
             <div className="info-location">
-              <FontAwesomeIcon icon={faLocationDot} size="sm" color="#37252C" />{" "}
+              <FontAwesomeIcon icon={faCompass} size="sm" color="#b7b1a7" />{" "}
               {location}
             </div>
           ) : (
             <div className="info-location">
-              <FontAwesomeIcon icon={faLocationDot} size="sm" color="#37252C" />{" "}
-              Location unavailable
+              <FontAwesomeIcon icon={faCompass} size="sm" color="#b7b1a7" /> Add
+              Location
             </div>
           )}
 
           {industry == null ? (
-            <div> </div>
+            <div className="industry-row">
+              <>
+                {" "}
+                <FontAwesomeIcon
+                  icon={faBuilding}
+                  size="sm"
+                  color="#b7b1a7"
+                />{" "}
+                Add Industry
+              </>
+            </div>
           ) : (
-            <div className="row flex-start">
+            <div className="industry-row">
               {" "}
               <b>{industry}</b> <div className="grey left"> Industry </div>
             </div>
@@ -152,30 +166,40 @@ function BrandInfo({
         )}
 
         <div className="member-since">
-          {verification === null || verification === false ? (
+          {verification === null ? (
             <>
               {" "}
               <div className="grey">Member since </div>
-              <b>
+              <div className=" member-since-date">
                 {"  "}
                 {formatdate.toLocaleDateString(undefined, {
                   year: "numeric",
                   month: "short",
                 })}
-              </b>
+              </div>
+            </>
+          ) : verification === false ? (
+            <>
+              <div> Unverified Member since </div>
+              <div className="member-since-date">
+                {"  "}
+                {formatdate.toLocaleDateString(undefined, {
+                  year: "numeric",
+                  month: "short",
+                })}
+              </div>
             </>
           ) : (
-            <div row flex-start>
-              <>
-                {" "}
-                <b>Brand unverified </b> Claim this brand{" "}
-                <FontAwesomeIcon
-                  icon={faArrowUpRightFromSquare}
-                  size="xs"
-                  color="#5c5848"
-                />{" "}
-              </>
-            </div>
+            <>
+              <div>Unverified Member since{"  "} </div>
+              <div className="member-since-date">
+                {"  "}
+                {formatdate.toLocaleDateString(undefined, {
+                  year: "numeric",
+                  month: "short",
+                })}
+              </div>
+            </>
           )}
         </div>
       </div>

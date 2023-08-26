@@ -1,8 +1,3 @@
-.parent-brand {
-  color: #2f2f2f;
-  text-decoration: none;
-}
-
 .brand-dashboard {
   display: flex;
   flex-direction: column;
@@ -13,10 +8,33 @@
 .brand-dashboard-top {
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
   width: 100%;
   height: auto;
+}
+
+.brand-dashboard-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  color: #272626;
+  white-space: nowrap;
+  flex: 1;
+  margin: 3rem 4rem 0 4rem;
+}
+
+.brand-dashboard-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  white-space: nowrap;
+  flex: 1.5;
+  width: 100%;
+  height: auto;
+  margin: 3rem 4rem 0 4rem;
 }
 
 .brand-dashboard-bottom {
@@ -27,53 +45,4 @@
   align-items: center;
   justify-content: flex-start;
   margin: 4rem 3rem 10rem 3rem;
-}
-
-.brand-dashboard-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  color: #272626;
-  white-space: nowrap;
-  margin: 4rem 4rem 0 4rem;
-  flex: 1;
-}
-
-.brand-dashboard-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex: 2;
-  width: 100%;
-  height: auto;
-}
-
-.top-charts {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  flex: 1;
-}
-
-.top-charts-title-sort {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: auto;
-}
-
-.sort-by {
-  display: flex;
-  flex-direction: row;
-}
-
-.brand-nav {
-  width: 100%;
-  display: colum;
-  align-items: flex-start;
 }

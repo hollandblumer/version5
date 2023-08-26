@@ -5,7 +5,8 @@
   width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: space-between;
+  justify-content: center;
 }
 
 .activity {
@@ -15,7 +16,7 @@
   background: rgb(244, 243, 237);
   /*   box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
     rgba(17, 17, 26, 0.05) 0px 8px 32px; */
-  margin: 0rem 12rem 2rem 12rem;
+
   border: 1px solid rgb(219, 211, 198);
   border-radius: 2rem;
   margin-top: 3rem;
@@ -35,6 +36,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin-top: 0.3rem;
   // border-bottom: 1.5px solid #eeeeee;
   // margin: 0.4rem 0.6rem; //real
   // margin: 0.4rem 0rem;
@@ -110,18 +112,11 @@
 }
 
 .top-suggestions-box {
-  max-height: 25rem;
   overflow-y: scroll;
-  padding: 0.8px;
   // background: #eeeeee;
-  flex: 1;
-  width: 40rem;
-  border-radius: 0.3rem;
+  flex: 2;
   margin-top: 1rem;
-
-  // background: #f4f3ed;
-
-  // border-top: 1px solid #eeeeee;
+  width: 100%;
 }
 
 .ranking-number {
