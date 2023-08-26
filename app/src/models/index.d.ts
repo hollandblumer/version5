@@ -62,6 +62,7 @@ type EagerUser = {
   readonly isBusiness?: boolean | null;
   readonly location?: string | null;
   readonly bio?: string | null;
+  readonly isPrivate?: boolean | null;
   readonly parentBrand?: string | null;
   readonly isVerified?: boolean | null;
   readonly hasCompletedForm?: boolean | null;
@@ -85,6 +86,7 @@ type LazyUser = {
   readonly isBusiness?: boolean | null;
   readonly location?: string | null;
   readonly bio?: string | null;
+  readonly isPrivate?: boolean | null;
   readonly parentBrand?: string | null;
   readonly isVerified?: boolean | null;
   readonly hasCompletedForm?: boolean | null;

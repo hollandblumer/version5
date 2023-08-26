@@ -67,8 +67,6 @@
   align-items: center;
   justify-content: space-between;
   margin-top: -1.3rem;
- 
- 
 }
 
 .info-logo {
@@ -85,30 +83,45 @@
   z-index: 1050;
 }
 
-
 .header-search {
+  margin-right: 0.9rem;
   display: flex;
-  width: 6rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-left {
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
- 
-
+  width: 10rem;
 }
-
-.home-link{
-  margin-left: .7rem;
-}
-
 
 .header-icons {
   display: flex;
-  width: 6rem;
+  width: 10rem;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
 }
 
 .bell-icon {
-  margin-left: .7rem;
+  margin-left: 0.7rem;
+}
+
+.sign-in-link {
+  color: #5c5848;
+}
+
+.sign-in-link:hover {
+  color: #b7b1a7;
+}
+
+.about-link {
+  color: #747474;
+  color: #878683;
+  font-size: 18px;
+  margin-top: 0.1rem;
 }

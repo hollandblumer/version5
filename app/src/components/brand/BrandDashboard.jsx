@@ -10,7 +10,7 @@ import SuggestionForm from "./SuggestionForm";
 import BrandInfo from "./brand-info/BrandInfo";
 import { Storage } from "aws-amplify";
 import Icon from "../icon/Icon";
-import "../../styles/brand/dashboard/dashboard.css";
+import "../../styles/brand/dashboard/brand-dashboard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLeaf,
@@ -21,12 +21,13 @@ import {
   faShareNodes,
   faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
-
+import TopCharts from "./TopCharts";
 import "../../styles/brand/milestone/milestone.css";
 import MilestoneTracker from "./milestone/MilestoneTracker";
 
 function BrandDashboard({ user, email, id }) {
   const { name } = useParams();
+  const [activeContainer, setActiveContainer] = useState("milestones");
   const [suggestions, setSuggestions] = useState([]);
   const [brandURL, setBrandURL] = useState("");
   const [parentBrand, setParentBrand] = useState("");
@@ -55,7 +56,7 @@ function BrandDashboard({ user, email, id }) {
 
         const suggestions = await DataStore.query(
           UserSuggestion,
-          (p) => p.suggestion.businessname.eq(name),
+          (p) => p.suggestion.businessName.eq(name),
           {
             sort: (s) => s.createdAt(SortDirection.ASCENDING),
           }
@@ -113,11 +114,10 @@ function BrandDashboard({ user, email, id }) {
   let avatararray = [];
   let count = 0;
 
-  console.log("size", brandSize);
   return (
-    <div>
-      <section>
-        <article>
+    <div className="brand-dashboard">
+      <div className="brand-dashboard-top">
+        <div className="brand-dashboard-left">
           <BrandInfo
             url={brandURL}
             username={name}
@@ -134,129 +134,88 @@ function BrandDashboard({ user, email, id }) {
             thisID={id}
             businessname={name}
           />
-        </article>
+        </div>
 
-        <article>
-          <div className="brand-suggestion-info">
-            <div className="rankings-title-container">
-              {" "}
-              <select className="chart-select">
-                {" "}
-                <option>
-                  Top Charts{" "}
-                  <FontAwesomeIcon
-                    icon={faCaretDown}
-                    size="sm"
-                    color="#5c5848"
-                  />{" "}
-                </option>
-              </select>
-              <div className="sort-select-container">
-                <div>sort by</div>
-                <select className="sort-select">
-                  {" "}
-                  <option>
-                    all{" "}
-                    <FontAwesomeIcon
-                      icon={faCaretDown}
-                      size="xs"
-                      color="#5c5848"
-                    />{" "}
-                  </option>
-                </select>
+        <div className="brand-dashboard-right">
+          <TopCharts />
+        </div>
+      </div>
+      <div className="brand-dashboard-bottom">
+        <div className="brand-nav">
+          <h3> Activity </h3>
+          <div className="business-nav-row">
+            <div
+              className={`business-nav-item ${
+                activeContainer === "milestones" ? "active" : ""
+              }`}
+              onClick={() => setActiveContainer("milestones")}
+            >
+              Milestones
+            </div>
+            <div
+              className={`business-nav-item ${
+                activeContainer === "projects" ? "active" : ""
+              }`}
+              onClick={() => setActiveContainer("projects")}
+            >
+              Projects
+            </div>
+            <div
+              className={`business-nav-item ${
+                activeContainer === "certifications" ? "active" : ""
+              }`}
+              onClick={() => setActiveContainer("certifications")}
+            >
+              Certifications
+            </div>
+          </div>
+        </div>
+        {activeContainer === "milestones" ? (
+          milestones.length === 0 ? (
+            <div className="milestone-container">
+              <div className="no-suggestions-container">
+                <div className="no-suggestions">No Activity Yet</div>
+                <div className="no-suggestions-small">
+                  This brand's snoozing on the possibilities 💤
+                </div>
               </div>
             </div>
-
-            <div className="top-suggestions-box">
-              {suggestions.map((p, index) => (
-                <div key={p.id}>
-                  {array.includes(p.suggestion) ? (
-                    <div></div>
-                  ) : (
-                    <div>
-                      {(count = count + 1).hide}
-
-                      <SuggestionToBrand
-                        suggestion={p.suggestion}
-                        compliment={p.compliment}
-                        businessname={p.businessname}
-                        actualindex={index}
-                        counter={count}
-                      />
-                      {array.push(p.suggestion).hide}
-                    </div>
-                  )}
+          ) : (
+            <div className="milestone-container">
+              {milestones.map((p, index) => (
+                <div
+                  key={p.id}
+                  className={`${
+                    index % 2 === 0 && index === 0
+                      ? "milestone-active corner milestone"
+                      : index % 2 === 0
+                      ? " milestone-active milestone"
+                      : "milestone-inactive milestone"
+                  }`}
+                >
+                  <div className="milestone-padding">
+                    <MilestoneTracker
+                      url={brandURL}
+                      businessname={p.brandName}
+                      suggestion={p.suggestion}
+                      index={index}
+                      currentMilestone={p.milestone}
+                    />
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        </article>
-      </section>
-
-      <div className="business-nav">
-        <div className="business-nav-title"> Activity </div>
-        <div className="business-nav-row">
-          <div className="business-nav-item">
-            {" "}
-            {/*  <FontAwesomeIcon
-              icon={faClipboardCheck}
-              size="sm"
-              color="#5c5848"
-            />{" "} */}
-            Milestones
-          </div>
-          <div className="business-nav-grey">
-            {" "}
-            {/* <FontAwesomeIcon icon={faLeaf} size="sm" color="#ccc" /> Completed */}
-            Projects{" "}
-          </div>
-          <div className="business-nav-grey">
-            {" "}
-            {/* <FontAwesomeIcon icon={faLeaf} size="sm" color="#ccc" /> Completed */}
-            Certifications{" "}
-          </div>
-        </div>
-
-        {milestones.length == 0 ? (
-          <div className="milestone-box">
-            <p>
-              {" "}
-              <b>@{name} </b>does not have any milestones yet
-            </p>
+          )
+        ) : activeContainer === "projects" ? (
+          <div className="projects-container">
+            {/* Add your Projects container content here */}
           </div>
         ) : (
-          <div className="milestone-box">
-            {" "}
-            {milestones.map((p, index) => (
-              <div key={p.id}>
-                {milestonearray.includes(p.suggestion) ? (
-                  <div></div>
-                ) : (
-                  <div
-                    className={` ${
-                      index % 2 === 0 && index === 0
-                        ? "milestone-active corner milestone"
-                        : index % 2 == 0
-                        ? " milestone-active milestone"
-                        : "milestone-inactive milestone"
-                    }`}
-                  >
-                    <div className="milestone-padding">
-                      <MilestoneTracker
-                        url={brandURL}
-                        businessname={p.brandName}
-                        suggestion={p.suggestion}
-                        index={index}
-                        currentMilestone={p.milestone}
-                      />
-                    </div>
-
-                    {milestonearray.push(p.suggestion).hide}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          activeContainer === "certifications" && (
+            <div className="certifications-container">
+              {/* Add your Certifications container content here */}
+            </div>
+          )
         )}
       </div>
     </div>

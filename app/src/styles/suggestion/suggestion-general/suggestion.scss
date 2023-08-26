@@ -104,8 +104,12 @@ div.suggestion-content-container > * {
   width: 5rem;
 }
 
-.avatar {
-  margin-left: -22px;
+.featured-avatars {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background: orange;
 }
 
 .icon {
@@ -152,14 +156,11 @@ div.suggestion-content-container > * {
   background-color: rgba(140, 140, 140, 0.8);
   /*   background: url(../../../assets/images/faintbackground.png);
   background-size: 300% 600%; */
-
   border-radius: 50%;
   color: rgb(255, 255, 255);
   font-weight: 300;
-
   height: 2.4rem;
   width: 2.4rem;
-
   padding: 0.2rem 0.6rem;
   font-size: 12pt;
   box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,

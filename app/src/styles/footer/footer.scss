@@ -1,17 +1,53 @@
 .footer {
-  height: 4rem;
+  position: absolute;
+  bottom: -87px; /* Adjusted value for more distance from the bottom */
   width: 100%;
-  color: #8c8c8c;
-  font-weight: 500;
-  border-top: 0.5px solid #f7f7f5;
-  border-top: 0.5px solid white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background: #e9e5dc;
-  background: #8c8577;
 }
 
-.footer-text {
-  margin: 2rem;
+.footer-links {
+  position: relative;
+  display: flex;
+  font-family: "itc-souvenir";
+}
+
+.footer-links a {
+  color: #f0f9f6;
+  font-size: 17px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:nth-child(1) {
+  margin-right: 24%;
+  margin-left: 2%;
+}
+
+.footer-links a:nth-child(2) {
+  margin-right: 20%;
+}
+
+.footer-links a:nth-child(3) {
+  margin-right: 22%;
+}
+
+.footer-links a:hover {
+  color: #22211d;
+}
+
+// Media query for iPad screens
+@media (max-width: 1024px) {
+  .footer-links a {
+    font-size: 14px; // Adjust font size for smaller screens
+  }
+}
+
+// Media query for iPhone screens
+@media (max-width: 768px) {
+  .footer {
+    position: relative; // Change position to relative for better display on smaller screens
+    bottom: auto;
+  }
+
+  .footer-links a {
+    font-size: 12px; // Further adjust font size for smaller screens
+  }
 }

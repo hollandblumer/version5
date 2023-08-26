@@ -13,12 +13,24 @@ import { useNavigate } from "react-router-dom";
 import Search from "../../components/header/Search";
 import MagnifyingGlass from "../../assets/images/Magnifyingglass2.png";
 import QRCode from "../../assets/images/QRcode.png";
+import QRScanner from "../../components/qrscanner/QRScanner";
+import Footer2 from "../../components/footer/Footer2";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);
   const [search, setSearch] = useState("");
   const [searchList, setSearchList] = useState([]);
+  const [qrScannerVisible, setQRScannerVisible] = useState(false);
+  const [qrCodeData, setQrCodeData] = useState(null);
 
+  const handleQRCodeClick = () => {
+    setQRScannerVisible(true);
+  };
+
+  const handleQRScannerClose = () => {
+    setQRScannerVisible(false);
+    setQrCodeData(null); // Reset scanned data
+  };
   const navigate = useNavigate();
 
   const createSearch = async (e) => {
@@ -35,70 +47,81 @@ function Home() {
     refreshPage();
   };
 
+  const [animatePlaceholder, setAnimatePlaceholder] = useState(true);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAnimatePlaceholder((prevValue) => !prevValue);
+    }, 3000); // Change every 3 seconds
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, []);
+
   function refreshPage() {
     window.location.reload(false);
   }
+
   return (
     <div className="home">
-      <div className="search" onMouseEnter={() => setShowInput(true)}>
+      <div
+        className="home-search-container"
+        onMouseEnter={() => setShowInput(true)}
+      >
         <div className="home-search-form">
-          {/*   <div className="search-container">
-          <FontAwesomeIcon icon={faMagnifyingGlass} size="lg" color="#212121" />
-        </div> */}
-        
+          <img
+            src={MagnifyingGlass}
+            className="magnifying-glass"
+            alt="Logo image"
+          />
 
-          <div className="home-search-form-box">
-
-            <form onChange={createSearch}>
-            <img
-              src={MagnifyingGlass}
-              className="magnifying-glass"
-              alt="Logo image"
-          /> 
-              <input
-                // autoFocus
-                className="home-search-input"
-                type="text"
-                placeholder="Search"
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-              />
-            </form>
-            <button className="xbutton" onClick={() => setSearch("")}>
-              <FontAwesomeIcon icon={faCircleXmark} size="sm" color="#c7c7c7" />
-            </button>
+          <div onChange={createSearch} className="home-search-input-container">
+            <input
+              className="home-search-input"
+              type="text"
+              placeholder=""
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <span className="placeholder-animation">
+              {search ? null : (
+                <div className="search-animation">
+                  <div className="placeholder-text">
+                    Search for your favorite suggestions{" "}
+                  </div>
+                  <span
+                    className={`placeholder-text ${
+                      animatePlaceholder ? "users" : "brands"
+                    }`}
+                  >
+                    {animatePlaceholder ? "users" : "brands"}
+                  </span>
+                </div>
+              )}
+            </span>
           </div>
-          <div className="search-divider"></div>
 
-          {search != "" ? (
-            <div className="searches">
-              {searchList.length != 0 ? (
-                <div>
-                  {searchList.map((user) => (
-                    <div className="searchList" key={user.id}>
-                      <button
-                        className="search-button"
-                        onClick={() => {
-                          goLink(user.name);
-                        }}
-                      >
-                        <div>{user.name}</div>
-                      </button>
-                    </div>
-                  ))}
-                  <div>
-                    {" "}
+          <button className="xbutton" onClick={() => setSearch("")}>
+            <FontAwesomeIcon icon={faCircleXmark} size="sm" color="#c7c7c7" />
+          </button>
+        </div>
+
+        {search != "" ? (
+          <div className="searches">
+            {searchList.length != 0 ? (
+              <div>
+                {searchList.map((user) => (
+                  <div className="searchList" key={user.id}>
                     <button
                       className="search-button"
                       onClick={() => {
-                        navigate(`/brand-form`);
+                        goLink(user.name);
                       }}
                     >
-                      <div className="brand-form-button">Can't Find Brand?</div>
+                      <div>{user.name}</div>
                     </button>
                   </div>
-                </div>
-              ) : (
+                ))}
                 <div>
                   {" "}
                   <button
@@ -110,24 +133,56 @@ function Home() {
                     <div className="brand-form-button">Can't Find Brand?</div>
                   </button>
                 </div>
-              )}
-            </div>
-          ) : (
-            <div>
-              {" "}
-              <button
-                className="search-button"
-                onClick={() => {
-                  navigate(`/brand-form`);
-                }}
-              >
-                <div className="brand-form-button">Can't Find Brand?</div>
-              </button>
-            </div>
-          )}
-        </div>
+              </div>
+            ) : (
+              <div>
+                {" "}
+                <button
+                  className="search-button"
+                  onClick={() => {
+                    navigate(`/brand-form`);
+                  }}
+                >
+                  <div className="brand-form-button">Can't Find Brand?</div>
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div>
+            {" "}
+            <button
+              className="search-button"
+              onClick={() => {
+                navigate(`/brand-form`);
+              }}
+            >
+              <div className="brand-form-button">Can't Find Brand?</div>
+            </button>
+          </div>
+        )}
       </div>
-      <img src={QRCode} className="QR-code" alt="Logo image" />
+      {!qrScannerVisible && (
+        <img
+          src={QRCode}
+          className="QR-code"
+          alt="QR Code"
+          onClick={handleQRCodeClick}
+        />
+      )}
+      {qrScannerVisible && (
+        <QRScanner
+          onClose={() => {
+            setQRScannerVisible(false);
+            setQrCodeData(null);
+          }}
+          onScan={setQrCodeData}
+        />
+      )}
+      <div className="qr-result">
+        {/* ... Display scanned QR code data ... */}
+      </div>
+      <Footer2 />
     </div>
   );
 }

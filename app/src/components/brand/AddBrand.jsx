@@ -5,6 +5,7 @@ import "../../styles/brand/brand-form/brand-form.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import { Storage } from "aws-amplify";
+import Footer2 from "../footer/Footer2";
 
 function AddBrand() {
   const [brandName, setBrandName] = useState("");
@@ -83,14 +84,10 @@ function AddBrand() {
     <div className="brand-form-background">
       <div className="brand-form">
         <div className="brand-form-description">
-          <h2> Brand Submission Form</h2>
+          <h2> Add a Company or Brand</h2>
           <div className="p-font">
             {" "}
-            Can't find a brand? Submit what you know below to start a profile.
-          </div>
-          <div className="p-font">
-            {" "}
-            Profile should be approved in 1-2 business days.
+            Can't find a brand? Submit a name and start sharing.
           </div>
         </div>
         <form className="brand-form-container" onChange={createSearch}>
@@ -196,9 +193,9 @@ function AddBrand() {
         <button className="brand-form-submit-button" onClick={brandChecker}>
           {" "}
           <div> Submit</div>
-          <FontAwesomeIcon icon={faArrowRight} size="sm" color="#5c5848" />{" "}
         </button>
       </div>
+      <Footer2 />
     </div>
   );
 }

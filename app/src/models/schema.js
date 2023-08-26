@@ -174,6 +174,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "isPrivate": {
+                    "name": "isPrivate",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "parentBrand": {
                     "name": "parentBrand",
                     "isArray": false,
@@ -552,5 +559,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "e1ad13e5685780b4c4ca81b3d4eb983b"
+    "version": "6010284b365c8e0a48809251099b45ee"
 };

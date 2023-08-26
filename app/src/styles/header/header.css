@@ -82,20 +82,24 @@
 }
 
 .header-search {
+  margin-right: 0.9rem;
   display: flex;
-  width: 6rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-left {
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-}
-
-.home-link {
-  margin-left: 0.7rem;
+  width: 10rem;
 }
 
 .header-icons {
   display: flex;
-  width: 6rem;
+  width: 10rem;
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
@@ -103,4 +107,19 @@
 
 .bell-icon {
   margin-left: 0.7rem;
+}
+
+.sign-in-link {
+  color: #5c5848;
+}
+
+.sign-in-link:hover {
+  color: #b7b1a7;
+}
+
+.about-link {
+  color: #747474;
+  color: #878683;
+  font-size: 18px;
+  margin-top: 0.1rem;
 }

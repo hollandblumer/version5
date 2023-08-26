@@ -98,8 +98,12 @@ div.suggestion-content-container > * {
   width: 5rem;
 }
 
-.avatar {
-  margin-left: -22px;
+.featured-avatars {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background: orange;
 }
 
 .icon {

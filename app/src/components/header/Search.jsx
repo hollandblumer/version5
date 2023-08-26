@@ -82,7 +82,7 @@ function Search() {
                     navigate(`/brand-form`);
                   }}
                 >
-                  <div className="brand-form-button">Can't Find Brand?</div>
+                  <div className="brand-form-button">Add a business</div>
                 </button>
               </div>
             </div>
@@ -95,7 +95,7 @@ function Search() {
                   navigate(`/brand-form`);
                 }}
               >
-                <div className="brand-form-button">Can't Find Brand?</div>
+                <div className="brand-form-button">Add a business</div>
               </button>
             </div>
           )}
@@ -109,7 +109,7 @@ function Search() {
               navigate(`/brand-form`);
             }}
           >
-            <div className="brand-form-button">Can't Find Brand?</div>
+            <div className="brand-form-button">Add a business</div>
           </button>
         </div>
       )}

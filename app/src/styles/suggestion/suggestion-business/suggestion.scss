@@ -36,15 +36,10 @@
 }
 
 .suggestion-input {
-  background: #fafafa;
   border: hidden;
   text-decoration: none;
-  height: 2.2rem;
   outline: none;
   background: none;
-  border-radius: 0 9px 9px 0;
-  padding-left: 0.4rem;
-  width: 23rem;
 }
 
 .brand-suggestion-container.even {
@@ -61,7 +56,6 @@
   background: rgb(244, 242, 234);
   background: #fdfdfb;
   background: none;
-
   display: flex;
   flex-direction: column;
   align-items: space-between;
@@ -105,11 +99,9 @@
 
 .brand-suggestion-content {
   display: flex;
-  flex-flow: row wrap;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1rem;
-  margin: -0.2rem 0.4rem 0.3rem 0.4rem;
 }
 
 .content {
@@ -128,23 +120,14 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-
   border-radius: 2px;
-
   background: #e9e5dc;
   background: #f6f6f0;
-
   /*   background-image: url(../../../assets/images/followbutton4.png);
   background-size: 100% 300%; */
-  background-image: url(../../../assets//images/followbutton13.png);
   background-size: 100% 100%;
   width: 8rem; //real before
   width: 7.5rem;
-  background: #ab784c;
-  background: #d9d6cc;
-  background: none;
-  color: #5c5848;
-  color: #f7f6f0;
   color: #aa7950;
   // padding: 0.4rem 1rem; //real before demonstration
   padding: 0.4rem 0.3rem;
@@ -157,69 +140,37 @@
 }
 
 .brand-supporter-container {
-  // background: #ededed;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  padding: 0.5rem 0.7rem;
-  margin-left: 2px;
-
-  width: 5rem;
-  //real
-  margin-left: 15px;
 }
 
 .suggestion-form {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-
-  padding: 2px 4px;
-  // border-radius: 20px;
-
-  margin-top: 4rem;
-  background: #fafafa;
-  background: rgb(244, 243, 237);
-  background: #f8f7f4;
-  background: #fdfdfb;
-  background: #e8e6da;
-  background: #ebe7e1;
-  background: #f2ede4;
-  background: #e7e6e0;
-
-  background: #e6e3dc;
-  border: none;
-  background: #e9e5dc; // love this color
+  justify-content: center;
   border-bottom: 1px solid #aa7950;
-
-  background: none;
+  width: 100%;
+  height: 100%;
 }
 
-.suggestion-form-content {
+.suggestion-form-container {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+  margin-top: 4rem;
+  flex: 1;
+  height: 100%;
+  width: 100%;
 }
 
 .create-suggestion-button {
   border: none;
   background: none;
-  color: white;
-  color: #5c5848;
   color: #aa7950;
-  border-radius: 50%;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  flex-flow: row;
-  align-items: center;
-  justify-content: center;
-  background: #d0c5b4;
-  background: rgb(162, 122, 85);
-  background: #c4bca6;
-  background: none;
 }
 
 .suggestion-type-button:active {
@@ -303,27 +254,16 @@
 }
 
 .suggestion-select {
-  background: none;
   border: none;
   outline: none;
-  /*   
-  background: rgb(204, 192, 174);
-  background: #d0c5b4; */
-  height: 2rem;
-  border-radius: 30px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  color: #c5c0c0;
-  color: #8c8c8c;
-  color: white;
   color: #272727;
-
-  font-size: 10pt;
-  font-weight: 600;
-  letter-spacing: 1.4px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
   background: none;
 }

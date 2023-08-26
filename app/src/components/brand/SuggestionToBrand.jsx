@@ -21,11 +21,9 @@ function SuggestionToBrand({
   suggestion,
   businessname,
   actualindex,
-  compliment,
+  iscompliment,
   counter,
 }) {
-  const { name } = useParams();
-
   const [suggestions, setSuggestions] = useState([]);
   const [users, setUsers] = useState([]);
   const [businessAvatarURL, setBusinessAvatarURL] = useState("");
@@ -34,32 +32,20 @@ function SuggestionToBrand({
   useEffect(() => {
     const getData = async () => {
       try {
-        /*   const businessData = await DataStore.query(Suggestion, p=> p.businessname('eq', name))   
-        setSuggestions(businessData); */
-
         const suggestionUsers = await DataStore.query(
           UserSuggestion,
           (c) =>
             c.and((c) => [
               c.suggestion.suggestion.eq(suggestion),
-              c.suggestion.businessname.eq(businessname),
+              c.suggestion.businessName.eq(businessname),
             ]),
           {
             sort: (s) => s.createdAt(SortDirection.ASCENDING),
           }
         );
 
-        const signedFiledAccessURL = await Storage.get(`${businessname}.jpg`);
-
-        setBusinessAvatarURL(signedFiledAccessURL);
-
-        let suggestionpromisearray = [];
-        suggestionUsers.map((p) => suggestionpromisearray.push(p.suggestion));
-        await Promise.all(suggestionpromisearray).then((values) => {
-          setSuggestions(values);
-        });
-
         let userpromisearray = [];
+
         suggestionUsers.map((p) => userpromisearray.push(p.user));
         await Promise.all(userpromisearray).then((values) => {
           setUsers(values);
@@ -94,7 +80,7 @@ function SuggestionToBrand({
       <div className="brand-subtle-suggestion-info">
         {" "}
         <div>
-          {compliment ? (
+          {iscompliment ? (
             <div className="text">compliment </div>
           ) : (
             <div className="text"> suggestion </div>
@@ -104,32 +90,11 @@ function SuggestionToBrand({
       </div>
       <div className="brand-suggestion-content">
         <div className="ranking-number">{counter}</div>
-        {/*     {suggestions.map((p, index) => (
-          <div key={p.id}>
-            {array.includes(p.suggestion) ? (
-              <div></div>
-            ) : (
-              <div
-                className={` ${
-                  p.icon != null && index != 0
-                    ? "icon right"
-                    : p.icon != null && index === 0
-                    ? "white-icon right"
-                    : "no-icon right"
-                }`}
-              >
-                <Icon icon={p.icon} />
-
-                {array.push(p.suggestion).hide}
-              </div>
-            )}
-          </div>
-        ))} */}
 
         <p className="content">{suggestion}</p>
         {/* {suggestion.length < 30 ? <></> : <>...</>} good idea */}
 
-        {compliment == true ? (
+        {iscompliment == true ? (
           <div className="ranking-progress">2 Awards</div>
         ) : (
           <div>

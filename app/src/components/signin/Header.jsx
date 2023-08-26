@@ -9,7 +9,7 @@ export function Logo() {
       <div className="signin-logo"> Divot </div>
       <div className="signin-beta">
         Beta
-        <TidioWrapper/>
+        <TidioWrapper icon="info" />
       </div>
     </div>
   );

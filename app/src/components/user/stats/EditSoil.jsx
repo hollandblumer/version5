@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { DataStore } from "@aws-amplify/datastore";
-import { Suggestion, UserSuggestion } from "../../../..//models";
+import { Suggestion, UserSuggestion } from "../../../models";
 import { useParams } from "react-router-dom";
-import UpdateSoil from "./UpdateSoil";
-import SuggestionFromUser from "../../SuggestionFromUser";
+import SuggestionFromUser from "../SuggestionFromUser";
 
 function EditSoil({ brandArray }) {
   const [truePromiseList, setTruePromiseList] = useState([]);
@@ -22,7 +21,6 @@ function EditSoil({ brandArray }) {
     tempList.includes(value)
       ? (tempList = tempList.filter((item) => item != value))
       : tempList.push(value);
-    // console.log("temp", tempList);
     tempList.length <= 7 ? setMaxBrands(true) : setMaxBrands(false);
     setCheckedList(tempList);
   }
@@ -37,8 +35,6 @@ function EditSoil({ brandArray }) {
         : falseList.push(object);
     });
 
-    console.log("updated", trueList);
-    console.log("false", falseList);
     trueList.map((object) => updateTrueSuggestion(object));
     falseList.map((object) => updateFalseSuggestion(object));
     // checkedList.map((s) => <UpdateSoil suggestion={s} user={"eleanorb"} />);
@@ -95,7 +91,6 @@ function EditSoil({ brandArray }) {
   let duplicateArray = [];
   truePromiseList.map((p) => duplicateArray.push(p.businessname));
 
-  console.log("trueList", truePromiseList);
   falsePromiseList.map((p) => duplicateArray.push(p.businessname));
 
   let uniqueArray = [...new Set(duplicateArray)];

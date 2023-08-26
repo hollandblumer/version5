@@ -1,16 +1,12 @@
 import React from "react";
-import "../../../styles/user/dashboard/profile.css";
+import "../../../styles/user/dashboard/user-dashboard.css";
 import "../../../styles/user/info/info.css";
 import Avatar from "@mui/material/Avatar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsis,
   faLocationDot,
-  faCircleCheck,
   faArrowUpRightFromSquare,
-  faEnvelope,
-  faAward,
-  faCircleInfo,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Info({ user, url, suggestioncount, brandcount, location, bio }) {
@@ -30,11 +26,6 @@ function Info({ user, url, suggestioncount, brandcount, location, bio }) {
             <div className="username-badge">
               <div className="username"> @{user} </div>
               <div className="left">
-                <FontAwesomeIcon
-                  icon={faCircleCheck}
-                  size="sm"
-                  color="#5bab5c"
-                />
                 {/* <FontAwesomeIcon icon={faTree} size="small" color="#5bab5c" /> */}
               </div>
             </div>
@@ -42,11 +33,11 @@ function Info({ user, url, suggestioncount, brandcount, location, bio }) {
               <button className="user-action-button follow"> Follow </button>
               <button className="info-share">
                 {" "}
-                <FontAwesomeIcon
+                {/*  <FontAwesomeIcon
                   icon={faEnvelope}
                   size="lg"
                   color="#5c5848"
-                />{" "}
+                />{" "} */}
               </button>
               <button className="info-share">
                 <FontAwesomeIcon
@@ -75,12 +66,12 @@ function Info({ user, url, suggestioncount, brandcount, location, bio }) {
               </div>
               <div className="cell">
                 {" "}
-                <div className="bio-emphasis">2</div>{" "}
+                <div className="bio-emphasis">0</div>{" "}
                 <div className="grey left">Compliments</div>{" "}
               </div>
               <div className="cell">
                 {" "}
-                <div className="bio-emphasis">3</div>{" "}
+                <div className="bio-emphasis">0</div>{" "}
                 <div className="grey left">Awards</div>{" "}
                 {/*   <div className="strength">
                   {" "}
@@ -110,44 +101,6 @@ function Info({ user, url, suggestioncount, brandcount, location, bio }) {
           </div>
         </div>
       </div>
-      {/*   <div className="info-container">
-        <div className="row">
-          <div className="cell">
-            {" "}
-            <div className="username">{suggestioncount}</div>{" "}
-            <div className="grey left">Suggestions</div>{" "}
-          </div>
-
-          <div className="cell">
-            {" "}
-            <div className="username">Strength</div>{" "}
-            <div className="strength">
-              {" "}
-              <div className="light green"> </div>
-              <div className="light green"> </div>
-              <div className="light green"> </div>
-              <div className="light green"> </div>
-              <div className="light white"> </div>
-            </div>{" "}
-          </div>
-          <div className="cell">
-            {" "}
-            <div className="username">2</div>{" "}
-            <div className="grey left">Compliments</div>{" "}
-          </div>
-        </div>
-        <div className="row">
-          <div className="cell">
-            {" "}
-            <div className="username">Daily</div>
-            <div className="grey left">Activity</div>
-          </div>
-          <div className="cell">
-            <div className="username">Supports</div>
-            <div className="grey left">{brandcount} brands</div>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 }

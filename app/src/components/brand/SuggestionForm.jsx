@@ -53,36 +53,32 @@ function SuggestionForm({ name, email, thisID, businessname }) {
 
     setSuggestion("");
     window.location.reload(false);
-    console.log("got here");
   };
 
   let array = [];
 
   return (
-    <div>
-      <div className="suggestion-form">
-        <div className="suggestion-form-content">
-          <select
-            className="suggestion-select"
-            onChange={(e) => setSuggestionCheck(e.target.value)}
-          >
-            <option value="false">suggestion</option>
-            <option value="true">compliment</option>
-          </select>
-          {console.log("test", suggestionCheck)}
-          <form onChange={createSearch}>
-            <input
-              className="suggestion-input"
-              type="text"
-              value={suggestion}
-              placeholder={
-                suggestionCheck == "true"
-                  ? "Start typing compliment here"
-                  : "Start typing suggestion here"
-              }
-              onChange={(e) => setSuggestion(e.target.value)}
-            />
-          </form>
+    <div className="suggestion-form">
+      <div className="suggestion-form-container">
+        <select
+          className="suggestion-select"
+          onChange={(e) => setSuggestionCheck(e.target.value)}
+        >
+          <option value="false">Suggestion</option>
+          <option value="true">Compliment</option>
+        </select>
+        <div onChange={createSearch}>
+          <input
+            className="suggestion-input"
+            type="text"
+            value={suggestion}
+            placeholder={
+              suggestionCheck == "true"
+                ? "Start typing compliment here"
+                : "Start typing suggestion here"
+            }
+            onChange={(e) => setSuggestion(e.target.value)}
+          />
         </div>
 
         {suggestion != "" ? (
@@ -108,6 +104,7 @@ function SuggestionForm({ name, email, thisID, businessname }) {
           </div>
         )}
       </div>
+
       {suggestion != "" ? (
         <div className="suggestionSearchListContainer">
           {searchList.length != 0 ? (

@@ -10,7 +10,6 @@ type Verification @model @auth(rules: [{allow: public}]) {
   filePathDisapproval: String
 }
 
-
 type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
@@ -21,12 +20,12 @@ type User @model @auth(rules: [{allow: public}]) {
   isBusiness: Boolean
   location: String
   bio: String
+  isPrivate: Boolean
   parentBrand: String
   isVerified: Boolean
   hasCompletedForm: Boolean
   industry: String
   Suggestions: [Suggestion] @manyToMany(relationName: "UserSuggestion")
-
 }
 
 type Suggestion @model @auth(rules: [{allow: public}]) {

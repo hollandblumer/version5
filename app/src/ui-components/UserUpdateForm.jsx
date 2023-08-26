@@ -38,6 +38,7 @@ export default function UserUpdateForm(props) {
     isBusiness: false,
     location: "",
     bio: "",
+    isPrivate: false,
     parentBrand: "",
     isVerified: false,
     hasCompletedForm: false,
@@ -51,6 +52,7 @@ export default function UserUpdateForm(props) {
   const [isBusiness, setIsBusiness] = React.useState(initialValues.isBusiness);
   const [location, setLocation] = React.useState(initialValues.location);
   const [bio, setBio] = React.useState(initialValues.bio);
+  const [isPrivate, setIsPrivate] = React.useState(initialValues.isPrivate);
   const [parentBrand, setParentBrand] = React.useState(
     initialValues.parentBrand
   );
@@ -72,6 +74,7 @@ export default function UserUpdateForm(props) {
     setIsBusiness(cleanValues.isBusiness);
     setLocation(cleanValues.location);
     setBio(cleanValues.bio);
+    setIsPrivate(cleanValues.isPrivate);
     setParentBrand(cleanValues.parentBrand);
     setIsVerified(cleanValues.isVerified);
     setHasCompletedForm(cleanValues.hasCompletedForm);
@@ -98,6 +101,7 @@ export default function UserUpdateForm(props) {
     isBusiness: [],
     location: [],
     bio: [],
+    isPrivate: [],
     parentBrand: [],
     isVerified: [],
     hasCompletedForm: [],
@@ -137,6 +141,7 @@ export default function UserUpdateForm(props) {
           isBusiness,
           location,
           bio,
+          isPrivate,
           parentBrand,
           isVerified,
           hasCompletedForm,
@@ -166,8 +171,8 @@ export default function UserUpdateForm(props) {
         }
         try {
           Object.entries(modelFields).forEach(([key, value]) => {
-            if (typeof value === "string" && value.trim() === "") {
-              modelFields[key] = undefined;
+            if (typeof value === "string" && value === "") {
+              modelFields[key] = null;
             }
           });
           await DataStore.save(
@@ -204,6 +209,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm,
@@ -239,6 +245,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm,
@@ -274,6 +281,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm,
@@ -309,6 +317,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm,
@@ -348,6 +357,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm,
@@ -383,6 +393,7 @@ export default function UserUpdateForm(props) {
               isBusiness: value,
               location,
               bio,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm,
@@ -418,6 +429,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location: value,
               bio,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm,
@@ -453,6 +465,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio: value,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm,
@@ -471,6 +484,42 @@ export default function UserUpdateForm(props) {
         hasError={errors.bio?.hasError}
         {...getOverrideProps(overrides, "bio")}
       ></TextField>
+      <SwitchField
+        label="Is private"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={isPrivate}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              name,
+              email,
+              update,
+              filePath,
+              strength,
+              isBusiness,
+              location,
+              bio,
+              isPrivate: value,
+              parentBrand,
+              isVerified,
+              hasCompletedForm,
+              industry,
+            };
+            const result = onChange(modelFields);
+            value = result?.isPrivate ?? value;
+          }
+          if (errors.isPrivate?.hasError) {
+            runValidationTasks("isPrivate", value);
+          }
+          setIsPrivate(value);
+        }}
+        onBlur={() => runValidationTasks("isPrivate", isPrivate)}
+        errorMessage={errors.isPrivate?.errorMessage}
+        hasError={errors.isPrivate?.hasError}
+        {...getOverrideProps(overrides, "isPrivate")}
+      ></SwitchField>
       <TextField
         label="Parent brand"
         isRequired={false}
@@ -488,6 +537,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio,
+              isPrivate,
               parentBrand: value,
               isVerified,
               hasCompletedForm,
@@ -523,6 +573,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio,
+              isPrivate,
               parentBrand,
               isVerified: value,
               hasCompletedForm,
@@ -558,6 +609,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm: value,
@@ -593,6 +645,7 @@ export default function UserUpdateForm(props) {
               isBusiness,
               location,
               bio,
+              isPrivate,
               parentBrand,
               isVerified,
               hasCompletedForm,

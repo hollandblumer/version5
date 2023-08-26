@@ -16,17 +16,16 @@ function SuggestionSupporter({ username }) {
       }
     };
     getData();
-  }, []);
+  }, [username]);
+
   return (
-    <div className="avatar">
-      {" "}
-      <Avatar
-        src={signedProfileURL}
-        style={{
-          border: "1px solid white",
-        }}
-      />
-    </div>
+    <Avatar
+      src={signedProfileURL}
+      style={{
+        border: "1px solid white",
+        marginLeft: "-22px",
+      }}
+    />
   );
 }
 

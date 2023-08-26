@@ -88,6 +88,7 @@ export const createUser = /* GraphQL */ `
       isBusiness
       location
       bio
+      isPrivate
       parentBrand
       isVerified
       hasCompletedForm
@@ -121,6 +122,7 @@ export const updateUser = /* GraphQL */ `
       isBusiness
       location
       bio
+      isPrivate
       parentBrand
       isVerified
       hasCompletedForm
@@ -154,6 +156,7 @@ export const deleteUser = /* GraphQL */ `
       isBusiness
       location
       bio
+      isPrivate
       parentBrand
       isVerified
       hasCompletedForm
@@ -332,6 +335,7 @@ export const createUserSuggestion = /* GraphQL */ `
         isBusiness
         location
         bio
+        isPrivate
         parentBrand
         isVerified
         hasCompletedForm
@@ -387,6 +391,7 @@ export const updateUserSuggestion = /* GraphQL */ `
         isBusiness
         location
         bio
+        isPrivate
         parentBrand
         isVerified
         hasCompletedForm
@@ -442,6 +447,7 @@ export const deleteUserSuggestion = /* GraphQL */ `
         isBusiness
         location
         bio
+        isPrivate
         parentBrand
         isVerified
         hasCompletedForm

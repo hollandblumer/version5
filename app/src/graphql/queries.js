@@ -100,6 +100,7 @@ export const getUser = /* GraphQL */ `
       isBusiness
       location
       bio
+      isPrivate
       parentBrand
       isVerified
       hasCompletedForm
@@ -135,6 +136,7 @@ export const listUsers = /* GraphQL */ `
         isBusiness
         location
         bio
+        isPrivate
         parentBrand
         isVerified
         hasCompletedForm
@@ -175,6 +177,7 @@ export const syncUsers = /* GraphQL */ `
         isBusiness
         location
         bio
+        isPrivate
         parentBrand
         isVerified
         hasCompletedForm
@@ -369,6 +372,7 @@ export const getUserSuggestion = /* GraphQL */ `
         isBusiness
         location
         bio
+        isPrivate
         parentBrand
         isVerified
         hasCompletedForm

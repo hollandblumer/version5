@@ -22,6 +22,7 @@ export declare type UserUpdateFormInputValues = {
     isBusiness?: boolean;
     location?: string;
     bio?: string;
+    isPrivate?: boolean;
     parentBrand?: string;
     isVerified?: boolean;
     hasCompletedForm?: boolean;
@@ -36,6 +37,7 @@ export declare type UserUpdateFormValidationValues = {
     isBusiness?: ValidationFunction<boolean>;
     location?: ValidationFunction<string>;
     bio?: ValidationFunction<string>;
+    isPrivate?: ValidationFunction<boolean>;
     parentBrand?: ValidationFunction<string>;
     isVerified?: ValidationFunction<boolean>;
     hasCompletedForm?: ValidationFunction<boolean>;
@@ -52,6 +54,7 @@ export declare type UserUpdateFormOverridesProps = {
     isBusiness?: PrimitiveOverrideProps<SwitchFieldProps>;
     location?: PrimitiveOverrideProps<TextFieldProps>;
     bio?: PrimitiveOverrideProps<TextFieldProps>;
+    isPrivate?: PrimitiveOverrideProps<SwitchFieldProps>;
     parentBrand?: PrimitiveOverrideProps<TextFieldProps>;
     isVerified?: PrimitiveOverrideProps<SwitchFieldProps>;
     hasCompletedForm?: PrimitiveOverrideProps<SwitchFieldProps>;

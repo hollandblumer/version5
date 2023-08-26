@@ -65,7 +65,6 @@ function SuggestionFromUser({
 
         if (milestoneVerification[0] != null) {
           setVerification(milestoneVerification[0].isVerified);
-          console.log("hello", milestoneVerification[0].isVerified);
         }
 
         let suggestionPromiseArray = [];

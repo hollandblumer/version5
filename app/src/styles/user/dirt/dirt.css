@@ -1,25 +1,37 @@
 .dirt-container {
+  margin: 3rem 2rem 0 2rem;
   display: flex;
-  flex-flow: column;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  margin: 0rem 3rem 5rem 3rem;
+  flex: 1;
+  position: relative;
+}
+
+.lock-icon {
+  position: absolute; /* Set to absolute positioning */
+  top: 50%; /* Position it at the vertical center of the container */
+  left: 47%; /* Position it at the horizontal center of the container */
+  transform: translateX(-47%) translateY(-50%);
+}
+.lock-icon:hover .hover-text {
+  display: block;
+}
+.lock-icon .hover-text {
+  position: absolute;
+  top: 100%; /* Position it below the lock icon */
+  left: 55%; /* Center it horizontally */
+  transform: translateX(-45%);
+  display: none; /* Initially hide it */
+  border-radius: 4px;
+  text-align: center;
+  white-space: nowrap; /* Prevent text from wrapping to a new line */
 }
 
 .featured-brands {
-  font-family: "basis-grotesque-med";
-  font-size: 15pt;
-  color: #a9784f;
-}
-
-.dirt-content {
   display: flex;
-  flex-flow: row wrap;
-  align-items: center;
+  flex-direction: row;
   justify-content: space-between;
-  min-width: 15rem;
-  width: 100%;
   flex: 1;
 }
 
@@ -28,7 +40,7 @@
   height: 1.8rem;
   border-radius: 50%;
   background: #ddd3c4;
-  background: url(../../../../assets/images/faintbackground.png);
+  background: url(../../../assets/images/faintbackground.png);
   background: rgb(219, 211, 198);
   background: rgb(219, 211, 198);
   background: #d4c6af;
@@ -39,6 +51,7 @@
   background: #aea89f;
   background: rgb(220, 219, 213);
   background: #d0c5b4;
+  margin: 0 1rem;
   background: #d4c6af;
   background: rgba(163, 123, 86, 0.808);
   background: #dbd3c5;
@@ -64,4 +77,8 @@
   border: none;
   /*  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px; */
+}
+
+.blur {
+  filter: blur(4px); /* Apply the desired blur effect */
 }

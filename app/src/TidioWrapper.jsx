@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import "./styles/signin/signin.css";
 import { Helmet } from "react-helmet";
+import { faComments, faMessage } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function TidioWrapper() {
+function TidioWrapper({ icon }) {
   const [hover, setHover] = useState(false);
+
+  const tempIcon = icon;
 
   const onHover = () => {
     setHover(true);
@@ -13,11 +17,9 @@ function TidioWrapper() {
     setHover(false);
   };
 
-
-
   useEffect(() => {
     // Create and append the <style> element to the head
-    const styleElement = document.createElement('style');
+    const styleElement = document.createElement("style");
     styleElement.innerHTML = `
       @keyframes bounceAnimation {
         0%, 100% {
@@ -29,7 +31,7 @@ function TidioWrapper() {
       }
 
       #tidio-chat-iframe {
-        animation: ${hover ? 'bounceAnimation 0.5s infinite' : 'none'};
+        animation: ${hover ? "bounceAnimation 0.5s infinite" : "none"};
       }
     `;
     document.head.appendChild(styleElement);
@@ -44,15 +46,31 @@ function TidioWrapper() {
     <div className="info-wrapper">
       {/* Info icon */}
       <div className="info-logo" onMouseEnter={onHover} onMouseLeave={onLeave}>
-        ⓘ
+        {tempIcon === "info" ? (
+          <div>ⓘ</div>
+        ) : (
+          <div className="chat-now-text">
+            {" "}
+            Chat box available from 9AM-6PM EST{" "}
+            <FontAwesomeIcon
+              icon={faComments}
+              className="chat-icon"
+              size="lg"
+            />
+          </div>
+        )}
       </div>
 
       {/* Tidio widget */}
-      <Helmet>      <script src="//code.tidio.co/zzznw1zygdk0iqjo21gi0g9efxwdrxmi.js" async />
-</Helmet>
+      <Helmet>
+        {" "}
+        <script
+          src="//code.tidio.co/zzznw1zygdk0iqjo21gi0g9efxwdrxmi.js"
+          async
+        />
+      </Helmet>
 
       {/* Info message */}
-   
     </div>
   );
 }

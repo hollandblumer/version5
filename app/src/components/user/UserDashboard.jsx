@@ -3,78 +3,51 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
-import { Suggestion, User, UserSuggestion } from "../../models";
+import { User, UserSuggestion } from "../../models";
 import { Storage } from "aws-amplify";
 import Info from "./info/Info";
-import "../../styles/user/dashboard/profile.css";
+import "../../styles/user/dashboard/user-dashboard.css";
 import "../../styles/dashboard/dashboard.css";
 import "../../styles/user/activity/activity.css";
-import "../../styles/empty-content/empty-content.css";
-import Stats from "./stats/Stats";
+import Soil from "../user/stats/Soil";
 import SuggestionFromUser from "./SuggestionFromUser";
 import UserImpact from "./impact/UserImpact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChartLine,
-  faLeaf,
-  faMagnifyingGlass,
-  faCaretDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-function UserDashboard({ cognitoID, email, id }) {
+function UserDashboard({ SignedInUser }) {
   const { name } = useParams();
-  const [suggestions, setSuggestions] = useState([]);
   const [userId, setUserId] = useState([]);
   const [allSuggestions, setAllSuggestions] = useState([]);
-  const [suggestionId, setSuggestionId] = useState([]);
   const [profileURL, setProfileURL] = useState("");
-  const [signedProfileURL, setSignedProfileURL] = useState("");
   const [thisID, setThisID] = useState("");
   const [userLocation, setUserLocation] = useState("");
   const [userBio, setUserBio] = useState("");
   const [impact, setImpact] = useState(false);
-
   const [showActivity, setShowActivity] = useState(true);
-  const { username } = cognitoID;
+  const [urlUser, setURLUser] = useState([]);
+  const [username, setUsername] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const userData = await DataStore.query(User, (p) => p.name.eq(name));
-
-        setUserLocation(userData[0].location);
-        setUserBio(userData[0].bio);
-        const signedInUserData = await DataStore.query(User, (p) =>
-          p.name.eq(username)
-        );
-
-        const userId = userData[0].id;
-
-        setThisID(signedInUserData[0].id);
-
-        const userFilePath = userData[0].filePath;
-        const signedUserFilePath = signedInUserData[0].filePath;
-        const signedFiledAccessURL = await Storage.get(signedUserFilePath);
+        const URLUserData = await DataStore.query(User, (p) => p.name.eq(name));
+        setURLUser(URLUserData[0]);
+        const userId = URLUserData[0].id;
+        setThisID(userId);
+        const userFilePath = URLUserData[0].filePath;
+        setUsername(URLUserData[0].name);
         const fileAccessURL = await Storage.get(userFilePath);
-
         setProfileURL(fileAccessURL);
-
-        setSignedProfileURL(signedFiledAccessURL);
-
-        /*  const suggestionId = await DataStore.query(UserSuggestion, (c) =>
-          c.user.id.eq(userData[0].id)
-        ); */
-
         const suggestionId = await DataStore.query(UserSuggestion, (c) =>
           c.and((c) => [
-            c.user.id.eq(userData[0].id),
+            c.user.id.eq(URLUserData[0].id),
             c.suggestion.show.eq(true),
           ])
         );
-
         const allSuggestions = await DataStore.query(
           UserSuggestion,
-          (c) => c.and((c) => [c.user.id.eq(userData[0].id)]),
+          (c) => c.and((c) => [c.user.id.eq(URLUserData[0].id)]),
           {
             sort: (s) => s.createdAt(SortDirection.DESCENDING),
           }
@@ -99,12 +72,6 @@ function UserDashboard({ cognitoID, email, id }) {
     getData();
   }, []);
 
-  /*  async function accessSuggestionPromises(){
-    for await(let promise of promises){
-      console.log(promise)
-    }
-  } */
-
   let array = [];
   let array2 = [];
   let duplicateArray = [];
@@ -114,8 +81,7 @@ function UserDashboard({ cognitoID, email, id }) {
 
   return (
     <div className="user-dashboard">
-      {/* <Header url={signedProfileURL}/> */}
-      <div className="info-brand">
+      <div className="user-dashboard-top">
         <Info
           url={profileURL}
           user={name}
@@ -125,76 +91,9 @@ function UserDashboard({ cognitoID, email, id }) {
           bio={userBio}
         />
 
-        <Stats brandArray={uniqueArray} user={username} />
+        <Soil brandArray={uniqueArray} />
       </div>
-
-      {/*     <div class="tab-container">
-        <div class="tabs">
-          <input
-            type="radio"
-            id="radio-1"
-            name="tabs"
-            onClick={(e) => setImpact(false)}
-          />
-          <label class="tab" for="radio-1">
-            Activity
-          </label>
-          <input
-            type="radio"
-            id="radio-2"
-            name="tabs"
-            onClick={(e) => setImpact(true)}
-          />
-          <label class="tab" for="radio-2">
-            Impact
-          </label>
-
-          <span class="glider"></span>
-        </div>
-      </div> */}
-
-      {/* <div className="activity">
-        {showActivity ? (
-          <div className="activity-row">
-            <div className="activity-item">
-              {" "}
-            <FontAwesomeIcon
-                icon={faChartLine}
-                size="sm"
-                color="#5c5848"
-              />{" "}
-              Activity{" "}
-            </div>
-            <div className="activity-item-grey">
-              {" "}
-              <FontAwesomeIcon
-                icon={faLeaf}
-                size="sm"
-                color="#ccc"
-              />  
-              Impact{" "}
-            </div>
-          </div>
-        ) : (
-          <div className="activity-row">
-            <div className="activity-item-grey">
-              {" "}
-              <FontAwesomeIcon icon={faChartLine} size="sm" color="#ccc" />{" "}
-              Activity{" "}
-            </div>
-            <div className="activity-item">
-              {" "}
-              <FontAwesomeIcon
-                icon={faLeaf}
-                size="sm"
-                color="ab5c"
-              /> Impact{" "}
-            </div>
-          </div>
-        )}
-      </div> */}
-
-      <div>
+      <div className="user-dashboard-bottom">
         <div className="sort-row">
           {/* <div className="search-user-suggestions"> Search </div> */}
           <select className="chart-select" onChange={(e) => setImpact(!impact)}>
@@ -241,9 +140,18 @@ function UserDashboard({ cognitoID, email, id }) {
             />
           </div>
         ) : (
-          <div className="suggestion-box">
+          <div
+            className={`suggestion-box ${
+              allSuggestions.length === 0 ? "no-suggestions-container" : ""
+            }`}
+          >
             {allSuggestions.length == 0 ? (
-              <div className="placeholder">No suggestions at this time</div>
+              <div className="no-suggestions-container">
+                <div className="no-suggestions">No Activity Yet</div>
+                <div className="no-suggestions-small">
+                  This user's snoozing on the possibilities 💤
+                </div>
+              </div>
             ) : (
               <div></div>
             )}
@@ -280,23 +188,6 @@ function UserDashboard({ cognitoID, email, id }) {
           </div>
         )}
       </div>
-
-      {/* <SuggestionForm name={user} email={email} thisID={thisID}/> */}
-
-      {/*   { userId.map(p => (
-          <h2 key={p.id}>
-             <p>{p.suggestion.businessname}</p> 
-             <p>{p.suggestion.suggestion}</p> 
-      
-             <p>{}</p> 
-    
-    
-          </h2>
-          )
-        )
-    } */}
-
-      {/* <div className="query"> RECENT ACTIVITY </div> */}
     </div>
   );
 }
