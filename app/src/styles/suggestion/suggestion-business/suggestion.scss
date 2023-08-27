@@ -1,12 +1,3 @@
-.avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-}
-
 .name {
   padding: 0.2rem 0.5rem;
   border-radius: 3rem;
@@ -35,20 +26,6 @@
   background: #5d9345;
 }
 
-.suggestion-input {
-  border: hidden;
-  text-decoration: none;
-  outline: none;
-  background: none;
-}
-
-.brand-suggestion-container.even {
-  background: #fdfdfb;
-  background: #dbd3c6;
-  background: rgb(244, 242, 234);
-  background: none;
-}
-
 .brand-suggestion-container {
   display: flex;
   flex-direction: column;
@@ -59,6 +36,11 @@
   font-size: 12pt;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-top: 1rem;
+
+  &.first {
+    margin-top: 25px; /* Apply the desired margin for the first element */
+  }
 }
 
 .brand-subtle-suggestion-info {
@@ -73,7 +55,6 @@
   font-size: 8pt;
   font-weight: 600;
   letter-spacing: 1.4px;
-  margin: 0.1rem 0.4rem;
 }
 
 .brand-suggestion-content {
@@ -98,7 +79,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   border-radius: 2px;
   background: #e9e5dc;
   background: #f6f6f0;
@@ -114,8 +95,7 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-family: "itc-souvenir";
-  font-size: 11pt;
-  font-weight: 300;
+  font-size: 13pt;
 }
 
 .brand-supporter-container {
@@ -123,15 +103,15 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  width: 10rem;
 }
 
 .suggestion-form {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #808080;
-  padding-bottom: 7px;
+
   width: 100%;
   height: 100%;
 }
@@ -139,18 +119,60 @@
 .suggestion-form-container {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-end;
   justify-content: space-between;
   margin-top: 4rem;
   flex: 1;
   height: 100%;
   width: 100%;
+  border-bottom: 1px solid #abaaa8;
+  padding-bottom: 7px;
+
+  select {
+    background: #e9e5dc;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 15px;
+    outline: none;
+  }
+}
+
+.suggestion-form-content {
+  display: flex;
+  flex-direction: row;
+
+  flex: 1;
+
+  div {
+    margin-left: 10px;
+  }
+}
+
+.form-input {
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+}
+
+.suggestion-input {
+  border: hidden;
+  text-decoration: none;
+  outline: none;
+  background: none;
+  width: 100%;
+  flex: 1;
+  padding: 0;
+
+  &::placeholder {
+    color: #bdb8b0; // Change this to the desired color
+  }
 }
 
 .create-suggestion-button {
   border: none;
   background: none;
   color: #aa7950;
+  margin-right: 0.3rem; //hardcoded
 }
 
 .suggestion-type-button:active {
@@ -233,17 +255,19 @@
   font-size: 11pt;
 }
 
+/* Apply custom styles to the select element */
 .suggestion-select {
   border: none;
-  outline: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  background: none;
+  padding: 0;
+  margin: 0;
+  /* Add your custom styles here */
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   color: #272727;
   font-weight: 500;
-  letter-spacing: 0.5px;
-  background: none;
+  font-size: 10pt;
+  letter-spacing: 1.1px;
+  position: relative; /* Ensure relative positioning for arrow */
+  margin-left: -3px;
 }

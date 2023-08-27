@@ -22,7 +22,7 @@ function SuggestionSupporterBrand({ username }) {
       src={signedProfileURL}
       style={{
         border: "1px solid white",
-        marginLeft: "-10px",
+        marginLeft: "-18px",
       }}
     />
   );

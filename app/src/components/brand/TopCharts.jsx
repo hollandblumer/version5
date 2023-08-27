@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
-import { User, UserSuggestion, Milestone } from "../../models";
-import { Storage } from "aws-amplify";
+import { User, Suggestion } from "../../models";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons";
 import SuggestionToBrand from "./SuggestionToBrand";
 
 function TopCharts() {
   const { name } = useParams();
   const [suggestions, setSuggestions] = useState([]);
-  const [brandSize, setBrandSize] = useState(0);
   const [verification, setVerification] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState("All");
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showSearchInput, setShowSearchInput] = useState(false);
+  const seenSuggestions = new Set();
+  let count = 0;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,59 +23,107 @@ function TopCharts() {
         setVerification(brandData[0].isVerified);
 
         const suggestions = await DataStore.query(
-          UserSuggestion,
-          (p) => p.suggestion.businessName.eq(name),
+          Suggestion,
+          (p) => p.businessName.eq(name),
           { sort: (s) => s.createdAt(SortDirection.ASCENDING) }
         );
 
-        const suggestionValues = await Promise.all(
-          suggestions.map((p) => p.suggestion)
-        );
-        setSuggestions(suggestionValues);
+        setSuggestions(suggestions);
+        seenSuggestions.clear();
       } catch (err) {
         console.error(err);
       }
     };
     fetchData();
-  }, []);
+  }, [name]);
 
-  const seenSuggestions = new Set();
-  let count = 0;
+  const filterSuggestionsBySearch = () => {
+    return suggestions.filter((suggestion) => {
+      if (selectedFilter === "All") {
+        return suggestion.suggestion
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase());
+      } else if (selectedFilter === "Suggestions") {
+        return (
+          !suggestion.compliment &&
+          suggestion.suggestion.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      } else if (selectedFilter === "Compliments") {
+        return (
+          suggestion.compliment &&
+          suggestion.suggestion.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      }
+      return true;
+    });
+  };
 
   return (
     <div className="top-charts">
       <div className="top-charts-title-sort">
-        <h3> Top Charts</h3>
-        <div className="sort-by">
-          <div>sort by</div>
-          <select className="sort-select">
-            <option>
-              All{" "}
-              <FontAwesomeIcon icon={faCaretDown} size="xs" color="#5c5848" />{" "}
-            </option>
-          </select>
+        <h3> Trending </h3>
+      </div>
+      <div className="trending-filter-buttons">
+        <button
+          onClick={() => setSelectedFilter("All")}
+          className={selectedFilter === "All" ? "active" : ""}
+        >
+          All
+        </button>
+        <button
+          onClick={() => setSelectedFilter("Suggestions")}
+          className={selectedFilter === "Suggestions" ? "active" : ""}
+        >
+          Suggestions
+        </button>
+        <button
+          onClick={() => setSelectedFilter("Compliments")}
+          className={selectedFilter === "Compliments" ? "active" : ""}
+        >
+          Compliments
+        </button>
+        <div className="search-container">
+          {showSearchInput && (
+            <input
+              type="text"
+              placeholder="Search"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          )}
+          <FontAwesomeIcon
+            icon={faSearch}
+            size="lg"
+            color="#b7b1a7"
+            onClick={() => setShowSearchInput(!showSearchInput)}
+          />
         </div>
       </div>
       <div className="top-suggestions-box">
-        {suggestions.map((p, index) => (
-          <div key={p.id}>
-            {seenSuggestions.has(p.suggestion) ? (
-              <></>
-            ) : (
-              <div>
-                {(count++).hide}
-                <SuggestionToBrand
-                  suggestion={p.suggestion}
-                  iscompliment={p.compliment}
-                  businessname={p.businessName}
-                  counter={count}
-                />
+        {filterSuggestionsBySearch().length === 0 ? (
+          <div className="no-results-message">No search results, add it</div>
+        ) : (
+          filterSuggestionsBySearch().map((p, index) => {
+            count = index + 1;
+            if (!seenSuggestions.has(p.suggestion)) {
+              seenSuggestions.add(p.suggestion);
 
-                {seenSuggestions.add(p.suggestion).hide}
-              </div>
-            )}
-          </div>
-        ))}
+              return (
+                <div key={p.id}>
+                  <SuggestionToBrand
+                    suggestion={p.suggestion}
+                    iscompliment={p.compliment}
+                    businessname={p.businessName}
+                    counter={count}
+                    actualindex={index}
+                  />
+                </div>
+              );
+            } else {
+              return null;
+            }
+          })
+        )}
       </div>
     </div>
   );

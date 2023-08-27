@@ -16,6 +16,40 @@
   height: auto;
 }
 
+.trending-filter-buttons {
+  display: flex;
+  width: 100%;
+
+  button {
+    background: none;
+    margin: 0;
+    padding: 3px 10px;
+    border: none;
+    font-size: 14px;
+    background: #e8e5dd;
+    color: #272727;
+    border-radius: 20px;
+    margin-top: 8px;
+    margin-left: 10px;
+
+    &:nth-child(1) {
+      margin-left: 0px;
+    }
+
+    &:hover {
+      color: white; /* Change color on hover */
+      cursor: pointer; /* Change cursor to a pointer on hover */
+      background: #e8e5dd;
+    }
+
+    /* Active state */
+    &.active {
+      color: white; /* Change color when element is clicked/active */
+      background: #aa7950;
+    }
+  }
+}
+
 .sort-by {
   display: flex;
   flex-direction: row;
@@ -23,6 +57,15 @@
 
 .brand-nav {
   width: 100%;
-  display: colum;
+  display: flex;
+  flex-direction: column;
   align-items: flex-start;
+
+  .slider-bar {
+    position: relative;
+    bottom: -7px; // Adjust as needed to align the slider bar properly
+    height: 0.5px; // Set the height of the slider bar
+    width: 90px; // Initial width for the first navigation item
+    transition: transform 0.3s ease-in-out; // Add smooth transition
+  }
 }

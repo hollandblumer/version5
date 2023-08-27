@@ -39,6 +39,7 @@ function BrandDashboard({ user, email, id }) {
   const [milestones, setMilestones] = useState([]);
   const [memberSinceDate, setMemberSinceDate] = useState("");
   const [users, setUsers] = useState([]);
+  const [sliderPosition, setSliderPosition] = useState(0);
 
   useEffect(() => {
     const getData = async () => {
@@ -143,13 +144,16 @@ function BrandDashboard({ user, email, id }) {
       </div>
       <div className="brand-dashboard-bottom">
         <div className="brand-nav">
-          <h3> Activity </h3>
+          <h3> Business Activity </h3>
           <div className="business-nav-row">
             <div
               className={`business-nav-item ${
                 activeContainer === "milestones" ? "active" : ""
               }`}
-              onClick={() => setActiveContainer("milestones")}
+              onClick={() => {
+                setActiveContainer("milestones");
+                setSliderPosition(0);
+              }}
             >
               Milestones
             </div>
@@ -157,7 +161,10 @@ function BrandDashboard({ user, email, id }) {
               className={`business-nav-item ${
                 activeContainer === "projects" ? "active" : ""
               }`}
-              onClick={() => setActiveContainer("projects")}
+              onClick={() => {
+                setActiveContainer("projects");
+                setSliderPosition(1);
+              }}
             >
               Projects
             </div>
@@ -165,17 +172,28 @@ function BrandDashboard({ user, email, id }) {
               className={`business-nav-item ${
                 activeContainer === "certifications" ? "active" : ""
               }`}
-              onClick={() => setActiveContainer("certifications")}
+              onClick={() => {
+                setActiveContainer("certifications");
+                setSliderPosition(2);
+              }}
             >
               Certifications
             </div>
           </div>
+          <div
+            className="slider-bar"
+            style={{
+              backgroundColor: "#808080",
+              transform: `translateX(${sliderPosition * 100}px)`, // Move slider based on position
+            }}
+          ></div>
         </div>
+
         {activeContainer === "milestones" ? (
           milestones.length === 0 ? (
             <div className="milestone-container">
               <div className="no-suggestions-container">
-                <div className="no-suggestions">No Activity Yet</div>
+                <div className="no-suggestions">No Milestones Yet</div>
                 <div className="no-suggestions-small">
                   This brand's snoozing on the possibilities 💤
                 </div>
@@ -209,12 +227,22 @@ function BrandDashboard({ user, email, id }) {
           )
         ) : activeContainer === "projects" ? (
           <div className="projects-container">
-            {/* Add your Projects container content here */}
+            <div className="no-suggestions-container">
+              <div className="no-suggestions">No Projects Yet</div>
+              <div className="no-suggestions-small">
+                This brand's snoozing on the possibilities 💤
+              </div>
+            </div>
           </div>
         ) : (
           activeContainer === "certifications" && (
             <div className="certifications-container">
-              {/* Add your Certifications container content here */}
+              <div className="no-suggestions-container">
+                <div className="no-suggestions">No Certifications Yet</div>
+                <div className="no-suggestions-small">
+                  This brand's snoozing on the possibilities 💤
+                </div>
+              </div>
             </div>
           )
         )}

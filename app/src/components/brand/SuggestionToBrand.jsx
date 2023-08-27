@@ -72,8 +72,8 @@ function SuggestionToBrand({
   return (
     <div
       className={` ${
-        actualindex % 2 == 0
-          ? "brand-suggestion-container even"
+        actualindex == 0
+          ? "brand-suggestion-container first"
           : "brand-suggestion-container"
       }`}
     >
@@ -89,13 +89,13 @@ function SuggestionToBrand({
         <div> </div>
       </div>
       <div className="brand-suggestion-content">
-        <div className="ranking-number">{counter}</div>
+        <div className="ranking-content">
+          <div className="ranking-number">{counter}</div>
 
-        <p className="content">{suggestion}</p>
-        {/* {suggestion.length < 30 ? <></> : <>...</>} good idea */}
-
+          <p className="content">{suggestion}</p>
+        </div>
         {iscompliment == true ? (
-          <div className="ranking-progress">2 Awards</div>
+          <div className="ranking-progress"></div>
         ) : (
           <div>
             {" "}

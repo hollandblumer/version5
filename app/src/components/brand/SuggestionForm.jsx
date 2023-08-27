@@ -60,25 +60,44 @@ function SuggestionForm({ name, email, thisID, businessname }) {
   return (
     <div className="suggestion-form">
       <div className="suggestion-form-container">
-        <select
-          className="suggestion-select"
-          onChange={(e) => setSuggestionCheck(e.target.value)}
-        >
-          <option value="false">Suggestion</option>
-          <option value="true">Compliment</option>
-        </select>
-        <div onChange={createSearch}>
-          <input
-            className="suggestion-input"
-            type="text"
-            value={suggestion}
-            placeholder={
-              suggestionCheck == "true"
-                ? "Start typing compliment here"
-                : "Start typing suggestion here"
-            }
-            onChange={(e) => setSuggestion(e.target.value)}
-          />
+        <div className="suggestion-form-content">
+          <select
+            className="suggestion-select"
+            onChange={(e) => setSuggestionCheck(e.target.value)}
+          >
+            <option value="false">
+              {" "}
+              Suggestion
+              <FontAwesomeIcon
+                icon={faCaretDown}
+                size="xs"
+                color="#5c5848"
+              />{" "}
+            </option>
+            <option value="true">
+              {" "}
+              Compliment{" "}
+              <FontAwesomeIcon
+                icon={faCaretDown}
+                size="xs"
+                color="#5c5848"
+              />{" "}
+            </option>
+          </select>
+
+          <div className="form-input" onChange={createSearch}>
+            <input
+              className="suggestion-input"
+              type="text"
+              value={suggestion}
+              placeholder={
+                suggestionCheck == "true"
+                  ? "Start typing compliment here.."
+                  : "Start typing suggestion here.."
+              }
+              onChange={(e) => setSuggestion(e.target.value)}
+            />
+          </div>
         </div>
 
         {suggestion != "" ? (

@@ -7,11 +7,10 @@ import {
   faCompass,
   faCircleCheck,
   faCircleQuestion,
-  faArrowUpRightFromSquare,
   faEllipsis,
-  faEnvelope,
-  faIndustry,
-  faBuilding,
+  faUserPlus,
+  faLink,
+  faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
 import "../../../styles/brand/info/brand-info.css";
@@ -27,25 +26,25 @@ function BrandInfo({
   size,
 }) {
   let formatdate = new Date(date);
-
+  let link = null;
   return (
     <div className="brand-info">
       <Avatar
         src={url}
         // sx={{ height: "90px", width: "90px" }}
-        sx={{ height: "120px", width: "120px" }}
+        sx={{ height: "115px", width: "115px" }}
         style={{
-          border: "0.1px solid #eeeeee",
+          border: "0.4px solid #eeeeee",
         }}
       />
       <div className="brand-info-container">
         <div className="brand-user-follow">
           <div className="username-verified">
             <div className="username"> @{username} </div>
-            {verification === null ? (
+            {verification == false ? (
               <div className="unverified">
                 {" "}
-                unverified{" "}
+                Unclaimed{" "}
                 <FontAwesomeIcon
                   icon={faCircleQuestion}
                   size="sm"
@@ -60,19 +59,30 @@ function BrandInfo({
                   color="#5bab5c"
                   style={{ marginLeft: "5px" }}
                 />
+                Claimed
               </>
             )}
           </div>
 
           <div className="brand-action-buttons">
-            <button className="user-action-button follow"> Follow </button>
+            <button className="user-action-button follow">
+              {" "}
+              <FontAwesomeIcon
+                icon={faUserPlus}
+                className="share"
+                color="#aa7950"
+                size="lg"
+              />{" "}
+            </button>
 
-            <FontAwesomeIcon
-              icon={faEllipsis}
-              className="share"
-              color="#5c5848"
-              size="xl"
-            />
+            <button className="user-action-button follow">
+              <FontAwesomeIcon
+                icon={faEllipsis}
+                className="share"
+                color="#8c8577"
+                size="lg"
+              />
+            </button>
           </div>
         </div>
 
@@ -88,19 +98,29 @@ function BrandInfo({
         <div className="detailed-brand-info-row">
           {location ? (
             <div className="info-location">
-              <FontAwesomeIcon icon={faCompass} size="sm" color="#b7b1a7" />{" "}
+              <FontAwesomeIcon
+                icon={faCompass}
+                size="sm"
+                color="#aa7950"
+                style={{ marginRight: "5px" }}
+              />{" "}
               {location}
             </div>
           ) : (
             <div className="info-location">
-              <FontAwesomeIcon icon={faCompass} size="sm" color="#b7b1a7" /> Add
-              Location
+              <FontAwesomeIcon
+                icon={faCompass}
+                size="sm"
+                color="#aa7950"
+                style={{ marginRight: "5px" }}
+              />{" "}
+              Add Location
             </div>
           )}
 
           {industry == null ? (
             <div className="industry-row">
-              <>
+              {/*   <>
                 {" "}
                 <FontAwesomeIcon
                   icon={faBuilding}
@@ -108,7 +128,7 @@ function BrandInfo({
                   color="#b7b1a7"
                 />{" "}
                 Add Industry
-              </>
+              </> */}
             </div>
           ) : (
             <div className="industry-row">
@@ -151,6 +171,19 @@ function BrandInfo({
               )}
             </div>
           )}
+          {link != null ? (
+            <div className="info-website">
+              {" "}
+              <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" /> Add
+              Website
+            </div>
+          ) : (
+            <div className="info-website">
+              {" "}
+              <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" /> Add
+              Website
+            </div>
+          )}
         </div>
 
         {parentBrand != null ? (
@@ -169,18 +202,27 @@ function BrandInfo({
           {verification === null ? (
             <>
               {" "}
-              <div className="grey">Member since </div>
+              <div className="grey">Added in </div>
               <div className=" member-since-date">
                 {"  "}
                 {formatdate.toLocaleDateString(undefined, {
                   year: "numeric",
                   month: "short",
                 })}
+                <button>
+                  Claim this brand
+                  <FontAwesomeIcon
+                    icon={faArrowUpRightFromSquare}
+                    size="sm"
+                    color="#8c8c8c"
+                    style={{ marginLeft: "1px" }}
+                  />
+                </button>
               </div>
             </>
           ) : verification === false ? (
             <>
-              <div> Unverified Member since </div>
+              <div> Added in </div>
               <div className="member-since-date">
                 {"  "}
                 {formatdate.toLocaleDateString(undefined, {
@@ -188,10 +230,19 @@ function BrandInfo({
                   month: "short",
                 })}
               </div>
+              <button>
+                Claim this brand{" "}
+                <FontAwesomeIcon
+                  icon={faArrowUpRightFromSquare}
+                  size="sm"
+                  color="#8c8c8c"
+                  style={{ marginLeft: "1px" }}
+                />
+              </button>
             </>
           ) : (
             <>
-              <div>Unverified Member since{"  "} </div>
+              <div> Member since{"  "} </div>
               <div className="member-since-date">
                 {"  "}
                 {formatdate.toLocaleDateString(undefined, {

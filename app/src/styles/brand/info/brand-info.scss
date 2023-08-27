@@ -11,7 +11,8 @@
   flex-direction: column;
   flex: 1;
   align-items: stretch;
-  margin-left: 1rem;
+  justify-content: space-between;
+  margin-left: 1.5rem;
 }
 
 .brand-user-follow {
@@ -19,7 +20,6 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  flex: 1;
 }
 
 .username-verified {
@@ -34,6 +34,8 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: flex-end;
+  margin-left: 2rem;
 }
 
 .chart-select {
@@ -91,4 +93,10 @@
 
 .info-location {
   color: #757575;
+  font-size: 17px;
+}
+
+.info-website {
+  color: #757575;
+  font-size: 17px;
 }

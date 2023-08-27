@@ -87,15 +87,15 @@ function Home() {
               {search ? null : (
                 <div className="search-animation">
                   <div className="placeholder-text">
-                    Search for your favorite suggestions{" "}
+                    Search for a business or brand{" "}
                   </div>
-                  <span
+                  {/*   <span
                     className={`placeholder-text ${
                       animatePlaceholder ? "users" : "brands"
                     }`}
                   >
                     {animatePlaceholder ? "users" : "brands"}
-                  </span>
+                  </span> */}
                 </div>
               )}
             </span>

@@ -46,6 +46,7 @@
 .detailed-brand-info-row {
   display: flex;
   flex-direction: row;
+  margin-top: 1.3rem;
 }
 
 .industry-row {
@@ -70,86 +71,15 @@
 }
 
 .user-action-button {
-  background: #f0edea;
-  background: #efefef;
-
-  background: #ddd3c4;
-  background: #ad937a;
-
-  background: #ddd3c4;
-  background: #5c5848;
-  background: #ac9279;
-
-  background: #e3dfcc;
-  background: #b7a88c;
-  background: #c7bba4;
-
-  background: none;
-
-  height: 3.2vh;
-
-  border: 1px solid #c4baa8;
-
-  border: 1px solid #efefef;
-  border: 1px solid #ddd3c4;
-  border: 1px solid #b7a88c;
-  border: 1px solid #f5f5f5;
-  border: 1px solid #dbdbdb;
-  color: #272626;
-  text-align: center;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-family: "itc-souvenir";
-  border-radius: 0.3rem;
-  border-radius: 5px;
-  font-weight: 500;
-  font-size: 14px;
-  padding: 0 0.55rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 66px;
-  height: 32px;
-  width: 64px;
-  height: 32px;
+  background: none;
+  width: 35px;
 }
 
 .user-action-button.follow {
-  background: #5bab5c;
-  background: #a97a50;
-  background: #aa7950;
-
-  background-size: 100%;
-  background: #dbd3bb;
-
-  background: #aa7950;
-
-  background: #e6e3dc;
-  background: #f7f6f0;
-
-  background: #ded4c6;
-  background: #f7f6f0;
-  background: #d0c5b2;
-  background: #f1efe2;
-
-  background: #f2e6da;
-
-  background: #b48f6e;
-  background: #d9d6cc; //prettiest color
-  background: #f7f8f3;
-  background: #f7f6f0;
-  background-image: url(../../../assets//images/followbutton46.png);
-  background: #cec4af;
-  background: none;
-  background-size: 100% 100%;
-  color: #aa7950;
-  color: #f7f6f0;
-  color: #5c5848;
-  color: #462f03;
-
-  color: #f7f6f0;
-  color: #aa7950;
   border: none;
   font-family: "Inter";
   font-family: "itc-souvenir";
@@ -206,12 +136,23 @@
   flex-direction: row;
   align-items: center;
   color: #757575;
+  font-size: 17px;
+
+  button {
+    border: none;
+    background: #e8e5dd;
+    margin-left: 10px;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 15px;
+  }
 }
 
 .member-since-date {
   font-weight: 500;
   color: #281e17;
   margin-left: 5px;
+  font-weight: 600;
 }
 
 .follower-cell {
@@ -267,7 +208,7 @@
 }
 
 .username {
-  font-size: 14pt;
+  font-size: 20px;
   color: #281e17;
   font-weight: 500;
 }
