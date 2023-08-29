@@ -20,6 +20,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 
 .search-input {
@@ -78,17 +79,21 @@
   margin-top: 1rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  width: 100%;
 }
 
 .suggestionSearchList {
-  border-bottom: 1px solid #e9e5dc;
   width: 100%;
+  height: auto;
   margin-top: 0.3rem;
+  flex: 1;
 }
-
 .suggestionSearchList button {
   border: none;
   background: none;
+  border-bottom: 1px solid #e9e5dc;
+  width: 100%;
+  flex: 1;
 }
 
 .search-form {

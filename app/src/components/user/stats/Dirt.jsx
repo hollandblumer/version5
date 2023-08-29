@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../../styles/user/dirt/dirt.css";
 import Avatar from "@mui/material/Avatar";
 import { Storage } from "aws-amplify";
+import { Link } from "react-router-dom";
 
 function Dirt({ brand, showBlankAvatar }) {
   const [signedProfileURL, setSignedProfileURL] = useState("");
@@ -28,12 +29,18 @@ function Dirt({ brand, showBlankAvatar }) {
     width: "72px",
     border: "1px solid #dbdbdb",
     backgroundColor: showBlankAvatar ? "#e8e5dd" : "transparent", // Set background color here
-    filter: signedProfileURL ? "blur(5px)" : "none", // Apply blur effect if no URL
+    filter: signedProfileURL ? "none" : "blur(5px)", // Apply blur effect if no URL
   };
 
   return (
     <div className="url-user-brand-avatar">
-      <Avatar src={signedProfileURL} sx={avatarStyle} />
+      {showBlankAvatar ? (
+        <Avatar src={signedProfileURL} sx={avatarStyle} />
+      ) : (
+        <Link to={`/${brand}`}>
+          <Avatar src={signedProfileURL} sx={avatarStyle} />
+        </Link>
+      )}
     </div>
   );
 }

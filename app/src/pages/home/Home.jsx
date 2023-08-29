@@ -15,6 +15,7 @@ import MagnifyingGlass from "../../assets/images/Magnifyingglass2.png";
 import QRCode from "../../assets/images/QRcode.png";
 import QRScanner from "../../components/qrscanner/QRScanner";
 import Footer2 from "../../components/footer/Footer2";
+import TopBrands from "../../components/brand/TopBrands";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);
@@ -89,13 +90,6 @@ function Home() {
                   <div className="placeholder-text">
                     Search for a business or brand{" "}
                   </div>
-                  {/*   <span
-                    className={`placeholder-text ${
-                      animatePlaceholder ? "users" : "brands"
-                    }`}
-                  >
-                    {animatePlaceholder ? "users" : "brands"}
-                  </span> */}
                 </div>
               )}
             </span>
@@ -182,6 +176,7 @@ function Home() {
       <div className="qr-result">
         {/* ... Display scanned QR code data ... */}
       </div>
+      <TopBrands />
       <Footer2 />
     </div>
   );

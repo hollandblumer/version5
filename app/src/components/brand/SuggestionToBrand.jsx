@@ -24,9 +24,7 @@ function SuggestionToBrand({
   iscompliment,
   counter,
 }) {
-  const [suggestions, setSuggestions] = useState([]);
   const [users, setUsers] = useState([]);
-  const [businessAvatarURL, setBusinessAvatarURL] = useState("");
   const [milestones, setMilestones] = useState([]);
 
   useEffect(() => {

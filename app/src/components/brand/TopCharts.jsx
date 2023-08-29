@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
 import { User, Suggestion } from "../../models";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faTimesCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
 import SuggestionToBrand from "./SuggestionToBrand";
 
 function TopCharts() {
@@ -82,24 +82,45 @@ function TopCharts() {
         >
           Compliments
         </button>
-        <div className="search-container">
-          {showSearchInput && (
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          )}
+        <div
+          className={
+            showSearchInput
+              ? "trending-search-container"
+              : "trending-search-container false"
+          }
+        >
           <FontAwesomeIcon
             icon={faSearch}
             size="lg"
             color="#b7b1a7"
+            style={{}}
             onClick={() => setShowSearchInput(!showSearchInput)}
           />
+          {showSearchInput && (
+            <div>
+              <input
+                type="text"
+                className="trending-search"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+              <FontAwesomeIcon
+                icon={faTimesCircle} // You can replace this with the desired close icon
+                size="sm"
+                color="#b7b1a7" // Adjust the color as needed
+                onClick={() => setShowSearchInput(false)} // Click event to close the search
+                style={{ cursor: "pointer" }}
+              />
+            </div>
+          )}
         </div>
       </div>
-      <div className="top-suggestions-box">
+      <div
+        className={`top-suggestions-box ${
+          filterSuggestionsBySearch().length > 3 ? "suggestions-scroll" : ""
+        }`}
+      >
         {filterSuggestionsBySearch().length === 0 ? (
           <div className="no-results-message">No search results, add it</div>
         ) : (

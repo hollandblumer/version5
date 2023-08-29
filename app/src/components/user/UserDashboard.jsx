@@ -33,6 +33,7 @@ function UserDashboard({ SignedInUser }) {
       try {
         const URLUserData = await DataStore.query(User, (p) => p.name.eq(name));
         setURLUser(URLUserData[0]);
+
         const userId = URLUserData[0].id;
         setThisID(userId);
         const userFilePath = URLUserData[0].filePath;
@@ -42,9 +43,10 @@ function UserDashboard({ SignedInUser }) {
         const suggestionId = await DataStore.query(UserSuggestion, (c) =>
           c.and((c) => [
             c.user.id.eq(URLUserData[0].id),
-            c.suggestion.show.eq(true),
+            // c.suggestion.show.eq(true),
           ])
         );
+
         const allSuggestions = await DataStore.query(
           UserSuggestion,
           (c) => c.and((c) => [c.user.id.eq(URLUserData[0].id)]),
@@ -55,6 +57,7 @@ function UserDashboard({ SignedInUser }) {
 
         let promisearray = [];
         let promiseArrayAll = [];
+
         suggestionId.map((p) => promisearray.push(p.suggestion));
         allSuggestions.map((p) => promiseArrayAll.push(p.suggestion));
 
@@ -76,7 +79,7 @@ function UserDashboard({ SignedInUser }) {
   let array2 = [];
   let duplicateArray = [];
 
-  userId.map((p) => duplicateArray.push(p.businessname));
+  userId.map((p) => duplicateArray.push(p.businessName));
   let uniqueArray = [...new Set(duplicateArray)];
 
   return (
@@ -173,7 +176,7 @@ function UserDashboard({ SignedInUser }) {
                   >
                     <SuggestionFromUser
                       suggestion={p.suggestion}
-                      businessname={p.businessname}
+                      businessname={p.businessName}
                       date={p.updatedAt}
                       compliment={p.compliment}
                       index={index}

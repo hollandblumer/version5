@@ -18,19 +18,19 @@
 
 .trending-filter-buttons {
   display: flex;
+  flex-direction: row;
+  align-items: center;
   width: 100%;
-
+  margin-top: 7px;
   button {
     background: none;
-    margin: 0;
     padding: 3px 10px;
     border: none;
     font-size: 14px;
     background: #e8e5dd;
     color: #272727;
     border-radius: 20px;
-    margin-top: 8px;
-    margin-left: 10px;
+    margin-left: 8px;
 
     &:nth-child(1) {
       margin-left: 0px;
@@ -50,6 +50,31 @@
   }
 }
 
+.trending-search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-left: 12px;
+  border-bottom: 1px solid black;
+  padding-bottom: 4px;
+
+  &.false {
+    border-bottom: none;
+  }
+}
+
+.trending-search {
+  background: none;
+  border: none;
+  outline: none;
+  margin-left: 5px;
+
+  &::placeholder {
+    position: absolute;
+    bottom: 0;
+  }
+}
+
 .sort-by {
   display: flex;
   flex-direction: row;
@@ -60,6 +85,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 20px;
 
   .slider-bar {
     position: relative;

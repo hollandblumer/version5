@@ -21,6 +21,7 @@ function SuggestionSupporter({ username }) {
   return (
     <Avatar
       src={signedProfileURL}
+      alt={username}
       style={{
         border: "1px solid white",
         marginLeft: "-22px",

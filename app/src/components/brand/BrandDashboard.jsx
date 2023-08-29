@@ -26,7 +26,7 @@ import TopCharts from "./TopCharts";
 import "../../styles/brand/milestone/milestone.css";
 import MilestoneTracker from "./milestone/MilestoneTracker";
 
-function BrandDashboard({ user, email, id }) {
+function BrandDashboard({ SignedInUser }) {
   const { name } = useParams();
   const [activeContainer, setActiveContainer] = useState("milestones");
   const [suggestions, setSuggestions] = useState([]);
@@ -38,7 +38,7 @@ function BrandDashboard({ user, email, id }) {
   const [verification, setVerification] = useState(false);
   const [milestones, setMilestones] = useState([]);
   const [memberSinceDate, setMemberSinceDate] = useState("");
-  const [users, setUsers] = useState([]);
+
   const [sliderPosition, setSliderPosition] = useState(0);
 
   useEffect(() => {
@@ -131,10 +131,10 @@ function BrandDashboard({ user, email, id }) {
             size={brandSize}
           />
           <SuggestionForm
-            name={user}
-            email={email}
-            thisID={id}
-            businessname={name}
+            name={SignedInUser.name}
+            email={SignedInUser.email}
+            thisID={SignedInUser.id}
+            businessName={name}
           />
         </div>
 
@@ -180,13 +180,13 @@ function BrandDashboard({ user, email, id }) {
               Certifications
             </div>
           </div>
-          <div
+          {/*   <div
             className="slider-bar"
             style={{
               backgroundColor: "#808080",
               transform: `translateX(${sliderPosition * 100}px)`, // Move slider based on position
             }}
-          ></div>
+          ></div> */}
         </div>
 
         {activeContainer === "milestones" ? (
@@ -219,6 +219,7 @@ function BrandDashboard({ user, email, id }) {
                       suggestion={p.suggestion}
                       index={index}
                       currentMilestone={p.milestone}
+                      date={p.createdAt}
                     />
                   </div>
                 </div>

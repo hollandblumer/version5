@@ -10,10 +10,10 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
 
-function SuggestionForm({ name, email, thisID, businessname }) {
+function SuggestionForm({ name, email, thisID, businessName }) {
   const [suggestion, setSuggestion] = useState("");
   const [searchList, setSearchList] = useState([]);
-  const [suggestionCheck, setSuggestionCheck] = useState("false");
+  const [suggestionCheck, setSuggestionCheck] = useState(false);
   const [compliment, setCompliment] = useState(false);
 
   const createSearch = async (e) => {
@@ -27,13 +27,26 @@ function SuggestionForm({ name, email, thisID, businessname }) {
   };
 
   const createSuggestion = async (e) => {
-    suggestionCheck == "true" ? setCompliment(true) : setCompliment(false);
+    const isCompliment = suggestionCheck === true;
+    setCompliment(isCompliment);
+
+    const existingUserSuggestion = await DataStore.query(UserSuggestion, (us) =>
+      us.and((c) => [
+        c.suggestion.suggestion.eq(suggestion),
+        c.suggestion.businessName.eq(businessName),
+        c.user.id.eq(thisID),
+      ])
+    );
+    if (existingUserSuggestion.length > 0) {
+      alert("You have already made this suggestion.");
+      return;
+    }
 
     const newSuggestion = await DataStore.save(
       new Suggestion({
-        businessname,
+        businessName,
         suggestion,
-        compliment,
+        compliment: isCompliment,
       })
     );
 
@@ -46,12 +59,13 @@ function SuggestionForm({ name, email, thisID, businessname }) {
     // then you save the mode that links a post with an editor
     await DataStore.save(
       new UserSuggestion({
-        userID: newUser.thisID,
+        userId: newUser.thisID,
         suggestion: newSuggestion,
       })
     );
 
     setSuggestion("");
+    setCompliment(false);
     window.location.reload(false);
   };
 
@@ -63,26 +77,10 @@ function SuggestionForm({ name, email, thisID, businessname }) {
         <div className="suggestion-form-content">
           <select
             className="suggestion-select"
-            onChange={(e) => setSuggestionCheck(e.target.value)}
+            onChange={(e) => setSuggestionCheck(e.target.value === "true")}
           >
-            <option value="false">
-              {" "}
-              Suggestion
-              <FontAwesomeIcon
-                icon={faCaretDown}
-                size="xs"
-                color="#5c5848"
-              />{" "}
-            </option>
-            <option value="true">
-              {" "}
-              Compliment{" "}
-              <FontAwesomeIcon
-                icon={faCaretDown}
-                size="xs"
-                color="#5c5848"
-              />{" "}
-            </option>
+            <option value="false"> Suggestion</option>
+            <option value="true"> Compliment </option>
           </select>
 
           <div className="form-input" onChange={createSearch}>
@@ -91,7 +89,7 @@ function SuggestionForm({ name, email, thisID, businessname }) {
               type="text"
               value={suggestion}
               placeholder={
-                suggestionCheck == "true"
+                suggestionCheck === true
                   ? "Start typing compliment here.."
                   : "Start typing suggestion here.."
               }
@@ -146,11 +144,11 @@ function SuggestionForm({ name, email, thisID, businessname }) {
               ))}
             </div>
           ) : (
-            <div> </div>
+            <> </>
           )}
         </div>
       ) : (
-        <div></div>
+        <></>
       )}
     </div>
   );

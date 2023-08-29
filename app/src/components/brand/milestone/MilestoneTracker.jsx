@@ -12,16 +12,24 @@ import {
   faEllipsis,
 } from "@fortawesome/free-solid-svg-icons";
 
+function formatDate(date) {
+  const parsedDate = new Date(date);
+  const formattedDate = `${
+    parsedDate.getMonth() + 1
+  }/${parsedDate.getDate()}/${parsedDate.getFullYear()}`;
+  return formattedDate;
+}
+
 function MilestoneTracker({
   suggestion,
   businessname,
   index,
   currentMilestone,
   url,
+  date,
 }) {
   const [milestones, setMilestones] = useState([]);
   const [icon, setIcon] = useState();
-  console.log("bname", businessname);
 
   useEffect(() => {
     const getData = async () => {
@@ -46,11 +54,6 @@ function MilestoneTracker({
         );
 
         setMilestones(milestones);
-
-        const icon = await DataStore.query(Suggestion, (p) =>
-          p.suggestion.eq(suggestion)
-        );
-        setIcon(icon[0].icon);
       } catch (err) {
         console.error(err);
       }
@@ -59,11 +62,11 @@ function MilestoneTracker({
   }, []);
 
   return (
-    <div>
+    <div className="milestone-tracker">
       {milestones.length > 0 ? (
         <div>
           <div className="milestone-subtle-suggestion-info">
-            <div>03/01/2023</div> <div>{suggestion}</div>
+            <div>{formatDate(date)}</div>
           </div>{" "}
           {/*  <Avatar
             src={url}
@@ -74,6 +77,7 @@ function MilestoneTracker({
             }}
           />{" "} */}
           <p className="milestone-update">
+            <div className="milestone-title"> {currentMilestone} </div>
             <span className="milestone-businessname"> @{businessname} </span>
             <span className="actual-milestone"> {currentMilestone} </span>
             {/*    <FontAwesomeIcon
@@ -83,9 +87,8 @@ function MilestoneTracker({
               /> */}
             {/* <div className="milestone-suggestion"> */}{" "}
             <span className="milestone-grey"> in response to the </span>
-            <span className="actual-milestone-suggestion">
-              {suggestion} project
-            </span>
+            <span className="actual-milestone-suggestion">{suggestion}</span>
+            <span className="actual-milestone"> suggestion</span>
             {/* </div> */}
             {/* <div
               className={` ${
@@ -99,20 +102,11 @@ function MilestoneTracker({
               <Icon icon={icon} />
             </div> */}
           </p>
-          <div className="see-more-milestone"> see more </div>
-          <div className="milestone-follower-container">
-            <div className="milestone-counter-line">
-              <div>{milestones.length}</div>{" "}
-              {milestones.length == 1 ? (
-                <div className="left">milestone</div>
-              ) : (
-                <div className="left">
-                  milestones{" "}
-                  {/*   <FontAwesomeIcon
-                    icon={faArrowUpRightFromSquare}
-                    className="share"
-                    color="#8e8e8e"
-                  />{" "} */}
+          <div className="see-more-milestone">
+            Liked by hollandblumer eleanorblumer and see more{" "}
+          </div>
+          {/*   <div className="milestone-follower-container">
+         
                 </div>
               )}
             </div>
@@ -137,7 +131,7 @@ function MilestoneTracker({
                 size="lg"
               />
             </div>
-          </div>
+          </div> */}
         </div>
       ) : (
         <div className="text">Not started</div>

@@ -16,6 +16,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MilestoneUpdate from "./MilestoneUpdate";
+import { Link } from "react-router-dom";
 
 import "../../styles/suggestion/suggestion-user/suggestions.css";
 import "../../styles/suggestion/suggestion-general/suggestion.css";
@@ -37,22 +38,10 @@ function SuggestionFromUser({
   useEffect(() => {
     const getData = async () => {
       try {
-        /*  const suggestionUsers = (await DataStore.query(UserSuggestion)).filter(
-          (c) =>
-            c.suggestion.suggestion === suggestion &&
-            c.suggestion.businessname === businessname
-        ); */
-
-        /*  const suggestionUsers = (await DataStore.query(UserSuggestion)).filter(
-          (c) =>
-            c.suggestion.suggestion === suggestion &&
-            c.suggestion.businessname === businessname
-        ); */
-
         const suggestionUsers = await DataStore.query(UserSuggestion, (c) =>
           c.and((c) => [
             c.suggestion.suggestion.eq(suggestion),
-            c.suggestion.businessname.eq(businessname),
+            c.suggestion.businessName.eq(businessname),
           ])
         );
 
@@ -71,6 +60,7 @@ function SuggestionFromUser({
         let userPromiseArray = [];
         suggestionUsers.map((p) => suggestionPromiseArray.push(p.suggestion));
         suggestionUsers.map((p) => userPromiseArray.push(p.user));
+
         await Promise.all(suggestionPromiseArray).then((values) => {
           setSuggestions(values);
         });
@@ -80,7 +70,7 @@ function SuggestionFromUser({
 
         // Add more urls if necessary
         const signedFiledAccessURL = await Storage.get(`${businessname}.jpg`);
-
+        console.log("url", signedFiledAccessURL);
         setBusinessAvatarURL(signedFiledAccessURL);
       } catch (err) {
         console.error(err);
@@ -115,17 +105,20 @@ function SuggestionFromUser({
           <div className="suggestion-core">
             <div className="suggestion-avatar">
               {" "}
-              <Avatar
-                src={businessAvatarURL}
-                alt={businessname}
-                sx={{ height: "50px", width: "50px" }}
-                style={{
-                  border: "1px solid #dbdbdb",
-                }}
-              />
+              <Link to={`/${businessname}`}>
+                <Avatar
+                  src={businessAvatarURL}
+                  alt={businessname}
+                  sx={{ height: "50px", width: "50px" }}
+                  style={{
+                    border: "1px solid #dbdbdb",
+                  }}
+                />
+              </Link>
+              <Icon icon="placeholderIcon" />
             </div>
             <div className="suggestion-core-content">
-              {/* <div className="brand-username"> {businessname} </div> */}
+              <div className="brand-username"> @{businessname} </div>
             </div>
           </div>
           {/*  {compliment ? (
