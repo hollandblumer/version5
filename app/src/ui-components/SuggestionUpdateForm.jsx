@@ -36,6 +36,7 @@ export default function SuggestionUpdateForm(props) {
     icon: "",
     unique: false,
     show: false,
+    feature: false,
     compliment: false,
   };
   const [businessName, setBusinessName] = React.useState(
@@ -46,6 +47,7 @@ export default function SuggestionUpdateForm(props) {
   const [icon, setIcon] = React.useState(initialValues.icon);
   const [unique, setUnique] = React.useState(initialValues.unique);
   const [show, setShow] = React.useState(initialValues.show);
+  const [feature, setFeature] = React.useState(initialValues.feature);
   const [compliment, setCompliment] = React.useState(initialValues.compliment);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
@@ -58,6 +60,7 @@ export default function SuggestionUpdateForm(props) {
     setIcon(cleanValues.icon);
     setUnique(cleanValues.unique);
     setShow(cleanValues.show);
+    setFeature(cleanValues.feature);
     setCompliment(cleanValues.compliment);
     setErrors({});
   };
@@ -80,6 +83,7 @@ export default function SuggestionUpdateForm(props) {
     icon: [],
     unique: [],
     show: [],
+    feature: [],
     compliment: [],
   };
   const runValidationTasks = async (
@@ -114,6 +118,7 @@ export default function SuggestionUpdateForm(props) {
           icon,
           unique,
           show,
+          feature,
           compliment,
         };
         const validationResponses = await Promise.all(
@@ -176,6 +181,7 @@ export default function SuggestionUpdateForm(props) {
               icon,
               unique,
               show,
+              feature,
               compliment,
             };
             const result = onChange(modelFields);
@@ -206,6 +212,7 @@ export default function SuggestionUpdateForm(props) {
               icon,
               unique,
               show,
+              feature,
               compliment,
             };
             const result = onChange(modelFields);
@@ -236,6 +243,7 @@ export default function SuggestionUpdateForm(props) {
               icon,
               unique,
               show,
+              feature,
               compliment,
             };
             const result = onChange(modelFields);
@@ -266,6 +274,7 @@ export default function SuggestionUpdateForm(props) {
               icon: value,
               unique,
               show,
+              feature,
               compliment,
             };
             const result = onChange(modelFields);
@@ -296,6 +305,7 @@ export default function SuggestionUpdateForm(props) {
               icon,
               unique: value,
               show,
+              feature,
               compliment,
             };
             const result = onChange(modelFields);
@@ -326,6 +336,7 @@ export default function SuggestionUpdateForm(props) {
               icon,
               unique,
               show: value,
+              feature,
               compliment,
             };
             const result = onChange(modelFields);
@@ -342,6 +353,37 @@ export default function SuggestionUpdateForm(props) {
         {...getOverrideProps(overrides, "show")}
       ></SwitchField>
       <SwitchField
+        label="Feature"
+        defaultChecked={false}
+        isDisabled={false}
+        isChecked={feature}
+        onChange={(e) => {
+          let value = e.target.checked;
+          if (onChange) {
+            const modelFields = {
+              businessName,
+              suggestion,
+              verified,
+              icon,
+              unique,
+              show,
+              feature: value,
+              compliment,
+            };
+            const result = onChange(modelFields);
+            value = result?.feature ?? value;
+          }
+          if (errors.feature?.hasError) {
+            runValidationTasks("feature", value);
+          }
+          setFeature(value);
+        }}
+        onBlur={() => runValidationTasks("feature", feature)}
+        errorMessage={errors.feature?.errorMessage}
+        hasError={errors.feature?.hasError}
+        {...getOverrideProps(overrides, "feature")}
+      ></SwitchField>
+      <SwitchField
         label="Compliment"
         defaultChecked={false}
         isDisabled={false}
@@ -356,6 +398,7 @@ export default function SuggestionUpdateForm(props) {
               icon,
               unique,
               show,
+              feature,
               compliment: value,
             };
             const result = onChange(modelFields);

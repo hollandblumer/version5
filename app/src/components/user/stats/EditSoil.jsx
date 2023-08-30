@@ -9,64 +9,65 @@ function EditSoil({ brandArray }) {
   const [falsePromiseList, setFalsePromiseList] = useState([]);
   const [checkedList, setCheckedList] = useState([]);
   const [maxBrands, setMaxBrands] = useState(true);
-  const [userp, setUserp] = useState("");
   // need to change to actual user
   const url = useParams();
-  console.log(url);
 
-  function handleChecked(value) {
-    /*     let tempList = ["gatorade"];
-    setCheckedList(tempList); */
+  function handleChecked(value, index) {
     let tempList = checkedList;
+    console.log("tempList", tempList);
     tempList.includes(value)
       ? (tempList = tempList.filter((item) => item != value))
       : tempList.push(value);
     tempList.length <= 7 ? setMaxBrands(true) : setMaxBrands(false);
     setCheckedList(tempList);
   }
+  console.log("checkedList", checkedList);
 
   const updateBrandList = async (e) => {
     e.preventDefault();
     let trueList = [];
     let falseList = [];
     truePromiseList.map((object) => {
-      checkedList.includes(object.businessname)
+      checkedList.includes(object.businessName)
         ? trueList.push(object)
         : falseList.push(object);
     });
 
     trueList.map((object) => updateTrueSuggestion(object));
     falseList.map((object) => updateFalseSuggestion(object));
-    // checkedList.map((s) => <UpdateSoil suggestion={s} user={"eleanorb"} />);
   };
 
   const updateTrueSuggestion = async (object) => {
     console.log("t", object);
     await DataStore.save(
-      Suggestion.copyOf(object, (updated) => (updated.show = true))
-    );
-  };
-  const updateFalseSuggestion = async (object) => {
-    console.log("f", object);
-    await DataStore.save(
-      Suggestion.copyOf(object, (updated) => (updated.show = false))
+      Suggestion.copyOf(object, (updated) => (updated.feature = true))
     );
   };
 
-  // checkBrands does not yet check to make sure the brands already exist in user's suggestion database
-  const checkBrands = async () => {};
+  const updateFalseSuggestion = async (object) => {
+    console.log("f", object);
+    await DataStore.save(
+      Suggestion.copyOf(object, (updated) => (updated.feature = false))
+    );
+  };
 
   useEffect(() => {
     const getData = async () => {
       try {
         const trueList = await DataStore.query(UserSuggestion, (c) =>
-          c.and((c) => [c.user.name.eq(url.name), c.suggestion.show.eq(true)])
+          c.and((c) => [
+            c.user.name.eq(url.name),
+            c.suggestion.feature.eq(true || null),
+          ])
         );
-
+        console.log("trl", trueList);
         const falseList = await DataStore.query(UserSuggestion, (c) =>
-          c.and((c) => [c.user.name.eq(url.name), c.suggestion.show.eq(false)])
+          c.and((c) => [
+            c.user.name.eq(url.name),
+            c.suggestion.feature.eq(false),
+          ])
         );
-
+        console.log("frl", falseList);
         let trueListPromiseArray = [];
         let falseListPromiseArray = [];
 
@@ -89,16 +90,18 @@ function EditSoil({ brandArray }) {
   }, []);
 
   let duplicateArray = [];
-  truePromiseList.map((p) => duplicateArray.push(p.businessname));
 
-  falsePromiseList.map((p) => duplicateArray.push(p.businessname));
+  truePromiseList.map((p) => duplicateArray.push(p.businessName));
+
+  falsePromiseList.map((p) => duplicateArray.push(p.businessName));
 
   let uniqueArray = [...new Set(duplicateArray)];
+
   let actualArray = Array.from(uniqueArray);
 
   return (
     <div>
-      <h2>Select up to 7 brands</h2>
+      <h2>Select the brands you want to feature (up to 7 brands)</h2>
       {actualArray.map((item, index) => (
         <form key={index}>
           {item}

@@ -43,7 +43,7 @@ function UserDashboard({ SignedInUser }) {
         const suggestionId = await DataStore.query(UserSuggestion, (c) =>
           c.and((c) => [
             c.user.id.eq(URLUserData[0].id),
-            // c.suggestion.show.eq(true),
+            c.suggestion.feature.eq(true),
           ])
         );
 
@@ -162,7 +162,7 @@ function UserDashboard({ SignedInUser }) {
             {allSuggestions.map((p, index) => (
               <div key={p.id}>
                 {array.includes(p.suggestion) &&
-                array2.includes(p.businessname) ? (
+                array2.includes(p.businessName) ? (
                   <div></div>
                 ) : (
                   <div

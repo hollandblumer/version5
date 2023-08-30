@@ -20,6 +20,7 @@ export declare type SuggestionUpdateFormInputValues = {
     icon?: string;
     unique?: boolean;
     show?: boolean;
+    feature?: boolean;
     compliment?: boolean;
 };
 export declare type SuggestionUpdateFormValidationValues = {
@@ -29,6 +30,7 @@ export declare type SuggestionUpdateFormValidationValues = {
     icon?: ValidationFunction<string>;
     unique?: ValidationFunction<boolean>;
     show?: ValidationFunction<boolean>;
+    feature?: ValidationFunction<boolean>;
     compliment?: ValidationFunction<boolean>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
@@ -40,6 +42,7 @@ export declare type SuggestionUpdateFormOverridesProps = {
     icon?: PrimitiveOverrideProps<TextFieldProps>;
     unique?: PrimitiveOverrideProps<SwitchFieldProps>;
     show?: PrimitiveOverrideProps<SwitchFieldProps>;
+    feature?: PrimitiveOverrideProps<SwitchFieldProps>;
     compliment?: PrimitiveOverrideProps<SwitchFieldProps>;
 } & EscapeHatchProps;
 export declare type SuggestionUpdateFormProps = React.PropsWithChildren<{

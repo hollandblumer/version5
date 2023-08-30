@@ -205,6 +205,7 @@ export const getSuggestion = /* GraphQL */ `
       icon
       unique
       show
+      feature
       compliment
       users {
         nextToken
@@ -235,6 +236,7 @@ export const listSuggestions = /* GraphQL */ `
         icon
         unique
         show
+        feature
         compliment
         createdAt
         updatedAt
@@ -270,6 +272,7 @@ export const syncSuggestions = /* GraphQL */ `
         icon
         unique
         show
+        feature
         compliment
         createdAt
         updatedAt
@@ -392,6 +395,7 @@ export const getUserSuggestion = /* GraphQL */ `
         icon
         unique
         show
+        feature
         compliment
         createdAt
         updatedAt

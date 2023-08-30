@@ -319,6 +319,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "feature": {
+                    "name": "feature",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "compliment": {
                     "name": "compliment",
                     "isArray": false,
@@ -559,5 +566,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "6010284b365c8e0a48809251099b45ee"
+    "version": "cf44627222cf5d0e8221f774670bd806"
 };

@@ -114,6 +114,7 @@ type EagerSuggestion = {
   readonly icon?: string | null;
   readonly unique?: boolean | null;
   readonly show?: boolean | null;
+  readonly feature?: boolean | null;
   readonly compliment?: boolean | null;
   readonly users?: (UserSuggestion | null)[] | null;
   readonly createdAt?: string | null;
@@ -132,6 +133,7 @@ type LazySuggestion = {
   readonly icon?: string | null;
   readonly unique?: boolean | null;
   readonly show?: boolean | null;
+  readonly feature?: boolean | null;
   readonly compliment?: boolean | null;
   readonly users: AsyncCollection<UserSuggestion>;
   readonly createdAt?: string | null;

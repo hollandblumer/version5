@@ -188,6 +188,7 @@ export const createSuggestion = /* GraphQL */ `
       icon
       unique
       show
+      feature
       compliment
       users {
         nextToken
@@ -216,6 +217,7 @@ export const updateSuggestion = /* GraphQL */ `
       icon
       unique
       show
+      feature
       compliment
       users {
         nextToken
@@ -244,6 +246,7 @@ export const deleteSuggestion = /* GraphQL */ `
       icon
       unique
       show
+      feature
       compliment
       users {
         nextToken
@@ -355,6 +358,7 @@ export const createUserSuggestion = /* GraphQL */ `
         icon
         unique
         show
+        feature
         compliment
         createdAt
         updatedAt
@@ -411,6 +415,7 @@ export const updateUserSuggestion = /* GraphQL */ `
         icon
         unique
         show
+        feature
         compliment
         createdAt
         updatedAt
@@ -467,6 +472,7 @@ export const deleteUserSuggestion = /* GraphQL */ `
         icon
         unique
         show
+        feature
         compliment
         createdAt
         updatedAt

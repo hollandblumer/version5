@@ -47,6 +47,8 @@ function SuggestionForm({ name, email, thisID, businessName }) {
         businessName,
         suggestion,
         compliment: isCompliment,
+        show: true,
+        feature: true,
       })
     );
 

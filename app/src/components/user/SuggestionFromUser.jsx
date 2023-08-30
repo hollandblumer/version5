@@ -2,8 +2,8 @@ import React from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { DataStore, SortDirection } from "@aws-amplify/datastore";
-import { Suggestion, User, UserSuggestion, Verification } from "../../models";
+import { DataStore } from "@aws-amplify/datastore";
+import { UserSuggestion, Verification } from "../../models";
 import Avatar from "@mui/material/Avatar";
 import { Storage } from "aws-amplify";
 import Icon from "../icon/Icon";
@@ -79,7 +79,6 @@ function SuggestionFromUser({
     getData();
   }, []);
 
-  // console.log(suggestions[0])
   let avatararray = [];
   let formatdate = new Date(date);
   let array = [];
@@ -99,9 +98,6 @@ function SuggestionFromUser({
       </div>
       <div className="suggestion-content">
         <div className="suggestion-content-container">
-          {/*  <div className="suggestion-text">
-            {compliment ? <div>Thanks </div> : <div>Supports</div>}
-          </div> */}
           <div className="suggestion-core">
             <div className="suggestion-avatar">
               {" "}
@@ -121,42 +117,11 @@ function SuggestionFromUser({
               <div className="brand-username"> @{businessname} </div>
             </div>
           </div>
-          {/*  {compliment ? (
-            <div className="text">for </div>
-          ) : (
-            <div className="text"> with </div>
-          )} */}
+
           <div className="suggestion">
             {" "}
-            {/*  {suggestions.map((p) => (
-              <div key={p.id}>
-                {array.includes(p.suggestion) ? (
-                  <div></div>
-                ) : (
-                  <div
-                    className={` ${
-                      p.icon != null && index != 0
-                        ? "icon"
-                        : p.icon != null && index === 0
-                        ? "white-icon"
-                        : "no-icon"
-                    }`}
-                  >
-                    <Icon icon={p.icon} />
-
-                    {array.push(p.suggestion).hide}
-                  </div>
-                )}
-              </div>
-            ))}{" "} */}
             <p className="actual-suggestion">{suggestion}</p>{" "}
           </div>
-          {/*  */}
-          {/*    <div className="text">
-          {" "}
-          on {formatdate.toLocaleDateString("en-US")}{" "}
-        </div>
- */}{" "}
         </div>
         <div
           className={` ${index === 0 ? "progress progress-white" : "progress"}`}
@@ -174,29 +139,6 @@ function SuggestionFromUser({
               />
             </div>
           )}
-
-          {/*   <div className="single-chart">
-          <svg viewBox="0 0 9 9" className="circular-chart orange">
-            <path
-              className="circle-bg"
-              d="M4.5 0.521125
-            a 3.978875 3.978875 0 0 1 0 7.95775
-            a 3.978875 3.978875 0 0 1 0 -7.95775"
-            />
-            <path
-              className="circle"
-              strokeDasharray="7.5, 25"
-              d="M4.5 0.521125
-      a 3.978875 3.978875 0 0 1 0 7.95775
-      a 3.978875 3.978875 0 0 1 0 -7.95775"
-            />
-
-            <text x="4.7" y="5" className="percentage">
-              60%
-            </text>
-          </svg>
-
-        </div> */}
 
           <div className="update">
             <FontAwesomeIcon
