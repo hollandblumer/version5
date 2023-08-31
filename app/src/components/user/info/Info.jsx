@@ -7,9 +7,26 @@ import {
   faEllipsis,
   faLocationDot,
   faArrowUpRightFromSquare,
+  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Info({ user, url, suggestioncount, brandcount, location, bio }) {
+function Info({
+  user,
+  url,
+  suggestionCount,
+  complimentCount,
+  brandcount,
+  createdAt,
+  location,
+  bio,
+}) {
+  const joinDate = new Date(createdAt); // Convert the createdAt string to a Date object
+  const monthAbbreviation = joinDate.toLocaleString("default", {
+    month: "short", // Use "short" for abbreviated month names
+  });
+  const joinYear = joinDate.getFullYear();
+  const joinMonthYear = `${monthAbbreviation} ${joinYear}`;
+
   return (
     <div className="info">
       <div className="profile">
@@ -30,9 +47,16 @@ function Info({ user, url, suggestioncount, brandcount, location, bio }) {
               </div>
             </div>
             <div className="action-buttons">
-              <button className="user-action-button follow"> Follow </button>
               <button className="info-share">
-                {" "}
+                <button className="user-action-button follow">
+                  {" "}
+                  <FontAwesomeIcon
+                    icon={faUserPlus}
+                    className="share"
+                    color="#aa7950"
+                    size="lg"
+                  />{" "}
+                </button>{" "}
                 {/*  <FontAwesomeIcon
                   icon={faEnvelope}
                   size="lg"
@@ -61,15 +85,15 @@ function Info({ user, url, suggestioncount, brandcount, location, bio }) {
             <div className="user-info-row">
               <div className="cell">
                 {" "}
-                <div className="bio-emphasis">{suggestioncount}</div>{" "}
+                <div className="bio-emphasis">{suggestionCount}</div>{" "}
                 <div className="grey left">Suggestions</div>{" "}
               </div>
-              <div className="cell">
+              <div className="cell left">
                 {" "}
-                <div className="bio-emphasis">0</div>{" "}
+                <div className="bio-emphasis left">{complimentCount}</div>{" "}
                 <div className="grey left">Compliments</div>{" "}
               </div>
-              <div className="cell">
+              <div className="cell left">
                 {" "}
                 <div className="bio-emphasis">0</div>{" "}
                 <div className="grey left">Awards</div>{" "}
@@ -86,17 +110,21 @@ function Info({ user, url, suggestioncount, brandcount, location, bio }) {
 
               {/* <div className="username">#</div>{" "} */}
             </div>
-            <div className="location-row">
-              <div className="location">
-                {/* <div className="grey bio">{bio}</div> */}
-                <FontAwesomeIcon icon={faLocationDot} size="sm" />
-                <div className="grey left">{location}</div>
+            {location == "" ? (
+              <></>
+            ) : (
+              <div className="location-row">
+                <div className="location">
+                  {/* <div className="grey bio">{bio}</div> */}
+                  <FontAwesomeIcon icon={faLocationDot} size="sm" />
+                  <div className="grey left">{location}</div>
+                </div>
               </div>
-              <div className="member-since">
-                {" "}
-                <div className="grey">Member since</div>{" "}
-                <div className="bio-emphasis">Dec 2022</div>{" "}
-              </div>
+            )}
+            <div className="member-since">
+              {" "}
+              <div className="grey">Member since</div>{" "}
+              <div className="bio-emphasis">{joinMonthYear}</div>{" "}
             </div>
           </div>
         </div>

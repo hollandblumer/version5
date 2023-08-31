@@ -13,7 +13,11 @@ import Soil from "../user/stats/Soil";
 import SuggestionFromUser from "./SuggestionFromUser";
 import UserImpact from "./impact/UserImpact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCaretDown,
+  faSearch,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
 function UserDashboard({ SignedInUser }) {
   const { name } = useParams();
@@ -22,17 +26,27 @@ function UserDashboard({ SignedInUser }) {
   const [profileURL, setProfileURL] = useState("");
   const [thisID, setThisID] = useState("");
   const [userLocation, setUserLocation] = useState("");
+  const [userCreatedAt, setUserCreatedAt] = useState("");
   const [userBio, setUserBio] = useState("");
   const [impact, setImpact] = useState(false);
   const [showActivity, setShowActivity] = useState(true);
   const [urlUser, setURLUser] = useState([]);
   const [username, setUsername] = useState([]);
+  const [showSearchInput, setShowSearchInput] = useState(false);
+  const [suggestionCount, setSuggestionCount] = useState(0);
+  const [complimentCount, setComplimentCount] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("most recent"); // Default to suggestions
+  const [searchTerm, setSearchTerm] = useState(""); //
 
   useEffect(() => {
     const getData = async () => {
       try {
         const URLUserData = await DataStore.query(User, (p) => p.name.eq(name));
         setURLUser(URLUserData[0]);
+
+        const user = URLUserData[0];
+        const userCreatedAt = user.createdAt;
+        setUserCreatedAt(userCreatedAt);
 
         const userId = URLUserData[0].id;
         setThisID(userId);
@@ -51,7 +65,7 @@ function UserDashboard({ SignedInUser }) {
           UserSuggestion,
           (c) => c.and((c) => [c.user.id.eq(URLUserData[0].id)]),
           {
-            sort: (s) => s.createdAt(SortDirection.DESCENDING),
+            sort: (s) => s.updatedAt(SortDirection.DESCENDING),
           }
         );
 
@@ -77,6 +91,12 @@ function UserDashboard({ SignedInUser }) {
 
   let array = [];
   let array2 = [];
+
+  const getSuggestionCount = () =>
+    allSuggestions.filter((p) => !p.compliment).length;
+  const getComplimentCount = () =>
+    allSuggestions.filter((p) => p.compliment).length;
+
   let duplicateArray = [];
 
   userId.map((p) => duplicateArray.push(p.businessName));
@@ -88,8 +108,10 @@ function UserDashboard({ SignedInUser }) {
         <Info
           url={profileURL}
           user={name}
-          suggestioncount={userId.length}
+          suggestionCount={getSuggestionCount()}
+          complimentCount={getComplimentCount()}
           brandcount={uniqueArray.length}
+          createdAt={userCreatedAt}
           location={userLocation}
           bio={userBio}
         />
@@ -113,15 +135,60 @@ function UserDashboard({ SignedInUser }) {
           <div className="user-suggestion-sort">
             <div className="user-sort-select-container">
               <div>sort by</div>
-              <select className="sort-select">
-                {" "}
-                <option>most recent </option>
-                <option>suggestions </option>
-                <option>compliments </option>
+              <select
+                className="sort-select"
+                onChange={(e) => setSelectedOption(e.target.value)}
+                value={selectedOption}
+              >
+                <option value="most recent">most recent</option>
+                <option value="suggestions">suggestions</option>
+                <option value="compliments">compliments</option>
               </select>
             </div>
+            {/*   <div className="trending-search-container">
+              <input
+                type="text"
+                placeholder="Search"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div> */}
 
-            <div className="user-sort-select-container">
+            <div
+              className={
+                showSearchInput
+                  ? "trending-search-container"
+                  : "trending-search-container false"
+              }
+            >
+              <FontAwesomeIcon
+                icon={faSearch}
+                size="lg"
+                color="#b7b1a7"
+                style={{}}
+                onClick={() => setShowSearchInput(!showSearchInput)}
+              />
+              {showSearchInput && (
+                <div>
+                  <input
+                    type="text"
+                    className="trending-search"
+                    placeholder="Search"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                  <FontAwesomeIcon
+                    icon={faTimesCircle} // You can replace this with the desired close icon
+                    size="sm"
+                    color="#b7b1a7" // Adjust the color as needed
+                    onClick={() => setShowSearchInput(false)} // Click event to close the search
+                    style={{ cursor: "pointer" }}
+                  />
+                </div>
+              )}
+            </div>
+
+            {/*    <div className="user-sort-select-container">
               <input
                 type="date"
                 id="start"
@@ -130,7 +197,7 @@ function UserDashboard({ SignedInUser }) {
                 min="2018-01-01"
                 max="2018-12-31"
               ></input>{" "}
-            </div>
+            </div> */}
           </div>
         </div>
         {impact ? (
@@ -138,7 +205,8 @@ function UserDashboard({ SignedInUser }) {
             {" "}
             <UserImpact
               user={name}
-              suggestioncount={userId.length}
+              suggestioncount={getSuggestionCount()}
+              complimentCount={getComplimentCount()}
               brandcount={uniqueArray.length}
             />
           </div>
@@ -156,10 +224,73 @@ function UserDashboard({ SignedInUser }) {
                 </div>
               </div>
             ) : (
-              <div></div>
+              <div>
+                {/* Display suggestions and compliments based on selected option */}
+                {selectedOption === "most recent" &&
+                  allSuggestions
+                    .filter((p) =>
+                      p.suggestion
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase())
+                    )
+                    .map((p, index) => (
+                      <div key={p.id}>
+                        {/* Render the suggestions using SuggestionFromUser component */}
+                        <SuggestionFromUser
+                          suggestion={p.suggestion}
+                          businessname={p.businessName}
+                          date={p.updatedAt}
+                          compliment={p.compliment}
+                          index={index}
+                        />
+                      </div>
+                    ))}
+
+                {selectedOption === "suggestions" &&
+                  allSuggestions
+                    .filter((p) => !p.compliment)
+                    .filter((p) =>
+                      p.suggestion
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase())
+                    ) // Filter out compliments
+                    .map((p, index) => (
+                      <div key={p.id}>
+                        {/* Render the suggestions using SuggestionFromUser component */}
+                        <SuggestionFromUser
+                          suggestion={p.suggestion}
+                          businessname={p.businessName}
+                          date={p.updatedAt}
+                          compliment={p.compliment}
+                          index={index}
+                        />
+                      </div>
+                    ))}
+
+                {selectedOption === "compliments" &&
+                  allSuggestions
+                    .filter((p) => p.compliment) // Filter only compliments
+                    .filter((p) =>
+                      p.suggestion
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase())
+                    )
+                    .map((p, index) => (
+                      <div key={p.id}>
+                        {/* Render the compliments using SuggestionFromUser component */}
+                        <SuggestionFromUser
+                          suggestion={p.suggestion}
+                          businessname={p.businessName}
+                          date={p.updatedAt}
+                          compliment={p.compliment}
+                          index={index}
+                        />
+                      </div>
+                    ))}
+              </div>
             )}
 
-            {allSuggestions.map((p, index) => (
+            {/*            {allSuggestions.map((p, index) => (
               <div key={p.id}>
                 {array.includes(p.suggestion) &&
                 array2.includes(p.businessName) ? (
@@ -187,7 +318,7 @@ function UserDashboard({ SignedInUser }) {
                   </div>
                 )}
               </div>
-            ))}
+            ))} */}
           </div>
         )}
       </div>

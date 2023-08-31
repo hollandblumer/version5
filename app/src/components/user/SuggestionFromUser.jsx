@@ -70,7 +70,6 @@ function SuggestionFromUser({
 
         // Add more urls if necessary
         const signedFiledAccessURL = await Storage.get(`${businessname}.jpg`);
-        console.log("url", signedFiledAccessURL);
         setBusinessAvatarURL(signedFiledAccessURL);
       } catch (err) {
         console.error(err);
