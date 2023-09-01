@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
-import { User, Suggestion } from "../../models";
+import { User, Suggestion, UserSuggestion } from "../../models";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
 import SuggestionToBrand from "./SuggestionToBrand";
@@ -24,11 +24,29 @@ function TopCharts() {
 
         const suggestions = await DataStore.query(
           Suggestion,
-          (p) => p.businessName.eq(name),
-          { sort: (s) => s.createdAt(SortDirection.ASCENDING) }
+          (p) => p.businessName.eq(name)
+          // { sort: (s) => s.createdAt(SortDirection.ASCENDING) }
         );
 
-        setSuggestions(suggestions);
+        const suggestionsWithUserCount = await Promise.all(
+          suggestions.map(async (suggestion) => {
+            const users = await DataStore.query(UserSuggestion, (us) =>
+              us.suggestion.id.eq(suggestion.id)
+            );
+            return { ...suggestion, userCount: users.length };
+          })
+        );
+
+        const sortedSuggestions = suggestionsWithUserCount.sort((a, b) => {
+          if (b.userCount !== a.userCount) {
+            // Sort by user count in descending order
+            return b.userCount - a.userCount;
+          } else {
+            // If user counts are the same, sort by createdAt in ascending order
+            return a.createdAt - b.createdAt;
+          }
+        });
+        setSuggestions(sortedSuggestions);
         seenSuggestions.clear();
       } catch (err) {
         console.error(err);

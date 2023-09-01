@@ -10,7 +10,7 @@ import Icon from "../icon/Icon";
 import SuggestionSupporter from "../follower/SuggestionSupporter";
 import {
   faEllipsis,
-  faPlusCircle,
+  faThumbsUp,
   faShareNodes,
   faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
@@ -172,10 +172,10 @@ function SuggestionFromUser({
         </div>
         <div className="like-share">
           <FontAwesomeIcon
-            icon={faPlusCircle}
+            icon={faThumbsUp}
             className="share"
             color="#5b584a"
-            size="xl"
+            size="lg"
           />
           <FontAwesomeIcon
             icon={faShareNodes}

@@ -12,6 +12,7 @@ import {
   faPlusCircle,
   faShareNodes,
   faArrowUpRightFromSquare,
+  faThumbsUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
@@ -146,7 +147,7 @@ function SuggestionToBrand({
 
         <div className="like-share right">
           <FontAwesomeIcon
-            icon={faPlusCircle}
+            icon={faThumbsUp}
             className="share"
             color="#5b584a"
             size="lg"
