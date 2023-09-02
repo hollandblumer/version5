@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Suggestion, UserSuggestion, User } from "../../models";
 import { useParams } from "react-router-dom";
@@ -9,12 +9,14 @@ import {
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
+import fuzzyset from "fuzzyset"; // Import fuzzyset library
 
 function SuggestionForm({ name, email, thisID, businessName }) {
   const [suggestion, setSuggestion] = useState("");
   const [searchList, setSearchList] = useState([]);
   const [suggestionCheck, setSuggestionCheck] = useState(false);
   const [compliment, setCompliment] = useState(false);
+  const [similarSuggestions, setSimilarSuggestions] = useState([]); // State for similar suggestions
 
   const createSearch = async (e) => {
     e.preventDefault();
@@ -26,15 +28,21 @@ function SuggestionForm({ name, email, thisID, businessName }) {
   };
 
   const createSuggestion = async (e) => {
+    e.preventDefault();
+
     const isCompliment = suggestionCheck === true;
     setCompliment(isCompliment);
 
+    // Check if the suggestion exists in either the original suggestions or similar suggestions
     const existingSuggestion = searchList.find(
       (s) => s.suggestion === suggestion && s.businessName === businessName
     );
-    console.log(existingSuggestion);
 
-    if (existingSuggestion) {
+    const existingSimilarSuggestion = similarSuggestions.find(
+      (s) => s.suggestion === suggestion
+    );
+
+    if (existingSuggestion || existingSimilarSuggestion) {
       const existingUserSuggestion = await DataStore.query(
         UserSuggestion,
         (us) =>
@@ -45,17 +53,18 @@ function SuggestionForm({ name, email, thisID, businessName }) {
           ])
       );
 
-      console.log("existUSer", existingUserSuggestion);
-
       if (existingUserSuggestion.length > 0) {
         alert("You have already made this suggestion.");
         return;
       }
 
-      const newUserSuggestion = await DataStore.save(
+      // Save the suggestion based on whether it's an existing suggestion or a similar one
+      const suggestionToSave = existingSuggestion || existingSimilarSuggestion;
+
+      await DataStore.save(
         new UserSuggestion({
           userId: thisID,
-          suggestion: existingSuggestion,
+          suggestion: suggestionToSave,
         })
       );
     } else {
@@ -69,7 +78,7 @@ function SuggestionForm({ name, email, thisID, businessName }) {
         })
       );
 
-      const newUserSuggestion = await DataStore.save(
+      await DataStore.save(
         new UserSuggestion({
           userId: thisID,
           suggestion: newSuggestion,
@@ -81,6 +90,68 @@ function SuggestionForm({ name, email, thisID, businessName }) {
     setCompliment(false);
     window.location.reload(false);
   };
+
+  useEffect(() => {
+    // Function to tokenize a string into words
+    const tokenize = (text) => text.toLowerCase().split(/\s+/);
+
+    // Function to calculate Jaccard similarity between two arrays of words
+    const jaccardSimilarity = (arr1, arr2) => {
+      const set1 = new Set(arr1);
+      const set2 = new Set(arr2);
+      const intersection = new Set([...set1].filter((word) => set2.has(word)));
+      const union = new Set([...set1, ...set2]);
+      return intersection.size / union.size;
+    };
+
+    // Function to update similar suggestions
+    // Function to update similar suggestions
+    const updateSimilarSuggestions = () => {
+      if (suggestion.trim() !== "") {
+        // Tokenize user input
+        const userInputTokens = tokenize(suggestion);
+
+        // Query all suggestions
+        DataStore.query(Suggestion).then((allSuggestions) => {
+          // Create a Set to store unique suggestions
+          const uniqueSuggestions = new Set();
+
+          // Iterate through all suggestions
+          allSuggestions.forEach((sugg) => {
+            // Tokenize suggestion
+            const suggestionTokens = tokenize(sugg.suggestion);
+
+            // Calculate Jaccard similarity between input and suggestion tokens
+            const similarity = jaccardSimilarity(
+              userInputTokens,
+              suggestionTokens
+            );
+
+            // You can adjust the threshold as needed
+            if (similarity > 0.3) {
+              // Add the suggestion to the uniqueSuggestions Set
+              uniqueSuggestions.add(sugg.suggestion);
+            }
+          });
+
+          // Convert the Set back to an array of objects
+          const similarSuggestions = Array.from(uniqueSuggestions).map(
+            (sugg) => ({
+              suggestion: sugg,
+              similarity: 1, // You can customize similarity scores as needed
+            })
+          );
+
+          setSimilarSuggestions(similarSuggestions);
+        });
+      } else {
+        setSimilarSuggestions([]);
+      }
+    };
+
+    // Update similar suggestions whenever user input changes
+    updateSimilarSuggestions();
+  }, [suggestion]);
 
   let array = [];
 
@@ -162,6 +233,28 @@ function SuggestionForm({ name, email, thisID, businessName }) {
         </div>
       ) : (
         <></>
+      )}
+
+      {/* Display similar suggestions */}
+      {similarSuggestions.length > 0 && (
+        <div className="similar-suggestions">
+          <p>Did you mean:</p>
+          <ul>
+            {similarSuggestions.map((simSuggestion) => (
+              <li key={simSuggestion.suggestion}>
+                <button
+                  onClick={() => {
+                    setSuggestion(simSuggestion.suggestion);
+                  }}
+                >
+                  {simSuggestion.suggestion}{" "}
+                  {/* (Similarity:{" "}
+                  {(simSuggestion.similarity * 100).toFixed(2)}%) */}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

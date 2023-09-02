@@ -94,6 +94,7 @@ function UserDashboard({ SignedInUser }) {
 
   const getSuggestionCount = () =>
     allSuggestions.filter((p) => !p.compliment).length;
+
   const getComplimentCount = () =>
     allSuggestions.filter((p) => p.compliment).length;
 

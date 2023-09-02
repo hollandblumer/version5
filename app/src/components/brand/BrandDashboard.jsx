@@ -139,7 +139,7 @@ function BrandDashboard({ SignedInUser }) {
         </div>
 
         <div className="brand-dashboard-right">
-          <TopCharts />
+          <TopCharts thisID={SignedInUser.id} />
         </div>
       </div>
       <div className="brand-dashboard-bottom">

@@ -3,7 +3,7 @@ import { withAuthenticator } from "@aws-amplify/ui-react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
-import { UserSuggestion, Milestone } from "../../models";
+import { UserSuggestion, Milestone, Suggestion } from "../../models";
 import { Storage } from "aws-amplify";
 import Icon from "../icon/Icon";
 import SuggestionSupporterBrand from "../follower/SuggestionSupporterBrand";
@@ -20,13 +20,47 @@ import "../../styles/suggestion/suggestion-general/suggestion.css";
 
 function SuggestionToBrand({
   suggestion,
-  businessname,
+  businessName,
   actualindex,
   iscompliment,
   counter,
+  thisID,
 }) {
   const [users, setUsers] = useState([]);
   const [milestones, setMilestones] = useState([]);
+  const [hasClickedThumbsUp, setHasClickedThumbsUp] = useState(false);
+
+  const handleThumbsUpClick = async () => {
+    if (!hasClickedThumbsUp) {
+      try {
+        // Fetch the Suggestion object based on 'suggestion' and 'businessName'
+        const matchingSuggestions = await DataStore.query(Suggestion, (p) =>
+          p.and((c) => [
+            p.suggestion.eq(suggestion),
+            p.businessName.eq(businessName),
+          ])
+        );
+
+        if (matchingSuggestions.length > 0) {
+          const suggestionToSave = matchingSuggestions[0];
+          await DataStore.save(
+            new UserSuggestion({
+              userId: thisID.thisID,
+              suggestion: suggestionToSave,
+            })
+          );
+
+          setHasClickedThumbsUp(true);
+          window.location.reload();
+        } else {
+          // Handle the case where there's no matching Suggestion
+          console.error("No matching Suggestion found.");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
 
   useEffect(() => {
     const getData = async () => {
@@ -36,7 +70,7 @@ function SuggestionToBrand({
           (c) =>
             c.and((c) => [
               c.suggestion.suggestion.eq(suggestion),
-              c.suggestion.businessName.eq(businessname),
+              c.suggestion.businessName.eq(businessName),
             ]),
           {
             sort: (s) => s.createdAt(SortDirection.ASCENDING),
@@ -52,7 +86,7 @@ function SuggestionToBrand({
 
         const milestones = await DataStore.query(Milestone, (c) =>
           c.and((c) => [
-            c.brandName.eq(businessname),
+            c.brandName.eq(businessName),
             c.suggestion.eq(suggestion),
           ])
         );
@@ -64,7 +98,6 @@ function SuggestionToBrand({
     getData();
   }, []);
 
-  // console.log(suggestions[0])
   let avatararray = [];
   let array = [];
 
@@ -151,6 +184,7 @@ function SuggestionToBrand({
             className="share"
             color="#5b584a"
             size="lg"
+            onClick={handleThumbsUpClick}
           />
           <FontAwesomeIcon
             icon={faShareNodes}
