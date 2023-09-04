@@ -33,28 +33,44 @@ function SuggestionToBrand({
   const handleThumbsUpClick = async () => {
     if (!hasClickedThumbsUp) {
       try {
-        // Fetch the Suggestion object based on 'suggestion' and 'businessName'
-        const matchingSuggestions = await DataStore.query(Suggestion, (p) =>
-          p.and((c) => [
-            p.suggestion.eq(suggestion),
-            p.businessName.eq(businessName),
-          ])
+        // Check if the user has already made a UserSuggestion for this suggestion and businessName
+        const existingUserSuggestion = await DataStore.query(
+          UserSuggestion,
+          (c) =>
+            c.and((c) => [
+              c.user.id.eq(thisID.thisID),
+              c.suggestion.suggestion.eq(suggestion),
+              c.suggestion.businessName.eq(businessName),
+            ])
         );
 
-        if (matchingSuggestions.length > 0) {
-          const suggestionToSave = matchingSuggestions[0];
-          await DataStore.save(
-            new UserSuggestion({
-              userId: thisID.thisID,
-              suggestion: suggestionToSave,
-            })
+        if (existingUserSuggestion.length > 0) {
+          alert("You have already made this suggestion.");
+          return;
+        } else {
+          // Fetch the Suggestion object based on 'suggestion' and 'businessName'
+          const matchingSuggestions = await DataStore.query(Suggestion, (p) =>
+            p.and((c) => [
+              p.suggestion.eq(suggestion),
+              p.businessName.eq(businessName),
+            ])
           );
 
-          setHasClickedThumbsUp(true);
-          window.location.reload();
-        } else {
-          // Handle the case where there's no matching Suggestion
-          console.error("No matching Suggestion found.");
+          if (matchingSuggestions.length > 0) {
+            const suggestionToSave = matchingSuggestions[0];
+            await DataStore.save(
+              new UserSuggestion({
+                userId: thisID.thisID,
+                suggestion: suggestionToSave,
+              })
+            );
+
+            setHasClickedThumbsUp(true);
+            window.location.reload();
+          } else {
+            // Handle the case where there's no matching Suggestion
+            console.error("No matching Suggestion found.");
+          }
         }
       } catch (err) {
         console.error(err);

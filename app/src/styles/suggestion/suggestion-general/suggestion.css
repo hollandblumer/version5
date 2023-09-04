@@ -4,6 +4,10 @@
   justify-content: flex-end;
 }
 
+.thumbs-up-green {
+  color: green;
+}
+
 div.like-share > * {
   margin-left: 0.5rem;
 }
