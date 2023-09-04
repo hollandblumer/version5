@@ -29,9 +29,10 @@ function SuggestionToBrand({
   const [users, setUsers] = useState([]);
   const [milestones, setMilestones] = useState([]);
   const [hasClickedThumbsUp, setHasClickedThumbsUp] = useState(false);
+  const [userHasMadeSuggestion, setUserHasMadeSuggestion] = useState(false);
 
-  const handleThumbsUpClick = async () => {
-    if (!hasClickedThumbsUp) {
+  useEffect(() => {
+    const getData = async () => {
       try {
         // Check if the user has already made a UserSuggestion for this suggestion and businessName
         const existingUserSuggestion = await DataStore.query(
@@ -45,42 +46,9 @@ function SuggestionToBrand({
         );
 
         if (existingUserSuggestion.length > 0) {
-          alert("You have already made this suggestion.");
-          return;
-        } else {
-          // Fetch the Suggestion object based on 'suggestion' and 'businessName'
-          const matchingSuggestions = await DataStore.query(Suggestion, (p) =>
-            p.and((c) => [
-              p.suggestion.eq(suggestion),
-              p.businessName.eq(businessName),
-            ])
-          );
-
-          if (matchingSuggestions.length > 0) {
-            const suggestionToSave = matchingSuggestions[0];
-            await DataStore.save(
-              new UserSuggestion({
-                userId: thisID.thisID,
-                suggestion: suggestionToSave,
-              })
-            );
-
-            setHasClickedThumbsUp(true);
-            window.location.reload();
-          } else {
-            // Handle the case where there's no matching Suggestion
-            console.error("No matching Suggestion found.");
-          }
+          setUserHasMadeSuggestion(true);
         }
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  };
 
-  useEffect(() => {
-    const getData = async () => {
-      try {
         const suggestionUsers = await DataStore.query(
           UserSuggestion,
           (c) =>
@@ -113,6 +81,47 @@ function SuggestionToBrand({
     };
     getData();
   }, []);
+
+  const getThumbsUpColor = () => {
+    return userHasMadeSuggestion ? "green" : "black";
+  };
+
+  const handleThumbsUpClick = async () => {
+    if (!hasClickedThumbsUp) {
+      try {
+        if (userHasMadeSuggestion) {
+          alert("You have already made this suggestion.");
+          return;
+        }
+
+        // Fetch the Suggestion object based on 'suggestion' and 'businessName'
+        const matchingSuggestions = await DataStore.query(Suggestion, (p) =>
+          p.and((c) => [
+            p.suggestion.eq(suggestion),
+            p.businessName.eq(businessName),
+          ])
+        );
+
+        if (matchingSuggestions.length > 0) {
+          const suggestionToSave = matchingSuggestions[0];
+          await DataStore.save(
+            new UserSuggestion({
+              userId: thisID.thisID,
+              suggestion: suggestionToSave,
+            })
+          );
+
+          setHasClickedThumbsUp(true);
+          window.location.reload();
+        } else {
+          // Handle the case where there's no matching Suggestion
+          console.error("No matching Suggestion found.");
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
 
   let avatararray = [];
   let array = [];
@@ -198,7 +207,7 @@ function SuggestionToBrand({
           <FontAwesomeIcon
             icon={faThumbsUp}
             className="share"
-            color="#5b584a"
+            color={getThumbsUpColor()}
             size="lg"
             onClick={handleThumbsUpClick}
           />
