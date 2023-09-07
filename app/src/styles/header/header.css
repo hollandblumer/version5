@@ -123,3 +123,43 @@
   font-size: 18px;
   margin-top: 0.1rem;
 }
+
+.notifications {
+  position: relative;
+  display: inline-block; /* Make sure it's an inline block to align the count properly */
+}
+
+.notifications-count {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgb(161, 140, 209), rgb(251, 194, 235));
+  box-shadow: rgba(157, 78, 236, 0.5) 0px 2px 16px;
+  color: rgb(6, 19, 43);
+  position: absolute;
+  top: -5px; /* Adjust this value to position it properly */
+  right: -5px; /* Adjust this value to position it properly */
+  text-align: center;
+  font-size: 8pt;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.notifications-container {
+  position: fixed;
+  top: 5.9rem; /* Height of the header */
+  right: 0; /* Initially positioned outside the viewport on the right */
+  background: #b7b1a7;
+  width: 300px; /* Adjust the width as needed */
+  height: calc(100% - 5.9rem); /* Set a maximum height based on the viewport height minus header height */
+  overflow-y: auto; /* Enable vertical scrolling if needed */
+  z-index: 100000;
+  transform: translateX(100%); /* Slide out of the viewport initially */
+  animation: slideIn 0.5s forwards; /* Apply the slide-in animation */
+}
+
+@keyframes slideIn {
+  to {
+    right: 0; /* Slide in to the right edge of the screen */
+    transform: translateX(0);
+  }
+}

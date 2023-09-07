@@ -13,11 +13,7 @@ import Soil from "../user/stats/Soil";
 import SuggestionFromUser from "./SuggestionFromUser";
 import UserImpact from "./impact/UserImpact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCaretDown,
-  faSearch,
-  faTimesCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
 function UserDashboard({ SignedInUser }) {
   const { name } = useParams();
@@ -124,14 +120,8 @@ function UserDashboard({ SignedInUser }) {
           {/* <div className="search-user-suggestions"> Search </div> */}
           <select className="chart-select" onChange={(e) => setImpact(!impact)}>
             {" "}
-            <option>
-              Activity{" "}
-              <FontAwesomeIcon icon={faCaretDown} size="sm" color="#5c5848" />{" "}
-            </option>
-            <option>
-              Impact{" "}
-              <FontAwesomeIcon icon={faCaretDown} size="sm" color="#5c5848" />{" "}
-            </option>
+            <option>Activity </option>
+            <option>Impact </option>
           </select>
           <div className="user-suggestion-sort">
             <div className="user-sort-select-container">
@@ -146,14 +136,6 @@ function UserDashboard({ SignedInUser }) {
                 <option value="compliments">compliments</option>
               </select>
             </div>
-            {/*   <div className="trending-search-container">
-              <input
-                type="text"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            </div> */}
 
             <div
               className={
@@ -188,17 +170,6 @@ function UserDashboard({ SignedInUser }) {
                 </div>
               )}
             </div>
-
-            {/*    <div className="user-sort-select-container">
-              <input
-                type="date"
-                id="start"
-                name="trip-start"
-                value="2023-03-08"
-                min="2018-01-01"
-                max="2018-12-31"
-              ></input>{" "}
-            </div> */}
           </div>
         </div>
         {impact ? (
@@ -290,36 +261,6 @@ function UserDashboard({ SignedInUser }) {
                     ))}
               </div>
             )}
-
-            {/*            {allSuggestions.map((p, index) => (
-              <div key={p.id}>
-                {array.includes(p.suggestion) &&
-                array2.includes(p.businessName) ? (
-                  <div></div>
-                ) : (
-                  <div
-                    className={` ${
-                      index % 2 === 0 && index === 0
-                        ? "suggestion-active corner"
-                        : index % 2 == 0
-                        ? " suggestion-active"
-                        : "suggestion-inactive"
-                    }`}
-                  >
-                    <SuggestionFromUser
-                      suggestion={p.suggestion}
-                      businessname={p.businessName}
-                      date={p.updatedAt}
-                      compliment={p.compliment}
-                      index={index}
-                    />
-
-                    {array.push(p.suggestion).hide}
-                    {array2.push(p.businessname).hide}
-                  </div>
-                )}
-              </div>
-            ))} */}
           </div>
         )}
       </div>

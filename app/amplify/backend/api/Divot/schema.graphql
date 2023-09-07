@@ -1,4 +1,10 @@
-type Verification @model @auth(rules: [{ allow: public }]) {
+type Notification @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  message: String
+  Milestone: Milestone @hasOne
+}
+
+type Verification @model @auth(rules: [{allow: public}]) {
   id: ID!
   suggestion: String
   milestone: String
@@ -10,7 +16,7 @@ type Verification @model @auth(rules: [{ allow: public }]) {
   filePathDisapproval: String
 }
 
-type User @model @auth(rules: [{ allow: public }]) {
+type User @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String
   email: String
@@ -28,7 +34,7 @@ type User @model @auth(rules: [{ allow: public }]) {
   Suggestions: [Suggestion] @manyToMany(relationName: "UserSuggestion")
 }
 
-type Suggestion @model @auth(rules: [{ allow: public }]) {
+type Suggestion @model @auth(rules: [{allow: public}]) {
   id: ID!
   businessName: String
   suggestion: String
@@ -39,11 +45,13 @@ type Suggestion @model @auth(rules: [{ allow: public }]) {
   feature: Boolean
   compliment: Boolean
   users: [User] @manyToMany(relationName: "UserSuggestion")
+  Milestones: [Milestone] @hasMany(indexName: "bySuggestion", fields: ["id"])
 }
 
-type Milestone @model @auth(rules: [{ allow: public }]) {
+type Milestone @model @auth(rules: [{allow: public}]) {
   id: ID!
-  suggestion: String
   milestone: String
   brandName: String
+  suggestionID: ID! @index(name: "bySuggestion")
 }
+ 

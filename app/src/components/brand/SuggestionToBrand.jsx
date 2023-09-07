@@ -69,10 +69,7 @@ function SuggestionToBrand({
         });
 
         const milestones = await DataStore.query(Milestone, (c) =>
-          c.and((c) => [
-            c.brandName.eq(businessName),
-            c.suggestion.eq(suggestion),
-          ])
+          c.and((c) => [c.brandName.eq(businessName)])
         );
         setMilestones(milestones);
       } catch (err) {
@@ -80,21 +77,37 @@ function SuggestionToBrand({
       }
     };
     getData();
-  }, []);
+  }, [hasClickedThumbsUp]);
 
   const getThumbsUpColor = () => {
-    return userHasMadeSuggestion ? "green" : "black";
+    return userHasMadeSuggestion ? "#5bab5c" : "black";
   };
 
   const handleThumbsUpClick = async () => {
-    if (!hasClickedThumbsUp) {
-      try {
-        if (userHasMadeSuggestion) {
-          alert("You have already made this suggestion.");
-          return;
-        }
+    try {
+      if (userHasMadeSuggestion) {
+        // User has already made this suggestion, so remove it
+        const existingUserSuggestion = await DataStore.query(
+          UserSuggestion,
+          (c) =>
+            c.and((c) => [
+              c.user.id.eq(thisID.thisID),
+              c.suggestion.suggestion.eq(suggestion),
+              c.suggestion.businessName.eq(businessName),
+            ])
+        );
 
-        // Fetch the Suggestion object based on 'suggestion' and 'businessName'
+        if (existingUserSuggestion.length > 0) {
+          const suggestionToDelete = existingUserSuggestion[0];
+          await DataStore.delete(suggestionToDelete);
+
+          // Update the state to reflect the removal
+          setHasClickedThumbsUp(false);
+          // Set userHasMadeSuggestion to false immediately after removing
+          setUserHasMadeSuggestion(false);
+        }
+      } else {
+        // User hasn't made this suggestion, so add it
         const matchingSuggestions = await DataStore.query(Suggestion, (p) =>
           p.and((c) => [
             p.suggestion.eq(suggestion),
@@ -111,15 +124,17 @@ function SuggestionToBrand({
             })
           );
 
+          // Update the state to reflect the addition
           setHasClickedThumbsUp(true);
-          window.location.reload();
+          // Set userHasMadeSuggestion to true immediately after adding
+          setUserHasMadeSuggestion(true);
         } else {
           // Handle the case where there's no matching Suggestion
           console.error("No matching Suggestion found.");
         }
-      } catch (err) {
-        console.error(err);
       }
+    } catch (err) {
+      console.error(err);
     }
   };
 

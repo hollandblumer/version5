@@ -1,10 +1,42 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncItem, AsyncCollection } from "@aws-amplify/datastore";
 
 
 
 
+
+type EagerNotification = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Notification, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly message?: string | null;
+  readonly Milestone?: Milestone | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly notificationMilestoneId?: string | null;
+}
+
+type LazyNotification = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Notification, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly message?: string | null;
+  readonly Milestone: AsyncItem<Milestone | undefined>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  readonly notificationMilestoneId?: string | null;
+}
+
+export declare type Notification = LazyLoading extends LazyLoadingDisabled ? EagerNotification : LazyNotification
+
+export declare const Notification: (new (init: ModelInit<Notification>) => Notification) & {
+  copyOf(source: Notification, mutator: (draft: MutableModel<Notification>) => MutableModel<Notification> | void): Notification;
+}
 
 type EagerVerification = {
   readonly [__modelMeta__]: {
@@ -117,6 +149,7 @@ type EagerSuggestion = {
   readonly feature?: boolean | null;
   readonly compliment?: boolean | null;
   readonly users?: (UserSuggestion | null)[] | null;
+  readonly Milestones?: (Milestone | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -136,6 +169,7 @@ type LazySuggestion = {
   readonly feature?: boolean | null;
   readonly compliment?: boolean | null;
   readonly users: AsyncCollection<UserSuggestion>;
+  readonly Milestones: AsyncCollection<Milestone>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -152,9 +186,9 @@ type EagerMilestone = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly suggestion?: string | null;
   readonly milestone?: string | null;
   readonly brandName?: string | null;
+  readonly suggestionID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -165,9 +199,9 @@ type LazyMilestone = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
-  readonly suggestion?: string | null;
   readonly milestone?: string | null;
   readonly brandName?: string | null;
+  readonly suggestionID: string;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

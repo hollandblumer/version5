@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Suggestion, UserSuggestion, User } from "../../models";
-import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRight,
-  faCaretDown,
-  faCheck,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
-import fuzzyset from "fuzzyset"; // Import fuzzyset library
 
 function SuggestionForm({ name, email, thisID, businessName }) {
   const [suggestion, setSuggestion] = useState("");
@@ -26,7 +20,6 @@ function SuggestionForm({ name, email, thisID, businessName }) {
 
     setSearchList(searchList);
   };
-
   const createSuggestion = async (e) => {
     e.preventDefault();
 
@@ -39,25 +32,27 @@ function SuggestionForm({ name, email, thisID, businessName }) {
     );
 
     const existingSimilarSuggestion = similarSuggestions.find(
-      (s) => s.suggestion === suggestion
+      (s) => s.suggestion === suggestion && s.businessName === businessName
     );
 
+    const existingUserSuggestion = await DataStore.query(UserSuggestion, (us) =>
+      us.and((c) => [
+        c.suggestion.suggestion.eq(suggestion),
+        c.suggestion.businessName.eq(businessName),
+        c.user.id.eq(thisID),
+      ])
+    );
+
+    if (
+      existingSuggestion ||
+      existingSimilarSuggestion ||
+      existingUserSuggestion.length > 0
+    ) {
+      alert("You have already made this suggestion.");
+      return;
+    }
+
     if (existingSuggestion || existingSimilarSuggestion) {
-      const existingUserSuggestion = await DataStore.query(
-        UserSuggestion,
-        (us) =>
-          us.and((c) => [
-            c.suggestion.suggestion.eq(suggestion),
-            c.suggestion.businessName.eq(businessName),
-            c.user.id.eq(thisID),
-          ])
-      );
-
-      if (existingUserSuggestion.length > 0) {
-        alert("You have already made this suggestion.");
-        return;
-      }
-
       // Save the suggestion based on whether it's an existing suggestion or a similar one
       const suggestionToSave = existingSuggestion || existingSimilarSuggestion;
 
@@ -68,6 +63,7 @@ function SuggestionForm({ name, email, thisID, businessName }) {
         })
       );
     } else {
+      console.log("suggestion", typeof suggestion);
       const newSuggestion = await DataStore.save(
         new Suggestion({
           businessName,
@@ -85,10 +81,10 @@ function SuggestionForm({ name, email, thisID, businessName }) {
         })
       );
     }
-
+    console.log("tryhing here");
     setSuggestion("");
     setCompliment(false);
-    window.location.reload(false);
+    // window.location.reload(false);
   };
 
   useEffect(() => {

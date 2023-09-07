@@ -1,6 +1,87 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getNotification = /* GraphQL */ `
+  query GetNotification($id: ID!) {
+    getNotification(id: $id) {
+      id
+      message
+      Milestone {
+        id
+        milestone
+        brandName
+        suggestionID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      notificationMilestoneId
+      __typename
+    }
+  }
+`;
+export const listNotifications = /* GraphQL */ `
+  query ListNotifications(
+    $filter: ModelNotificationFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listNotifications(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        message
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        notificationMilestoneId
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncNotifications = /* GraphQL */ `
+  query SyncNotifications(
+    $filter: ModelNotificationFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncNotifications(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        message
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        notificationMilestoneId
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
 export const getVerification = /* GraphQL */ `
   query GetVerification($id: ID!) {
     getVerification(id: $id) {
@@ -212,6 +293,11 @@ export const getSuggestion = /* GraphQL */ `
         startedAt
         __typename
       }
+      Milestones {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -291,9 +377,9 @@ export const getMilestone = /* GraphQL */ `
   query GetMilestone($id: ID!) {
     getMilestone(id: $id) {
       id
-      suggestion
       milestone
       brandName
+      suggestionID
       createdAt
       updatedAt
       _version
@@ -312,9 +398,9 @@ export const listMilestones = /* GraphQL */ `
     listMilestones(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        suggestion
         milestone
         brandName
+        suggestionID
         createdAt
         updatedAt
         _version
@@ -343,9 +429,42 @@ export const syncMilestones = /* GraphQL */ `
     ) {
       items {
         id
-        suggestion
         milestone
         brandName
+        suggestionID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const milestonesBySuggestionID = /* GraphQL */ `
+  query MilestonesBySuggestionID(
+    $suggestionID: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelMilestoneFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    milestonesBySuggestionID(
+      suggestionID: $suggestionID
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        milestone
+        brandName
+        suggestionID
         createdAt
         updatedAt
         _version

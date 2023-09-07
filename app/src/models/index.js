@@ -4,9 +4,10 @@ import { schema } from './schema';
 
 
 
-const { Verification, User, Suggestion, Milestone, UserSuggestion } = initSchema(schema);
+const { Notification, Verification, User, Suggestion, Milestone, UserSuggestion } = initSchema(schema);
 
 export {
+  Notification,
   Verification,
   User,
   Suggestion,

@@ -1,5 +1,89 @@
 export const schema = {
     "models": {
+        "Notification": {
+            "name": "Notification",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "message": {
+                    "name": "message",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "Milestone": {
+                    "name": "Milestone",
+                    "isArray": false,
+                    "type": {
+                        "model": "Milestone"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_ONE",
+                        "associatedWith": [
+                            "id"
+                        ],
+                        "targetNames": [
+                            "notificationMilestoneId"
+                        ]
+                    }
+                },
+                "createdAt": {
+                    "name": "createdAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "updatedAt": {
+                    "name": "updatedAt",
+                    "isArray": false,
+                    "type": "AWSDateTime",
+                    "isRequired": false,
+                    "attributes": [],
+                    "isReadOnly": true
+                },
+                "notificationMilestoneId": {
+                    "name": "notificationMilestoneId",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                }
+            },
+            "syncable": true,
+            "pluralName": "Notifications",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "auth",
+                    "properties": {
+                        "rules": [
+                            {
+                                "allow": "public",
+                                "operations": [
+                                    "create",
+                                    "update",
+                                    "delete",
+                                    "read"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        },
         "Verification": {
             "name": "Verification",
             "fields": {
@@ -349,6 +433,22 @@ export const schema = {
                         ]
                     }
                 },
+                "Milestones": {
+                    "name": "Milestones",
+                    "isArray": true,
+                    "type": {
+                        "model": "Milestone"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": [
+                            "suggestionID"
+                        ]
+                    }
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -401,13 +501,6 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "suggestion": {
-                    "name": "suggestion",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": false,
-                    "attributes": []
-                },
                 "milestone": {
                     "name": "milestone",
                     "isArray": false,
@@ -420,6 +513,13 @@ export const schema = {
                     "isArray": false,
                     "type": "String",
                     "isRequired": false,
+                    "attributes": []
+                },
+                "suggestionID": {
+                    "name": "suggestionID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
                     "attributes": []
                 },
                 "createdAt": {
@@ -445,6 +545,15 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "bySuggestion",
+                        "fields": [
+                            "suggestionID"
+                        ]
+                    }
                 },
                 {
                     "type": "auth",
@@ -566,5 +675,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "cf44627222cf5d0e8221f774670bd806"
+    "version": "78577113df191571822b06cd6995bc69"
 };

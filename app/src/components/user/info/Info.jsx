@@ -35,7 +35,7 @@ function Info({
           // sx={{ height: "100px", width: "100px" }}
           sx={{ height: "120px", width: "120px" }}
           style={{
-            border: "0.1px solid #eeeeee",
+            border: "1px solid white",
           }}
         />
         <div className="profile-info">
@@ -47,7 +47,7 @@ function Info({
               </div>
             </div>
             <div className="action-buttons">
-              <button className="info-share">
+              <div className="info-share">
                 <button className="user-action-button follow">
                   {" "}
                   <FontAwesomeIcon
@@ -62,7 +62,7 @@ function Info({
                   size="lg"
                   color="#5c5848"
                 />{" "} */}
-              </button>
+              </div>
               <button className="info-share">
                 <FontAwesomeIcon
                   icon={faArrowUpRightFromSquare}

@@ -1,6 +1,96 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createNotification = /* GraphQL */ `
+  mutation CreateNotification(
+    $input: CreateNotificationInput!
+    $condition: ModelNotificationConditionInput
+  ) {
+    createNotification(input: $input, condition: $condition) {
+      id
+      message
+      Milestone {
+        id
+        milestone
+        brandName
+        suggestionID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      notificationMilestoneId
+      __typename
+    }
+  }
+`;
+export const updateNotification = /* GraphQL */ `
+  mutation UpdateNotification(
+    $input: UpdateNotificationInput!
+    $condition: ModelNotificationConditionInput
+  ) {
+    updateNotification(input: $input, condition: $condition) {
+      id
+      message
+      Milestone {
+        id
+        milestone
+        brandName
+        suggestionID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      notificationMilestoneId
+      __typename
+    }
+  }
+`;
+export const deleteNotification = /* GraphQL */ `
+  mutation DeleteNotification(
+    $input: DeleteNotificationInput!
+    $condition: ModelNotificationConditionInput
+  ) {
+    deleteNotification(input: $input, condition: $condition) {
+      id
+      message
+      Milestone {
+        id
+        milestone
+        brandName
+        suggestionID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      notificationMilestoneId
+      __typename
+    }
+  }
+`;
 export const createVerification = /* GraphQL */ `
   mutation CreateVerification(
     $input: CreateVerificationInput!
@@ -195,6 +285,11 @@ export const createSuggestion = /* GraphQL */ `
         startedAt
         __typename
       }
+      Milestones {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -220,6 +315,11 @@ export const updateSuggestion = /* GraphQL */ `
       feature
       compliment
       users {
+        nextToken
+        startedAt
+        __typename
+      }
+      Milestones {
         nextToken
         startedAt
         __typename
@@ -253,6 +353,11 @@ export const deleteSuggestion = /* GraphQL */ `
         startedAt
         __typename
       }
+      Milestones {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -269,9 +374,9 @@ export const createMilestone = /* GraphQL */ `
   ) {
     createMilestone(input: $input, condition: $condition) {
       id
-      suggestion
       milestone
       brandName
+      suggestionID
       createdAt
       updatedAt
       _version
@@ -288,9 +393,9 @@ export const updateMilestone = /* GraphQL */ `
   ) {
     updateMilestone(input: $input, condition: $condition) {
       id
-      suggestion
       milestone
       brandName
+      suggestionID
       createdAt
       updatedAt
       _version
@@ -307,9 +412,9 @@ export const deleteMilestone = /* GraphQL */ `
   ) {
     deleteMilestone(input: $input, condition: $condition) {
       id
-      suggestion
       milestone
       brandName
+      suggestionID
       createdAt
       updatedAt
       _version

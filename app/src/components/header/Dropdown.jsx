@@ -15,10 +15,12 @@ function Dropdown({ url, username }) {
     navigate(`/${username}`);
     refreshPage();
   };
-  
+
   function refreshPage() {
     window.location.reload(false);
   }
+
+  const isValidUrl = typeof url === "string" && url.trim() !== "";
 
   return (
     <div className="dropdown-container">
@@ -31,8 +33,7 @@ function Dropdown({ url, username }) {
         <Link to={`/${username}`}>
           {" "}
           <Avatar
-            sx={{}}
-            src={url}
+            src={isValidUrl ? url : ""}
             onClick={() => {
               goLink(username);
             }}
@@ -46,18 +47,17 @@ function Dropdown({ url, username }) {
         <div className="dropdown-box">
           {" "}
           <Link to={`/`} replace>
-          <button
-            className="sign-out-button"
-            onClick={async () => {
-              try {
-                await Auth.signOut();
-                window.location.reload(false);
-                await DataStore.clear();
-               
-              } catch (error) {
-                console.error('Error signing out:', error);
-              }
-            }}
+            <button
+              className="sign-out-button"
+              onClick={async () => {
+                try {
+                  await Auth.signOut();
+                  window.location.reload(false);
+                  await DataStore.clear();
+                } catch (error) {
+                  console.error("Error signing out:", error);
+                }
+              }}
             >
               Sign Out{" "}
             </button>

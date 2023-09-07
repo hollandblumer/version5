@@ -29,7 +29,6 @@ function SuggestionFromUser({
   index,
 }) {
   const { name } = useParams();
-
   const [suggestions, setSuggestions] = useState([]);
   const [users, setUsers] = useState([]);
   const [businessAvatarURL, setBusinessAvatarURL] = useState("");

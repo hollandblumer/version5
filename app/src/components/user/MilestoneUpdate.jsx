@@ -1,11 +1,11 @@
 import { useState, useEffect, React } from "react";
 import { DataStore } from "@aws-amplify/datastore";
-import { Milestone, Suggestion } from "../../models";
+import { Milestone } from "../../models";
 import "../../styles/brand/milestone/milestone.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
-function MilestoneTracker({ suggestion, businessname, index }) {
+function MilestoneUpdate({ suggestion, businessname, suggestionID }) {
   const [milestones, setMilestones] = useState([]);
   const [icon, setIcon] = useState();
 
@@ -15,16 +15,11 @@ function MilestoneTracker({ suggestion, businessname, index }) {
         const milestones = await DataStore.query(Milestone, (c) =>
           c.and((c) => [
             c.brandName.eq(businessname),
-            c.suggestion.eq(suggestion),
+            c.suggestionID.eq(suggestionID),
           ])
         );
 
         setMilestones(milestones);
-
-        const icon = await DataStore.query(Suggestion, (p) =>
-          p.suggestion.eq(suggestion)
-        );
-        setIcon(icon[0].icon);
       } catch (err) {
         console.error(err);
       }
@@ -46,4 +41,4 @@ function MilestoneTracker({ suggestion, businessname, index }) {
   );
 }
 
-export default MilestoneTracker;
+export default MilestoneUpdate;

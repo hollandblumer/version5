@@ -24,10 +24,8 @@ function TopBrands() {
           suggestions.map(async (p) => {
             const suggestion = await p.suggestion;
             const brandName = suggestion.businessName;
-
             // Fetch image URL from storage
             const imageUrl = await Storage.get(`${brandName}.jpg`);
-            console.log(imageUrl);
 
             // Update avatarUrls state using setAvatarUrls function
             setAvatarUrls((prevAvatarUrls) => ({

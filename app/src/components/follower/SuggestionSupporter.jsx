@@ -10,6 +10,7 @@ function SuggestionSupporter({ username }) {
     const getData = async () => {
       try {
         const signedFiledAccessURL = await Storage.get(`${username}.jpg`);
+
         setSignedProfileURL(signedFiledAccessURL);
       } catch (err) {
         console.error(err);

@@ -1,6 +1,93 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateNotification = /* GraphQL */ `
+  subscription OnCreateNotification(
+    $filter: ModelSubscriptionNotificationFilterInput
+  ) {
+    onCreateNotification(filter: $filter) {
+      id
+      message
+      Milestone {
+        id
+        milestone
+        brandName
+        suggestionID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      notificationMilestoneId
+      __typename
+    }
+  }
+`;
+export const onUpdateNotification = /* GraphQL */ `
+  subscription OnUpdateNotification(
+    $filter: ModelSubscriptionNotificationFilterInput
+  ) {
+    onUpdateNotification(filter: $filter) {
+      id
+      message
+      Milestone {
+        id
+        milestone
+        brandName
+        suggestionID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      notificationMilestoneId
+      __typename
+    }
+  }
+`;
+export const onDeleteNotification = /* GraphQL */ `
+  subscription OnDeleteNotification(
+    $filter: ModelSubscriptionNotificationFilterInput
+  ) {
+    onDeleteNotification(filter: $filter) {
+      id
+      message
+      Milestone {
+        id
+        milestone
+        brandName
+        suggestionID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      notificationMilestoneId
+      __typename
+    }
+  }
+`;
 export const onCreateVerification = /* GraphQL */ `
   subscription OnCreateVerification(
     $filter: ModelSubscriptionVerificationFilterInput
@@ -182,6 +269,11 @@ export const onCreateSuggestion = /* GraphQL */ `
         startedAt
         __typename
       }
+      Milestones {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -206,6 +298,11 @@ export const onUpdateSuggestion = /* GraphQL */ `
       feature
       compliment
       users {
+        nextToken
+        startedAt
+        __typename
+      }
+      Milestones {
         nextToken
         startedAt
         __typename
@@ -238,6 +335,11 @@ export const onDeleteSuggestion = /* GraphQL */ `
         startedAt
         __typename
       }
+      Milestones {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -253,9 +355,9 @@ export const onCreateMilestone = /* GraphQL */ `
   ) {
     onCreateMilestone(filter: $filter) {
       id
-      suggestion
       milestone
       brandName
+      suggestionID
       createdAt
       updatedAt
       _version
@@ -271,9 +373,9 @@ export const onUpdateMilestone = /* GraphQL */ `
   ) {
     onUpdateMilestone(filter: $filter) {
       id
-      suggestion
       milestone
       brandName
+      suggestionID
       createdAt
       updatedAt
       _version
@@ -289,9 +391,9 @@ export const onDeleteMilestone = /* GraphQL */ `
   ) {
     onDeleteMilestone(filter: $filter) {
       id
-      suggestion
       milestone
       brandName
+      suggestionID
       createdAt
       updatedAt
       _version

@@ -22,14 +22,19 @@ import About from "./pages/about/About";
 import ContactUs from "./pages/contact-us/ContactUs";
 import Apply from "./pages/apply/Apply";
 import TermsOfService from "./pages/terms-of-service/TermsOfService";
+import Notifications from "./components/notification/Notifications";
+import GetNotificationsCount from "./components/notification/GetNotificationCount";
 
 function App() {
   const [userName, setUserName] = useState("");
   const [signedProfileURL, setSignedProfileURL] = useState([]);
   const [userData, setUserData] = useState([]);
+  const [userId, setUserId] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [showInput, setShowInput] = useState(false);
   const location = useLocation();
+  const [showNotifications, setShowNotifications] = useState(false);
+
   const path = location.pathname;
 
   DataStore.start();
@@ -40,10 +45,10 @@ function App() {
     const getData = async () => {
       try {
         const info = await Auth.currentSession();
-        const userid = info.idToken.payload["cognito:username"];
-
+        const userId = info.idToken.payload["cognito:username"];
+        setUserId(userId);
         const signedInUserData = await DataStore.query(User, (post) =>
-          post.id.eq(userid)
+          post.id.eq(userId)
         );
         setUserData(signedInUserData[0]);
         setUserName(signedInUserData[0].name);
@@ -125,17 +130,31 @@ function App() {
             </Link>
           )}
           {loggedIn ? (
-            <FontAwesomeIcon
-              className="bell-icon"
-              icon={faBell}
-              color="#b7b1a7"
-              size="lg"
-            />
+            <div
+              className="notifications"
+              onClick={() => setShowNotifications(!showNotifications)}
+            >
+              <FontAwesomeIcon
+                className="bell-icon"
+                icon={faBell}
+                color="#b7b1a7"
+                size="lg"
+              />
+              <GetNotificationsCount userId={userId} />
+            </div>
           ) : (
             <div></div>
           )}
         </div>
       </div>
+
+      {showNotifications && (
+        <Notifications
+          userId={userId}
+          showNotifications={showNotifications}
+          setShowNotifications={setShowNotifications}
+        />
+      )}
 
       <div className={` ${showInput ? "app-content" : "app-content-2"}`}>
         {showInput ? (

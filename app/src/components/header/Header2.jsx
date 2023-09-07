@@ -34,7 +34,7 @@ function Header2({ url, user }) {
         <Search />
         <div className="logo">App</div>
         <div className="header-icons">
-          <Dropdown url={url} user={user} />
+          {/* <Dropdown url={url} user={user} /> */}
           <FontAwesomeIcon icon={faBell} color="#a7a7a7" size="lg" />
 
           {/* <FontAwesomeIcon icon={faBell} color="#cccccc" size="lg" /> */}
@@ -52,12 +52,11 @@ function Header2({ url, user }) {
 export default withAuthenticator(Header2, {
   components: {
     Logo,
-  
+
     SignIn: {
       Header: SignInHeader,
-     
+
       Footer: SignInFooter,
     },
-
   },
 });

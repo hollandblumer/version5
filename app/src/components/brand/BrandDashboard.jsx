@@ -49,6 +49,7 @@ function BrandDashboard({ SignedInUser }) {
         const brandFilePath = brandData[0].filePath;
 
         const signedBrandFilePath = await Storage.get(brandFilePath);
+        console.log("hello", signedBrandFilePath);
         setBrandLocation(brandData[0].location);
         setParentBrand(brandData[0].parentBrand);
         setBrandIndustry(brandData[0].industry);
@@ -69,10 +70,6 @@ function BrandDashboard({ SignedInUser }) {
         await Promise.all(promisearray).then((values) => {
           setSuggestions(values);
         });
-
-        const milestones1 = await DataStore.query(Milestone, (p) =>
-          p.brandName.eq(name)
-        );
 
         const milestones = await DataStore.query(
           Milestone,
@@ -110,7 +107,6 @@ function BrandDashboard({ SignedInUser }) {
     };
     getData();
   }, []);
-
   let array = [];
   let milestonearray = [];
   let avatararray = [];
@@ -216,10 +212,9 @@ function BrandDashboard({ SignedInUser }) {
                     <MilestoneTracker
                       url={brandURL}
                       businessname={p.brandName}
-                      suggestion={p.suggestion}
-                      index={index}
-                      currentMilestone={p.milestone}
+                      suggestionID={p.suggestionID}
                       date={p.createdAt}
+                      milestone={p.milestone}
                     />
                   </div>
                 </div>
