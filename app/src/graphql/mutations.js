@@ -1,6 +1,69 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const createFollow = /* GraphQL */ `
+  mutation CreateFollow(
+    $input: CreateFollowInput!
+    $condition: ModelFollowConditionInput
+  ) {
+    createFollow(input: $input, condition: $condition) {
+      id
+      Users {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updateFollow = /* GraphQL */ `
+  mutation UpdateFollow(
+    $input: UpdateFollowInput!
+    $condition: ModelFollowConditionInput
+  ) {
+    updateFollow(input: $input, condition: $condition) {
+      id
+      Users {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deleteFollow = /* GraphQL */ `
+  mutation DeleteFollow(
+    $input: DeleteFollowInput!
+    $condition: ModelFollowConditionInput
+  ) {
+    deleteFollow(input: $input, condition: $condition) {
+      id
+      Users {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
 export const createNotification = /* GraphQL */ `
   mutation CreateNotification(
     $input: CreateNotificationInput!
@@ -188,6 +251,11 @@ export const createUser = /* GraphQL */ `
         startedAt
         __typename
       }
+      followers {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -222,6 +290,11 @@ export const updateUser = /* GraphQL */ `
         startedAt
         __typename
       }
+      followers {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -252,6 +325,11 @@ export const deleteUser = /* GraphQL */ `
       hasCompletedForm
       industry
       Suggestions {
+        nextToken
+        startedAt
+        __typename
+      }
+      followers {
         nextToken
         startedAt
         __typename
@@ -415,6 +493,153 @@ export const deleteMilestone = /* GraphQL */ `
       milestone
       brandName
       suggestionID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const createFollowUser = /* GraphQL */ `
+  mutation CreateFollowUser(
+    $input: CreateFollowUserInput!
+    $condition: ModelFollowUserConditionInput
+  ) {
+    createFollowUser(input: $input, condition: $condition) {
+      id
+      followId
+      userId
+      follow {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      user {
+        id
+        name
+        email
+        update
+        filePath
+        strength
+        isBusiness
+        location
+        bio
+        isPrivate
+        parentBrand
+        isVerified
+        hasCompletedForm
+        industry
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const updateFollowUser = /* GraphQL */ `
+  mutation UpdateFollowUser(
+    $input: UpdateFollowUserInput!
+    $condition: ModelFollowUserConditionInput
+  ) {
+    updateFollowUser(input: $input, condition: $condition) {
+      id
+      followId
+      userId
+      follow {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      user {
+        id
+        name
+        email
+        update
+        filePath
+        strength
+        isBusiness
+        location
+        bio
+        isPrivate
+        parentBrand
+        isVerified
+        hasCompletedForm
+        industry
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const deleteFollowUser = /* GraphQL */ `
+  mutation DeleteFollowUser(
+    $input: DeleteFollowUserInput!
+    $condition: ModelFollowUserConditionInput
+  ) {
+    deleteFollowUser(input: $input, condition: $condition) {
+      id
+      followId
+      userId
+      follow {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      user {
+        id
+        name
+        email
+        update
+        filePath
+        strength
+        isBusiness
+        location
+        bio
+        isPrivate
+        parentBrand
+        isVerified
+        hasCompletedForm
+        industry
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version

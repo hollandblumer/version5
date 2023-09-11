@@ -2,12 +2,12 @@ import React from "react";
 import "../../../styles/user/dashboard/user-dashboard.css";
 import "../../../styles/user/info/info.css";
 import Avatar from "@mui/material/Avatar";
+import Follower from "../../follower/Follower";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsis,
   faLocationDot,
   faArrowUpRightFromSquare,
-  faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 
 function Info({
@@ -48,15 +48,7 @@ function Info({
             </div>
             <div className="action-buttons">
               <div className="info-share">
-                <button className="user-action-button follow">
-                  {" "}
-                  <FontAwesomeIcon
-                    icon={faUserPlus}
-                    className="share"
-                    color="#aa7950"
-                    size="lg"
-                  />{" "}
-                </button>{" "}
+                <Follower signedInUser={user} />
                 {/*  <FontAwesomeIcon
                   icon={faEnvelope}
                   size="lg"

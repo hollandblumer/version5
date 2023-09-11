@@ -13,13 +13,10 @@ function Notifications({ userId, showNotifications, setShowNotifications }) {
           UserSuggestion,
           (p) => p.user.id.eq(userId) // Replace with the actual user ID
         );
-        console.log("yea", userSuggestions);
         // Extract suggestion IDs
         const suggestionIDs = userSuggestions.map(
           (userSuggestion) => userSuggestion.suggestionId
         );
-
-        console.log("trying", suggestionIDs);
 
         // Fetch milestones associated with suggestion IDs
         // Fetch milestones associated with suggestion IDs

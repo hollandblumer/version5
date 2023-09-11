@@ -1,6 +1,74 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getFollow = /* GraphQL */ `
+  query GetFollow($id: ID!) {
+    getFollow(id: $id) {
+      id
+      Users {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const listFollows = /* GraphQL */ `
+  query ListFollows(
+    $filter: ModelFollowFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listFollows(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncFollows = /* GraphQL */ `
+  query SyncFollows(
+    $filter: ModelFollowFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncFollows(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
 export const getNotification = /* GraphQL */ `
   query GetNotification($id: ID!) {
     getNotification(id: $id) {
@@ -187,6 +255,11 @@ export const getUser = /* GraphQL */ `
       hasCompletedForm
       industry
       Suggestions {
+        nextToken
+        startedAt
+        __typename
+      }
+      followers {
         nextToken
         startedAt
         __typename
@@ -465,6 +538,170 @@ export const milestonesBySuggestionID = /* GraphQL */ `
         milestone
         brandName
         suggestionID
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const getFollowUser = /* GraphQL */ `
+  query GetFollowUser($id: ID!) {
+    getFollowUser(id: $id) {
+      id
+      followId
+      userId
+      follow {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      user {
+        id
+        name
+        email
+        update
+        filePath
+        strength
+        isBusiness
+        location
+        bio
+        isPrivate
+        parentBrand
+        isVerified
+        hasCompletedForm
+        industry
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const listFollowUsers = /* GraphQL */ `
+  query ListFollowUsers(
+    $filter: ModelFollowUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listFollowUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        followId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const syncFollowUsers = /* GraphQL */ `
+  query SyncFollowUsers(
+    $filter: ModelFollowUserFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncFollowUsers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        followId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const followUsersByFollowId = /* GraphQL */ `
+  query FollowUsersByFollowId(
+    $followId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelFollowUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    followUsersByFollowId(
+      followId: $followId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        followId
+        userId
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      nextToken
+      startedAt
+      __typename
+    }
+  }
+`;
+export const followUsersByUserId = /* GraphQL */ `
+  query FollowUsersByUserId(
+    $userId: ID!
+    $sortDirection: ModelSortDirection
+    $filter: ModelFollowUserFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    followUsersByUserId(
+      userId: $userId
+      sortDirection: $sortDirection
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        followId
+        userId
         createdAt
         updatedAt
         _version

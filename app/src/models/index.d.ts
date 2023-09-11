@@ -1,10 +1,38 @@
 import { ModelInit, MutableModel, __modelMeta__, ManagedIdentifier } from "@aws-amplify/datastore";
 // @ts-ignore
-import { LazyLoading, LazyLoadingDisabled, AsyncItem, AsyncCollection } from "@aws-amplify/datastore";
+import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@aws-amplify/datastore";
 
 
 
 
+
+type EagerFollow = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Follow, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Users?: (FollowUser | null)[] | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyFollow = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Follow, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly Users: AsyncCollection<FollowUser>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Follow = LazyLoading extends LazyLoadingDisabled ? EagerFollow : LazyFollow
+
+export declare const Follow: (new (init: ModelInit<Follow>) => Follow) & {
+  copyOf(source: Follow, mutator: (draft: MutableModel<Follow>) => MutableModel<Follow> | void): Follow;
+}
 
 type EagerNotification = {
   readonly [__modelMeta__]: {
@@ -100,6 +128,7 @@ type EagerUser = {
   readonly hasCompletedForm?: boolean | null;
   readonly industry?: string | null;
   readonly Suggestions?: (UserSuggestion | null)[] | null;
+  readonly followers?: (FollowUser | null)[] | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -124,6 +153,7 @@ type LazyUser = {
   readonly hasCompletedForm?: boolean | null;
   readonly industry?: string | null;
   readonly Suggestions: AsyncCollection<UserSuggestion>;
+  readonly followers: AsyncCollection<FollowUser>;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -210,6 +240,40 @@ export declare type Milestone = LazyLoading extends LazyLoadingDisabled ? EagerM
 
 export declare const Milestone: (new (init: ModelInit<Milestone>) => Milestone) & {
   copyOf(source: Milestone, mutator: (draft: MutableModel<Milestone>) => MutableModel<Milestone> | void): Milestone;
+}
+
+type EagerFollowUser = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<FollowUser, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly followId?: string | null;
+  readonly userId?: string | null;
+  readonly follow: Follow;
+  readonly user: User;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyFollowUser = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<FollowUser, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly followId?: string | null;
+  readonly userId?: string | null;
+  readonly follow: AsyncItem<Follow>;
+  readonly user: AsyncItem<User>;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type FollowUser = LazyLoading extends LazyLoadingDisabled ? EagerFollowUser : LazyFollowUser
+
+export declare const FollowUser: (new (init: ModelInit<FollowUser>) => FollowUser) & {
+  copyOf(source: FollowUser, mutator: (draft: MutableModel<FollowUser>) => MutableModel<FollowUser> | void): FollowUser;
 }
 
 type EagerUserSuggestion = {

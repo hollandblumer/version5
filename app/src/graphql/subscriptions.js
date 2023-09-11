@@ -1,6 +1,60 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateFollow = /* GraphQL */ `
+  subscription OnCreateFollow($filter: ModelSubscriptionFollowFilterInput) {
+    onCreateFollow(filter: $filter) {
+      id
+      Users {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateFollow = /* GraphQL */ `
+  subscription OnUpdateFollow($filter: ModelSubscriptionFollowFilterInput) {
+    onUpdateFollow(filter: $filter) {
+      id
+      Users {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteFollow = /* GraphQL */ `
+  subscription OnDeleteFollow($filter: ModelSubscriptionFollowFilterInput) {
+    onDeleteFollow(filter: $filter) {
+      id
+      Users {
+        nextToken
+        startedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
 export const onCreateNotification = /* GraphQL */ `
   subscription OnCreateNotification(
     $filter: ModelSubscriptionNotificationFilterInput
@@ -179,6 +233,11 @@ export const onCreateUser = /* GraphQL */ `
         startedAt
         __typename
       }
+      followers {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -210,6 +269,11 @@ export const onUpdateUser = /* GraphQL */ `
         startedAt
         __typename
       }
+      followers {
+        nextToken
+        startedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
@@ -237,6 +301,11 @@ export const onDeleteUser = /* GraphQL */ `
       hasCompletedForm
       industry
       Suggestions {
+        nextToken
+        startedAt
+        __typename
+      }
+      followers {
         nextToken
         startedAt
         __typename
@@ -394,6 +463,150 @@ export const onDeleteMilestone = /* GraphQL */ `
       milestone
       brandName
       suggestionID
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onCreateFollowUser = /* GraphQL */ `
+  subscription OnCreateFollowUser(
+    $filter: ModelSubscriptionFollowUserFilterInput
+  ) {
+    onCreateFollowUser(filter: $filter) {
+      id
+      followId
+      userId
+      follow {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      user {
+        id
+        name
+        email
+        update
+        filePath
+        strength
+        isBusiness
+        location
+        bio
+        isPrivate
+        parentBrand
+        isVerified
+        hasCompletedForm
+        industry
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onUpdateFollowUser = /* GraphQL */ `
+  subscription OnUpdateFollowUser(
+    $filter: ModelSubscriptionFollowUserFilterInput
+  ) {
+    onUpdateFollowUser(filter: $filter) {
+      id
+      followId
+      userId
+      follow {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      user {
+        id
+        name
+        email
+        update
+        filePath
+        strength
+        isBusiness
+        location
+        bio
+        isPrivate
+        parentBrand
+        isVerified
+        hasCompletedForm
+        industry
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+  }
+`;
+export const onDeleteFollowUser = /* GraphQL */ `
+  subscription OnDeleteFollowUser(
+    $filter: ModelSubscriptionFollowUserFilterInput
+  ) {
+    onDeleteFollowUser(filter: $filter) {
+      id
+      followId
+      userId
+      follow {
+        id
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
+      user {
+        id
+        name
+        email
+        update
+        filePath
+        strength
+        isBusiness
+        location
+        bio
+        isPrivate
+        parentBrand
+        isVerified
+        hasCompletedForm
+        industry
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+        __typename
+      }
       createdAt
       updatedAt
       _version
