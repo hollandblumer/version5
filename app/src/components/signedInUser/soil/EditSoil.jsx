@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Suggestion, UserSuggestion } from "../../../models";
 import { useParams } from "react-router-dom";
-import SuggestionFromUser from "../SuggestionFromUser";
+import SuggestionFromUser from "../../user/SuggestionFromUser";
 
 function EditSoil({ brandArray }) {
   const [truePromiseList, setTruePromiseList] = useState([]);

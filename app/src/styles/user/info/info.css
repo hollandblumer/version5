@@ -271,3 +271,8 @@
 .bio {
   margin-top: 0.3rem;
 }
+
+.settings-form {
+  z-index: 10000;
+  background: blue;
+}

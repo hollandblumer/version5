@@ -5,19 +5,19 @@ import { useParams } from "react-router-dom";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
 import { User, UserSuggestion } from "../../models";
 import { Storage } from "aws-amplify";
-import Info from "./info/Info";
+import Info from "./info/SignedInUserInfo";
 import SignedInUserInfo from "../signedInUser/info/SignedInUserInfo";
 import "../../styles/user/dashboard/user-dashboard.css";
 import "../../styles/dashboard/dashboard.css";
 import "../../styles/user/activity/activity.css";
 import Soil from "../user/stats/Soil";
 import SignedInUserSoil from "../signedInUser/soil/SignedInUserSoil";
-import SuggestionFromUser from "./SuggestionFromUser";
-import UserImpact from "./impact/UserImpact";
+import SignedInSuggestionFromUser from "./SignedInSuggestionFromUser";
+import UserImpact from "../user/impact/UserImpact";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 
-function UserDashboard({ SignedInUser }) {
+function SignedInUserDashboard({ SignedInUser }) {
   const { name } = useParams();
   const [userId, setUserId] = useState([]);
   const [allSuggestions, setAllSuggestions] = useState([]);
@@ -33,15 +33,10 @@ function UserDashboard({ SignedInUser }) {
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [selectedOption, setSelectedOption] = useState("most recent"); // Default to suggestions
   const [searchTerm, setSearchTerm] = useState(""); //
-  const [signedInUserProfile, setSignedInUserProfile] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
       try {
-        SignedInUser.name === name
-          ? setSignedInUserProfile(true)
-          : setSignedInUserProfile(false);
-
         const URLUserData = await DataStore.query(User, (p) => p.name.eq(name));
         setURLUser(URLUserData[0]);
 
@@ -107,37 +102,20 @@ function UserDashboard({ SignedInUser }) {
   return (
     <div className="user-dashboard">
       <div className="user-dashboard-top">
-        {signedInUserProfile ? (
-          <>
-            <SignedInUserInfo
-              url={profileURL}
-              user={name}
-              suggestionCount={getSuggestionCount()}
-              complimentCount={getComplimentCount()}
-              brandcount={uniqueArray.length}
-              createdAt={userCreatedAt}
-              location={userLocation}
-              bio={userBio}
-            />
-            <SignedInUserSoil brandArray={uniqueArray} />
-          </>
-        ) : (
-          <>
-            {" "}
-            <Info
-              url={profileURL}
-              user={name}
-              suggestionCount={getSuggestionCount()}
-              complimentCount={getComplimentCount()}
-              brandcount={uniqueArray.length}
-              createdAt={userCreatedAt}
-              location={userLocation}
-              bio={userBio}
-              signedInUser={SignedInUser}
-            />
-            <Soil brandArray={uniqueArray} />
-          </>
-        )}
+        <>
+          {" "}
+          <SignedInUserInfo
+            url={profileURL}
+            user={name}
+            suggestionCount={getSuggestionCount()}
+            complimentCount={getComplimentCount()}
+            brandcount={uniqueArray.length}
+            createdAt={userCreatedAt}
+            location={userLocation}
+            bio={userBio}
+          />
+          <SignedInUserSoil brandArray={uniqueArray} />
+        </>
       </div>
       <div className="user-dashboard-bottom">
         <div className="sort-row">
@@ -232,9 +210,9 @@ function UserDashboard({ SignedInUser }) {
                     .map((p, index) => (
                       <div key={p.id}>
                         {/* Render the suggestions using SuggestionFromUser component */}
-                        <SuggestionFromUser
+                        <SignedInSuggestionFromUser
                           suggestion={p.suggestion}
-                          businessName={p.businessName}
+                          businessname={p.businessName}
                           date={p.updatedAt}
                           compliment={p.compliment}
                           index={index}
@@ -254,12 +232,13 @@ function UserDashboard({ SignedInUser }) {
                     .map((p, index) => (
                       <div key={p.id}>
                         {/* Render the suggestions using SuggestionFromUser component */}
-                        <SuggestionFromUser
+                        <SignedInSuggestionFromUser
                           suggestion={p.suggestion}
                           businessname={p.businessName}
                           date={p.updatedAt}
                           compliment={p.compliment}
                           index={index}
+                          thisID={SignedInUser.id}
                         />
                       </div>
                     ))}
@@ -275,12 +254,13 @@ function UserDashboard({ SignedInUser }) {
                     .map((p, index) => (
                       <div key={p.id}>
                         {/* Render the compliments using SuggestionFromUser component */}
-                        <SuggestionFromUser
+                        <SignedInSuggestionFromUser
                           suggestion={p.suggestion}
                           businessname={p.businessName}
                           date={p.updatedAt}
                           compliment={p.compliment}
                           index={index}
+                          thisID={SignedInUser.id}
                         />
                       </div>
                     ))}
@@ -293,4 +273,4 @@ function UserDashboard({ SignedInUser }) {
   );
 }
 
-export default UserDashboard;
+export default SignedInUserDashboard;

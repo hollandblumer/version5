@@ -3,12 +3,14 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { DataStore } from "aws-amplify";
-import { Follow, User } from "../../models"; // Import your Amplify models
+import { Follow, User, FollowUser } from "../../models"; // Import your Amplify models
 
 function Follower({ signedInUser }) {
   const { name } = useParams();
   const [followerLength, setFollowerLength] = useState(0);
-  console.log("sI", signedInUser);
+  const [isFollowing, setIsFollowing] = useState(false); // State to track if signedInUser is following
+  const [followId, setFollowId] = useState(null); // Store the ID of the follow relationship if signedInUser is following
+
   useEffect(() => {
     async function fetchUserData() {
       try {
@@ -16,38 +18,34 @@ function Follower({ signedInUser }) {
         const userData = await DataStore.query(User, (u) => u.name.eq(name));
 
         if (userData.length === 1) {
-          // If the user exists, you can directly use user.followers as the value of followersArray
           const user = userData[0];
+          console.log("ufollow", user);
           const followData = await DataStore.query(Follow);
 
           const usersInFollow = await Promise.all(
             followData.map(async (follow) => {
-              // Access the 'values' property of follow.Users to get the array of users
               const usersArray = (await follow.Users?.values) || [];
               return usersArray;
             })
           );
 
-          // Flatten the array of arrays into a single array
           const flattenedUsersInFollow = usersInFollow.flat();
           setFollowerLength(flattenedUsersInFollow.length);
 
-          // Extract user names and file paths
-          const userNames = [];
-          const filePaths = [];
-
-          await Promise.all(
-            flattenedUsersInFollow.map(async (model) => {
-              if (model.user) {
-                // Access the user object from the Model (await is used here)
-                const user = await model.user;
-
-                // Extract and push the "name" and "filePath" properties to their respective arrays
-                userNames.push(user.name);
-                filePaths.push(user.filePath);
-              }
-            })
+          // Find the follow relationship where signedInUser is following
+          const followRelationship = flattenedUsersInFollow.find(
+            (userModel) =>
+              userModel.user && userModel.user.userId === signedInUser.id
           );
+          console.log("fR", followRelationship);
+
+          if (followRelationship) {
+            setIsFollowing(true);
+            setFollowId(flattenedUsersInFollow[0].followId);
+          } else {
+            setIsFollowing(false);
+            setFollowId(flattenedUsersInFollow[0].followId);
+          }
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -55,11 +53,58 @@ function Follower({ signedInUser }) {
     }
 
     fetchUserData();
-  }, []);
+  }, [signedInUser]);
+
+  const handleFollowClick = async () => {
+    try {
+      // Create a new follow relationship for the signed-in user
+      const newFollow = await DataStore.save(
+        new Follow({
+          // You may need to adjust the data structure based on your schema
+          // For example, set the appropriate user and follow ID.
+          // Replace 'user' and 'followId' with your actual attribute names.
+          user: signedInUser, // Set to the signed-in user
+          followId: followId, // Set the follow ID to the appropriate value
+        })
+      );
+      setIsFollowing(true); // Update state to indicate that the user is following
+      setFollowId(newFollow.followId); // Store the ID of the new follow relationship
+    } catch (error) {
+      console.error("Error following:", error);
+    }
+  };
+
+  // Function to handle unfollowing
+  const handleUnfollowClick = async () => {
+    if (followId) {
+      try {
+        const existingUserFollow = await DataStore.query(FollowUser, (c) =>
+          c.and((c) => [c.user.id.eq(signedInUser.id)])
+        );
+
+        // Delete the follow relationship by its ID
+        const suggestionToDelete = existingUserFollow[0];
+        await DataStore.delete(suggestionToDelete);
+        setIsFollowing(false); // Update state to indicate that the user is no longer following
+        setFollowId(null);
+      } catch (error) {
+        console.error("Error unfollowing:", error);
+      }
+    }
+  };
+
   return (
     <div>
       {followerLength}
-      <FontAwesomeIcon icon={faUserPlus} />{" "}
+      {isFollowing ? (
+        // If signedInUser is following, show the "Following" button with an unfollow action
+        <button onClick={handleUnfollowClick}>Unfollow</button>
+      ) : (
+        // If signedInUser is not following, show the "Follow" button
+        <button onClick={handleFollowClick}>
+          <FontAwesomeIcon icon={faUserPlus} />
+        </button>
+      )}
     </div>
   );
 }

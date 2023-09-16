@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import Dirt from "./Dirt";
+import Dirt from "../../user/stats/Dirt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEllipsis,
   faLock,
   faXmarkCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import EditSoil from "../../signedInUser/soil/EditSoil";
+import EditSoil from "./EditSoil";
 
-function Soil({ brandArray }) {
+function SignedInUserSoil({ brandArray }) {
   const [showEditSoil, setShowEditSoil] = useState(false);
   const [hovered, setHovered] = useState(false);
   const [expanded, setExpanded] = useState(false);
@@ -62,7 +62,7 @@ function Soil({ brandArray }) {
         <></>
       )}
 
-      {/*   {showEditSoil && (
+      {showEditSoil && (
         <div className="edit-soil">
           <button
             className="exit-edit-soil"
@@ -72,9 +72,9 @@ function Soil({ brandArray }) {
           </button>
           <EditSoil brandArray={brandArray} />
         </div>
-      )} */}
+      )}
     </div>
   );
 }
 
-export default Soil;
+export default SignedInUserSoil;

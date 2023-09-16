@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { withAuthenticator } from "@aws-amplify/ui-react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { DataStore, SortDirection } from "@aws-amplify/datastore";
-import { UserSuggestion, Verification, Suggestion } from "../../models";
+import { DataStore } from "@aws-amplify/datastore";
+import { UserSuggestion, Verification } from "../../models";
 import Avatar from "@mui/material/Avatar";
 import { Storage } from "aws-amplify";
 import Icon from "../icon/Icon";
@@ -13,15 +15,15 @@ import {
   faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import MilestoneUpdate from "./MilestoneUpdate";
+import MilestoneUpdate from "../user/MilestoneUpdate";
 import { Link } from "react-router-dom";
 
 import "../../styles/suggestion/suggestion-user/suggestions.css";
 import "../../styles/suggestion/suggestion-general/suggestion.css";
 
-function SuggestionFromUser({
+function SignedInSuggestionFromUser({
   suggestion,
-  businessName,
+  businessname,
   date,
   compliment,
   index,
@@ -32,43 +34,22 @@ function SuggestionFromUser({
   const [users, setUsers] = useState([]);
   const [businessAvatarURL, setBusinessAvatarURL] = useState("");
   const [verification, setVerification] = useState(false);
-  const [hasClickedThumbsUp, setHasClickedThumbsUp] = useState(false);
-  const [userHasMadeSuggestion, setUserHasMadeSuggestion] = useState(false);
-  const [thumbsUpState, setThumbsUpState] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false); // State to track whether the user has deleted themselves from the suggestion
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const existingUserSuggestion = await DataStore.query(
-          UserSuggestion,
-          (c) =>
-            c.and((c) => [
-              c.user.id.eq(thisID),
-              c.suggestion.suggestion.eq(suggestion),
-              c.suggestion.businessName.eq(businessName),
-            ])
-        );
-
-        if (existingUserSuggestion.length > 0) {
-          setUserHasMadeSuggestion(true);
-        }
-
-        const suggestionUsers = await DataStore.query(
-          UserSuggestion,
-          (c) =>
-            c.and((c) => [
-              c.suggestion.suggestion.eq(suggestion),
-              c.suggestion.businessName.eq(businessName),
-            ]),
-          {
-            sort: (s) => s.createdAt(SortDirection.ASCENDING),
-          }
+        const suggestionUsers = await DataStore.query(UserSuggestion, (c) =>
+          c.and((c) => [
+            c.suggestion.suggestion.eq(suggestion),
+            c.suggestion.businessName.eq(businessname),
+          ])
         );
 
         const milestoneVerification = await DataStore.query(Verification, (c) =>
           c.and((c) => [
             c.suggestion.eq(suggestion),
-            c.brandName.eq(businessName),
+            c.brandName.eq(businessname),
           ])
         );
 
@@ -89,78 +70,43 @@ function SuggestionFromUser({
         });
 
         // Add more urls if necessary
-        const signedFiledAccessURL = await Storage.get(`${businessName}.jpg`);
+        const signedFiledAccessURL = await Storage.get(`${businessname}.jpg`);
         setBusinessAvatarURL(signedFiledAccessURL);
       } catch (err) {
         console.error(err);
       }
     };
     getData();
-  }, [name, thumbsUpState]);
-
-  const handleThumbsUpClick = async () => {
-    try {
-      if (userHasMadeSuggestion) {
-        // User has already made this suggestion, so remove only the user's like
-        const existingUserSuggestion = await DataStore.query(
-          UserSuggestion,
-          (c) =>
-            c.and((c) => [
-              c.user.id.eq(thisID),
-              c.suggestion.suggestion.eq(suggestion),
-              c.suggestion.businessName.eq(businessName),
-            ])
-        );
-
-        if (existingUserSuggestion.length > 0) {
-          const suggestionToDelete = existingUserSuggestion[0];
-          await DataStore.delete(suggestionToDelete);
-
-          // Update the state to reflect the removal
-          setHasClickedThumbsUp(false);
-          // Set userHasMadeSuggestion to false immediately after removing
-          setUserHasMadeSuggestion(false);
-          setThumbsUpState(false);
-        }
-      } else {
-        // User hasn't made this suggestion, so add it
-        const matchingSuggestions = await DataStore.query(Suggestion, (p) =>
-          p.and((c) => [
-            p.suggestion.eq(suggestion),
-            p.businessName.eq(businessName),
-          ])
-        );
-
-        if (matchingSuggestions.length > 0) {
-          const suggestionToSave = matchingSuggestions[0];
-          await DataStore.save(
-            new UserSuggestion({
-              userId: thisID,
-              suggestion: suggestionToSave,
-            })
-          );
-
-          // Update the state to reflect the addition
-          setHasClickedThumbsUp(true);
-          // Set userHasMadeSuggestion to true immediately after adding
-          setUserHasMadeSuggestion(true);
-          setThumbsUpState(true);
-        } else {
-          // Handle the case where there's no matching Suggestion
-          console.error("No matching Suggestion found.");
-        }
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  }, [isDeleted]);
 
   let avatararray = [];
   let formatdate = new Date(date);
   let array = [];
 
-  const getThumbsUpColor = () => {
-    return userHasMadeSuggestion ? "#5bab5c" : "black";
+  const handleDeleteClick = async () => {
+    try {
+      // Remove the user from the suggestion
+      const existingUserSuggestion = await DataStore.query(
+        UserSuggestion,
+        (c) =>
+          c.and((c) => [
+            c.user.id.eq(thisID),
+            c.suggestion.suggestion.eq(suggestion),
+            c.suggestion.businessName.eq(businessname),
+          ])
+      );
+
+      if (existingUserSuggestion.length > 0) {
+        const suggestionToDelete = existingUserSuggestion[0];
+        await DataStore.delete(suggestionToDelete);
+
+        // Update the state to reflect the removal
+        setIsDeleted(true);
+        window.location.reload();
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -181,10 +127,10 @@ function SuggestionFromUser({
           <div className="suggestion-core">
             <div className="suggestion-avatar">
               {" "}
-              <Link to={`/${businessName}`}>
+              <Link to={`/${businessname}`}>
                 <Avatar
                   src={businessAvatarURL}
-                  alt={businessName}
+                  alt={businessname}
                   sx={{ height: "50px", width: "50px" }}
                   style={{
                     border: "1px solid #dbdbdb",
@@ -194,7 +140,7 @@ function SuggestionFromUser({
               <Icon icon="placeholderIcon" />
             </div>
             <div className="suggestion-core-content">
-              <div className="brand-username"> @{businessName} </div>
+              <div className="brand-username"> @{businessname} </div>
             </div>
           </div>
 
@@ -215,7 +161,7 @@ function SuggestionFromUser({
               {" "}
               <MilestoneUpdate
                 suggestion={suggestion}
-                businessname={businessName}
+                businessname={businessname}
               />
             </div>
           )}
@@ -252,13 +198,7 @@ function SuggestionFromUser({
           </div>
         </div>
         <div className="like-share">
-          <FontAwesomeIcon
-            icon={faThumbsUp}
-            className="share"
-            color={getThumbsUpColor()}
-            size="lg"
-            onClick={handleThumbsUpClick}
-          />
+          <button onClick={handleDeleteClick}>delete</button>
           <FontAwesomeIcon
             icon={faShareNodes}
             className="share"
@@ -277,4 +217,4 @@ function SuggestionFromUser({
   );
 }
 
-export default SuggestionFromUser;
+export default SignedInSuggestionFromUser;

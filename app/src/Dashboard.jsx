@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { DataStore } from "@aws-amplify/datastore";
 import { User } from "./models";
 import UserDashboard from "./components/user/UserDashboard";
+import SignedInUserDashboard from "./components/signedInUser/SignedInUserDashboard";
 import BrandDashboard from "./components/brand/BrandDashboard";
 import Footer2 from "./components/footer/Footer2";
 
@@ -12,7 +13,6 @@ function Dashboard({ SignedInUser }) {
   const [userExists, setUserExists] = useState(true);
   const [isPrivate, setIsPrivate] = useState(false);
   const [urlUser, setURLUser] = useState([]);
-
   useEffect(() => {
     const getData = async () => {
       try {
@@ -42,7 +42,9 @@ function Dashboard({ SignedInUser }) {
 
   return (
     <div className="dashboard">
-      {isPrivate ? (
+      {SignedInUser.name === name ? ( // Check if SignedInUser.name equals name from useParams
+        <SignedInUserDashboard SignedInUser={SignedInUser} />
+      ) : isPrivate ? (
         <p>User's profile is private</p>
       ) : isBusiness ? (
         <BrandDashboard SignedInUser={SignedInUser} />

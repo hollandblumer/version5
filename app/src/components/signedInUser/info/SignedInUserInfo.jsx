@@ -9,8 +9,9 @@ import {
   faLocationDot,
   faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import InfoSettings from "./InfoSettings";
 
-function Info({
+function SignedInUserInfo({
   user,
   url,
   suggestionCount,
@@ -19,7 +20,6 @@ function Info({
   createdAt,
   location,
   bio,
-  signedInUser,
 }) {
   const joinDate = new Date(createdAt); // Convert the createdAt string to a Date object
   const monthAbbreviation = joinDate.toLocaleString("default", {
@@ -49,7 +49,8 @@ function Info({
             </div>
             <div className="action-buttons">
               <div className="info-share">
-                <Follower signedInUser={signedInUser} />
+                <InfoSettings />
+                {/* <Follower signedInUser={user} /> */}
                 {/*  <FontAwesomeIcon
                   icon={faEnvelope}
                   size="lg"
@@ -126,4 +127,4 @@ function Info({
   );
 }
 
-export default Info;
+export default SignedInUserInfo;

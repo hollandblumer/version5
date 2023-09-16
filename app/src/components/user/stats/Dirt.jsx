@@ -27,7 +27,7 @@ function Dirt({ brand, showBlankAvatar }) {
   const avatarStyle = {
     height: "72px",
     width: "72px",
-    border: "1px solid #dbdbdb",
+    border: "1px solid #dbdbdb ",
     backgroundColor: showBlankAvatar ? "#e8e5dd" : "transparent", // Set background color here
     filter: signedProfileURL ? "none" : "blur(5px)", // Apply blur effect if no URL
   };
