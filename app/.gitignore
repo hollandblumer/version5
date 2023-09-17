@@ -11,6 +11,9 @@
 # production
 /build
 
+# Ignore the configuration file
+config.js
+
 # misc
 .DS_Store
 .env.local
@@ -43,3 +46,4 @@ amplifytools.xcconfig
 .secret-*
 **.sample
 #amplify-do-not-edit-end
+
