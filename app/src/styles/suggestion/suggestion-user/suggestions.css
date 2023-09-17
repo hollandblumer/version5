@@ -56,15 +56,6 @@
   justify-content: flex-start;
 }
 
-.suggestion-core-content {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  color: #272626;
-  margin-left: -0.2rem;
-}
-
 .suggestion-active {
   background: #dcd8cd;
   background: url(../../../assets/images/speckletexture.png);

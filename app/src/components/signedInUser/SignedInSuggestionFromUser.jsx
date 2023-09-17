@@ -11,8 +11,9 @@ import SuggestionSupporter from "../follower/SuggestionSupporter";
 import {
   faEllipsis,
   faThumbsUp,
-  faShareNodes,
+  faShare,
   faArrowUpRightFromSquare,
+  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MilestoneUpdate from "../user/MilestoneUpdate";
@@ -139,9 +140,8 @@ function SignedInSuggestionFromUser({
               </Link>
               <Icon icon="placeholderIcon" />
             </div>
-            <div className="suggestion-core-content">
-              <div className="brand-username"> @{businessname} </div>
-            </div>
+
+            <div className="brand-username"> @{businessname} </div>
           </div>
 
           <div className="suggestion">
@@ -167,12 +167,12 @@ function SignedInSuggestionFromUser({
           )}
 
           <div className="update">
-            <FontAwesomeIcon
+            {/*    <FontAwesomeIcon
               icon={faArrowUpRightFromSquare}
               className="share"
               color="#a7a7a7"
               size="sm"
-            />
+            /> */}
           </div>
         </div>
 
@@ -198,12 +198,23 @@ function SignedInSuggestionFromUser({
           </div>
         </div>
         <div className="like-share">
-          <button onClick={handleDeleteClick}>delete</button>
+          <button
+            onClick={handleDeleteClick}
+            style={{ border: "none", background: "none", padding: 0 }}
+          >
+            {" "}
+            <FontAwesomeIcon
+              icon={faTrashCan}
+              className="share"
+              color="#aa7950"
+              size="lg"
+            />
+          </button>
           <FontAwesomeIcon
-            icon={faShareNodes}
+            icon={faShare}
             className="share"
-            color="#5b584a"
-            size="xl"
+            color="#aa7950"
+            size="lg"
           />
           <FontAwesomeIcon
             icon={faEllipsis}

@@ -57,13 +57,13 @@ function SignedInUserInfo({
                   color="#5c5848"
                 />{" "} */}
               </div>
-              <button className="info-share">
+              {/*    <button className="info-share">
                 <FontAwesomeIcon
                   icon={faArrowUpRightFromSquare}
                   size="1x"
                   color="#5c5848"
                 />{" "}
-              </button>
+              </button> */}
               <button className="info-share">
                 <FontAwesomeIcon
                   icon={faEllipsis}
@@ -79,7 +79,7 @@ function SignedInUserInfo({
             <div className="user-info-row">
               <div className="cell">
                 {" "}
-                <div className="bio-emphasis">{suggestionCount}</div>{" "}
+                <div className="bio-emphasis left">{suggestionCount}</div>{" "}
                 <div className="grey left">Suggestions</div>{" "}
               </div>
               <div className="cell left">
@@ -89,7 +89,7 @@ function SignedInUserInfo({
               </div>
               <div className="cell left">
                 {" "}
-                <div className="bio-emphasis">0</div>{" "}
+                <div className="bio-emphasis left">0</div>{" "}
                 <div className="grey left">Awards</div>{" "}
                 {/*   <div className="strength">
                   {" "}
@@ -117,8 +117,8 @@ function SignedInUserInfo({
             )}
             <div className="member-since">
               {" "}
-              <div className="grey">Member since</div>{" "}
-              <div className="bio-emphasis">{joinMonthYear}</div>{" "}
+              <div className="grey right">Member since</div>{" "}
+              <div className="bio-emphasis left">{joinMonthYear}</div>{" "}
             </div>
           </div>
         </div>
