@@ -122,6 +122,7 @@
   background: #e8e6da;
   background: #cec4af;
   border: none;
+  text-align: center;
 }
 
 [data-amplify-authenticator] {
