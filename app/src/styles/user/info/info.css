@@ -27,6 +27,22 @@
   margin-top: 1.4rem;
 }
 
+.info-avatar-wrapper {
+  position: relative; /* Ensure the container's position is relative */
+  width: 150px; /* Set the width and height as needed */
+  height: 130px;
+}
+
+.avatar-background {
+  position: absolute; /* Position the background image absolutely within the container */
+  top: -7px;
+  left: -7px;
+  width: 135px;
+  height: 135px;
+  border-radius: 50%; /* Make it circular if needed */
+  z-index: 1000; /* Place the background image behind the avatar */
+}
+
 .action-buttons {
   display: flex;
   flex-direction: row;

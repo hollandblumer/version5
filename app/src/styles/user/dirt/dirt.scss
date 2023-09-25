@@ -1,11 +1,53 @@
 .dirt-container {
   margin: 3rem 2rem 0 2rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
   flex: 1;
   position: relative;
+}
+
+.edit-dirt {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #8c8c8c;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+}
+
+.eye-icon {
+  width: 20px;
+  height: 15px;
+}
+
+.featured-brands-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.side-eye {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  color: #8c8c8c;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+}
+.featured-brands {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .lock-icon {
@@ -28,13 +70,6 @@
     text-align: center;
     white-space: nowrap; /* Prevent text from wrapping to a new line */
   }
-}
-
-.featured-brands {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  flex: 1;
 }
 
 .more-dirt {

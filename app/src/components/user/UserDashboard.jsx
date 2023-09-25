@@ -144,8 +144,8 @@ function UserDashboard({ SignedInUser }) {
           {/* <div className="search-user-suggestions"> Search </div> */}
           <select className="chart-select" onChange={(e) => setImpact(!impact)}>
             {" "}
-            <option>Activity </option>
-            <option>Impact </option>
+            <option>ACTIVITY </option>
+            <option>IMPACT </option>
           </select>
           <div className="user-suggestion-sort">
             <div className="user-sort-select-container">

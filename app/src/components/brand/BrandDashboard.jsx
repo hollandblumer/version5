@@ -140,7 +140,7 @@ function BrandDashboard({ SignedInUser }) {
       </div>
       <div className="brand-dashboard-bottom">
         <div className="brand-nav">
-          <h3> Business Activity </h3>
+          <h3> BUSINESS ACTIVITY </h3>
           <div className="business-nav-row">
             <div
               className={`business-nav-item ${

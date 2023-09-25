@@ -65,6 +65,7 @@ function Home() {
 
   return (
     <div className="home">
+      <div className="about-blurb"></div>
       <div
         className="home-search-container"
         onMouseEnter={() => setShowInput(true)}
@@ -94,7 +95,14 @@ function Home() {
               )}
             </span>
           </div>
-
+          {!qrScannerVisible && (
+            <img
+              src={QRCode}
+              className="QR-code"
+              alt="QR Code"
+              onClick={handleQRCodeClick}
+            />
+          )}
           <button className="xbutton" onClick={() => setSearch("")}>
             <FontAwesomeIcon icon={faCircleXmark} size="sm" color="#c7c7c7" />
           </button>
@@ -156,14 +164,8 @@ function Home() {
           </div>
         )}
       </div>
-      {!qrScannerVisible && (
-        <img
-          src={QRCode}
-          className="QR-code"
-          alt="QR Code"
-          onClick={handleQRCodeClick}
-        />
-      )}
+      <TopBrands />
+
       {qrScannerVisible && (
         <QRScanner
           onClose={() => {
@@ -176,7 +178,7 @@ function Home() {
       <div className="qr-result">
         {/* ... Display scanned QR code data ... */}
       </div>
-      <TopBrands />
+
       <Footer2 />
     </div>
   );

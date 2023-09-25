@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./styles/signin/signin.css";
 import { Helmet } from "react-helmet";
-import { faComments, faMessage } from "@fortawesome/free-solid-svg-icons";
+import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function TidioWrapper({ icon }) {
@@ -69,8 +69,6 @@ function TidioWrapper({ icon }) {
           async
         />
       </Helmet>
-
-      {/* Info message */}
     </div>
   );
 }

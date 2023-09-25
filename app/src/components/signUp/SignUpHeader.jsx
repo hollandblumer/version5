@@ -14,7 +14,7 @@ export function SignUpHeader() {
       <div className="signup-brand-form-link">
         {" "}
         If you are a brand, please go to this link{" "}
-        <Link onClick="" className="sign-in-return-link">
+        <Link to="/claim-brand" className="sign-in-return-link">
           here
         </Link>
       </div>

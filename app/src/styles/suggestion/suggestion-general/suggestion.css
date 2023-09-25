@@ -37,6 +37,7 @@ div.like-share > * {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
+  max-width: 20rem;
 }
 
 div.suggestion-content-container > * {
@@ -94,7 +95,7 @@ div.suggestion-content-container > * {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   width: 5rem;
 }
 
@@ -225,7 +226,7 @@ div.suggestion-content-container > * {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background: #e0d8c7;
   background: rgba(213, 195, 167, 0.8117647059);
   background: rgb(216, 206, 188);

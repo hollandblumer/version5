@@ -4,6 +4,9 @@ import { Storage } from "aws-amplify";
 import { UserSuggestion } from "../../models";
 import Avatar from "@mui/material/Avatar";
 // ... Other imports
+import topbrandsimage from "../../assets/images/top-brands-compliment.png";
+import AvatarDesign from "../../assets/images/avatar-design1.png";
+import { Link } from "react-router-dom";
 
 function TopBrands() {
   const [topBrands, setTopBrands] = useState([]);
@@ -55,17 +58,29 @@ function TopBrands() {
   }, []);
 
   return (
-    <div>
-      <h1>Top Brands with Most Compliments</h1>
+    <div className="top-brands">
+      <div className="top-brands-title">
+        TOP BRANDS WITH THE MOST COMPLIMENTS
+      </div>
       {topBrands.length > 0 ? (
-        <ul>
+        <div className="top-brands-icons">
           {topBrands.map((brandName, index) => (
-            <li key={index}>
-              <Avatar alt={brandName} src={avatarUrls[brandName]} />
-              {brandName}
-            </li>
+            <div className="info-avatar-wrapper">
+              <Link to={`/${brandName}`}>
+                <img
+                  src={AvatarDesign}
+                  alt="Avatar Background"
+                  className="avatar-background"
+                />
+                <Avatar
+                  alt={brandName}
+                  sx={{ height: "115px", width: "115px" }}
+                  src={avatarUrls[brandName]}
+                />
+              </Link>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No brands with compliments found.</p>
       )}

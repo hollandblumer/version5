@@ -19,7 +19,13 @@ body {
   background: #f8f6f3;
   background: #f8f4ed;
   background: #f4f2ea;
+
   background: #f7f6f0;
+}
+@media (max-width: 768px) {
+  body {
+    background: url(./assets/images/small-background.png);
+  }
 }
 
 select {
@@ -30,10 +36,11 @@ select {
 h3 {
   margin: 0;
   padding: 0;
-  font-family: "itc-souvenir";
+  font-family: "wintter-test";
   color: #aa7950;
-  font-size: 24px;
+  font-size: 14pt;
   font-weight: 500;
+  letter-spacing: 0.2px;
 }
 
 input {
@@ -57,6 +64,14 @@ input {
   src: url("./assets/fonts/itc-souvenir/itc-souvenir.woff2") format("woff2"),
     /* Super Modern Browsers */
       url("./assets/fonts/itc-souvenir/itc-souvenir.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "wintter-test";
+  src: url("./assets/fonts/wintter-font-test/Wintter.woff") format("woff");
+  /* Super Modern Browsers */
   font-weight: 400;
   font-style: normal;
 }

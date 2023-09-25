@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Dirt from "../../user/stats/Dirt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faEllipsis,
   faLock,
   faXmarkCircle,
+  faEye,
+  faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import EditSoil from "./EditSoil";
+import EyeIcon from "../../../assets/images/eye-icon.png";
 
 function SignedInUserSoil({ brandArray }) {
   const [showEditSoil, setShowEditSoil] = useState(false);
@@ -17,49 +19,74 @@ function SignedInUserSoil({ brandArray }) {
     <div
       className={`dirt-container ${brandArray.length === 0 ? "no-brands" : ""}`}
     >
-      {brandArray.length === 0 ? (
-        <div className="featured-brands">
-          {[...Array(5)].map((_, index) => (
-            <Dirt key={index} showBlankAvatar={true} />
-          ))}
+      <div className={`edit-dirt ${brandArray.length === 0 ? "blur" : ""}`}>
+        {expanded ? (
+          <img
+            className="eye-icon"
+            src={EyeIcon}
+            onClick={() => setExpanded(false)}
+          />
+        ) : (
+          <img
+            className="eye-icon"
+            src={EyeIcon}
+            onClick={() => setExpanded(true)}
+          />
+        )}
+        <div
+          onClick={() => setShowEditSoil(true)} // Show the popup on click
+          className={`share left ${
+            brandArray.length === 0 ? "unclickable" : ""
+          }`}
+        >
+          edit
         </div>
-      ) : (
-        brandArray.map((p, index) => (
+      </div>
+      <div className="featured-brands-container">
+        {brandArray.length === 0 ? (
+          <div className="featured-brands">
+            {[...Array(5)].map((_, index) => (
+              <Dirt key={index} showBlankAvatar={true} />
+            ))}
+          </div>
+        ) : (
+          brandArray.map((p, index) => (
+            <div className="featured-brands" key={index}>
+              <Dirt brand={p} showBlankAvatar={false} />
+            </div>
+          ))
+        )}
+
+        {brandArray.length === 0 ? (
+          <div className="lock-icon">
+            <div
+              onMouseEnter={() => setHovered(true)}
+              onMouseLeave={() => setHovered(false)}
+            >
+              <FontAwesomeIcon icon={faLock} color="#b7b1a7" size="2x" />
+              {hovered && brandArray.length === 0 && (
+                <span className="hover-text">
+                  This user does not have featured brands or is private
+                </span>
+              )}
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+      {expanded &&
+        brandArray.length > 7 &&
+        brandArray.slice(7).map((p, index) => (
           <div className="featured-brands" key={index}>
             <Dirt brand={p} showBlankAvatar={false} />
           </div>
-        ))
-      )}
+        ))}
 
-      <div
-        className={`more-dirt ${brandArray.length === 0 ? "blur" : ""}`}
-        onClick={() => setShowEditSoil(true)} // Show the popup on click
-      >
-        {" "}
-        <FontAwesomeIcon
-          icon={faEllipsis}
-          className={`share ${brandArray.length === 0 ? "unclickable" : ""}`}
-          color="white"
-          size="1x"
-        />
-      </div>
-
-      {brandArray.length === 0 ? (
-        <div className="lock-icon">
-          <div
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-          >
-            <FontAwesomeIcon icon={faLock} color="#b7b1a7" size="2x" />
-            {hovered && brandArray.length === 0 && (
-              <span className="hover-text">
-                This user does not have featured brands or is private
-              </span>
-            )}
-          </div>
+      {expanded && brandArray.length < 8 && (
+        <div className="featured-brands">
+          User has no brands {console.log("made it")}
         </div>
-      ) : (
-        <></>
       )}
 
       {showEditSoil && (

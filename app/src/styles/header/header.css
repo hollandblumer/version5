@@ -29,6 +29,7 @@
   background: #faf8e9;
   background: #f2f0e4;
   background: #f7f6f0;
+  background: none;
 }
 
 .header-logo {
@@ -44,13 +45,29 @@
 .logo {
   font-family: "hippie-mojo";
   font-size: 75px;
-  color: #a97a50;
-  color: #a9784f;
-  color: #aa7950;
   margin-top: 2rem;
   letter-spacing: 0.2px;
+  color: #aa7950;
+  color: #a97a50;
 }
 
+@keyframes lava-text {
+  0% {
+    color: #5c3512; /* Your desired lava color */
+  }
+  25% {
+    color: #824928; /* Intermediate color */
+  }
+  50% {
+    color: #914fa9; /* Another lava color */
+  }
+  75% {
+    color: #a9784f; /* Another intermediate color */
+  }
+  100% {
+    color: #aa7950; /* Yet another lava color */
+  }
+}
 .beta {
   font-family: "itc-souvenir";
   text-align: center;

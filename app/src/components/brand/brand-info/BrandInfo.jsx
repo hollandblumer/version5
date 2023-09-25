@@ -12,7 +12,7 @@ import {
   faLink,
   faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
-
+import AvatarDesign from "../../../assets/images/avatar-design-5.png";
 import "../../../styles/brand/info/brand-info.css";
 
 function BrandInfo({
@@ -29,14 +29,21 @@ function BrandInfo({
   let link = null;
   return (
     <div className="brand-info">
-      <Avatar
-        src={url}
-        // sx={{ height: "90px", width: "90px" }}
-        sx={{ height: "115px", width: "115px" }}
-        style={{
-          border: "0.4px solid #eeeeee",
-        }}
-      />
+      <div className="info-avatar-wrapper">
+        <img
+          src={AvatarDesign}
+          alt="Avatar Background"
+          className="avatar-background"
+        />
+        <Avatar
+          src={url}
+          // sx={{ height: "90px", width: "90px" }}
+          sx={{ height: "115px", width: "115px" }}
+          style={{
+            border: "0.4px solid #eeeeee",
+          }}
+        />
+      </div>
       <div className="brand-info-container">
         <div className="brand-user-follow">
           <div className="username-verified">

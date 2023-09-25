@@ -10,6 +10,8 @@ import {
   faArrowUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 import InfoSettings from "./InfoSettings";
+import faint from "../../../assets/images/faintbackground.png";
+import AvatarDesign from "../../../assets/images/avatar-design-5.png";
 
 function SignedInUserInfo({
   user,
@@ -31,14 +33,22 @@ function SignedInUserInfo({
   return (
     <div className="info">
       <div className="profile">
-        <Avatar
-          src={url}
-          // sx={{ height: "100px", width: "100px" }}
-          sx={{ height: "120px", width: "120px" }}
-          style={{
-            border: "1px solid white",
-          }}
-        />
+        <div className="info-avatar-wrapper">
+          <img
+            src={AvatarDesign}
+            alt="Avatar Background"
+            className="avatar-background"
+          />
+
+          <Avatar
+            src={url}
+            // sx={{ height: "100px", width: "100px" }}
+            sx={{ height: "120px", width: "120px" }}
+            style={{
+              border: "1px solid white",
+            }}
+          />
+        </div>
         <div className="profile-info">
           <div className="row flex-start">
             <div className="username-badge">

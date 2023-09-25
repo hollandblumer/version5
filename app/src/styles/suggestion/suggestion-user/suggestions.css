@@ -2,7 +2,8 @@
   overflow-y: scroll;
   padding-bottom: 1px;
   flex: 1;
-  max-height: 300px;
+  max-height: 350px;
+  background: #f7f6f0;
 }
 
 .suggestion-scroll {
@@ -11,23 +12,23 @@
   flex: 1;
 }
 
-/* .suggestion-box::-webkit-scrollbar {
+.suggestion-box::-webkit-scrollbar {
   width: 0.3em;
 }
 
 .suggestion-box::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 1);
+  background: rgb(255, 255, 255);
   border-radius: 100vw;
   margin-block: 0.2em;
 }
 
 .suggestion-box::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 1);
+  background: rgb(255, 255, 255);
   background: #c7bfaf;
   background: rgb(231, 230, 225);
-  // background-image: url(../../../assets/images/mainbackground.png); looked really good imo
   border-radius: 100vw;
-} */
+}
+
 .no-suggestions-container {
   display: flex;
   flex-direction: column;

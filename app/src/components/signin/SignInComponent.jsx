@@ -129,21 +129,18 @@ export default withAuthenticator(SignInComponent, {
         placeholder: "Email",
         isRequired: true,
         label: "First Name",
-        order: 3,
       },
       password: {
         labelHidden: true,
         placeholder: "Password",
         isRequired: true,
         label: "First Name",
-        order: 4,
       },
       confirm_password: {
         labelHidden: true,
         placeholder: "Confirm Password",
         isRequired: true,
         label: "First Name",
-        order: 5,
       },
       given_name: {
         labelHidden: true,
@@ -158,13 +155,6 @@ export default withAuthenticator(SignInComponent, {
         isRequired: true,
         label: "Last Name:",
         order: 2,
-      },
-
-      special_code: {
-        labelHidden: true,
-        placeholder: "Special Code",
-        isRequired: true,
-        order: 6,
       },
     },
 

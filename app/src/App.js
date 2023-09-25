@@ -21,6 +21,7 @@ import CompleteProfile from "./components/signin/CompleteProfile";
 import About from "./pages/about/About";
 import ContactUs from "./pages/contact-us/ContactUs";
 import Apply from "./pages/apply/Apply";
+import SignUpBrandForm from "./components/signup/SignUpBrandForm";
 import TermsOfService from "./pages/terms-of-service/TermsOfService";
 import Notifications from "./components/notification/Notifications";
 import GetNotificationsCount from "./components/notification/GetNotificationCount";
@@ -176,6 +177,7 @@ function App() {
               path !== "/contact-us" &&
               path !== "/terms" &&
               path !== "/terms" &&
+              path !== "/claim-brand" &&
               path !== "/apply" ? (
                 <Dashboard SignedInUser={userData} />
               ) : (
@@ -185,6 +187,7 @@ function App() {
           />
           <Route path="/brand-form" element={<AddBrand />} />
           <Route path="/sign-in" element={<SignInComponent />} />
+          <Route path="/claim-brand" element={<SignUpBrandForm />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />
           <Route path="/about" element={<About />} />
           <Route path="/apply" element={<Apply />} />

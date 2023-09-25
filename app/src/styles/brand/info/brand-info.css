@@ -55,9 +55,10 @@
   color: #281e17;
   color: #a9784f;
   color: #333333;
-  font-size: 14pt;
   color: #281e17;
-  font-weight: 500;
+  color: #aa7950;
+  font-family: "wintter-test";
+  letter-spacing: 0.2px;
 }
 
 .sort-select {
