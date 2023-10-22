@@ -1,0 +1,80 @@
+.outer-blob-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+}
+
+.outer-blob {
+  width: 140px;
+  height: 132px;
+  position: relative;
+  scale: 1.02;
+}
+
+.inner-blob {
+  width: 125px;
+  height: 130px;
+  position: relative;
+  background-size: cover;
+  -webkit-background-position: center;
+  background-position: center center;
+  z-index: 1; /* Ensure the image blob is above the gradient blob */
+  animation: animate 20s ease-in-out infinite; /* Animation for the inner blob */
+  box-shadow: 4px 4px -1px rgba(0, 0, 0, 0.2509803922);
+  border: 1px solid #dbdbdb;
+  border: 1px solid #aa7950;
+  border: none;
+  scale: 1.02;
+  opacity: 0.9;
+}
+
+.inner-blob-2 {
+  width: 145px;
+  height: 140px;
+  position: absolute;
+  border: 1px solid #b7b1a7;
+  -webkit-background-position: center;
+  background-position: center center;
+  z-index: 2; /* Set a higher z-index to place it above inner-blob */
+  animation: animate2 6s ease-in-out infinite; /* Animation for inner-blob-2 */
+}
+
+.outer-blob::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: 0px;
+  background: linear-gradient(45deg, #aa7950, #b7b1a7);
+  border: 1px solid #dbdbdb;
+  border: 1px solid #aa7950;
+  border: none;
+  background: none;
+  z-index: 0; /* Place it behind the image blob */
+  animation: animate2 20s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+@keyframes animate {
+  0%, 100% {
+    border-radius: 100% 60% 60% 100%/100% 100% 60% 60%;
+  }
+  34% {
+    border-radius: 40% 60% 70% 30%/40% 40% 60% 50%;
+  }
+  67% {
+    border-radius: 70% 30% 50% 50%/30% 30% 70% 70%;
+  }
+}
+@keyframes animate2 {
+  0%, 100% {
+    border-radius: 70% 30% 50% 50%/30% 30% 70% 70%;
+  }
+  34% {
+    border-radius: 100% 60% 60% 100%/100% 100% 60% 60%;
+  }
+  67% {
+    border-radius: 40% 60% 70% 30%/40% 40% 60% 50%;
+  }
+}

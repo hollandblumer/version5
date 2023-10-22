@@ -1,46 +1,81 @@
 .info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
   color: #272626;
   white-space: nowrap;
-  margin: 4rem 4rem 0 4rem;
+  height: 160px;
+  width: 100%;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center content horizontally */
+  align-items: center;
+  background-color: none;
 }
 
 .profile {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-  height: 7.5rem;
+  height: auto;
 }
 
 .profile-info {
   display: flex;
   flex-direction: column;
   align-items: space-between;
-  width: 100%;
+  justify-content: center;
   height: 100%;
   margin-left: 2rem;
-  margin-top: 1.4rem; //real added for promot
+  background: none;
+}
+
+.hexagon-gradient {
+  position: absolute;
+  z-index: -2;
+  animation-name: rotateHexagon;
+  animation-duration: 9s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  width: 123px;
+  height: 128px;
+  margin-left: 5px;
+  margin-top: -2px;
+}
+
+@keyframes rotateHexagon {
+  0% {
+    transform: scale(1) rotate(-7deg);
+  }
+  25% {
+    transform: scale(1) rotate(7deg);
+  }
+  50% {
+    transform: scale(1) rotate(-7deg);
+  }
+  75% {
+    transform: scale(1) rotate(-7deg);
+  }
+  100% {
+    transform: scale(1) rotate(14deg);
+  }
 }
 
 .info-avatar-wrapper {
-  position: relative; /* Ensure the container's position is relative */
-  width: 150px; /* Set the width and height as needed */
+  position: relative;
+  width: 130px;
   height: 130px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .avatar-background {
   position: absolute; /* Position the background image absolutely within the container */
-  top: -7px;
-  left: -7px;
-  width: 135px;
-  height: 135px;
-  border-radius: 50%; /* Make it circular if needed */
   z-index: 1000; /* Place the background image behind the avatar */
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .action-buttons {
@@ -131,31 +166,31 @@
   background: #e5e5e5;
   background: #f1f1f1;
   background: #faf9f5;
-
   background: #efefef;
-
   background: #efe9dd;
   background: #ededed;
   background: #ddd3c4;
   background: none;
-
-  padding: 0.3rem 0;
   color: #272626;
-  border-radius: 40px;
+  color: #8e8e8e;
+  color: #37252c;
   white-space: nowrap;
-
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+  height: 25px;
 }
 
 .member-since {
   display: flex;
   flex-direction: row;
   align-items: center;
-  color: #757575;
-  font-size: 17px;
-
+  color: #37252c;
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 18px;
+  font-family: "neutra-text";
   button {
     border: none;
     background: #e8e5dd;
@@ -218,7 +253,7 @@
 }
 
 .left {
-  margin-left: 0.4rem;
+  margin-left: 0.3rem;
 }
 
 .right {
@@ -226,9 +261,16 @@
 }
 
 .username {
-  font-size: 20px;
-  color: #281e17;
-  font-weight: 500;
+  font-size: 22px;
+  color: #191919;
+  color: #514f4f;
+  color: #aa7950;
+  color: #37252c;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "neutra-text-2";
+  line-height: 22px;
+  font-weight: 400;
 }
 
 .username-badge {
@@ -244,10 +286,41 @@
 }
 
 .bio-emphasis {
-  font-size: 12pt;
+  font-size: 18px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   color: #281e17;
-  margin-left: 0.1rem;
-  font-weight: 600;
+  color: #aa7950;
+  color: #8e8e8e;
+  color: #aa7950;
+  color: #37252c;
+  font-family: "sofia-pro";
+  line-height: 22px;
+}
+
+.bio-emphasis-text {
+  font-size: 20px;
+  height: 20px;
+  line-height: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: "neutra-text";
+  color: #000000;
+  margin-top: 4px;
+}
+
+.bio-emphasis-date {
+  font-size: 18px;
+  height: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: "sofia-pro";
+  margin-left: 0.4rem;
 }
 
 .extra-followers {
@@ -297,7 +370,16 @@
   margin-top: 0.3rem;
 }
 
+.info-settings-container {
+  display: flex;
+  flex-direction: row;
+}
 .settings-form {
   z-index: 10000;
   background: blue;
+}
+
+.settings-icon {
+  width: 1.2rem;
+  height: 1.2rem;
 }

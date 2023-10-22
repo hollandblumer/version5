@@ -201,32 +201,34 @@ function SuggestionFromUser({
           <div className="suggestion">
             {" "}
             <p className="actual-suggestion">{suggestion}</p>{" "}
-          </div>
-        </div>
-        <div
-          className={` ${index === 0 ? "progress progress-white" : "progress"}`}
-        >
-          {verification ? (
-            <div className="text">Completed </div>
-          ) : compliment ? (
-            <div className="text">1 Award</div>
-          ) : (
-            <div>
-              {" "}
-              <MilestoneUpdate
-                suggestion={suggestion}
-                businessname={businessName}
-              />
-            </div>
-          )}
+            <div
+              className={` ${
+                index === 0 ? "progress progress-white" : "progress"
+              }`}
+            >
+              {verification ? (
+                <div className="text">Completed </div>
+              ) : compliment ? (
+                <div className="text">1 Awqard</div>
+              ) : (
+                <div>
+                  {" "}
+                  <MilestoneUpdate
+                    suggestion={suggestion}
+                    businessname={businessName}
+                  />
+                </div>
+              )}
 
-          <div className="update">
-            <FontAwesomeIcon
-              icon={faArrowUpRightFromSquare}
-              className="share"
-              color="#a7a7a7"
-              size="sm"
-            />
+              <div className="update">
+                <FontAwesomeIcon
+                  icon={faArrowUpRightFromSquare}
+                  className="share"
+                  color="#a7a7a7"
+                  size="sm"
+                />
+              </div>
+            </div>
           </div>
         </div>
 

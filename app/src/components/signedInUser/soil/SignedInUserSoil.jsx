@@ -8,7 +8,9 @@ import {
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 import EditSoil from "./EditSoil";
-import EyeIcon from "../../../assets/images/eye-icon.png";
+import EyeIcon from "../../../assets/images/grey-eye.png";
+import SleepingAvatars from "../../sleeping-avatars/SleepingAvatars";
+import BouncingBalls from "../../BouncingBalls";
 
 function SignedInUserSoil({ brandArray }) {
   const [showEditSoil, setShowEditSoil] = useState(false);
@@ -20,22 +22,24 @@ function SignedInUserSoil({ brandArray }) {
       className={`dirt-container ${brandArray.length === 0 ? "no-brands" : ""}`}
     >
       <div className={`edit-dirt ${brandArray.length === 0 ? "blur" : ""}`}>
+        <div className="brand-length">{brandArray.length} BRANDS</div>
+
         {expanded ? (
           <img
-            className="eye-icon"
+            className="eye-brands-icon"
             src={EyeIcon}
             onClick={() => setExpanded(false)}
           />
         ) : (
           <img
-            className="eye-icon"
+            className="eye-brands-icon"
             src={EyeIcon}
             onClick={() => setExpanded(true)}
           />
         )}
         <div
           onClick={() => setShowEditSoil(true)} // Show the popup on click
-          className={`share left ${
+          className={`edit-soil-text ${
             brandArray.length === 0 ? "unclickable" : ""
           }`}
         >

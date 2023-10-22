@@ -51,12 +51,12 @@ function TidioWrapper({ icon }) {
         ) : (
           <div className="chat-now-text">
             {" "}
-            Chat box available from 9AM-6PM EST{" "}
+            {/*  Chat box available from 9AM-6PM EST{" "}
             <FontAwesomeIcon
               icon={faComments}
               className="chat-icon"
               size="lg"
-            />
+            /> */}
           </div>
         )}
       </div>

@@ -15,12 +15,35 @@ import {
   faArrowUpRightFromSquare,
   faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
+import { faClock, faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MilestoneUpdate from "../user/MilestoneUpdate";
 import { Link } from "react-router-dom";
 
 import "../../styles/suggestion/suggestion-user/suggestions.css";
 import "../../styles/suggestion/suggestion-general/suggestion.css";
+
+function formatTimeDifference(date) {
+  const currentDate = new Date();
+  const timeDifference = currentDate - date;
+  const seconds = Math.floor(timeDifference / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+  const months = Math.floor(days / 30.44); // Assuming an average month has 30.44 days
+  const years = Math.floor(days / 365.25); // Considering leap years
+
+  if (years >= 1) {
+    return `${years}yr`;
+  } else if (months >= 1) {
+    return `${months}mo`;
+  } else if (weeks >= 1) {
+    return `${weeks}w`;
+  } else {
+    return `${days}d`;
+  }
+}
 
 function SignedInSuggestionFromUser({
   suggestion,
@@ -29,6 +52,7 @@ function SignedInSuggestionFromUser({
   compliment,
   index,
   thisID,
+  isBoxHovered,
 }) {
   const { name } = useParams();
   const [suggestions, setSuggestions] = useState([]);
@@ -81,7 +105,7 @@ function SignedInSuggestionFromUser({
   }, [isDeleted]);
 
   let avatararray = [];
-  let formatdate = new Date(date);
+  let formatdate = formatTimeDifference(new Date(date));
   let array = [];
 
   const handleDeleteClick = async () => {
@@ -111,17 +135,18 @@ function SignedInSuggestionFromUser({
   };
 
   return (
-    <div className="suggestion-container">
+    <div
+      className={`suggestion-container ${
+        index === 0 && !isBoxHovered ? "first-suggestion" : ""
+      }`}
+    >
       <div className="subtle-suggestion-info">
-        {" "}
-        <div>
-          {compliment ? (
-            <div className="text">compliment </div>
-          ) : (
-            <div className="text"> suggestion </div>
-          )}{" "}
-        </div>
-        <div> {formatdate.toLocaleDateString("en-US")} </div>
+        {/*  {compliment ? (
+          <div className="text">compliment </div>
+        ) : (
+          <div className="text"> suggestion </div>
+        )}{" "}
+        <div> {formatdate.toLocaleDateString("en-US")} </div> */}
       </div>
       <div className="suggestion-content">
         <div className="suggestion-content-container">
@@ -141,38 +166,47 @@ function SignedInSuggestionFromUser({
               <Icon icon="placeholderIcon" />
             </div>
 
-            <div className="brand-username"> @{businessname} </div>
-          </div>
-
-          <div className="suggestion">
-            {" "}
-            <p className="actual-suggestion">{suggestion}</p>{" "}
+            <div className="brand-username">
+              {" "}
+              {compliment ? (
+                <div className="text">compliment - {formatdate} ago</div>
+              ) : (
+                <div className="text"> suggestion - {formatdate} ago</div>
+              )}{" "}
+              {businessname}
+            </div>
           </div>
         </div>
-        <div
-          className={` ${index === 0 ? "progress progress-white" : "progress"}`}
-        >
-          {verification ? (
-            <div className="text">Completed </div>
-          ) : compliment ? (
-            <div className="text">1 Award</div>
-          ) : (
-            <div>
-              {" "}
-              <MilestoneUpdate
-                suggestion={suggestion}
-                businessname={businessname}
-              />
-            </div>
-          )}
+        <div className="suggestion">
+          {" "}
+          {suggestion}
+          <div
+            className={` ${
+              index === 0 ? "progress progress-white" : "progress"
+            }`}
+          >
+            {verification ? (
+              <div className="text">Completed </div>
+            ) : compliment ? (
+              <div className="text">1 Award</div>
+            ) : (
+              <div>
+                {" "}
+                <MilestoneUpdate
+                  suggestion={suggestion}
+                  businessname={businessname}
+                />
+              </div>
+            )}
 
-          <div className="update">
-            {/*    <FontAwesomeIcon
+            <div className="update">
+              {/*    <FontAwesomeIcon
               icon={faArrowUpRightFromSquare}
               className="share"
               color="#a7a7a7"
               size="sm"
             /> */}
+            </div>
           </div>
         </div>
 
@@ -197,31 +231,24 @@ function SignedInSuggestionFromUser({
             <div className="follower-count"> +{avatararray.length} </div>{" "}
           </div>
         </div>
-        <div className="like-share">
-          <button
-            onClick={handleDeleteClick}
-            style={{ border: "none", background: "none", padding: 0 }}
-          >
-            {" "}
+        <div className="time-share">
+          {formatdate} ago
+          <div className="like-share">
+            {/* <button
+              onClick={handleDeleteClick}
+              style={{ border: "none", background: "none", padding: 0 }}
+            >
+              {" "}
+              D
+            </button> */}
+            <div> SHARE </div>
             <FontAwesomeIcon
-              icon={faTrashCan}
-              className="share"
-              color="#aa7950"
-              size="lg"
+              icon={faEllipsis}
+              style={{ marginTop: "-.2rem" }}
+              color="#877E71"
+              size="xl"
             />
-          </button>
-          <FontAwesomeIcon
-            icon={faShare}
-            className="share"
-            color="#aa7950"
-            size="lg"
-          />
-          <FontAwesomeIcon
-            icon={faEllipsis}
-            className="share"
-            color="#5b584a"
-            size="xl"
-          />
+          </div>
         </div>
       </div>
     </div>

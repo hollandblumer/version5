@@ -5,25 +5,64 @@
   align-items: center;
 }
 
-.about-blurb {
-  margin-top: 6rem;
-  color: #aa7950;
-  font-family: "itc-souvenir";
-  font-size: 20pt;
+.lightning-arrow {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 10rem;
+  left: 0; /* Position it on the left side */
+  margin-left: 5rem;
+  margin-bottom: 2rem;
+  transform: rotate(-5deg);
 }
 
 .home-search-container {
   display: flex;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: 120px;
+  padding: 2rem;
 }
 
 .home-search-form {
   width: 86vw;
   display: flex;
   flex-direction: row;
-  border-bottom: 1.5px solid #a3774d;
-  border-bottom: 1.8px solid #aa7950;
+  position: relative; /* Add this for positioning */
+  padding-bottom: 8px;
+
+  /* Add the gradient border as a pseudo-element */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.08rem; /* Height of the gradient border */
+    background: linear-gradient(
+      to right,
+      #aa7950,
+      transparent 25%,
+      /* Adjust these percentages to control the movement */ #aa7950 50%,
+      /* Adjust these percentages to control the movement */ transparent 75%,
+      /* Adjust these percentages to control the movement */ #aa7950
+    ); /* Gradient color */
+
+    /* Add animation to the background-position */
+    animation: moveGradient 10s linear infinite;
+    background-size: 200% 100%; /* Double the width to allow for movement */
+    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Adjust values for shadow color and size */
+  }
+
+  /* Define the animation keyframes */
+  @keyframes moveGradient {
+    0% {
+      background-position: 100% 0; /* Start the gradient offscreen to the right */
+    }
+    100% {
+      background-position: -100% 0; /* Move the gradient offscreen to the left */
+    }
+  }
 }
 
 .home-search-input-container {
@@ -37,7 +76,7 @@
 .home-search-input {
   border: none;
   color: #8e8e8e;
-  font-size: medium;
+  color: #b7b1a7;
   margin-left: 2.5px;
   outline-width: 0;
   font-size: 18pt;
@@ -45,19 +84,21 @@
   flex: 1;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-weight: 400;
 }
 
-.search-animation {
-  display: flex;
-  font-size: 17pt;
-  color: #8e8e8e;
+.x-search-button {
+  border: none;
+  background: none;
+  color: #aa7950;
+  margin-top: 1rem;
 }
 
 .magnifying-glass {
-  width: 2.8rem;
-  height: 2.8rem;
+  width: 2.5rem;
+  height: 2.5rem;
   margin-bottom: 0.1rem;
-  margin-right: 0.2rem;
+  margin-right: 0.1rem;
 }
 
 @keyframes subtleAnimation {
@@ -71,17 +112,32 @@
 }
 
 .QR-code {
-  /* Your existing styles for the QR code */
-  /* Initial size */
-  width: 207px; //pretty width
   width: 50px;
   height: auto;
+  position: absolute;
+  left: auto;
+  right: 0;
   transition: transform 0.3s ease;
+  margin-top: -15px;
 }
 
 .QR-code:hover {
   animation: subtleAnimation 3s ease infinite;
   transform: scale(1.12); /* Larger size */
+}
+
+.microphone {
+  width: 2rem;
+  height: 2rem;
+  color: #36252d;
+}
+
+.QR-link {
+  font-family: "neutra-text-2";
+  display: inline-block;
+  width: 8rem;
+  font-size: 15px;
+  color: #aa7950;
 }
 
 /* Media query for iPad screens */
@@ -103,48 +159,180 @@
 }
 
 .placeholder-text {
-  margin-right: 0.4rem;
+  font-family: "sofia-pro-reg";
+  display: flex;
+  font-size: 17pt;
+  color: #8e8e8e;
+  color: #b7b1a7;
+  margin-left: 0.2rem;
 }
 
 .placeholder-animation {
   position: absolute;
   top: 50%;
-  left: 8px;
   transform: translate(0, -50%);
   pointer-events: none;
   transition: opacity 0.1s ease, transform 0.1s ease;
 }
 
-.placeholder-animation.users {
-  opacity: 1;
-  transform: translate(0, -50%);
-}
-
-.placeholder-animation.brands {
-  opacity: 0;
-  transform: translate(12px, -50%);
-}
-
 .top-brands-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 500px;
+  height: 200px;
+  padding: 1rem;
+  border-bottom: 1px linear-gradient(135deg, #e7e6e0, #b7b1a7); /* Gradient background */
+  overflow-y: scroll;
+  border-radius: 1rem;
+  &::-webkit-scrollbar {
+    width: 0.5em;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgb(255, 255, 255);
+    border-radius: 100vw;
+    margin-block: 0.2em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255);
+    background: #c7bfaf;
+    background: url("../../assets/images/swirl.jpg");
+    background-size: 40px 100px; /* Adjust to desired size */
+    background-repeat: cover;
+
+    border-radius: 100vw;
+  }
+}
+
+.top-brands-avatar-wrapper {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
-  width: 100%;
-  margin-top: 3rem;
+  justify-content: space-between;
+  margin-top: 2.4rem;
+  padding: 0 2rem 1rem 2rem;
+  border-bottom: 1px solid #e7e6e0;
+  border-bottom: 1px solid rgb(204, 204, 204);
+  &:first-child {
+    margin-top: 1rem;
+  }
 }
 
 .top-brands {
-  margin-top: 6rem;
+  margin-top: 5.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 30rem;
+  padding: 2rem;
+  /*   border-radius: 0.2rem;
+  background: rgba(222, 220, 207, 0.3);
+  box-shadow: 0 0.75rem 2rem 0 rgba(129, 122, 122, 0.06); */
 }
+
+.eye-world {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 12rem;
+  left: 0; /* Position it on the left side */
+  margin-left: 5rem;
+  transform-origin: center center; /* Set the transform origin to the top left corner */
+  animation: rotateAnimation 6s infinite alternate;
+  transform-style: preserve-3d; /* Add this to make the animation rigid */
+  margin-top: 5rem;
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate3d(0, 0, 1, -15deg); /* Start at 0 degrees */
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 15deg); /* End at 20 degrees */
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 9rem;
+  right: 0; /* Position it on the left side */
+  margin-right: 5rem;
+  transform-origin: center center; /* Set the transform origin to the top left corner */
+  animation: smallerrotateAnimation 12s infinite alternate;
+  transform-style: preserve-3d; /* Add this to make the animation rigid */
+  margin-top: 10rem;
+}
+
+@keyframes smallerrotateAnimation {
+  0% {
+    transform: rotate3d(0, 0, 1, -5deg); /* Start at 0 degrees */
+  }
+  100% {
+    transform: rotate3d(0, 0, 1, 5deg); /* End at 20 degrees */
+  }
+}
+
 .top-brands-title {
   font-family: "wintter-test";
-  font-size: 20pt;
+  font-size: 25px;
   color: #aa7950;
+  color: #37252c;
+  color: #5d5a54;
+  color: #6f4b2e;
+  color: #2e2728;
+  color: rgb(66, 64, 64);
+  color: #b7b1a7;
+  color: #a9784f;
+  color: #554f32;
+  color: #1d1b1e;
+  color: #36252d;
   letter-spacing: 0.5pt;
+  width: 29rem;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.top-brands-sort-select-container {
+  width: 29rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 0.2rem;
+}
+
+.top-brands-counter {
+  color: #8e8e8e;
+  color: #2a2c32;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 23px;
+  font-weight: 500;
+  display: flex;
+}
+
+.top-brands-name {
+  display: flex;
+  align-items: center;
+  font-family: "Futura";
+  font-family: "sofia-pro";
+  color: #37252c;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  line-height: 22px;
+  font-weight: 300;
+}
+
+.top-brands-username {
+  margin-left: 0.8rem;
 }
 
 .top-brand {
@@ -152,3 +340,20 @@
   flex-direction: column;
   align-items: center;
 }
+
+/* .gradient-icon svg path {
+  animation: gradientMove 5s linear infinite;
+}
+
+@keyframes gradientMove {
+  0% {
+    stop-offset: 0%;
+  }
+  50% {
+    stop-offset: 100%;
+  }
+  100% {
+    stop-offset: 0%;
+  }
+}
+ */

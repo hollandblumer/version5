@@ -4,15 +4,11 @@
   // background: white;
   // border: 1px solid #dbdbdb;
   flex: 1;
-  max-height: 350px;
-  background: #f7f6f0;
-  // box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
-}
+  max-height: 330px;
+  margin-top: 2rem;
+  padding-right: 1rem;
 
-.suggestion-scroll {
-  overflow-y: scroll;
-  padding-bottom: 1px;
-  flex: 1;
+  // box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
 }
 
 .suggestion-box::-webkit-scrollbar {
@@ -20,15 +16,16 @@
 }
 
 .suggestion-box::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 1);
+  background: #dad4c9;
+  background: #f4f3ec;
   border-radius: 100vw;
-  margin-block: 0.2em;
+  margin-block: 0.2rem;
 }
 
 .suggestion-box::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 1);
-  background: #c7bfaf;
+  background: #b7b1a7;
   background: rgb(231, 230, 225);
+  background: #d4cfc4;
   // background-image: url(../../../assets/images/mainbackground.png); looked really good imo
   border-radius: 100vw;
 }

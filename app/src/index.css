@@ -17,14 +17,39 @@ body {
   /* background: #fffaec; alice mushroom */
   background: #fffaec;
   background: #f8f6f3;
-  background: #f8f4ed;
+  background: #fffaec;
   background: #f4f2ea;
-
+  background: #f8f4ed;
+  background: url(./assets/images/white-background-texture.jpg);
+  background: linear-gradient(60deg, #f5f1e5, #faf9f3);
+  background: #fffaf2;
+  background: #f5f1e5;
+  background: #f4f2eb;
+  background: #f4f2ea;
+  background: url(./assets/images/white-page-texture.png);
+  background: #f5f4f2;
+  background: #f5f5f5;
+  background: #faf3e0;
+  background-image: linear-gradient(#fdfdfd, #f5f5f5);
+  background: rgb(236, 233, 233);
+  background: #f5f1e5;
+  background: #fefdf6;
+  background: #f4f3ec;
+  background: url(./assets/images/white-page-texture.png);
+  background: url(./assets/images/magic-pattern.png);
+  background: url(./assets/images/wood-lines.png);
   background: #f7f6f0;
 }
+
 @media (max-width: 768px) {
   body {
-    background: url(./assets/images/small-background.png);
+    background: linear-gradient(60deg, #f5f1e5, #faf9f3);
+    background: #fffaf2;
+    background: #f5f1e5;
+    background: #f7f6f0;
+    background: url(./assets/images/white-page-texture.png);
+    background: url(./assets/images/magic-pattern.png);
+    background: url(./assets/images/wood-lines.png);
   }
 }
 
@@ -33,11 +58,21 @@ select {
   padding: 0;
 }
 
+h1 {
+  font-family: "itc-souvenir";
+  font-family: "itc-souvenir";
+  color: #36252d;
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+  font-weight: 500;
+}
+
 h3 {
   margin: 0;
   padding: 0;
   font-family: "wintter-test";
-  color: #aa7950;
+  color: #36252d;
   font-size: 14pt;
   font-weight: 500;
   letter-spacing: 0.2px;
@@ -74,4 +109,46 @@ input {
   /* Super Modern Browsers */
   font-weight: 400;
   font-style: normal;
+}
+
+@font-face {
+  font-family: "neutra-text";
+  src: url("./assets/fonts/neutra-text/Neutraface\ Text\ Book.woff")
+    format("woff");
+  /* Super Modern Browsers */
+  font-style: medium;
+}
+
+@font-face {
+  font-family: "neutra-text-2";
+  src: url("./assets/fonts/neutra-face-2/Neutra2Text-Demi.woff");
+  /* Super Modern Browsers */
+  font-weight: medium;
+}
+
+@font-face {
+  font-family: "neutra-text-med";
+  src: url("./assets/fonts/neutra-medium/Neutra\ Display\ Medium.woff");
+  /* Super Modern Browsers */
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "sofia-pro";
+  src: url("./assets/fonts/sofia-pro/Sofia\ Pro\ Medium.woff");
+  /* Super Modern Browsers */
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "sofia-pro-reg";
+  src: url("./assets/fonts/sofia-pro/Sofia\ Pro\ Regular.woff");
+  /* Super Modern Browsers */
+}
+
+@font-face {
+  font-family: "sofia-pro-light";
+  src: url("./assets/fonts/sofia-pro/sofiapro-light.woff");
+  /* Super Modern Browsers */
+  font-weight: 600;
 }

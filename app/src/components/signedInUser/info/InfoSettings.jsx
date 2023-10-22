@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { Storage } from "aws-amplify";
+import SettingsIcon from "../../../assets/images/settings-icon.png";
 
 function InfoSettings() {
   const [editing, setEditing] = useState(false);
@@ -70,7 +71,13 @@ function InfoSettings() {
 
   return (
     <div className="info-settings-container">
-      <FontAwesomeIcon icon={faGear} onClick={() => setEditing(true)} />
+      {/* <FontAwesomeIcon icon={faGear} onClick={() => setEditing(true)} /> */}
+      <img
+        src={SettingsIcon}
+        alt="Settings"
+        className="settings-icon"
+        onClick={() => setEditing(true)}
+      />
 
       {editing && (
         <div className="settings-form">

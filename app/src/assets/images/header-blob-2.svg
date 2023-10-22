@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1080" zoomAndPan="magnify" viewBox="0 0 810 809.999993" height="1080" preserveAspectRatio="xMidYMid meet" version="1.0">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+        stroke: url(#linear-gradient-2);
+        stroke-miterlimit: 10;
+        stroke-width: 2.09px;
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="1559.39" y1="-325.37" x2="2869.18" y2="-325.37" gradientTransform="translate(-1256.73 747.55) rotate(.41) scale(.81) skewX(.81)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#b07849"/>
+      <stop offset="1" stop-color="#E1D6CD"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="1558.34" x2="2870.23" xlink:href="#linear-gradient"/>
+  </defs>
+  <path class="cls-1" d="M 291.824219 52.578125 C 291.824219 52.578125 190.867188 74.015625 97.707031 180.242188 C 4.542969 286.46875 27.457031 338.097656 16.28125 445.1875 C 6.847656 535.847656 56.851562 622.328125 106.359375 659.917969 C 155.867188 697.503906 208.792969 781.347656 380.375 785.921875 C 560.101562 790.765625 691.433594 677.390625 727.34375 582.738281 C 761.730469 492.078125 805.484375 392.066406 761.730469 313.910156 C 717.976562 235.75 735.933594 162.320312 667.226562 127.933594 C 598.519531 93.546875 534.089844 51.332031 464.785156 39.828125 C 338.710938 19.050781 291.824219 52.578125 291.824219 52.578125 Z"/>
+</svg>

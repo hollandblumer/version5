@@ -53,7 +53,6 @@ function Dropdown({ url, username }) {
                 try {
                   await Auth.signOut();
                   window.location.reload(false);
-                  await DataStore.clear();
                 } catch (error) {
                   console.error("Error signing out:", error);
                 }

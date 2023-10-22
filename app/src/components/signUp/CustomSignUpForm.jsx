@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react";
 import { Auth } from "@aws-amplify/auth";
 
 function CustomSignUpForm() {
@@ -77,3 +77,4 @@ function CustomSignUpForm() {
 }
 
 export default CustomSignUpForm;
+ */

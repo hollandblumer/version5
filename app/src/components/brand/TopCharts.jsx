@@ -87,18 +87,54 @@ function TopCharts(thisID) {
           className={selectedFilter === "All" ? "active" : ""}
         >
           All
+          {selectedFilter === "All" && (
+            <div
+              className="wave"
+              style={{
+                "--w": "20px",
+                "--h": "6px",
+                "--p": "3px",
+                "--t": "2px",
+                "--c": "orange",
+              }}
+            ></div>
+          )}
         </button>
         <button
           onClick={() => setSelectedFilter("Suggestions")}
           className={selectedFilter === "Suggestions" ? "active" : ""}
         >
-          Suggestions
+          Suggestions{" "}
+          {selectedFilter === "Suggestions" && (
+            <div
+              className="wave"
+              style={{
+                "--w": "20px",
+                "--h": "6px",
+                "--p": "3px",
+                "--t": "2px",
+                "--c": "orange",
+              }}
+            ></div>
+          )}
         </button>
         <button
           onClick={() => setSelectedFilter("Compliments")}
           className={selectedFilter === "Compliments" ? "active" : ""}
         >
           Compliments
+          {selectedFilter === "Compliments" && (
+            <div
+              className="wave"
+              style={{
+                "--w": "20px",
+                "--h": "6px",
+                "--p": "3px",
+                "--t": "2px",
+                "--c": "orange",
+              }}
+            ></div>
+          )}
         </button>
         <div
           className={

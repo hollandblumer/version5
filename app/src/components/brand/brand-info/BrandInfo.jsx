@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import AvatarDesign from "../../../assets/images/avatar-design-5.png";
 import "../../../styles/brand/info/brand-info.css";
-
+import GradientHexagon from "../../../assets/images/header-blob-2.svg";
 function BrandInfo({
   url,
   username,
@@ -30,24 +30,89 @@ function BrandInfo({
   return (
     <div className="brand-info">
       <div className="info-avatar-wrapper">
-        <img
+        {/*  <img
           src={AvatarDesign}
           alt="Avatar Background"
           className="avatar-background"
-        />
-        <Avatar
+        /> */}
+        {/*  <Avatar
           src={url}
           // sx={{ height: "90px", width: "90px" }}
           sx={{ height: "115px", width: "115px" }}
           style={{
             border: "0.4px solid #eeeeee",
           }}
+        /> */}
+        {/* <SVGAnimation url={url} /> */}
+        <img
+          src={GradientHexagon}
+          className="hexagon-gradient"
+          style={{ opacity: 0.9 }}
         />
+        <div className="avatar-background">
+          {/*   <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 313 313"
+            width="110"
+            height="110"
+          >
+            <defs>
+              <clipPath id="new-clip-shape">
+                <path d="m184.39,299.57l-92.1-12.81c-22.66-3.15-41.99-18.01-50.86-39.1L5.39,161.94C-3.65,140.44-.45,115.74,13.77,97.26L68.83,25.65C83.04,7.16,106.09-2.27,129.19,.94l92.1,12.81c22.66,3.15,41.99,18.01,50.86,39.1l36.04,85.72c9.04,21.5,5.84,46.19-8.37,64.68l-55.06,71.61c-14.22,18.49-37.26,27.92-60.36,24.71Z" />
+              </clipPath>
+            </defs>
+            <image
+              xlinkHref={url}
+              x="-3" // A slight offset to center better
+              y="-3" // A slight offset to center better
+              width="320" // Adjusted to match the viewBox dimensions
+              height="320" // Adjusted to match the viewBox dimensions
+              clipPath="url(#new-clip-shape)"
+            />
+          </svg> */}
+          {/*    <Avatar
+            src={url}
+            // sx={{ height: "90px", width: "90px" }}
+            sx={{ height: "110px", width: "110px" }}
+            style={{
+              border: "0.4px solid #eeeeee",
+            }}
+          /> */}
+          <Avatar
+            src={url}
+            sx={{ height: "107px", width: "107px" }}
+            style={
+              {
+                // border: "0.4px solid #eeeeee",
+              }
+            }
+          />
+          {/*    <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 270.12 263.07"
+            width="114"
+            height="114"
+          >
+            <defs>
+              <clipPath id="new-clip-shape">
+                <path d="m234.46,45.03l24.29,43.15c15.16,26.92,15.16,59.8,0,86.73l-24.29,43.15c-15.66,27.82-45.1,45.03-77.02,45.03h-44.76c-31.92,0-61.36-17.21-77.02-45.03l-24.29-43.15c-15.16-26.92-15.16-59.8,0-86.73l24.29-43.15C51.32,17.21,80.76,0,112.68,0h44.76c31.92,0,61.36,17.21,77.02,45.03Z" />
+              </clipPath>
+            </defs>
+            <image
+              xlinkHref={url}
+              x="-15"
+              y="-15"
+              width="290.12"
+              height="300.07"
+              clipPath="url(#new-clip-shape)"
+            />
+          </svg> */}
+        </div>
       </div>
       <div className="brand-info-container">
         <div className="brand-user-follow">
           <div className="username-verified">
-            <div className="username"> @{username} </div>
+            <div className="username"> {username} </div>
             {verification == false ? (
               <div className="unverified">
                 {" "}

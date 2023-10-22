@@ -5,12 +5,17 @@
   background: #f4f2ea;
   background: #e9e5dc;
   background: #e7e6e0;
+  background: rgba(233, 229, 220, 0.95);
+  background: #ad866a;
+  background: rgba(173, 134, 106, 0.95);
+
   flex: 0.5;
   border-right: 0.2px solid #e9e5dc;
   position: absolute;
-  z-index: 1000;
+  z-index: 3000;
   height: 100vh;
   width: 40rem;
+  margin-top: 1.8rem;
 }
 
 .no-panel {
@@ -104,6 +109,7 @@
   padding: 5px 5px 5px 5px;
   background: #efefef;
   background: #e9e5dc;
+  background: none;
   z-index: 90;
   border-radius: 0.6rem;
   margin: 1rem 0.3rem 0.2rem 0.3rem;

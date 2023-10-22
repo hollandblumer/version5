@@ -321,19 +321,187 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   height: 100%;
   position: absolute;
   z-index: 2000000;
-  background-color: #f7f6f0;
 }
 
-.sign-up-brand-page {
-  background: url(../../assets/images/Background27.jpg);
-  background-size: 100% 100%;
-  height: 100vh;
-  width: 100vw;
+//custom background
+
+.custom-signin-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
+  height: 90vh;
+  width: auto;
 }
 
-.sign-up-brand {
-  margin-top: 6rem;
+.signin-form {
+  width: 100%;
+  text-align: center;
+  width: 35rem;
+  margin-top: 5rem;
+}
+
+.signin-header {
+  font-size: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  button {
+    border-radius: 40px;
+    background: none;
+    border: 1.5px solid #aa7950;
+    font-family: "Helvetica Neue";
+    font-size: 15px;
+    padding: 15px 30px;
+    margin-top: 1.5rem;
+  }
+
+  button:hover {
+    background: #aa7950;
+    color: white;
+  }
+}
+
+.signin-title {
+  font-family: "itc-souvenir";
+  color: #1d1c1b;
+  font-size: 45px;
+  font-weight: 200;
+}
+
+.signup-redirect {
+  font-family: "Helvetica Neue";
+  font-size: 14pt;
+  margin-top: 1rem;
+}
+
+/* Add these styles to your CustomSignIn.css */
+.form-group {
+  position: relative;
+  margin-top: 3.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* Add the gradient border as a pseudo-element */
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.05rem; /* Height of the gradient border */
+    background: linear-gradient(
+      to right,
+      #aa7950,
+      transparent 25%,
+      #aa7950 50%,
+      transparent 75%,
+      #aa7950
+    ); /* Gradient color */
+
+    /* Add animation to the background-position */
+    animation: moveGradient 10s linear infinite;
+    background-size: 200% 100%; /* Double the width to allow for movement */
+  }
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 100% 0; /* Start the gradient offscreen to the right */
+  }
+  100% {
+    background-position: -100% 0; /* Move the gradient offscreen to the left */
+  }
+}
+
+.form-label {
+  position: absolute;
+  transition: transform 0.2s ease, font-size 0.2s ease, top 0.2s ease;
+  pointer-events: none;
+  font-size: 14px; /* Reduce label font size for a smaller label */
+  color: #333; /* Change label color */
+}
+
+.custom-form-input {
+  width: 100%;
+  border: none;
+  font-size: 16px;
+  transition: border-color 0.2s ease;
+  border-radius: 0;
+  background: none;
+}
+
+.custom-form-input:focus {
+  outline: none; /* Remove the default outline */
+}
+
+.focused-label {
+  transform: translateY(-24px) scale(1);
+  top: 0;
+  font-size: 12px;
+}
+
+.signin-button {
+  background-color: #aa7950;
+  background-color: #ad866a;
+  background: #8c8577 !important;
+  color: #fff;
+  width: 35rem;
+  padding: 15px 0 !important; /* Increase padding for a larger button */
+  border: none;
+  border-radius: 30px !important;
+  font-size: 18px; /* Increase font size */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  letter-spacing: 1px;
+  font-family: "wintter-test";
+  font-weight: 300;
+  margin: 7rem auto 0 auto; /* Adjusted this line */
+
+  &:hover {
+    background-color: #cec4af !important;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+/* Additional styles for Sweetgreen-like form */
+.custom-form-input::placeholder {
+  color: #8c8c8c; /* Placeholder text color */
+}
+
+.forgot-password-text {
+  width: 35rem;
+  margin-top: 3rem;
+}
+
+.forgot-password-redirect {
+  border: none;
+  background: none;
+  text-decoration: underline;
+}
+
+.password-toggle-button {
+  position: absolute;
+  top: 50%;
+  right: 10px; /* Adjust the right position to align the button */
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 1;
+}
+
+.password-toggle-button:focus {
+  outline: none; /* Remove the default outline */
 }

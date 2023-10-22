@@ -105,6 +105,7 @@
 .milestone-container::-webkit-scrollbar-thumb {
   background: rgb(255, 255, 255);
   background: #c7bfaf;
+  background: url("../../../assets/images/backgroundtrial4.png");
   border-radius: 100vw;
 }
 
@@ -115,7 +116,6 @@
   background: #ebe7e1;
   background: #e3d9c2;
   background: #e9e5dc;
-  background: url("../../../assets/images/trial8.png");
   background: #e9e5dc;
   background: none;
   background-size: 100% 100%;
@@ -169,6 +169,7 @@
   background: #e8e5dd;
   background: #f2f0e8;
   background: #dad4c9;
+  background: linear-gradient(to right, #aa7950, #dfc8b5); /* Standard syntax */
   padding: 10px 25px;
   border-radius: 12px;
 }

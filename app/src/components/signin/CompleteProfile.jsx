@@ -4,60 +4,54 @@ import { DataStore } from "@aws-amplify/datastore";
 import { User } from "../../models"; // Adjust the import path based on your models
 import { Storage } from "@aws-amplify/storage";
 import { Auth } from "@aws-amplify/auth";
+import "../../styles/complete-profile/complete-profile.css";
 
 export function CompleteProfile() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    username: "",
-    profileImage: "",
-    // Add other form fields here
-  });
+  const [username, setUsername] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
   const [isUsernameAvailable, setIsUsernameAvailable] = useState(true);
   const [isUsernameValidating, setIsUsernameValidating] = useState(false);
+  const [userIsSignedIn, setUserIsSignedIn] = useState(false);
+  const [usernameFocused, setUsernameFocused] = useState(false);
+
+  useEffect(() => {
+    // Check if the user is signed in
+    Auth.currentAuthenticatedUser()
+      .then(() => {
+        setUserIsSignedIn(true);
+      })
+      .catch(() => {
+        setUserIsSignedIn(false);
+      });
+  }, []);
 
   useEffect(() => {
     // Check username availability as the user types
     const checkUsernameAvailability = async (username) => {
       setIsUsernameValidating(true);
-      const users = await DataStore.query(User, (u) =>
-        u.name.eq(formData.username)
-      );
+      const users = await DataStore.query(User, (u) => u.name.eq(username));
       setIsUsernameAvailable(users.length === 0);
       setIsUsernameValidating(false);
     };
 
-    if (formData.username) {
-      checkUsernameAvailability(formData.username);
+    if (username) {
+      checkUsernameAvailability(username);
     }
-  }, [formData.username]);
+  }, [username]);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      if (file.type === "image/jpeg") {
-        // Upload the image to S3
-        Storage.put(`${formData.username}`, file)
-          .then((result) => {
-            // Update the formData state with the image URL after upload
-            setFormData((prevData) => ({
-              ...prevData,
-              profileImage: result.key,
-            }));
-          })
-          .catch((error) => {
-            console.error("Error uploading image:", error);
-          });
-      } else {
-        console.error("Only JPEG images are allowed.");
-      }
+    if (name === "username") {
+      setUsername(value);
+    } else if (name === "profileImage") {
+      // Set the profileImage state with the selected file
+      console.log("e", event.target.files[0]);
+      setProfileImage(event.target.files[0]);
     }
   };
 
+  console.log("pi", profileImage);
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -65,77 +59,114 @@ export function CompleteProfile() {
       const users = await DataStore.query(User, (u) =>
         u.email.eq(Auth.user.attributes.email)
       );
+
       if (users.length === 1) {
         const currentUser = users[0];
+        // Check if an image with the same filepath exists
+        const imageKey = `${username}.jpg`;
+        const imageExists = await Storage.get(imageKey);
+        console.log("imageExists", imageExists);
+
         // Update user's data in DataStore
         await DataStore.save(
           User.copyOf(currentUser, (updated) => {
-            // Update the username with the provided formData.username
-            updated.name = formData.username;
-
-            // Store the image if there is one
-            if (formData.profileImage) {
-              const imageKey = `${formData.username}.jpg`; // Construct the image key
-              Storage.put(imageKey, formData.profileImage, {
+            updated.name = username;
+            updated.hasCompletedForm = true; // Set hasCompletedForm to true
+            console.log("pi", profileImage);
+            console.log("imageExists.length:", imageExists.length);
+            console.log("il", imageExists.length);
+            if (imageExists.length > 0 && profileImage) {
+              console.log("get here");
+              // Upload the image only if it doesn't exist
+              Storage.put(imageKey, profileImage, {
                 contentType: "image/jpeg",
               })
                 .then((result) => {
-                  updated.filePath = result.key; // Store the S3 image path in the user object
+                  // Update filePath with the correct S3 key
+                  updated.filePath = result.key;
                 })
                 .catch((error) => {
                   console.error("Error storing image:", error);
                 });
-
+            } else {
+              // If the image already exists, don't upload it again
               updated.filePath = imageKey;
             }
-
-            updated.hasCompletedForm = true;
-
-            // Update other fields if needed
           })
         );
       }
 
-      // Once the form is successfully submitted, navigate to home page
-      navigate("/");
+      // Once the form is successfully submitted, navigate to the home page
     } catch (error) {
       console.error("Error completing profile:", error);
       // Handle error scenario
     }
   };
 
+  const handleInputFocus = (input) => {
+    // Add a CSS class to change the input's border color
+    if (input === "username") {
+      setUsernameFocused(true);
+    }
+  };
+
+  const handleInputBlur = (input) => {
+    // Remove the CSS class when the input loses focus
+    if (input === "username") {
+      setUsernameFocused(false);
+    }
+  };
+
+  if (!userIsSignedIn) {
+    return <div>User is not signed in.</div>;
+  }
+
   return (
     <div>
-      <h2>Complete Your Profile</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleInputChange}
-            required
-          />
-          {isUsernameValidating && <div>Validating...</div>}
-          {!isUsernameAvailable && !isUsernameValidating && (
-            <div style={{ color: "red" }}>Username is not available.</div>
-          )}
-        </div>
-        <div>
-          <label>Profile Image:</label>
-          <input
-            type="file"
-            accept="image/jpeg"
-            name="profileImage"
-            onChange={handleImageChange}
-            required
-          />
-          <p>Only JPEG images are allowed.</p>
-        </div>
-        {/* Add other form fields here */}
-        <button type="submit">Submit</button>
-      </form>
+      <div className="custom-signin-container">
+        <div className="signin-title">Complete Your Profile</div>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label
+              className={`form-label ${usernameFocused ? "focused-label" : ""}`}
+              htmlFor="username"
+            >
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              value={username}
+              name="username"
+              onChange={handleInputChange}
+              onFocus={() => handleInputFocus("username")}
+              onBlur={() => handleInputBlur("username")}
+              required
+              className="custom-form-input"
+            />
+            {isUsernameValidating && <div>Validating...</div>}
+            {!isUsernameAvailable && !isUsernameValidating && (
+              <div className="error-text">Username is not available.</div>
+            )}
+          </div>
+
+          {/* Profile Image input is outside of the Username input container */}
+          <div className="form-group">
+            <label>Profile Image:</label>
+            <input
+              type="file"
+              accept="image/jpeg"
+              name="profileImage"
+              onChange={handleInputChange}
+              required
+            />
+            <p>Only JPEG images are allowed.</p>
+          </div>
+
+          {/* Add other form fields here */}
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   );
 }

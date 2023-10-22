@@ -1,22 +1,41 @@
 .dirt-container {
-  margin: 3rem 2rem 0 2rem;
+  margin: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   flex: 1;
-  position: relative;
+  margin-top: 2rem;
+}
+
+.eye-brands-icon {
+  width: 16px;
+  height: 14px;
+  color: #b7b1a7;
+  margin-left: 0.3rem;
 }
 
 .edit-dirt {
   width: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: flex-end;
+  align-items: center;
   color: #8c8c8c;
-  font-size: 12px;
+  font-size: 12pt;
   font-weight: 600;
+  font-family: "sofia-pro";
+}
+
+.brand-length {
+  font-family: "wintter-test";
+  letter-spacing: none;
   letter-spacing: 1.4px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  height: 30px;
 }
 
 .eye-icon {
@@ -24,12 +43,23 @@
   height: 15px;
 }
 
+.eye-slash-icon {
+  width: 20px;
+  height: 20px;
+}
+
 .featured-brands-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
   width: 100%;
+  overflow: visible;
+}
+
+.featured-brands {
+  /* Adjust the styles for the avatars here */
+  position: relative;
+  overflow: visible;
 }
 
 .side-eye {
@@ -43,11 +73,60 @@
   letter-spacing: 1.2px;
   font-weight: 600;
 }
-.featured-brands {
+
+.featured-brands-title {
+  font-size: 14pt;
+  color: #aa7950;
+  font-family: "wintter-test";
+  letter-spacing: 0.4px;
+  font-weight: 500;
+}
+
+.dirt-avatar {
+  height: 68px !important;
+  width: 68px !important;
+  border: 1px solid #dbdbdb;
+  position: absolute;
+}
+
+@media screen and (max-width: 1024px) {
+  .dirt-avatar {
+    height: 80px !important;
+    width: 80px !important;
+  }
+}
+
+.dirt-user {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  height: 7.2rem;
+  width: 8.5rem;
+  overflow: hidden; /* Hide overflowing text */
+  color: #37252c;
+  font-size: 10pt;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.text-container {
+  width: 100%; /* Ensure the text container takes the full width */
+  white-space: wrap; /* Prevent text from wrapping */
+  text-align: center;
+  text-overflow: ellipsis; /* Display an ellipsis (...) when text overflows */
+  overflow: hidden; /* Hide overflowing text */
+  color: #37252c;
+}
+
+.text-avatar {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: #37252c;
 }
 
 .lock-icon {
@@ -130,4 +209,18 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.edit-soil-text {
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.avatar-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
 }

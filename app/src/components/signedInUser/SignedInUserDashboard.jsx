@@ -33,6 +33,7 @@ function SignedInUserDashboard({ SignedInUser }) {
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [selectedOption, setSelectedOption] = useState("most recent"); // Default to suggestions
   const [searchTerm, setSearchTerm] = useState(""); //
+  const [isSuggestionBoxHovered, setIsSuggestionBoxHovered] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -189,6 +190,8 @@ function SignedInUserDashboard({ SignedInUser }) {
             className={`suggestion-box ${
               allSuggestions.length === 0 ? "no-suggestions-container" : ""
             }`}
+            onMouseEnter={() => setIsSuggestionBoxHovered(true)}
+            onMouseLeave={() => setIsSuggestionBoxHovered(false)}
           >
             {allSuggestions.length == 0 ? (
               <div className="no-suggestions-container">
@@ -217,6 +220,7 @@ function SignedInUserDashboard({ SignedInUser }) {
                           compliment={p.compliment}
                           index={index}
                           thisID={SignedInUser.id}
+                          isBoxHovered={isSuggestionBoxHovered}
                         />
                       </div>
                     ))}
@@ -239,6 +243,7 @@ function SignedInUserDashboard({ SignedInUser }) {
                           compliment={p.compliment}
                           index={index}
                           thisID={SignedInUser.id}
+                          isBoxHovered={isSuggestionBoxHovered}
                         />
                       </div>
                     ))}
@@ -261,6 +266,7 @@ function SignedInUserDashboard({ SignedInUser }) {
                           compliment={p.compliment}
                           index={index}
                           thisID={SignedInUser.id}
+                          isBoxHovered={isSuggestionBoxHovered}
                         />
                       </div>
                     ))}

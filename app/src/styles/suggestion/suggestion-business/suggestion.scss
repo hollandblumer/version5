@@ -81,8 +81,6 @@
   align-items: center;
   justify-content: flex-start;
   border-radius: 2px;
-  background: #e9e5dc;
-  background: #f6f6f0;
   /*   background-image: url(../../../assets/images/followbutton4.png);
   background-size: 100% 300%; */
   background-size: 100% 100%;
@@ -125,15 +123,46 @@
   flex: 1;
   height: 100%;
   width: 100%;
-  border-bottom: 1px solid #abaaa8;
-  padding-bottom: 7px;
+  padding-bottom: 15px;
+  font-family: "neutra-text-2";
+  position: relative; /* Add this for positioning */
 
   select {
-    background: #e9e5dc;
     border: none;
     padding: 6px 10px;
     border-radius: 15px;
     outline: none;
+  }
+}
+
+.suggestion-form-container::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.2px; /* Height of the gradient border */
+  background: linear-gradient(
+    to right,
+    #aa7950,
+    transparent 25%,
+    /* Adjust these percentages to control the movement */ #aa7950 50%,
+    /* Adjust these percentages to control the movement */ transparent 75%,
+    /* Adjust these percentages to control the movement */ #aa7950
+  ); /* Gradient color */
+
+  /* Add animation to the background-position */
+  animation: moveGradient 20s linear infinite;
+  background-size: 200% 100%; /* Double the width to allow for movement */
+}
+
+/* Define the animation keyframes */
+@keyframes moveGradient {
+  0% {
+    background-position: 100% 0; /* Start the gradient offscreen to the right */
+  }
+  100% {
+    background-position: -100% 0; /* Move the gradient offscreen to the left */
   }
 }
 

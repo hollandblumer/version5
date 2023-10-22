@@ -1,21 +1,23 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, useRef } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { User } from "../../models";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
   faCircleXmark,
+  faMicrophone,
 } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/header/header.css";
 import "../../styles/header/search/search.css";
 import "../../styles/home/home.css";
 import { useNavigate } from "react-router-dom";
 import Search from "../../components/header/Search";
-import MagnifyingGlass from "../../assets/images/Magnifyingglass2.png";
-import QRCode from "../../assets/images/QRcode.png";
+import SearchMagnifyingGlass from "../../assets/images/search.svg";
+import QRCode from "../../assets/images/DivotQR.png";
 import QRScanner from "../../components/qrscanner/QRScanner";
 import Footer2 from "../../components/footer/Footer2";
 import TopBrands from "../../components/brand/TopBrands";
+import LightningArrow from "../../assets/images/lightning-arrow.png";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);
@@ -23,6 +25,9 @@ function Home() {
   const [searchList, setSearchList] = useState([]);
   const [qrScannerVisible, setQRScannerVisible] = useState(false);
   const [qrCodeData, setQrCodeData] = useState(null);
+  const [cursorVisible, setCursorVisible] = useState(true);
+  const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   const handleQRCodeClick = () => {
     setQRScannerVisible(true);
@@ -32,7 +37,39 @@ function Home() {
     setQRScannerVisible(false);
     setQrCodeData(null); // Reset scanned data
   };
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Set focus to the input field when the component mounts
+    inputRef.current.focus();
+
+    // Function to continuously toggle cursor visibility
+    const toggleCursor = () => {
+      setCursorVisible((prevCursorVisible) => !prevCursorVisible);
+    };
+
+    // Start the cursor blinking animation
+    const intervalId = setInterval(toggleCursor, 700); // Adjust the blinking speed (milliseconds)
+
+    // Stop the blinking when the input field is focused
+    const handleFocus = () => {
+      clearInterval(intervalId);
+      setCursorVisible(true); // Show the cursor when focused
+    };
+
+    // Attach the focus event listener
+    const inputElement = inputRef.current;
+    if (inputElement) {
+      inputElement.addEventListener("focus", handleFocus);
+    }
+
+    return () => {
+      // Remove the event listener and clear the interval when the component unmounts
+      if (inputElement) {
+        inputElement.removeEventListener("focus", handleFocus);
+      }
+      clearInterval(intervalId);
+    };
+  }, []);
 
   const createSearch = async (e) => {
     e.preventDefault();
@@ -48,20 +85,24 @@ function Home() {
     refreshPage();
   };
 
-  const [animatePlaceholder, setAnimatePlaceholder] = useState(true);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimatePlaceholder((prevValue) => !prevValue);
-    }, 3000); // Change every 3 seconds
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
-
   function refreshPage() {
     window.location.reload(false);
   }
+
+  useEffect(() => {
+    // Function to open the Tidio chatbox
+    const openTidioChatbox = () => {
+      if (window.tidioChatApi) {
+        window.tidioChatApi.open();
+      }
+    };
+
+    // Check if we are on the home page ("/")
+    if (window.location.pathname === "/") {
+      // Open the chatbox when on the home page
+      openTidioChatbox();
+    }
+  }, []);
 
   return (
     <div className="home">
@@ -71,12 +112,8 @@ function Home() {
         onMouseEnter={() => setShowInput(true)}
       >
         <div className="home-search-form">
-          <img
-            src={MagnifyingGlass}
-            className="magnifying-glass"
-            alt="Logo image"
-          />
-
+          {/*           <img src={QRCode} className="magnifying-glass" alt="Logo image" />
+           */}
           <div onChange={createSearch} className="home-search-input-container">
             <input
               className="home-search-input"
@@ -84,30 +121,34 @@ function Home() {
               placeholder=""
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              ref={inputRef}
             />
             <span className="placeholder-animation">
               {search ? null : (
-                <div className="search-animation">
-                  <div className="placeholder-text">
-                    Search for a business or brand{" "}
-                  </div>
+                <div className="placeholder-text">
+                  Search for a <b> &nbsp;business</b> &nbsp; or{" "}
+                  <b>&nbsp; user</b>{" "}
                 </div>
               )}
             </span>
           </div>
-          {!qrScannerVisible && (
+          {search !== "" && (
+            <button className="xbutton" onClick={() => setSearch("")}>
+              <FontAwesomeIcon icon={faCircleXmark} size="sm" color="#c7c7c7" />
+            </button>
+          )}
+
+          <FontAwesomeIcon icon={faMicrophone} className="microphone" />
+
+          {/*      {!qrScannerVisible && (
             <img
               src={QRCode}
               className="QR-code"
               alt="QR Code"
               onClick={handleQRCodeClick}
             />
-          )}
-          <button className="xbutton" onClick={() => setSearch("")}>
-            <FontAwesomeIcon icon={faCircleXmark} size="sm" color="#c7c7c7" />
-          </button>
+          )} */}
         </div>
-
         {search != "" ? (
           <div className="searches">
             {searchList.length != 0 ? (

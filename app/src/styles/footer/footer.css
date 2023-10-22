@@ -5,7 +5,7 @@
   background-size: 100% auto; /* Set background size to 100% width and auto height */
   display: flex;
   flex-direction: column;
-  margin-top: -4rem;
+  margin-top: -1rem;
 }
 
 @media (max-width: 768px) {
@@ -16,7 +16,18 @@
     height: 131px;
   }
   .footer-links {
+    position: absolute;
+    display: flex;
+    font-family: "itc-souvenir";
+    width: 100%;
+    justify-content: center;
     margin-top: 5rem;
+  }
+  .footer-links a {
+    color: #f0f9f6;
+    color: pink;
+    color: gray;
+    transition: color 0.3s ease;
   }
 }
 .footer-links {
@@ -25,12 +36,13 @@
   font-family: "itc-souvenir";
   width: 100%;
   justify-content: center;
-  margin-top: 17rem;
+  margin-top: 14rem;
 }
 
 .footer-links a {
   color: #f0f9f6;
   color: pink;
+  color: gray;
   transition: color 0.3s ease;
 }
 

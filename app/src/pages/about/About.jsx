@@ -1,6 +1,7 @@
 import Footer2 from "../../components/footer/Footer2";
 import "../../styles/about/about.css";
-import hollandProfileImage from "../../assets/images/about-me-2.png";
+import hollandProfileImage from "../../assets/images/about-me-5.png";
+import YinYang from "../../assets/images/yin-yang.png";
 
 function About() {
   const teamMembers = [
@@ -39,8 +40,15 @@ function About() {
     <div className="about-page">
       <div className="about">
         <div className="about-page-blurb">
-          Divot is a website for people to help their favorite brand become more
-          sustainable and track their progress.
+          <div className="welcome-about">
+            ABOUT{" "}
+            <div className="yin-yang-container">
+              <img src={YinYang} className="yin-yang" alt="YinYang" />
+            </div>
+            💬
+          </div>
+          Divot is a website for people to help their favorite brands become
+          more eco-friendly and track their progress.
         </div>{" "}
         <div className="meet-team">
           {" "}
