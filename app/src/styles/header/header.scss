@@ -153,7 +153,7 @@ is-reverse .marquee__scroll {
   background: none;
   z-index: 100000;
   height: 5rem;
-  padding: 0rem 0.5rem;
+  padding: 0rem 1.2rem;
 }
 
 .header-logo {
@@ -162,6 +162,84 @@ is-reverse .marquee__scroll {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 30px;
+}
+
+$dark: #212121;
+$light: #efefef;
+$color: #b3e5fc;
+
+@mixin btn($left, $top) {
+  width: 10px;
+  height: 10px;
+  top: $top;
+  left: $left;
+  transition-duration: 0.5s;
+}
+@mixin icon($height, $width) {
+  transition-duration: 0.5s;
+  position: absolute;
+  height: $height;
+  width: $width;
+  top: 30px;
+  background-color: $dark;
+}
+
+@mixin icon-before($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $dark;
+  content: "";
+  top: $top;
+}
+
+@mixin icon-after($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: $dark;
+  content: "";
+  top: $top;
+}
+
+.btn4 {
+  @include btn(360px, 100px);
+
+  .icon {
+    @include icon(0px, 20px);
+
+    &:before {
+      @include icon-before(2px, 18px, -20px);
+    }
+
+    &:after {
+      @include icon-after(2px, 18px, 20px);
+    }
+  }
+
+  &.open {
+    .icon {
+      transition: 0.5s;
+
+      &:before {
+        transform: rotateZ(45deg) scaleX(1.25) translate(12px, 12px);
+      }
+
+      &:after {
+        transform: rotateZ(-45deg) scaleX(1.25) translate(12px, -12px);
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .logo-gif {
@@ -184,6 +262,7 @@ is-reverse .marquee__scroll {
   color: #300510;
   color: #f4f1e5;
   color: #aa7950;
+  margin-top: 1rem;
 }
 
 .beta {
@@ -233,7 +312,6 @@ is-reverse .marquee__scroll {
 }
 
 .header-search {
-  margin-right: 0.9rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -264,7 +342,6 @@ is-reverse .marquee__scroll {
 }
 
 .home-button {
-  font-family: "sofia-pro-reg";
   color: #aa7850;
   color: #554f32;
   color: #a9784f;
@@ -272,9 +349,12 @@ is-reverse .marquee__scroll {
   color: #ece7d1;
   color: #1d1b1e;
   color: #554f32;
+  color: #191919;
   color: #36252d;
-  text-align: center;
-  margin-top: 0.4rem;
+  font-family: "sofia-pro", sans-serif;
+  font-size: 20px;
+  line-height: 22px;
+  font-weight: 500;
 }
 
 .join-button {
@@ -311,15 +391,16 @@ is-reverse .marquee__scroll {
   color: white;
   color: #aa7950;
   color: #1d1b1e;
-  font-size: 18px;
-  margin-top: 0.1rem;
-  font-family: "sofia-pro-reg";
-  z-index: 10000;
+  color: #191919;
+  font-size: 20px;
+  font-family: "neutra-text";
+  font-weight: 500;
+  margin-left: 15px;
 }
 
 .active-link {
   color: #aa7950;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .notifications {
@@ -388,6 +469,70 @@ is-reverse .marquee__scroll {
     .wave {
       margin-left: -0.25rem;
       width: calc(100% + 0.5rem);
+    }
+  }
+}
+
+//hamburger menu
+
+$color: #37252c;
+$height-icon: 20px;
+$width-line: 30px;
+$height-line: 2px;
+$transition-time: 0.4s;
+$rotation: 45deg;
+$translateY: $height-icon / 2;
+
+#hamburger-icon {
+  width: $width-line;
+  height: $height-icon;
+  margin: 0;
+
+  .line {
+    display: block;
+    background: $color;
+    width: $width-line;
+    height: $height-line;
+    position: absolute;
+    left: 0;
+    border-radius: $height-line/2;
+    transition: all $transition-time;
+
+    &.line-1 {
+      top: 0;
+    }
+
+    &.line-2 {
+      top: 50%;
+    }
+
+    &.line-3 {
+      top: 100%;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .line-1 {
+      transform: translateY($height-line / 2 * -1);
+    }
+
+    .line-3 {
+      transform: translateY($height-line / 2);
+    }
+  }
+
+  &.active {
+    .line-1 {
+      transform: translateY($translateY) rotate($rotation);
+    }
+
+    .line-2 {
+      opacity: 0;
+    }
+
+    .line-3 {
+      transform: translateY(-$translateY) rotate(-$rotation);
     }
   }
 }

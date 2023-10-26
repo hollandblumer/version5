@@ -50,6 +50,7 @@ body {
     background: url(./assets/images/white-page-texture.png);
     background: url(./assets/images/magic-pattern.png);
     background: url(./assets/images/wood-lines.png);
+    margin: 0;
   }
 }
 
@@ -131,24 +132,4 @@ input {
   src: url("./assets/fonts/neutra-medium/Neutra\ Display\ Medium.woff");
   /* Super Modern Browsers */
   font-weight: 500;
-}
-
-@font-face {
-  font-family: "sofia-pro";
-  src: url("./assets/fonts/sofia-pro/Sofia\ Pro\ Medium.woff");
-  /* Super Modern Browsers */
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: "sofia-pro-reg";
-  src: url("./assets/fonts/sofia-pro/Sofia\ Pro\ Regular.woff");
-  /* Super Modern Browsers */
-}
-
-@font-face {
-  font-family: "sofia-pro-light";
-  src: url("./assets/fonts/sofia-pro/sofiapro-light.woff");
-  /* Super Modern Browsers */
-  font-weight: 600;
 }

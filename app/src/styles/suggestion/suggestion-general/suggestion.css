@@ -64,7 +64,8 @@ div.like-share > * {
   /* box-shadow: 1px 4px 4px -1px #00000040;  Airbnb-like box shadow */
   background: #ece7d1;
   background: #e3d9c2;
-  border-radius: 0.5rem;
+  background: rgba(239, 239, 239, 0.6);
+  background: #d6d4d5;
   border: 1px solid rgba(255, 255, 255, 0.125);
 }
 .suggestion-container:hover {

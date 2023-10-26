@@ -9,7 +9,7 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 import AddBrand from "./components/brand/AddBrand";
 import Dashboard from "./Dashboard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faBars } from "@fortawesome/free-solid-svg-icons";
 import "./styles/header/header.css";
 import Search from "./components/header/Search";
 import Dropdown from "./components/header/Dropdown";
@@ -32,9 +32,10 @@ import Verification from "./components/signup/Verification";
 import SearchMagnifyingGlass from "./assets/images/header-search.png";
 import Loading from "./components/loading/Loading";
 import "./App.css";
-import LogoGIF from "./assets/images/divotlogo.png";
+import LogoGIF from "./assets/images/future-wise.png";
 import WaveBar from "./components/WaveBar";
 import OrbEffect from "./components/OrbEffect";
+import MenuIcon from "./assets/images/menu-icon-1.svg";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -49,7 +50,8 @@ function App() {
   const path = location.pathname;
   const isHome = location.pathname === "/";
   const isAbout = location.pathname === "/about";
-
+  const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState(false);
   DataStore.start();
 
   useEffect(() => {
@@ -95,12 +97,30 @@ function App() {
     }
   };
 
+  const toggleOpenState = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="App">
       <OrbEffect />
       <div className="header">
         <div className="header-left">
-          <div
+          {/*   <img className="menu-icon" src={MenuIcon} /> */}
+          <a
+            id="hamburger-icon"
+            href="#"
+            title="Menu"
+            onClick={(e) => {
+              e.preventDefault();
+              setActive(!active);
+            }}
+            className={active ? "active" : ""}
+          >
+            <div className="line line-1"></div>
+            <div className="line line-2"></div>
+            <div className="line line-3"></div>
+          </a>
+          {/*  <div
             className="header-search"
             onClick={() => setShowInput(!showInput)}
           >
@@ -119,26 +139,33 @@ function App() {
                 alt="Logo image"
               />
             )}
-          </div>{" "}
-          <Link
-            to="/about"
-            className={isHome ? "about-link" : "about-link active-link"}
-          >
-            About
-          </Link>
-          <Link
+          </div>{" "} */}
+          {/*     <Link
             to="/"
-            className={isAbout ? "home-button" : "home-button active-link"}
+            className={
+              location.pathname === "/"
+                ? "home-button active-link"
+                : "home-button"
+            }
           >
             Home
           </Link>
-          {/* {path === "/" ? (
+          <Link
+            to="/about"
+            className={
+              location.pathname === "/about"
+                ? "home-button active-link"
+                : "home-button"
+            }
+          >
+            About
+          </Link> */}
+          {/*   {path === "/" ? (
             <Link to="/about" className="about-link" replace>
               About
             </Link>
           ) : (
             <Link to="/" replace>
-       
               <div className="home-button">Home</div>
             </Link>
           )} */}
@@ -147,7 +174,7 @@ function App() {
           {" "}
           {/* <span class="logo">DIVOT</span> */}
           <img className="logo-gif" src={LogoGIF} />
-          {/*   <div className="beta">
+          {/*    <div className="beta">
             Beta
             <TidioWrapper icon="info" />
           </div> */}

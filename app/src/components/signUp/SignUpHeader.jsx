@@ -9,7 +9,7 @@ export function SignUpHeader() {
   return (
     <div>
       <div className="login-title" padding={`0 0 0`}>
-        Sign Up{" "}
+        Welcome!{" "}
       </div>
       <div className="signup-brand-form-link">
         {" "}

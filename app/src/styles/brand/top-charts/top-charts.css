@@ -22,21 +22,19 @@
   align-items: center;
   width: 100%;
   margin-top: 7px;
-  font-family: "neutra-text-2";
-  font-weight: 600;
+  font-family: "neutra-text";
 }
 .trending-filter-buttons button {
   background: none;
-  padding: 0px 0px;
+  padding: 0px 10px;
   border: none;
   font-size: 17px;
   color: #272727;
-  margin-left: 10px;
   /* Active state */
   /* Active state */
 }
 .trending-filter-buttons button:nth-child(1) {
-  margin-left: 0px;
+  padding-left: 0px;
 }
 .trending-filter-buttons button:hover {
   color: #aa7950; /* Change color on hover */

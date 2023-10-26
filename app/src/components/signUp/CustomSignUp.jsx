@@ -113,7 +113,7 @@ function CustomSignUp() {
       <div className="custom-signin-container">
         <form className="signin-form" onSubmit={handleSignUp}>
           <div className="signup-header">
-            <div className="signin-title">Sign Up</div>
+            <div className="signup-title"> Sign Up </div>
             <div className="business-form-redirect">
               Business?
               <button onClick={handleBrandForm}> Apply as Business </button>
@@ -123,7 +123,7 @@ function CustomSignUp() {
               <div onClick={handleSignIn}> Sign In</div>{" "}
             </div>
           </div>
-          <div className="form-group">
+          <div className="form-group-sign-up">
             <label
               className={`form-label ${
                 givenNameFocused ? "focused-label" : ""
@@ -143,7 +143,7 @@ function CustomSignUp() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-sign-up">
             <label
               className={`form-label ${
                 familyNameFocused ? "focused-label" : ""
@@ -163,7 +163,7 @@ function CustomSignUp() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-sign-up">
             <label
               className={`form-label ${
                 secretCodeFocused ? "focused-label" : ""
@@ -183,7 +183,7 @@ function CustomSignUp() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-sign-up">
             <label
               className={`form-label ${emailFocused ? "focused-label" : ""}`}
               htmlFor="email"
@@ -201,7 +201,7 @@ function CustomSignUp() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-sign-up">
             <label
               className={`form-label ${passwordFocused ? "focused-label" : ""}`}
               htmlFor="password"
@@ -236,7 +236,7 @@ function CustomSignUp() {
               </button>
             </div>
           </div>
-          <div className="form-group">
+          <div className="form-group-sign-up">
             <label
               className={`form-label ${
                 confirmPasswordFocused ? "focused-label" : ""

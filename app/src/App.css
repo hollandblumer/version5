@@ -74,8 +74,8 @@ html {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: -20;
 }
@@ -175,10 +175,6 @@ strong {
 }
 
 @media only screen and (max-width: 840px) {
-  body {
-    padding: 1.5rem;
-  }
-
   .overlay {
     padding: 4rem;
     height: auto;
@@ -214,5 +210,77 @@ strong {
 
   .overlay__btn:first-child {
     margin-bottom: 1rem;
+  }
+}
+
+$background: #3d566e;
+$color: #ecf0f1;
+$height-icon: 50px;
+$width-line: 100px;
+$height-line: 8px;
+$transition-time: 0.4s;
+$rotation: 45deg;
+$translateY: $height-icon / 2;
+
+body {
+  background: $background;
+  color: $color;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+}
+
+#hamburger-icon {
+  width: $width-line;
+  height: $height-icon;
+  position: relative;
+  display: block;
+  margin: ($height-icon * 2) auto $height-icon auto;
+
+  .line {
+    display: block;
+    background: $color;
+    width: $width-line;
+    height: $height-line;
+    position: absolute;
+    left: 0;
+    border-radius: ($height-line / 2);
+    transition: all $transition-time;
+
+    &.line-1 {
+      top: 0;
+    }
+
+    &.line-2 {
+      top: 50%;
+    }
+
+    &.line-3 {
+      top: 100%;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .line-1 {
+      transform: translateY($height-line / 2 * -1);
+    }
+
+    .line-3 {
+      transform: translateY($height-line / 2);
+    }
+  }
+
+  &.active {
+    .line-1 {
+      transform: translateY($translateY) rotate($rotation);
+    }
+
+    .line-2 {
+      opacity: 0;
+    }
+
+    .line-3 {
+      transform: translateY(-$translateY) rotate(-$rotation);
+    }
   }
 }

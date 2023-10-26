@@ -49,7 +49,7 @@ function SignedInUserInfo({
           <div className="avatar-background">
             <Avatar
               src={url}
-              sx={{ height: "110px", width: "110px" }}
+              sx={{ height: "107px", width: "107px" }}
               style={{}}
             />
             {/*             <svg

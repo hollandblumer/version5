@@ -36,6 +36,7 @@
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 0.3rem;
+  margin-left: -0.4rem;
   // border-bottom: 1.5px solid #eeeeee;
   // margin: 0.4rem 0.6rem; //real
   // margin: 0.4rem 0rem;
@@ -74,9 +75,12 @@
 }
 
 .business-nav-item {
-  width: 7rem;
+  width: 6rem;
   font-family: "neutra-text";
   font-size: 18px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .business-nav-item:hover {

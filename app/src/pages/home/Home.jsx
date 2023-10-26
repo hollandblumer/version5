@@ -112,8 +112,12 @@ function Home() {
         onMouseEnter={() => setShowInput(true)}
       >
         <div className="home-search-form">
-          {/*           <img src={QRCode} className="magnifying-glass" alt="Logo image" />
-           */}
+          {/*  <img
+            src={SearchMagnifyingGlass}
+            className="magnifying-glass"
+            alt="Logo image"
+          />
+ */}
           <div onChange={createSearch} className="home-search-input-container">
             <input
               className="home-search-input"
@@ -126,8 +130,7 @@ function Home() {
             <span className="placeholder-animation">
               {search ? null : (
                 <div className="placeholder-text">
-                  Search for a <b> &nbsp;business</b> &nbsp; or{" "}
-                  <b>&nbsp; user</b>{" "}
+                  Search businesses, users, more...
                 </div>
               )}
             </span>

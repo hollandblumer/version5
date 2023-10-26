@@ -1,5 +1,6 @@
 .dirt-container {
   margin: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,14 +29,14 @@
 }
 
 .brand-length {
-  font-family: "wintter-test";
+  font-family: "sofia-pro";
   letter-spacing: none;
   letter-spacing: 1.4px;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  height: 30px;
+  color: #36252d;
 }
 
 .eye-icon {
@@ -54,6 +55,7 @@
   justify-content: space-between;
   width: 100%;
   overflow: visible;
+  padding: 0 4rem;
 }
 
 .featured-brands {
@@ -91,8 +93,8 @@
 
 @media screen and (max-width: 1024px) {
   .dirt-avatar {
-    height: 80px !important;
-    width: 80px !important;
+    height: 70px !important;
+    width: 70px !important;
   }
 }
 .dirt-user {

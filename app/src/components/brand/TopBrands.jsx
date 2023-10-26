@@ -150,7 +150,9 @@ function TopBrands() {
 
   return (
     <div className="top-brands">
-      <div className="top-brands-title">MOST COMPLIMENTED BRANDS</div>
+      <div className="top-brands-title">
+        <div>MOST COMPLIMENTED BRANDS </div>
+      </div>
       <div className="top-brands-sort-select-container">
         <div>sort by</div>
         <select
@@ -192,9 +194,7 @@ function TopBrands() {
                 </Link>
               </div>
               <div className="top-brands-counter">
-                <GradientIcon />
-
-                {totalCompliments[brandName]}
+                <GradientIcon /> {totalCompliments[brandName]}
               </div>
             </div>
           ))

@@ -12,7 +12,6 @@ function OrbEffect() {
     const app = new PIXI.Application({
       view: document.querySelector(".orb-canvas"),
       resizeTo: window,
-
       transparent: true,
     });
 
@@ -212,10 +211,19 @@ function OrbEffect() {
     const colorPalette = new ColorPalette();
 
     const orb = new Orb(colorPalette.randomColor());
+    function handleResize() {
+      app.renderer.resize(window.innerWidth, window.innerHeight);
+      backgroundSprite.width = app.renderer.width;
+      backgroundSprite.height = app.renderer.height;
+    }
+
+    // Attach the resize event listener
+    window.addEventListener("resize", handleResize);
 
     // Return a cleanup function
     return () => {
       // Cleanup code, if needed
+      window.removeEventListener("resize", handleResize); // Remove the resize event listener here
     };
   }, []); // Empty dependency array ensures this effect runs once on component mount
 
