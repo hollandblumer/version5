@@ -16,6 +16,8 @@ function CustomSignIn() {
   const [error, setError] = useState(null);
   const [usernameFocused, setUsernameFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
+  const [isSignInLoading, setIsSignILoading] = useState(false);
+
   const navigate = useNavigate();
 
   const handleUsernameChange = (e) => {
@@ -54,7 +56,7 @@ function CustomSignIn() {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-
+    setIsSignILoading(true);
     try {
       // Sign in using Amplify Auth
       await Auth.signIn(username, password);
@@ -75,6 +77,7 @@ function CustomSignIn() {
         navigate("/complete-profile");
       }
     } catch (error) {
+      setIsSignILoading(false);
       setError(error.message);
       console.error("Sign-in error:", error);
 
@@ -98,7 +101,10 @@ function CustomSignIn() {
           <div className="signin-header">
             <div className="signin-title">Sign In </div>
             <div className="signup-redirect">Don't have an account?</div>
-            <button onClick={handleSignUp}> Join Now</button>
+            <button type="button" onClick={handleSignUp}>
+              {" "}
+              Join Now
+            </button>
           </div>
 
           <div className="form-group">
@@ -156,7 +162,15 @@ function CustomSignIn() {
           </div>
 
           <button type="submit" className="signin-button">
-            SIGN IN
+            {isSignInLoading ? (
+              <div className="bouncing">
+                <div className="circle"></div>
+                <div className="circle"></div>
+                <div className="circle"></div>
+              </div>
+            ) : (
+              "SIGN IN"
+            )}
           </button>
         </form>
 

@@ -45,8 +45,9 @@ function OrbEffect() {
         this.scale = 1;
 
         // What color is the orb?
+        // this.fill = 0xe1dada;
+        // this.fill = 0xdbd0d8;
         this.fill = 0xe1dada;
-
         // The original radius of the orb, set relative to window height
         this.radius = random(window.innerHeight / 6, window.innerHeight / 3);
 
@@ -55,7 +56,7 @@ function OrbEffect() {
         this.yOff = random(0, 1000);
 
         // How quickly the noise/self-similar random values step through time
-        this.inc = 0.0001;
+        this.inc = 0.0009;
 
         // PIXI.Graphics is used to draw 2D primitives (in this case a circle) to the canvas
         this.graphics = new PIXI.Graphics();

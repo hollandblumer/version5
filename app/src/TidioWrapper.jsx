@@ -47,7 +47,7 @@ function TidioWrapper({ icon }) {
       {/* Info icon */}
       <div className="info-logo" onMouseEnter={onHover} onMouseLeave={onLeave}>
         {tempIcon === "info" ? (
-          <div>ⓘ</div>
+          <b>ⓘ</b>
         ) : (
           <div className="chat-now-text">
             {" "}

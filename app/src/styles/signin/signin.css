@@ -352,6 +352,7 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   background: #aa9b82;
   background: #a29c93;
   background: #b7b6b6;
+  background: #a6a6a6;
   color: white;
 }
 
@@ -400,27 +401,6 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   background-size: 200% 100%; /* Double the width to allow for movement */
 }
 
-.form-group-sign-up {
-  position: relative;
-  margin-top: 1.5rem;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: rgb(204, 204, 204);
-  /* Add the gradient border as a pseudo-element */
-}
-.form-group-sign-up::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0.06rem !important; /* Height of the gradient border */
-  background: rgb(204, 204, 204); /* Gradient color */
-}
-
 @keyframes moveGradient {
   0% {
     background-position: 100% 0; /* Start the gradient offscreen to the right */
@@ -429,6 +409,18 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
     background-position: -100% 0; /* Move the gradient offscreen to the left */
   }
 }
+.form-group-sign-up {
+  position: relative;
+  margin-top: 2.8rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  /* Add the gradient border as a pseudo-element */
+  border-bottom: 1px solid rgb(38, 35, 43);
+}
+
 .form-label {
   position: absolute;
   transition: transform 0.2s ease, font-size 0.2s ease, top 0.2s ease;
@@ -456,6 +448,30 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   font-size: 12px;
 }
 
+.signup-button {
+  background-color: #aa7950;
+  background-color: #ad866a;
+  background: #8c8577 !important;
+  background: #37272e !important;
+  background: #35252d !important;
+  color: #fff;
+  width: 35rem;
+  padding: 15px 0 !important; /* Increase padding for a larger button */
+  border: none;
+  border-radius: 30px !important;
+  font-size: 18px; /* Increase font size */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  letter-spacing: 1px;
+  font-family: "wintter-test";
+  font-weight: 300;
+  margin: 3.7rem auto 2.3rem auto; /* Adjusted this line */
+}
+.signup-button:hover {
+  background-color: #cec4af !important;
+  background: #8e8e8e !important;
+}
+
 .signin-button {
   background-color: #aa7950;
   background-color: #ad866a;
@@ -477,7 +493,38 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
 }
 .signin-button:hover {
   background-color: #cec4af !important;
-  background: #8c8c8c !important;
+  background: #8e8e8e !important;
+}
+.signin-button .bouncing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px;
+}
+.signin-button .circle {
+  width: 10px;
+  height: 10px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 50%;
+  margin: 0 4px;
+  animation: loading 1s linear infinite;
+}
+.signin-button .circle:nth-child(1) {
+  animation-delay: 0s;
+}
+.signin-button .circle:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.signin-button .circle:nth-child(3) {
+  animation-delay: 0.5s;
+}
+@keyframes loading {
+  0%, 100% {
+    transform: translateY(3px);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
 }
 
 .error {

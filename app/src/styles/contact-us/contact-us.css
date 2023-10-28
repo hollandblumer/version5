@@ -33,7 +33,7 @@ form label {
 form input,
 form textarea {
   width: 100%;
-  padding: 10px;
+  padding: 3px 3px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 4px;

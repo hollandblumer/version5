@@ -39,6 +39,7 @@ body {
   background: url(./assets/images/magic-pattern.png);
   background: url(./assets/images/wood-lines.png);
   background: #f7f6f0;
+  background: url(./assets/images/natural-backdrop.png);
 }
 
 @media (max-width: 768px) {
@@ -50,6 +51,7 @@ body {
     background: url(./assets/images/white-page-texture.png);
     background: url(./assets/images/magic-pattern.png);
     background: url(./assets/images/wood-lines.png);
+    background: url(./assets/images/natural-backdrop.png);
     margin: 0;
   }
 }

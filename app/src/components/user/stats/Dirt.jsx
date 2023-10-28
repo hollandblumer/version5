@@ -57,8 +57,8 @@ function Dirt({ brand, showBlankAvatar }) {
   }, [brand, showBlankAvatar]);
 
   const avatarStyle = {
-    height: "60px",
-    width: "60px",
+    height: "50px",
+    width: "50px",
     border: "1px solid #dbdbdb",
     backgroundColor: showBlankAvatar ? "#e8e5dd" : "transparent",
     filter: signedProfileURL ? "none" : "blur(5px)",
@@ -72,7 +72,7 @@ function Dirt({ brand, showBlankAvatar }) {
     <div
       style={{
         position: "relative",
-        width: "100px",
+        width: "80px",
         height: "100px",
         display: "flex", // Enable Flexbox
         alignItems: "center", // Vertically center content

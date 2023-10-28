@@ -14,6 +14,7 @@ import {
   faShare,
   faArrowUpRightFromSquare,
   faTrashCan,
+  faShareNodes,
 } from "@fortawesome/free-solid-svg-icons";
 import { faClock, faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -232,7 +233,7 @@ function SignedInSuggestionFromUser({
           </div>
         </div>
         <div className="time-share">
-          {formatdate} ago
+          {/*           {formatdate} ago */}
           <div className="like-share">
             {/* <button
               onClick={handleDeleteClick}
@@ -241,11 +242,18 @@ function SignedInSuggestionFromUser({
               {" "}
               D
             </button> */}
-            <div> SHARE </div>
+
+            <FontAwesomeIcon
+              icon={faShareNodes}
+              className="share"
+              color="#5b584a"
+              size="xl"
+            />
+
             <FontAwesomeIcon
               icon={faEllipsis}
               style={{ marginTop: "-.2rem" }}
-              color="#877E71"
+              color="#5b584a"
               size="xl"
             />
           </div>

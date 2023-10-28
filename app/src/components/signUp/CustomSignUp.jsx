@@ -274,7 +274,7 @@ function CustomSignUp() {
             </div>
           </div>
 
-          <button type="submit" className="signin-button">
+          <button type="submit" className="signup-button">
             {" "}
             SIGN UP
           </button>

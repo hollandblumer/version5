@@ -235,7 +235,7 @@ is-reverse .marquee__scroll {
   color: #300510;
   color: #f4f1e5;
   color: #aa7950;
-  margin-top: 1rem;
+  letter-spacing: -0.2px;
 }
 
 .beta {
@@ -245,6 +245,7 @@ is-reverse .marquee__scroll {
   color: #a27a55;
   color: #aa7950;
   font-size: 21px;
+  font-size: 25px;
   font-weight: 500;
   display: flex;
   flex-direction: row;
@@ -273,7 +274,6 @@ is-reverse .marquee__scroll {
   font-family: cursive;
   font-size: 12pt;
   font-weight: 600;
-  margin-left: 0.2rem;
 }
 
 .info-message {
@@ -323,10 +323,11 @@ is-reverse .marquee__scroll {
   color: #554f32;
   color: #191919;
   color: #36252d;
-  font-family: "sofia-pro", sans-serif;
+  color: #1d1c1b;
+  color: #36252d;
+  font-family: "neutra-text-2";
   font-size: 20px;
   line-height: 22px;
-  font-weight: 500;
 }
 
 .join-button {
@@ -436,6 +437,7 @@ is-reverse .marquee__scroll {
   width: 30px;
   height: 20px;
   margin: 0;
+  position: relative;
 }
 #hamburger-icon .line {
   display: block;

@@ -13,7 +13,10 @@ import {
   faMagnifyingGlass,
   faCircleXmark,
   faStar,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
+import GradientStar from "../../assets/images/gradient-star.svg";
+import Earth from "../../assets/images/earth.png";
 
 function TopBrands() {
   const [topBrands, setTopBrands] = useState([]);
@@ -142,7 +145,8 @@ function TopBrands() {
         y="0"
         width="16"
         height="16"
-        fill="#e8daa3"
+        /*        fill="#e8daa3" */
+        fill="#F0E798"
         clipPath="url(#clip)"
       />
     </>
@@ -151,7 +155,7 @@ function TopBrands() {
   return (
     <div className="top-brands">
       <div className="top-brands-title">
-        <div>MOST COMPLIMENTED BRANDS </div>
+        <div> Most Complimented Brands </div>
       </div>
       <div className="top-brands-sort-select-container">
         <div>sort by</div>
@@ -173,7 +177,15 @@ function TopBrands() {
           <option value="suggestions">suggestions</option>
           <option value="compliments">compliments</option>
         </select>
+
+        <FontAwesomeIcon
+          icon={faSearch}
+          size="lg"
+          color="#a6a6a6"
+          style={{ marginLeft: "4px" }}
+        />
       </div>
+
       <div className="top-brands-icons">
         {topBrands.length > 0 ? (
           topBrands.map((brandName, index) => (
@@ -194,7 +206,8 @@ function TopBrands() {
                 </Link>
               </div>
               <div className="top-brands-counter">
-                <GradientIcon /> {totalCompliments[brandName]}
+                <img className="gradient-star" src={GradientStar} />
+                {totalCompliments[brandName]}
               </div>
             </div>
           ))

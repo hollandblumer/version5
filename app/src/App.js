@@ -106,20 +106,21 @@ function App() {
       <div className="header">
         <div className="header-left">
           {/*   <img className="menu-icon" src={MenuIcon} /> */}
-          <a
+          <div
             id="hamburger-icon"
             href="#"
             title="Menu"
             onClick={(e) => {
               e.preventDefault();
               setActive(!active);
+              setShowInput(!showInput);
             }}
             className={active ? "active" : ""}
           >
             <div className="line line-1"></div>
             <div className="line line-2"></div>
             <div className="line line-3"></div>
-          </a>
+          </div>
           {/*  <div
             className="header-search"
             onClick={() => setShowInput(!showInput)}
@@ -173,7 +174,9 @@ function App() {
         <div className="header-logo">
           {" "}
           {/* <span class="logo">DIVOT</span> */}
-          <img className="logo-gif" src={LogoGIF} />
+          <a href="/">
+            <img className="logo-gif" src={LogoGIF} />
+          </a>
           {/*    <div className="beta">
             Beta
             <TidioWrapper icon="info" />
@@ -246,13 +249,12 @@ function App() {
         </div>
       ) : (
         <div className={` ${showInput ? "app-content" : "app-content-2"}`}>
-          {showInput ? (
-            <div className="search-panel">
-              <Search />{" "}
-            </div>
-          ) : (
-            <div></div>
-          )}
+          <div
+            className={`search-panel ${showInput ? "slide-out2" : "slide-in2"}`}
+          >
+            <Search />{" "}
+          </div>
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route

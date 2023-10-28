@@ -100,7 +100,7 @@ function EditSoil({ brandArray }) {
   let actualArray = Array.from(uniqueArray);
 
   return (
-    <div>
+    <div className="edit-soil-form">
       <h2>Select the brands you want to feature (up to 7 brands)</h2>
       {actualArray.map((item, index) => (
         <form key={index}>

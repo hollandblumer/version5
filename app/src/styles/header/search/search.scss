@@ -1,23 +1,47 @@
 .search-panel {
   background: #aa7950;
   background: #e5d9bf;
-
   background: #f4f2ea;
   background: #e9e5dc;
   background: #e7e6e0;
   background: rgba(233, 229, 220, 0.95);
   background: #ad866a;
-  background: rgba(173, 134, 106, 0.95);
-
+  background: rgba(173, 134, 106, 0.95); //instagram brown color
+  background: rgba(214, 212, 213, 0.95);
   flex: 0.5;
   border-right: 0.2px solid #e9e5dc;
   position: absolute;
   z-index: 3000;
   height: 100vh;
-  width: 40rem;
+  width: 100%;
   margin-top: 1.8rem;
 }
 
+.slide-out2 {
+  animation: slideOut2 0.5s forwards;
+}
+
+.slide-in2 {
+  animation: slideIn2 0.5s forwards;
+}
+
+@keyframes slideOut2 {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideIn2 {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
 .no-panel {
   width: 0%;
 }
@@ -131,6 +155,6 @@
 
 .search-divider {
   width: 100%;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #ebebeb;
   height: 1rem;
 }

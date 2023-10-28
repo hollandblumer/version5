@@ -53,7 +53,7 @@ function Search() {
           />
         </form>
         <button className="xbutton" onClick={() => setSearch("")}>
-          <FontAwesomeIcon icon={faCircleXmark} size="sm" color="#c7c7c7" />
+          <FontAwesomeIcon icon={faCircleXmark} size="sm" color="#bdb8b0" />
         </button>
       </div>
       <div className="search-divider"></div>

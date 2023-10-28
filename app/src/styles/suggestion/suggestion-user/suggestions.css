@@ -5,10 +5,13 @@
   max-height: 330px;
   margin-top: 2rem;
   padding-right: 1rem;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
 }
 
 .suggestion-box::-webkit-scrollbar {
   width: 0.3em;
+  display: none;
 }
 
 .suggestion-box::-webkit-scrollbar-track {

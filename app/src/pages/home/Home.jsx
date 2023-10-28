@@ -6,6 +6,7 @@ import {
   faMagnifyingGlass,
   faCircleXmark,
   faMicrophone,
+  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import "../../styles/header/header.css";
 import "../../styles/header/search/search.css";
@@ -18,6 +19,11 @@ import QRScanner from "../../components/qrscanner/QRScanner";
 import Footer2 from "../../components/footer/Footer2";
 import TopBrands from "../../components/brand/TopBrands";
 import LightningArrow from "../../assets/images/lightning-arrow.png";
+import WelcomeBlob from "../../assets/images/header-blob-2.svg";
+import NaturalBlob from "../../assets/images/naturalblob.png";
+import WelcomeX from "../../assets/images/x-button-2.svg";
+import PurpleLines from "../../assets/images/purple-lines.png";
+import Earth from "../../assets/images/earth.png";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);
@@ -28,6 +34,8 @@ function Home() {
   const [cursorVisible, setCursorVisible] = useState(true);
   const inputRef = useRef(null);
   const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
+  const [animatePopupOut, setAnimatePopupOut] = useState(false);
 
   const handleQRCodeClick = () => {
     setQRScannerVisible(true);
@@ -39,6 +47,7 @@ function Home() {
   };
 
   useEffect(() => {
+    setShowPopup(true);
     // Set focus to the input field when the component mounts
     inputRef.current.focus();
 
@@ -106,6 +115,44 @@ function Home() {
 
   return (
     <div className="home">
+      <div
+        className={
+          showPopup
+            ? "popup"
+            : animatePopupOut
+            ? "popup popup-exit"
+            : "popup-hidden"
+        }
+      >
+        {/*         <img className="popup-image" src={WelcomeBlob} />
+         */}{" "}
+        <img className="welcome-earth" src={Earth} />
+        <img className="natural-blob" src={NaturalBlob} />
+        <img className="popup-background" src={PurpleLines} />{" "}
+        {/*           <FontAwesomeIcon icon={faX} className="welcome-x" />*/}{" "}
+        <div
+          onClick={() => {
+            setAnimatePopupOut(true);
+            setTimeout(() => setShowPopup(false), 300); // adjust 300 to your desired animation duration
+          }}
+        >
+          <img className="welcome-x" src={WelcomeX} />
+        </div>
+        <div className="welcome-title"> WELCOME to Divot </div>
+        <div className="welcome-info">
+          Help your favorite brands become more eco-friendly and track their
+          progress.
+        </div>
+        <button
+          onClick={() => {
+            setAnimatePopupOut(true);
+            setTimeout(() => setShowPopup(false), 300); // adjust 300 to your desired animation duration
+          }}
+        >
+          enter
+        </button>
+      </div>
+
       <div className="about-blurb"></div>
       <div
         className="home-search-container"

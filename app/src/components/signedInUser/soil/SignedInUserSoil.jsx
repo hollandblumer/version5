@@ -22,8 +22,8 @@ function SignedInUserSoil({ brandArray }) {
       className={`dirt-container ${brandArray.length === 0 ? "no-brands" : ""}`}
     >
       <div className={`edit-dirt ${brandArray.length === 0 ? "blur" : ""}`}>
-        <div className="brand-length">{brandArray.length} Brands</div>
-
+        {/*         <div className="brand-length">{brandArray.length} Brands</div>
+         */}
         {expanded ? (
           <img
             className="eye-brands-icon"
@@ -37,14 +37,14 @@ function SignedInUserSoil({ brandArray }) {
             onClick={() => setExpanded(true)}
           />
         )}
-        {/*  <div
+        <div
           onClick={() => setShowEditSoil(true)} // Show the popup on click
           className={`edit-soil-text ${
             brandArray.length === 0 ? "unclickable" : ""
           }`}
         >
           edit
-        </div> */}
+        </div>
       </div>
       <div className="featured-brands-container">
         {brandArray.length === 0 ? (

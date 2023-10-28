@@ -14,14 +14,14 @@
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 1rem;
   @media (min-width: 768px) {
     padding: 0 14rem; // Apply 6rem padding for screens larger than iPad
   }
 }
 
 .user-dashboard-bottom {
-  margin-top: 5.5rem;
+  margin-top: 2rem;
   padding: 0 3rem;
   width: 100%;
   display: flex;

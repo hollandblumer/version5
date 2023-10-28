@@ -66,6 +66,7 @@
   border: none;
   color: #8e8e8e;
   color: #b7b1a7;
+  color: #37252c;
   margin-left: 2.5px;
   outline-width: 0;
   font-size: 18pt;
@@ -116,6 +117,10 @@
   height: 1.5rem;
   color: #36252d;
   color: #8c8577;
+  color: #56466b;
+  color: #ab68ff;
+  color: #42265a;
+  color: #36252d;
 }
 
 .QR-link {
@@ -143,13 +148,13 @@
 }
 
 .placeholder-text {
-  font-family: "sofia-pro", sans-serif;
+  font-family: "neutra-text-2";
   display: flex;
-  font-size: 16pt;
-  font-weight: 400;
+  font-size: 22px;
   color: #8e8e8e;
-  color: #b7b1a7;
-  margin-left: 0.2rem;
+  color: #757474;
+  color: #a6a6a6;
+  margin-left: 0.5rem;
 }
 
 .placeholder-animation {
@@ -171,23 +176,31 @@
   padding-top: 6rem;
   margin-top: 1.7rem;
   margin-bottom: 5rem;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
 }
 .top-brands-icons::-webkit-scrollbar {
   width: 0.2em;
+  display: none;
 }
 .top-brands-icons::-webkit-scrollbar-track {
-  background: #cecdcb;
+  background: rgb(204, 204, 204);
   border-radius: 100vw;
   margin-block: 0.1em;
+  background-color: darkgrey;
 }
 .top-brands-icons::-webkit-scrollbar-thumb {
   background: rgb(255, 255, 255);
   background: url("../../assets/images/swirl.jpg");
   background: #ad937a;
   background: #c9bfad;
+  background-color: rgba(55, 37, 44, 0.44);
+  background: #d4aa70;
   background-size: 40px 100px; /* Adjust to desired size */
   background-repeat: cover;
   border-radius: 100vw;
+  background: #806a6a;
+  border: 6px solid rgba(0, 0, 0, 0.2);
 }
 
 .top-brands-avatar-wrapper {
@@ -207,11 +220,30 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 0 2.5rem;
-  margin-top: 1rem;
+  width: 520px;
+  margin-top: 3rem;
   /*   border-radius: 0.2rem;
   background: rgba(222, 220, 207, 0.3);
   box-shadow: 0 0.75rem 2rem 0 rgba(129, 122, 122, 0.06); */
+}
+
+.top-brands-earth {
+  position: fixed;
+  margin-top: -6rem;
+  width: 600px;
+  height: 600px;
+  z-index: -2;
+}
+
+.top-brands-blob {
+  position: fixed;
+  margin-top: -6rem;
+  width: 600rem;
+  height: 600rem;
+  opacity: 0.8;
+  z-index: -2;
+  border-radius: 50%;
+  background: #ececec;
 }
 
 .eye-world {
@@ -260,11 +292,17 @@
 }
 .top-brands-title {
   width: 100%;
-  text-align: center;
+  text-align: left;
   font-family: "wintter-test";
-  font-size: 25px;
+  font-size: 36px;
   color: #35252d;
   color: #1d1c1b;
+  color: #1d1c1b;
+  color: #36252d;
+  font-size: 16pt;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
 }
 
 .top-brands-sort-select-container {
@@ -283,6 +321,13 @@
   font-size: 23px;
   font-weight: 500;
   display: flex;
+  align-items: center;
+}
+
+.gradient-star {
+  width: 20px;
+  height: 20px;
+  margin-right: 0.1rem;
 }
 
 .top-brands-name {
@@ -298,6 +343,175 @@
 
 .top-brands-username {
   margin-left: 0.8rem;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100000;
+  background-color: rgba(55, 37, 44, 0.59);
+  color: rgb(23, 21, 21);
+  background-color: rgba(55, 37, 44, 0.59);
+  background-color: rgba(106, 93, 93, 0.94);
+  background-size: cover;
+  font-family: "hippie-mojo";
+  font-size: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-background {
+  position: fixed;
+  z-index: -25;
+  width: 100%;
+  height: 100%;
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.popup-image {
+  position: fixed;
+  width: 520px;
+  height: 520px;
+  z-index: -20;
+  animation-name: rotateHexagon;
+  animation-duration: 9s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.welcome-earth {
+  position: fixed;
+  width: 450px;
+  height: 480px;
+  z-index: -25;
+  animation-name: rotateHexagon;
+  animation-duration: 9s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes rotateHexagon {
+  0% {
+    transform: scale(1) rotate(-18deg);
+  }
+  25% {
+    transform: scale(1) rotate(7deg);
+  }
+  50% {
+    transform: scale(1) rotate(-7deg);
+  }
+  75% {
+    transform: scale(1) rotate(-7deg);
+  }
+  100% {
+    transform: scale(1) rotate(18deg);
+  }
+}
+.popup button {
+  background-color: #f1f1f1;
+  background: #ddd;
+  color: rgb(23, 21, 21);
+  color: #5b584a;
+  color: #3c2b32;
+  background: #e6e4db;
+  background: linear-gradient(45deg, #bda592, #e6e4db);
+  background: linear-gradient(135deg, #f0d585, #f0e6b8);
+  background: linear-gradient(135deg, #e69b26, #f0e6b8);
+  background: linear-gradient(135deg, rgba(230, 160, 38, 0.737254902), #f0e6b8);
+  background: none;
+  border: none;
+  padding: 0px 0px 0px 0px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "sofia-pro";
+  font-size: 30px;
+  font-size: 40px;
+  animation: gradientAnimation 5s linear infinite;
+  text-align: center;
+}
+.popup button:hover {
+  background: #d6d4d5;
+  background: #c043d1;
+  background: linear-gradient(135deg, rgb(161, 140, 209), rgb(251, 194, 235));
+  background: #8c8577;
+  background: #28202f;
+  background: linear-gradient(135deg, #f0d585, #f0e6b8);
+  background: linear-gradient(135deg, #f0e6b8, #f0d585);
+  background: #f0d585;
+  opacity: 0.8;
+  color: rgb(23, 21, 21);
+}
+
+.welcome-info {
+  font-family: "itc-souvenir";
+  width: 350px;
+  margin: 0px 0 0px 0;
+  font-size: 22pt;
+  color: rgb(23, 21, 21);
+  text-align: center;
+}
+
+.welcome-x {
+  position: fixed;
+  top: 12%;
+  right: 25%;
+  z-index: 100001;
+  color: #ddd;
+  width: 30px;
+  height: 30px;
+}
+
+.welcome-logo {
+  margin-top: -2rem;
+  font-size: 70px;
+}
+
+.welcome-title {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.popup-exit {
+  animation: popupExitAnimation 0.3s forwards;
+}
+
+@keyframes popupExitAnimation {
+  from {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+.popup-hidden {
+  display: none;
+}
+
+.natural-blob {
+  position: fixed;
+  width: 470px;
+  height: 450px;
+  z-index: -15;
+  margin-left: -1rem;
+  margin-top: 0.2rem;
+  border-radius: 50%;
+  animation-name: rotateHexagon;
+  animation-duration: 9s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  opacity: 0.75;
 }
 
 /* .gradient-icon svg path {

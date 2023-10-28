@@ -40,7 +40,12 @@ function Info({
             style={{ opacity: 0.9 }}
           />
           <div className="avatar-background">
-            <svg
+            <Avatar
+              src={url}
+              sx={{ height: "107px", width: "107px" }}
+              style={{}}
+            />
+            {/*      <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 313 313"
               width="120"
@@ -59,7 +64,7 @@ function Info({
                 height="320" // Adjusted to match the viewBox dimensions
                 clipPath="url(#new-clip-shape)"
               />
-            </svg>
+            </svg> */}
             {/* <Avatar
               src={url}
               // sx={{ height: "90px", width: "90px" }}

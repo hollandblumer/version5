@@ -148,7 +148,7 @@
 }
 
 .action-buttons button:nth-child(2) {
-  margin-left: 0.2rem;
+  margin-left: 0rem;
   margin-right: 0.2rem;
 }
 
@@ -298,6 +298,7 @@
   color: #37252c;
   font-family: "sofia-pro";
   line-height: 22px;
+  font-weight: 600;
 }
 
 .bio-emphasis-text {
@@ -308,7 +309,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-family: "neutra-text";
+  font-family: "neutra-text-2";
   color: #000000;
   margin-top: 4px;
 }
