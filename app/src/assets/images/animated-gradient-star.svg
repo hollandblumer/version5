@@ -1,0 +1,16 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1080 1080">
+  <defs>
+    <clipPath id="starClip">
+      <polygon points="540 16.13 705.45 361.02 1075.41 416.33 807.71 684.8 870.9 1063.87 540 884.9 209.1 1063.87 272.29 684.8 4.59 416.33 374.55 361.02 540 16.13"/>
+    </clipPath>
+    
+    <linearGradient id="animated-gradient" x1="0" y1="-1080" x2="0" y2="0">
+      <stop offset="0" stop-color="#e3c07b"/>
+      <stop offset="1" stop-color="#ece0b2"/>
+      <animate attributeName="y1" values="0;1080;1080;0" dur="10s" repeatCount="indefinite"/>
+      <animate attributeName="y2" values="1080;2160;2160;1080" dur="10s" repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="1080" height="1080" fill="url(#animated-gradient)" clip-path="url(#starClip)"/>
+</svg>

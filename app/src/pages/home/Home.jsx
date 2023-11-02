@@ -165,7 +165,11 @@ function Home() {
             alt="Logo image"
           />
  */}
-          <div onChange={createSearch} className="home-search-input-container">
+          <div
+            onChange={createSearch}
+            className="home-search-input-container"
+            onClick={() => inputRef.current.focus()} // Focus on the input when the container is clicked
+          >
             <input
               className="home-search-input"
               type="text"
@@ -174,10 +178,14 @@ function Home() {
               onChange={(e) => setSearch(e.target.value)}
               ref={inputRef}
             />
+
             <span className="placeholder-animation">
               {search ? null : (
-                <div className="placeholder-text">
-                  Search businesses, users, more...
+                <div style={{ display: "flex" }}>
+                  <div className="placeholder-blink"></div>
+                  <div className="placeholder-text">
+                    Search brands, users, more...
+                  </div>
                 </div>
               )}
             </span>

@@ -304,6 +304,13 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   cursor: pointer;
 }
 
+.info-icon {
+  width: 15px;
+  height: 15px;
+  margin-left: 0.1rem;
+  transform: rotate(-2deg);
+}
+
 .fill-background {
   width: 100%;
   height: 100%;
@@ -541,6 +548,7 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
 .forgot-password-text {
   width: 35rem;
   margin-top: 2.7rem;
+  margin-bottom: 4.5rem;
 }
 
 .forgot-password-redirect {

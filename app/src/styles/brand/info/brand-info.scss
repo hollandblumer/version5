@@ -69,6 +69,20 @@
   outline: none;
   color: #2f2f2f;
   font-weight: 600;
+  -webkit-appearance: none; /* Removes default Safari styling */
+  appearance: none; /* Future-proofing for other browsers */
+  border-radius: 0; /* Optional: To remove default rounded corners */
+  background-color: transparent; /* Or any desired color */
+}
+
+.sort-select::-ms-expand {
+  display: none; /* For IE/Edge */
+}
+
+.caret-down {
+  width: 10px;
+  height: 10px;
+  margin-left: 0.2rem;
 }
 
 .sort-select-container {
@@ -76,6 +90,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.top-brands-sort-select-container {
+  position: relative; /* Make the container a positioning context */
 }
 
 .unverified {

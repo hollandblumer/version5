@@ -3,6 +3,7 @@ import "./styles/signin/signin.css";
 import { Helmet } from "react-helmet";
 import { faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import InfoIcon from "./assets/images/info-icon.svg";
 
 function TidioWrapper({ icon }) {
   const [hover, setHover] = useState(false);
@@ -47,7 +48,10 @@ function TidioWrapper({ icon }) {
       {/* Info icon */}
       <div className="info-logo" onMouseEnter={onHover} onMouseLeave={onLeave}>
         {tempIcon === "info" ? (
-          <b>ⓘ</b>
+          <div>
+            {" "}
+            <img src={InfoIcon} className="info-icon" />
+          </div>
         ) : (
           <div className="chat-now-text">
             {" "}

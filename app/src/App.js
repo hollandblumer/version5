@@ -32,7 +32,7 @@ import Verification from "./components/signup/Verification";
 import SearchMagnifyingGlass from "./assets/images/header-search.png";
 import Loading from "./components/loading/Loading";
 import "./App.css";
-import LogoGIF from "./assets/images/future-wise.png";
+import LogoGIF from "./assets/images/divot-logo-2.png";
 import WaveBar from "./components/WaveBar";
 import OrbEffect from "./components/OrbEffect";
 import MenuIcon from "./assets/images/menu-icon-1.svg";
@@ -172,14 +172,13 @@ function App() {
           )} */}
         </div>
         <div className="header-logo">
-          {" "}
-          {/* <span class="logo">DIVOT</span> */}
           <a href="/">
-            <img className="logo-gif" src={LogoGIF} />
+            {/* <img className="logo-gif" src={LogoGIF} /> */}
+            <div class="logo">DIVOT</div>
           </a>
-          {/*    <div className="beta">
-            Beta
-            <TidioWrapper icon="info" />
+          {/* <div className="beta">
+            beta version
+           <TidioWrapper icon="info" /> 
           </div> */}
           <TidioWrapper />
         </div>

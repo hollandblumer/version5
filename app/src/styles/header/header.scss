@@ -151,6 +151,8 @@ is-reverse .marquee__scroll {
   background: #403f3f;
   background: #f7f6f0;
   background: none;
+  // background: #e8e7e4; fave color
+  // background: #e4dfdf;
   z-index: 100000;
   height: 5rem;
   padding: 0rem 1.2rem;
@@ -162,6 +164,8 @@ is-reverse .marquee__scroll {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  height: 100%;
+  width: auto;
 }
 
 .menu-icon {
@@ -243,14 +247,13 @@ $color: #b3e5fc;
 }
 
 .logo-gif {
-  width: 100px;
-  height: 100px;
-  margin-top: 1rem;
+  width: 120px;
+  height: 90px;
 }
 
 .logo {
   font-family: "hippie-mojo";
-  font-size: 65px; // with hippie mojo
+  font-size: 70px; // with hippie mojo
   /* Clip the background to the text */
   -webkit-background-clip: text;
   background-clip: text;
@@ -262,7 +265,6 @@ $color: #b3e5fc;
   color: #300510;
   color: #f4f1e5;
   color: #aa7950;
-  letter-spacing: -0.2px;
 }
 
 .beta {
@@ -272,13 +274,12 @@ $color: #b3e5fc;
   color: #a27a55;
   color: #aa7950;
   font-size: 21px;
-  font-size: 25px;
+  font-size: 19px;
   font-weight: 500;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: -1.5rem;
   color: #8c5223;
   color: #261c17;
   color: #554f32;
@@ -291,11 +292,11 @@ $color: #b3e5fc;
   color: #8a8a8a;
   color: #554f32;
   color: #666666;
-
   color: #300510;
   color: #ece7d1;
   color: #524b2e;
   color: #a9784f;
+  margin-top: -1.3rem;
 }
 
 .info-logo {

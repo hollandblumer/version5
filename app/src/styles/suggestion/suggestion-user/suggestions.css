@@ -2,8 +2,8 @@
   overflow-y: scroll;
   padding-bottom: 1px;
   flex: 1;
-  max-height: 330px;
-  margin-top: 2rem;
+  max-height: 300px;
+  margin-top: 1rem;
   padding-right: 1rem;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;

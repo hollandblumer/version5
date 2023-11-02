@@ -162,6 +162,8 @@ is-reverse .marquee__scroll {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  height: 100%;
+  width: auto;
 }
 
 .menu-icon {
@@ -216,14 +218,13 @@ is-reverse .marquee__scroll {
 }
 
 .logo-gif {
-  width: 100px;
-  height: 100px;
-  margin-top: 1rem;
+  width: 120px;
+  height: 90px;
 }
 
 .logo {
   font-family: "hippie-mojo";
-  font-size: 65px;
+  font-size: 70px;
   /* Clip the background to the text */
   -webkit-background-clip: text;
   background-clip: text;
@@ -235,7 +236,6 @@ is-reverse .marquee__scroll {
   color: #300510;
   color: #f4f1e5;
   color: #aa7950;
-  letter-spacing: -0.2px;
 }
 
 .beta {
@@ -245,13 +245,12 @@ is-reverse .marquee__scroll {
   color: #a27a55;
   color: #aa7950;
   font-size: 21px;
-  font-size: 25px;
+  font-size: 19px;
   font-weight: 500;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-top: -1.5rem;
   color: #8c5223;
   color: #261c17;
   color: #554f32;
@@ -268,6 +267,7 @@ is-reverse .marquee__scroll {
   color: #ece7d1;
   color: #524b2e;
   color: #a9784f;
+  margin-top: -1.3rem;
 }
 
 .info-logo {
