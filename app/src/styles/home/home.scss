@@ -20,7 +20,7 @@
 .home-search-container {
   display: flex;
   flex-direction: column;
-  margin-top: 95px;
+  margin-top: 55px;
   padding: 2rem;
 }
 
@@ -81,6 +81,7 @@
   color: #37252c;
   outline-width: 0;
   font-size: 18pt;
+  font-size: 22px;
   background: none;
   flex: 1;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -98,6 +99,7 @@
   display: inline-block;
   background-color: black;
   background-color: #a6a6a6;
+  background-color: #bdb8b0;
   height: 1.8em; /* Adjust based on the font size of your input field */
   width: 2px;
   margin-right: -2px;
@@ -190,6 +192,7 @@
   color: #8e8e8e;
   color: #757474;
   color: #a6a6a6;
+  color: #bdb8b0;
   margin-left: 0.2rem;
 }
 
@@ -359,16 +362,14 @@
 .top-brands-title {
   width: 100%;
   text-align: left;
-  font-family: "wintter-test";
+  font-family: "itc-souvenir-demi";
   font-size: 36px;
   color: #35252d;
   color: #1d1c1b;
   color: #1d1c1b;
   color: #36252d;
-  font-size: 16pt;
-  font-weight: 500;
+  font-size: 17pt;
   letter-spacing: 0.2px;
-  text-transform: uppercase;
 }
 
 .top-brands-sort-select-container {
@@ -378,6 +379,7 @@
   align-items: center;
   justify-content: flex-start;
   margin-top: 0.3rem;
+  font-family: "sofia-pro";
 }
 
 .select-wrapper {
@@ -429,14 +431,24 @@
   bottom: 0; // Stretch down to the very bottom
   left: 0; // Start from the very left
   z-index: 100000; // Ensure it's on top of other content
-  background-color: rgba(55, 37, 44, 0.59); //
   color: rgb(23, 21, 21);
   // background-color: rgba(106, 93, 93, 0.94); LOVE THIS COLOR WITH LINES
+  background-color: rgba(57, 50, 52, 0.8); //
+  background: #7e6f5d;
   background-color: rgba(55, 37, 44, 0.59);
-  background-color: rgba(106, 93, 93, 0.94);
+  background-color: rgba(113, 112, 112, 0.59);
+  background-color: rgba(113, 112, 112, 0.79);
+
+  background: rgba(183, 179, 172, 0.8);
+  background-color: rgba(113, 112, 112, 1);
+  background: rgba(231, 230, 224, 0.8);
+  background: rgba(176, 176, 171, 0.8);
+  background: rgba(139, 133, 120, 0.8);
+  background: rgba(108, 112, 114, 0.7);
+  // background-color: rgba(40, 38, 37, 0.69);
   background-size: cover;
-  font-family: "hippie-mojo";
-  font-size: 60px;
+  font-family: "wintter-test";
+  font-size: 45px;
   display: flex; // Use flexbox to center content
   flex-direction: column;
   justify-content: center; // Center content horizontally
@@ -445,12 +457,13 @@
 
 .popup-background {
   position: fixed;
-  z-index: -25;
+  z-index: -250;
   width: 100%;
   height: 100%;
   width: 100%;
   display: block;
   object-fit: cover;
+  margin-top: 13.5rem;
 }
 
 .popup-image {
@@ -497,7 +510,6 @@
 .popup button {
   background-color: #f1f1f1; // love this color
   background: #ddd; // Darker gray on hover;
-
   color: rgb(23, 21, 21);
   color: #5b584a;
   color: #3c2b32;
@@ -509,10 +521,10 @@
   background: none;
   border: none;
   // border-bottom: 4px solid #b7b1a7;
-  padding: 0px 0px 0px 0px;
+  margin: 0;
   cursor: pointer;
   transition: background-color 0.3s;
-  font-family: "sofia-pro";
+  font-family: "hippie-mojo";
   font-size: 30px;
   font-size: 40px;
   animation: gradientAnimation 5s linear infinite; // Adjust the 5s to your desired speed
@@ -527,17 +539,23 @@
     background: linear-gradient(135deg, #f0d585, #f0e6b8);
     background: linear-gradient(135deg, #f0e6b8, #f0d585);
     background: #f0d585;
-    opacity: 0.8;
+    background: none;
+
     color: rgb(23, 21, 21);
   }
 }
 
 .welcome-info {
   font-family: "itc-souvenir";
-  width: 350px;
-  margin: 0px 0 0px 0;
-  font-size: 22pt;
+  width: 390px;
+  font-size: 23pt;
   color: rgb(23, 21, 21);
+  color: grey;
+  color: #aa7950;
+  color: #36252d;
+  color: #181619;
+  color: black;
+
   text-align: center;
 }
 
@@ -546,22 +564,29 @@
   top: 12%; // Adjust this value as needed
   right: 25%; // This will position it 10px from the right edge
   z-index: 100001;
-  color: #ddd;
+  color: #ddd; // pretty color
   width: 30px;
   height: 30px;
 }
 
-.welcome-logo {
-  margin-top: -2rem;
-  font-size: 70px;
-}
 .welcome-title {
   text-align: center;
-  margin-top: 2rem;
+  color: #181619;
+  color: #36252d;
+  color: black;
+  font-size: 40px;
+  font-family: "wintter-test";
+  margin-top: 5.5rem;
+}
+
+.logo-gif-popup {
+  width: 110px;
+  height: 100px;
+  margin-top: -2rem;
 }
 
 .popup-exit {
-  animation: popupExitAnimation 0.3s forwards;
+  animation: popupExitAnimation 0.6s forwards;
 }
 
 @keyframes popupExitAnimation {
@@ -570,7 +595,7 @@
     opacity: 1;
   }
   to {
-    transform: translateY(-100%);
+    transform: translateY(-200%);
     opacity: 0;
   }
 }
@@ -591,7 +616,14 @@
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  opacity: 0.75;
+  opacity: 0.85;
+}
+
+.go-blob {
+  width: 90px;
+  height: auto;
+  color: #8c8577;
+  margin-top: 1rem;
 }
 
 /* .gradient-icon svg path {

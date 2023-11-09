@@ -23,7 +23,13 @@ import WelcomeBlob from "../../assets/images/header-blob-2.svg";
 import NaturalBlob from "../../assets/images/naturalblob.png";
 import WelcomeX from "../../assets/images/x-button-2.svg";
 import PurpleLines from "../../assets/images/purple-lines.png";
+import PinkLines from "../../assets/images/pink-lines.svg";
 import Earth from "../../assets/images/earth.png";
+import LogoGIF from "../../assets/images/future-wise.png";
+import EnterBlob from "../../assets/images/enter-blob.svg";
+import EyeWorldButton from "../../assets/images/Eye-world-button.png";
+import GoEarth from "../../assets/images/GO.png";
+import GoEarthYellow from "../../assets/images/GO-Yellow.png";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);
@@ -36,6 +42,7 @@ function Home() {
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
   const [animatePopupOut, setAnimatePopupOut] = useState(false);
+  const [isGoHovered, setIsGoHovered] = useState(false);
 
   const handleQRCodeClick = () => {
     setQRScannerVisible(true);
@@ -113,6 +120,14 @@ function Home() {
     }
   }, []);
 
+  const handleGoMouseEnter = () => {
+    setIsGoHovered(true);
+  };
+
+  const handleGoMouseLeave = () => {
+    setIsGoHovered(false);
+  };
+
   return (
     <div className="home">
       <div
@@ -126,9 +141,9 @@ function Home() {
       >
         {/*         <img className="popup-image" src={WelcomeBlob} />
          */}{" "}
-        <img className="welcome-earth" src={Earth} />
+        {/* <img className="welcome-earth" src={Earth} /> */}
         <img className="natural-blob" src={NaturalBlob} />
-        <img className="popup-background" src={PurpleLines} />{" "}
+        <img className="popup-background" src={PinkLines} />{" "}
         {/*           <FontAwesomeIcon icon={faX} className="welcome-x" />*/}{" "}
         <div
           onClick={() => {
@@ -138,18 +153,28 @@ function Home() {
         >
           <img className="welcome-x" src={WelcomeX} />
         </div>
-        <div className="welcome-title"> WELCOME to Divot </div>
+        {/* <img className="logo-gif-popup" src={LogoGIF} /> */}
+        <div className="welcome-title"> WELCOME </div>
         <div className="welcome-info">
           Help your favorite brands become more eco-friendly and track their
           progress.
         </div>
         <button
+          onMouseEnter={handleGoMouseEnter}
+          onMouseLeave={handleGoMouseLeave}
           onClick={() => {
             setAnimatePopupOut(true);
-            setTimeout(() => setShowPopup(false), 300); // adjust 300 to your desired animation duration
+            setTimeout(() => setShowPopup(false), 300);
+
+            // adjust 300 to your desired animation duration
           }}
         >
-          enter
+          {" "}
+          <img
+            className="go-blob"
+            src={isGoHovered ? GoEarthYellow : GoEarth}
+            alt="Go Earth"
+          />
         </button>
       </div>
 

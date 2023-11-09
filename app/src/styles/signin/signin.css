@@ -305,9 +305,9 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
 }
 
 .info-icon {
-  width: 15px;
-  height: 15px;
-  margin-left: 0.1rem;
+  width: 18px;
+  height: 18px;
+  margin-top: 0.35rem;
   transform: rotate(-2deg);
 }
 

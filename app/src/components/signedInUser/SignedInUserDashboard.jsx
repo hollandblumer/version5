@@ -123,8 +123,8 @@ function SignedInUserDashboard({ SignedInUser }) {
           {/* <div className="search-user-suggestions"> Search </div> */}
           <select className="chart-select" onChange={(e) => setImpact(!impact)}>
             {" "}
-            <option> ACTIVITY</option>
-            <option>IMPACT </option>
+            <option> Activity </option>
+            <option>Impact </option>
           </select>
           <div className="user-suggestion-sort">
             <div className="user-sort-select-container">

@@ -15,6 +15,7 @@ import {
   faArrowUpRightFromSquare,
   faTrashCan,
   faShareNodes,
+  faArrowUpFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { faClock, faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -158,7 +159,7 @@ function SignedInSuggestionFromUser({
                 <Avatar
                   src={businessAvatarURL}
                   alt={businessname}
-                  sx={{ height: "50px", width: "50px" }}
+                  sx={{ height: "45px", width: "45px" }}
                   style={{
                     border: "1px solid #dbdbdb",
                   }}
@@ -169,24 +170,23 @@ function SignedInSuggestionFromUser({
 
             <div className="brand-username">
               {" "}
+              {suggestion}
               {compliment ? (
                 <div className="text">compliment - {formatdate} ago</div>
               ) : (
                 <div className="text"> suggestion - {formatdate} ago</div>
               )}{" "}
-              {businessname}
             </div>
           </div>
         </div>
-        <div className="suggestion">
+        {/*     <div className="suggestion">
           {" "}
-          {suggestion}
           <div
             className={` ${
               index === 0 ? "progress progress-white" : "progress"
             }`}
           >
-            {verification ? (
+          {verification ? (
               <div className="text">Completed </div>
             ) : compliment ? (
               <div className="text">1 Award</div>
@@ -198,18 +198,18 @@ function SignedInSuggestionFromUser({
                   businessname={businessname}
                 />
               </div>
-            )}
+            )} 
 
             <div className="update">
-              {/*    <FontAwesomeIcon
+          <FontAwesomeIcon
               icon={faArrowUpRightFromSquare}
               className="share"
               color="#a7a7a7"
               size="sm"
-            /> */}
+            /> 
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="supporter-container">
           {users.map((p, index) => (
@@ -241,15 +241,13 @@ function SignedInSuggestionFromUser({
             >
               {" "}
               D
-            </button> */}
-
+            </button> */}{" "}
             <FontAwesomeIcon
-              icon={faShareNodes}
-              className="share"
+              icon={faShare}
+              style={{ marginTop: "-.2rem" }}
               color="#5b584a"
               size="xl"
             />
-
             <FontAwesomeIcon
               icon={faEllipsis}
               style={{ marginTop: "-.2rem" }}

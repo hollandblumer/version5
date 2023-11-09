@@ -75,6 +75,7 @@ h3 {
   margin: 0;
   padding: 0;
   font-family: "wintter-test";
+  font-family: "itc-souvenir-demi";
   color: #36252d;
   font-size: 14pt;
   font-weight: 500;
@@ -103,6 +104,15 @@ input {
     /* Super Modern Browsers */
       url("./assets/fonts/itc-souvenir/itc-souvenir.woff") format("woff");
   font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "itc-souvenir-demi";
+  src: 
+    /* Super Modern Browsers */ url("./assets/fonts/itc-souvenir/Souvenir-Demi.woff")
+    format("woff");
+  font-weight: normal;
   font-style: normal;
 }
 

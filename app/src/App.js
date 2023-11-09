@@ -173,13 +173,13 @@ function App() {
         </div>
         <div className="header-logo">
           <a href="/">
-            {/* <img className="logo-gif" src={LogoGIF} /> */}
-            <div class="logo">DIVOT</div>
+            <img className="logo-gif" src={LogoGIF} />
+            {/* <div class="logo">DIVOT</div> */}
           </a>
-          {/* <div className="beta">
-            beta version
-           <TidioWrapper icon="info" /> 
-          </div> */}
+          <div className="beta">
+            Beta
+            <TidioWrapper icon="info" />
+          </div>
           <TidioWrapper />
         </div>
         <div className="header-icons">
@@ -240,7 +240,6 @@ function App() {
           setShowNotifications={setShowNotifications}
         />
       )}
-
       {isLoading ? (
         <div className="loading-container">
           {/* You can add a loading spinner or animation here */}

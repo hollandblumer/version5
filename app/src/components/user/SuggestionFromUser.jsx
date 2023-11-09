@@ -185,7 +185,7 @@ function SuggestionFromUser({
                 <Avatar
                   src={businessAvatarURL}
                   alt={businessName}
-                  sx={{ height: "50px", width: "50px" }}
+                  sx={{ height: "40px", width: "40px" }}
                   style={{
                     border: "1px solid #dbdbdb",
                   }}

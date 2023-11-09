@@ -218,8 +218,9 @@ is-reverse .marquee__scroll {
 }
 
 .logo-gif {
-  width: 120px;
-  height: 90px;
+  width: 110px;
+  height: 111px;
+  margin-top: -10px;
 }
 
 .logo {
@@ -239,13 +240,13 @@ is-reverse .marquee__scroll {
 }
 
 .beta {
-  font-family: "itc-souvenir";
+  font-family: "itc-souvenir-demi";
   text-align: center;
   vertical-align: center;
   color: #a27a55;
   color: #aa7950;
   font-size: 21px;
-  font-size: 19px;
+  font-size: 22px;
   font-weight: 500;
   display: flex;
   flex-direction: row;
@@ -267,13 +268,16 @@ is-reverse .marquee__scroll {
   color: #ece7d1;
   color: #524b2e;
   color: #a9784f;
-  margin-top: -1.3rem;
+  margin-top: -2.4rem;
+  letter-spacing: 0.02rem;
 }
 
 .info-logo {
   font-family: cursive;
   font-size: 12pt;
   font-weight: 600;
+  margin-top: 0.2rem;
+  margin-left: 0.05rem;
 }
 
 .info-message {

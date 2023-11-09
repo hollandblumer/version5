@@ -142,6 +142,7 @@
 .info-share {
   background: none;
   border: none;
+  margin-right: 0.3rem;
 }
 
 .action-buttons button:nth-child(2) {

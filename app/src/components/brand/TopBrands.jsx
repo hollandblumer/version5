@@ -243,8 +243,8 @@ function TopBrands() {
                   <Avatar
                     alt={brandName}
                     sx={{
-                      height: "60px",
-                      width: "60px",
+                      height: "55px",
+                      width: "55px",
                       boxShadow: "0 0 0 1px #dbdbdb, 0 0 0 4px transparent",
                       backgroundColor: "transparent",
                     }}
