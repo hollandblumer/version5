@@ -11,6 +11,7 @@ import {
   faUserPlus,
   faLink,
   faArrowUpRightFromSquare,
+  faBed,
 } from "@fortawesome/free-solid-svg-icons";
 import AvatarDesign from "../../../assets/images/avatar-design-5.png";
 import "../../../styles/brand/info/brand-info.css";
@@ -186,7 +187,7 @@ function BrandInfo({
                 color="#aa7950"
                 style={{ marginRight: "5px" }}
               />{" "}
-              Add Location
+              Kiawah Island
             </div>
           )}
 
@@ -205,7 +206,8 @@ function BrandInfo({
           ) : (
             <div className="industry-row">
               {" "}
-              <b>{industry}</b> <div className="grey left"> Industry </div>
+              <FontAwesomeIcon icon={faBed} size="sm" color="#aa7950" />{" "}
+              <div className="left">{industry}</div>
             </div>
           )}
 
@@ -247,13 +249,13 @@ function BrandInfo({
             <div className="info-website">
               {" "}
               <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" /> Add
-              Website
+              Link
             </div>
           ) : (
             <div className="info-website">
               {" "}
               <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" /> Add
-              Website
+              Link
             </div>
           )}
         </div>

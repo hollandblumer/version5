@@ -105,6 +105,8 @@
 .industry-row {
   color: #757575;
   margin-left: 1rem;
+  display: flex;
+  align-items: center;
 }
 
 .location-row {
@@ -145,7 +147,7 @@
 .info-share {
   background: none;
   border: none;
-  margin-right: 0.3rem;
+  margin-right: 0.4rem;
 }
 
 .action-buttons button:nth-child(2) {
@@ -190,11 +192,14 @@
   color: #37252c;
   margin-top: 10px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 19px;
   font-family: "neutra-text";
   button {
     border: none;
     background: #e8e5dd;
+    background: #d8d6d8;
+    background: #f9f9f9;
+    background: #e2dddd;
     margin-left: 10px;
     border-radius: 20px;
     padding: 3px 10px;
@@ -207,6 +212,14 @@
   color: #281e17;
   margin-left: 5px;
   font-weight: 600;
+}
+
+.member-since-date-user {
+  color: #281e17;
+  color: #37252c;
+  margin-left: 5px;
+  font-family: "neutra-text-2";
+  margin-top: 0.27rem;
 }
 
 .follower-cell {
@@ -255,6 +268,9 @@
 
 .left {
   margin-left: 0.3rem;
+  &::first-letter {
+    text-transform: uppercase;
+  }
 }
 
 .right {
@@ -287,8 +303,7 @@
 }
 
 .bio-emphasis {
-  font-size: 18px;
-  height: 20px;
+  font-size: 17px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -297,22 +312,24 @@
   color: #8e8e8e;
   color: #aa7950;
   color: #37252c;
-  font-family: "sofia-pro";
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   line-height: 22px;
-  font-weight: 600;
+  font-weight: 500;
+  margin-top: 0.2rem;
 }
 
 .bio-emphasis-text {
-  font-size: 20px;
-  height: 20px;
-  line-height: 22px;
+  color: #757575;
+  color: #37252c;
+  font-size: 17px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-family: "neutra-text-2";
-  color: #000000;
-  margin-top: 4px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "sofia-pro";
 }
 
 .bio-emphasis-date {

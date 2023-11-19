@@ -194,8 +194,8 @@ function SignedInUserInfo({
                 <FontAwesomeIcon
                   icon={faEllipsis}
                   className="share"
-                  color="#5c5848"
-                  size="xl"
+                  color="#8c8577"
+                  size="lg"
                 />
               </button>
             </div>
@@ -244,7 +244,7 @@ function SignedInUserInfo({
             <div className="member-since">
               {" "}
               <div className="bio-emphasis-text">Member since</div>{" "}
-              <div className="bio-emphasis-date left">{joinMonthYear}</div>{" "}
+              <div className="member-since-date-user">{joinMonthYear}</div>{" "}
             </div>
           </div>
         </div>

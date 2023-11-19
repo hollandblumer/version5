@@ -29,7 +29,7 @@ import LogoGIF from "../../assets/images/future-wise.png";
 import EnterBlob from "../../assets/images/enter-blob.svg";
 import EyeWorldButton from "../../assets/images/Eye-world-button.png";
 import GoEarth from "../../assets/images/GO.png";
-import GoEarthYellow from "../../assets/images/GO-Yellow.png";
+import GoEarthYellow from "../../assets/images/GO-Brown.svg";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);

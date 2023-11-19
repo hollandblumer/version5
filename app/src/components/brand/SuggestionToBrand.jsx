@@ -149,50 +149,49 @@ function SuggestionToBrand({
           : "brand-suggestion-container"
       }`}
     >
-      <div className="brand-subtle-suggestion-info">
-        {" "}
-        <div>
-          {iscompliment ? (
-            <div className="text">compliment </div>
-          ) : (
-            <div className="text"> suggestion </div>
-          )}{" "}
-        </div>
-        <div> </div>
-      </div>
       <div className="brand-suggestion-content">
         <div className="ranking-content">
           <div className="ranking-number">{counter}</div>
-
-          <p className="content">{suggestion}</p>
-        </div>
-        {iscompliment == true ? (
-          <div className="ranking-progress"></div>
-        ) : (
-          <div>
-            {" "}
-            {milestones.length === 0 ? (
-              <div className="ranking-progress">Not Started</div>
-            ) : (
-              <div className="top-milestones">
+          <div className="suggestion-update">
+            <div className="content">{suggestion}</div>
+            <div className="brand-subtle-suggestion-info">
+              {" "}
+              {iscompliment ? (
+                <div className="text">compliment </div>
+              ) : (
+                <div className="text"> suggestion -</div>
+              )}{" "}
+              {iscompliment == true ? (
+                <div className="ranking-progress"></div>
+              ) : (
                 <div>
-                  {milestones.length == 1 ? (
-                    <div>1 Milestone</div>
+                  {" "}
+                  {milestones.length === 0 ? (
+                    <div className="ranking-progress">Not Started</div>
                   ) : (
-                    <div>{milestones.length} Milestones</div>
-                  )}{" "}
+                    <div className="top-milestones">
+                      <div>
+                        {milestones.length == 1 ? (
+                          <div>1 Milestone</div>
+                        ) : (
+                          <div>{milestones.length} Milestones</div>
+                        )}{" "}
+                      </div>
+                      <div className="update">
+                        <FontAwesomeIcon
+                          icon={faArrowUpRightFromSquare}
+                          className="share"
+                          color="#a7a7a7"
+                        />
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <div className="update">
-                  <FontAwesomeIcon
-                    icon={faArrowUpRightFromSquare}
-                    className="share"
-                    color="#a7a7a7"
-                  />
-                </div>
-              </div>
-            )}
+              )}
+              <div> </div>
+            </div>
           </div>
-        )}
+        </div>
 
         <div className="brand-supporter-container">
           {users.map((p) => (

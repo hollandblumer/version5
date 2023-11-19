@@ -46,15 +46,17 @@
 .brand-subtle-suggestion-info {
   display: flex;
   flex-direction: row;
-
-  justify-content: space-between;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: "neutra-text-2";
   color: #c5c0c0;
-  color: #8c8c8c;
-  font-size: 8pt;
-  font-weight: 600;
-  letter-spacing: 1.4px;
+  font-size: 14px;
+  color: #8e8e8e;
+
+  // color: #8c8c8c; loved this for old suggestion/compliment
+  // font-size: 8pt;  loved this for old suggestion/compliment
+  // font-weight: 600;  loved this for old suggestion/compliment
+  // letter-spacing: 1.4px;  loved this for old suggestion/compliment
 }
 
 .brand-suggestion-content {
@@ -80,20 +82,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  border-radius: 2px;
+
   /*   background-image: url(../../../assets/images/followbutton4.png);
   background-size: 100% 300%; */
   background-size: 100% 100%;
-  width: 8rem; //real before
-  width: 7.5rem;
-  color: #aa7950;
-  // padding: 0.4rem 1rem; //real before demonstration
-  padding: 0.4rem 0.3rem;
-  border-radius: 0.3rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-family: "itc-souvenir";
-  font-size: 13pt;
+  margin-left: 0.2rem;
+  text-transform: lowercase;
 }
 
 .brand-supporter-container {
@@ -101,7 +95,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 10rem;
+  width: 4rem;
 }
 
 .suggestion-form {
@@ -169,7 +163,7 @@
 .suggestion-form-content {
   display: flex;
   flex-direction: row;
-
+  align-items: center;
   flex: 1;
 
   div {

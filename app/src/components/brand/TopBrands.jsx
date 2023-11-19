@@ -19,6 +19,7 @@ import {
 import GradientStar from "../../assets/images/gradient-star.svg";
 import Earth from "../../assets/images/earth.png";
 import CaretDown from "../../assets/images/caret-down.svg";
+import EyeIcon from "../../assets/images/grey-eye.png";
 
 function TopBrands() {
   const [topBrands, setTopBrands] = useState([]);
@@ -201,20 +202,26 @@ function TopBrands() {
         <div> Most Complimented Brands </div>
       </div>
       <div className="top-brands-sort-select-container">
-        <div>sort by</div>
-        <div className="select-wrapper">
+        <button className="top-charts-sort-button"> All </button>
+        <button className="top-charts-sort-button"> Beauty </button>
+        <button className="top-charts-sort-button"> Restaurant </button>
+        <button className="top-charts-sort-button"> Industrial </button>
+        <button className="top-charts-sort-button"> Hospitality </button>
+        <button className="top-charts-sort-button"> Automotive </button>
+
+        {/* <div className="select-wrapper">
           <select
             className="sort-select"
             onChange={(e) => setSelectedOption(e.target.value)}
             value={selectedOption}
           >
-            <option value="most recent">most recent </option>
+            <option value="most recent">the most recent </option>
             <option value="suggestions">suggestions </option>
             <option value="compliments">compliments</option>
           </select>
           <img src={CaretDown} className="caret-down" />
-        </div>
-        <div className="select-wrapper">
+        </div> */}
+        {/*     <div className="select-wrapper">
           <select
             className="sort-select"
             onChange={(e) => setSelectedOption(e.target.value)}
@@ -225,13 +232,14 @@ function TopBrands() {
             <option value="compliments">compliments</option>
           </select>
           <img src={CaretDown} className="caret-down" />
-        </div>
-        <FontAwesomeIcon
+        </div> */}
+        <img className="eye-brands-icon" src={EyeIcon} />
+        {/*   <FontAwesomeIcon
           icon={faSearch}
           size="lg"
-          color="#a6a6a6"
+          color="#b7b1a7"
           style={{ marginLeft: "4px" }}
-        />
+        /> */}
       </div>
 
       <div className="top-brands-icons">

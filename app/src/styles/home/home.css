@@ -20,7 +20,7 @@
 .home-search-container {
   display: flex;
   flex-direction: column;
-  margin-top: 55px;
+  margin-top: 70px;
   padding: 2rem;
 }
 
@@ -173,8 +173,10 @@
   font-size: 22px;
   color: #8e8e8e;
   color: #757474;
-  color: #a6a6a6;
   color: #bdb8b0;
+  color: #a6a6a6;
+  color: #b7b1a7;
+  color: rgb(188, 184, 184);
   margin-left: 0.2rem;
 }
 
@@ -336,7 +338,8 @@
   color: #1d1c1b;
   color: #1d1c1b;
   color: #36252d;
-  font-size: 17pt;
+  font-size: 18pt;
+  font-weight: 500;
   letter-spacing: 0.2px;
 }
 
@@ -346,8 +349,50 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 0.3rem;
-  font-family: "sofia-pro";
+  margin-top: 0.8rem;
+  font-family: "neutra-text";
+  color: #8e8e8e;
+  font-size: 19px;
+}
+
+.top-charts-sort-button {
+  border: 0.07rem solid #dedede;
+  background: none;
+  font-family: "neutra-text";
+  color: #1a1a1a;
+  background: rgb(231, 228, 228);
+  background: #e7e6ec;
+  background: rgba(214, 212, 213, 0.5);
+  background: #cfcbc9;
+  background: #bcb2ab;
+  background: #e2dedc;
+  border: none;
+  padding: 3px 9px;
+  margin-right: 0.4rem;
+  border-radius: 15px;
+  letter-spacing: 0.2px;
+  font-size: 16px;
+  font-weight: 400;
+}
+.top-charts-sort-button:hover {
+  background: #525350;
+  background: #8fcf8f;
+  background: #c4cbb6;
+  background: #5bab5c;
+  background: #493b41;
+  background: #8e8e8e;
+  background: #aa7950;
+  background: linear-gradient(40deg, #b07849, #e1d6cd);
+  background: #92c893;
+  background: linear-gradient(135deg, rgb(161, 140, 209), rgb(251, 194, 235));
+  background: rgb(184, 140, 209);
+  background: rgb(85, 128, 86);
+  background: #e6e4db;
+  background: rgb(167, 151, 129);
+  background: #bcb2ab;
+  background: #ba9169;
+  border: none;
+  color: #ffffff;
 }
 
 .select-wrapper {
@@ -356,7 +401,6 @@
   align-items: center;
   justify-content: flex-start;
   display: flex;
-  margin-left: 5px;
 }
 
 .top-brands-counter {

@@ -68,10 +68,13 @@
   outline: none;
   color: #2f2f2f;
   font-weight: 600;
+  margin-left: 0.3rem;
   -webkit-appearance: none; /* Removes default Safari styling */
   appearance: none; /* Future-proofing for other browsers */
   border-radius: 0; /* Optional: To remove default rounded corners */
   background-color: transparent; /* Or any desired color */
+  font-family: "sofia-pro";
+  max-width: none; /* Allow the options to expand based on content */
 }
 
 .sort-select::-ms-expand {
@@ -81,7 +84,6 @@
 .caret-down {
   width: 10px;
   height: 10px;
-  margin-left: 0.2rem;
 }
 
 .sort-select-container {
@@ -97,6 +99,7 @@
 
 .unverified {
   background: #efefef;
+  background: #e2dddd;
   padding: 2px 8px;
   border-radius: 10rem;
   font-size: 10pt;
@@ -118,4 +121,5 @@
 .info-website {
   color: #757575;
   font-size: 17px;
+  margin-left: 0.5rem;
 }
