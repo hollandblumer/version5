@@ -6,8 +6,12 @@ import {
   faMagnifyingGlass,
   faCircleXmark,
   faMicrophone,
+  faMicrophoneSlash,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
 import "../../styles/header/header.css";
 import "../../styles/header/search/search.css";
 import "../../styles/home/home.css";
@@ -43,6 +47,8 @@ function Home() {
   const [showPopup, setShowPopup] = useState(false);
   const [animatePopupOut, setAnimatePopupOut] = useState(false);
   const [isGoHovered, setIsGoHovered] = useState(false);
+  const { transcript, resetTranscript } = useSpeechRecognition();
+  const [recording, setRecording] = useState(false);
 
   const handleQRCodeClick = () => {
     setQRScannerVisible(true);
@@ -88,7 +94,10 @@ function Home() {
   }, []);
 
   const createSearch = async (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
+
     // then you save the mode that links a post with an editor
     const searchList = await DataStore.query(User, (p) =>
       p.name.contains(search)
@@ -127,6 +136,30 @@ function Home() {
   const handleGoMouseLeave = () => {
     setIsGoHovered(false);
   };
+
+  const handleMicrophoneClick = () => {
+    if (!recording) {
+      if (SpeechRecognition.browserSupportsSpeechRecognition()) {
+        resetTranscript();
+        SpeechRecognition.startListening();
+        setRecording(true);
+      } else {
+        alert("Speech recognition is not supported in your browser.");
+      }
+    } else {
+      SpeechRecognition.stopListening();
+      setRecording(false);
+    }
+  };
+
+  useEffect(() => {
+    // Set the spoken text to the search state when it changes
+    if (transcript !== "") {
+      setSearch(transcript);
+      createSearch();
+      resetTranscript();
+    }
+  }, [transcript]);
 
   return (
     <div className="home">
@@ -221,7 +254,11 @@ function Home() {
             </button>
           )}
 
-          <FontAwesomeIcon icon={faMicrophone} className="microphone" />
+          <FontAwesomeIcon
+            icon={recording ? faMicrophoneSlash : faMicrophone}
+            className="microphone"
+            onClick={handleMicrophoneClick}
+          />
 
           {/*      {!qrScannerVisible && (
             <img

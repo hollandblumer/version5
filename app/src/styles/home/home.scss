@@ -370,7 +370,7 @@
   color: #1d1c1b;
   color: #1d1c1b;
   color: #36252d;
-  font-size: 18pt;
+  font-size: 14pt;
   font-weight: 500;
   letter-spacing: 0.2px;
 }
@@ -380,11 +380,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
-  margin-top: 0.8rem;
+  justify-content: space-between;
+  margin-top: 5px;
+  margin-top: 5px;
   font-family: "neutra-text";
   color: #8e8e8e;
-  font-size: 19px;
 }
 
 .top-charts-sort-button {
@@ -392,40 +392,60 @@
   background: none;
   font-family: "neutra-text";
   color: #1a1a1a;
+  color: #272727;
   background: rgb(231, 228, 228);
   background: #e7e6ec;
   background: rgba(214, 212, 213, 0.5);
   background: #cfcbc9; // love this grey
   background: #bcb2ab; // love this grey too
   background: #e2dedc;
+  background: none;
   border: none;
-  padding: 3px 9px;
+  // padding: 3px 9px;
   margin-right: 0.4rem;
+  margin-right: 1.3rem;
   border-radius: 15px;
-  letter-spacing: 0.2px;
-  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "sofia-pro";
   font-weight: 400;
+  font-size: 17px;
+
+  &.active {
+    background: #bdb7ad;
+    background: linear-gradient(110deg, #b07849, #e1d6cd);
+    background: none;
+    color: white;
+    color: #aa7950;
+    border: none;
+    font-size: 17px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    font-family: "sofia-pro";
+
+    font-weight: 500;
+  }
 
   &:hover {
-    background: #525350;
     background: #8fcf8f;
     background: #c4cbb6;
     background: #5bab5c;
-    background: #493b41;
-    background: #8e8e8e;
     background: #aa7950;
-
-    background: linear-gradient(40deg, #b07849, #e1d6cd);
+    background: #493b41;
     background: #92c893;
     background: linear-gradient(135deg, rgb(161, 140, 209), rgb(251, 194, 235));
     background: rgb(184, 140, 209);
-    background: rgb(85, 128, 86);
     background: #e6e4db;
     background: rgb(167, 151, 129);
     background: #bcb2ab;
     background: #ba9169;
+    background: #525350;
+    background: linear-gradient(110deg, #b07849, #e1d6cd);
+    background: none;
     border: none;
     color: #ffffff;
+    color: #aa7950;
   }
 }
 
@@ -448,6 +468,13 @@
   align-items: center;
 }
 
+.top-eye-brands-icon {
+  width: 16px;
+  height: 13px;
+  color: #b7b1a7;
+  margin-top: 3px;
+}
+
 .gradient-star {
   width: 20px;
   height: 20px;
@@ -461,7 +488,7 @@
   font-weight: 700;
   font-style: normal;
   color: #37252c;
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 500;
 }
 

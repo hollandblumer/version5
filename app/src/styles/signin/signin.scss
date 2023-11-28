@@ -305,6 +305,8 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   font-weight: 400;
   color: #494948;
   display: flex;
+  margin-left: 0.2rem;
+  height: 100%;
 
   .chat-icon {
     margin-left: 0.5rem;
@@ -319,7 +321,6 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
 .info-icon {
   width: 18px;
   height: 18px;
-  margin-top: 0.35rem;
   transform: rotate(-2deg);
 }
 

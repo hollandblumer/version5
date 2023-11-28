@@ -9,6 +9,24 @@ function ContactUs() {
   const [inquiry, setInquiry] = useState("");
   const [honeypot, setHoneypot] = useState(""); // Added honeypot state
   const [isChatAvailable, setIsChatAvailable] = useState(false);
+  const [usernameFocused, setUsernameFocused] = useState(false);
+  const [passwordFocused, setPasswordFocused] = useState(false);
+
+  const handleInputFocus = (input) => {
+    if (input === "username") {
+      setUsernameFocused(true);
+    } else if (input === "password") {
+      setPasswordFocused(true);
+    }
+  };
+
+  const handleInputBlur = (input) => {
+    if (input === "username") {
+      setUsernameFocused(username !== "");
+    } else if (input === "password") {
+      setPasswordFocused(password !== "");
+    }
+  };
 
   useEffect(() => {
     const currentTime = new Date();
@@ -60,48 +78,65 @@ function ContactUs() {
 
     alert("Your inquiry has been submitted.");
   };
-
+  const username = "holland";
+  const password = "PASSWORD";
   return (
     <div className="contact-us">
       <div className="contact-us-container">
         <div className="contact-us-title">
-          Contact Us
+          Contact us
           <div className="chat-box-text">
             {" "}
             <div
               className={`chat-box-text ${isChatAvailable ? "highlight" : ""}`}
             >
               {" "}
-              <TidioWrapper icon="available" />{" "}
+              <TidioWrapper icon="info2" />{" "}
             </div>
           </div>
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>Name</label>
+          <div className="form-group">
+            <label
+              className={`form-label ${usernameFocused ? "focused-label" : ""}`}
+              htmlFor="username"
+            >
+              Name
+            </label>
             <input
               type="text"
-              value={name}
-              onChange={handleNameChange}
+              id="username"
+              className="custom-form-input"
+              onFocus={() => handleInputFocus("username")}
+              onBlur={() => handleInputBlur("username")}
               required
             />
           </div>
-          <div>
-            <label>Email</label>
+          <div className="form-group">
+            <label
+              className={`form-label ${usernameFocused ? "focused-label" : ""}`}
+              htmlFor="username"
+            >
+              Email
+            </label>
             <input
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
+              type="text"
+              id="username"
+              className="custom-form-input"
+              onFocus={() => handleInputFocus("username")}
+              onBlur={() => handleInputBlur("username")}
               required
             />
           </div>
           <div>
-            <label>Questions or Inquiries</label>
+            {/* <label>Questions or Inquiries</label> */}
             <textarea
+              className="contact-us-textbox"
               value={inquiry}
               onChange={handleInquiryChange}
               maxLength={1000} // Set the character limit
+              placeholder="Questions or Inquiries"
               required
             />
             <div className="character-limit">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Storage } from "aws-amplify";
 import { UserSuggestion } from "../../models";
+import { User } from "../../models";
 import Avatar from "@mui/material/Avatar";
 import topbrandsimage from "../../assets/images/top-brands-compliment.png";
 import AvatarDesign from "../../assets/images/avatar-design1.png";
@@ -19,22 +20,39 @@ import {
 import GradientStar from "../../assets/images/gradient-star.svg";
 import Earth from "../../assets/images/earth.png";
 import CaretDown from "../../assets/images/caret-down.svg";
-import EyeIcon from "../../assets/images/grey-eye.png";
+import EyeIcon from "../../assets/images/purple-eye.png";
+import "../../styles/home/home.css";
 
 function TopBrands() {
   const [topBrands, setTopBrands] = useState([]);
   const [avatarUrls, setAvatarUrls] = useState({});
   const [selectedOption, setSelectedOption] = useState("most recent");
   const [totalCompliments, setTotalCompliments] = useState({});
+  const [selectedIndustry, setSelectedIndustry] = useState("All"); // Default to "All"
+  const [showBrandsSortSelect, setShowBrandsSortSelect] = useState(false);
 
   useEffect(() => {
     async function fetchTopBrands() {
       try {
-        const suggestions = await DataStore.query(UserSuggestion, (c) =>
-          c.suggestion.compliment.eq(true)
-        );
+        let suggestions;
+
+        if (selectedIndustry !== "All") {
+          suggestions = await DataStore.query(UserSuggestion, (c) =>
+            c.and((c) => [
+              c.suggestion.compliment.eq(true),
+              // c.user.industry.eq(selectedIndustry),
+            ])
+          );
+        } else {
+          suggestions = await DataStore.query(UserSuggestion, (c) =>
+            c.suggestion.compliment.eq(true)
+          );
+        }
+
+        console.log("suggestions", suggestions);
 
         const brandComplimentCounts = {};
+        const brandIndustriesMap = new Map();
 
         await Promise.all(
           suggestions.map(async (p) => {
@@ -49,17 +67,49 @@ function TopBrands() {
 
             brandComplimentCounts[brandName] =
               (brandComplimentCounts[brandName] || 0) + 1;
+
+            const industry = await getIndustryForBrand(brandName);
+            brandIndustriesMap.set(brandName, industry);
           })
         );
+
+        async function getIndustryForBrand(brandName) {
+          try {
+            // Replace 'User' with the actual model name for your brand information
+            const user = await DataStore.query(User, (c) =>
+              c.name.eq(brandName)
+            );
+
+            // Assuming the industry information is stored in the 'industry' field
+            return user[0]?.industry || "Unknown";
+          } catch (error) {
+            console.error("Error fetching industry for brand:", error);
+            return "Unknown";
+          }
+        }
 
         const sortedBrands = Object.keys(brandComplimentCounts).sort(
           (a, b) => brandComplimentCounts[b] - brandComplimentCounts[a]
         );
 
-        const topBrandsCount = Math.min(sortedBrands.length, 10);
-        const topBrandsList = sortedBrands.slice(0, topBrandsCount);
+        let filteredBrands;
+
+        if (selectedIndustry !== "All") {
+          // Filter brands based on the selected industry
+          filteredBrands = sortedBrands.filter(
+            (brandName) =>
+              brandIndustriesMap.get(brandName) === selectedIndustry
+          );
+        } else {
+          filteredBrands = sortedBrands;
+        }
+
+        const topBrandsCount = Math.min(filteredBrands.length, 10);
+
+        const topBrandsList = filteredBrands.slice(0, topBrandsCount);
 
         setTopBrands(topBrandsList);
+        console.log("top brands", topBrands);
 
         // Fetch and store total compliments for each brand
         const brandCompliments = {};
@@ -77,7 +127,7 @@ function TopBrands() {
     }
 
     fetchTopBrands();
-  }, []);
+  }, [selectedIndustry]);
 
   // Function to calculate total compliments for an individual brand
   async function calculateTotalCompliments(brandName) {
@@ -95,6 +145,10 @@ function TopBrands() {
       return 0;
     }
   }
+
+  const handleEyeIconClick = () => {
+    setShowBrandsSortSelect(!showBrandsSortSelect);
+  };
 
   /*  const generateGradient = () => (
     <>
@@ -156,9 +210,9 @@ function TopBrands() {
           x2="100%"
           y2="100%"
         >
-          <stop offset="0%" stop-color="#e3c07b" />
-          <stop offset="50%" stop-color="#DCAA45" />
-          <stop offset="100%" stop-color="#e3c07b" />
+          <stop offset="0%" stopColor="#e3c07b" />
+          <stop offset="50%" stopColor="#DCAA45" />
+          <stop offset="100%" stopColor="#e3c07b" />
           <animate
             attributeName="x1"
             values="-100%;100%"
@@ -202,12 +256,56 @@ function TopBrands() {
         <div> Most Complimented Brands </div>
       </div>
       <div className="top-brands-sort-select-container">
-        <button className="top-charts-sort-button"> All </button>
-        <button className="top-charts-sort-button"> Beauty </button>
-        <button className="top-charts-sort-button"> Restaurant </button>
-        <button className="top-charts-sort-button"> Industrial </button>
-        <button className="top-charts-sort-button"> Hospitality </button>
-        <button className="top-charts-sort-button"> Automotive </button>
+        <button
+          className={`top-charts-sort-button ${
+            selectedIndustry === "All" ? "active" : ""
+          }`}
+          onClick={() => setSelectedIndustry("All")}
+        >
+          All
+        </button>
+        <button
+          className={`top-charts-sort-button ${
+            selectedIndustry === "Restaurant" ? "active" : ""
+          }`}
+          onClick={() => setSelectedIndustry("Restaurant")}
+        >
+          Restaurant
+        </button>
+        <button
+          className={`top-charts-sort-button ${
+            selectedIndustry === "Retail" ? "active" : ""
+          }`}
+          onClick={() => setSelectedIndustry("Retail")}
+        >
+          Retail
+        </button>
+        <button
+          className={`top-charts-sort-button ${
+            selectedIndustry === "Beauty" ? "active" : ""
+          }`}
+          onClick={() => setSelectedIndustry("Beauty")}
+        >
+          Beauty
+        </button>
+
+        <button
+          className={`top-charts-sort-button ${
+            selectedIndustry === "Industrial" ? "active" : ""
+          }`}
+          onClick={() => setSelectedIndustry("Industrial")}
+        >
+          Healthcare
+        </button>
+
+        <button
+          className={`top-charts-sort-button ${
+            selectedIndustry === "hopsitality" ? "active" : ""
+          }`}
+          onClick={() => setSelectedIndustry("hospitality")}
+        >
+          Hospitality
+        </button>
 
         {/* <div className="select-wrapper">
           <select
@@ -233,7 +331,11 @@ function TopBrands() {
           </select>
           <img src={CaretDown} className="caret-down" />
         </div> */}
-        <img className="eye-brands-icon" src={EyeIcon} />
+        <img
+          className="top-eye-brands-icon"
+          src={EyeIcon}
+          onClick={handleEyeIconClick}
+        />
         {/*   <FontAwesomeIcon
           icon={faSearch}
           size="lg"
@@ -241,6 +343,45 @@ function TopBrands() {
           style={{ marginLeft: "4px" }}
         /> */}
       </div>
+      {showBrandsSortSelect == true ? (
+        <div className="top-brands-sort-select-container">
+          <button
+            className={`top-charts-sort-button ${
+              selectedIndustry === "Automotive" ? "active" : ""
+            }`}
+            onClick={() => setSelectedIndustry("Automotive")}
+          >
+            Technology
+          </button>
+          <button
+            className={`top-charts-sort-button ${
+              selectedIndustry === "Automotive" ? "active" : ""
+            }`}
+            onClick={() => setSelectedIndustry("Automotive")}
+          >
+            Technology
+          </button>
+
+          <button
+            className={`top-charts-sort-button ${
+              selectedIndustry === "Automotive" ? "active" : ""
+            }`}
+            onClick={() => setSelectedIndustry("Automotive")}
+          >
+            Energy
+          </button>
+          <button
+            className={`top-charts-sort-button ${
+              selectedIndustry === "Automotive" ? "active" : ""
+            }`}
+            onClick={() => setSelectedIndustry("Automotive")}
+          >
+            Agriculture
+          </button>
+        </div>
+      ) : (
+        <></>
+      )}
 
       <div className="top-brands-icons">
         {topBrands.length > 0 ? (
@@ -262,7 +403,6 @@ function TopBrands() {
                 </Link>
               </div>
               <div className="top-brands-counter">
-                {/* <img className="gradient-star" src={GradientStar} /> */}
                 {generateGradient()}
                 {totalCompliments[brandName]}
               </div>
@@ -272,6 +412,7 @@ function TopBrands() {
           <p>No brands with compliments found.</p>
         )}
       </div>
+
       {/* <img className="eye-world" src={EyeWorld} /> */}
       {/* <img className="shooting-star" src={ShootingStar} /> */}
     </div>

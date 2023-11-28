@@ -32,7 +32,7 @@ import Verification from "./components/signup/Verification";
 import SearchMagnifyingGlass from "./assets/images/header-search.png";
 import Loading from "./components/loading/Loading";
 import "./App.css";
-import LogoGIF from "./assets/images/beta-logo.png";
+import LogoGIF from "./assets/images/spirit-desire.png";
 import WaveBar from "./components/WaveBar";
 import OrbEffect from "./components/OrbEffect";
 import MenuIcon from "./assets/images/menu-icon-1.svg";
@@ -177,13 +177,11 @@ function App() {
             {/* <div class="logo">DIVOT</div> */}
           </a>
         </div>
-        {/* 
-          <div className="beta">
-            Beta
-            <TidioWrapper icon="info" />
-          </div>
-       
-     */}{" "}
+
+        <div className="beta">
+          <TidioWrapper icon="header" />
+        </div>
+
         <div className="header-icons">
           {loggedIn ? (
             <Dropdown url={signedProfileURL} username={userName} />

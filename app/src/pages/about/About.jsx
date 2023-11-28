@@ -1,38 +1,21 @@
 import Footer2 from "../../components/footer/Footer2";
 import "../../styles/about/about.css";
-import hollandProfileImage from "../../assets/images/about-me-5.png";
+import hollandProfileImage from "../../assets/images/hollandprofile.jpg";
+import hollandProfileImage2 from "../../assets/images/about-me-5.png";
 import YinYang from "../../assets/images/yin-yang.png";
+import GradientHexagon from "../../assets/images/header-blob-2.svg";
+import { Avatar } from "@mui/material";
 
 function About() {
   const teamMembers = [
     {
       name: "Holland Blumer",
       title: "CEO/Founder",
-      imageSrc: hollandProfileImage,
+      imageSrc: hollandProfileImage2,
       description:
         "With two engineering degrees from Northwestern University (B.S.) and Dartmouth College (M.Eng), as well as experience in Silicon Valley and the automotive sector, Holland has a thorough understanding of the rapidly evolving technology industry and will leverage technology to enhance global communication, sustainability, and accessibility efforts.",
     },
-    {
-      name: "Valentina Orozoco",
-      title: "Freelance Illustrator",
-      imageSrc: hollandProfileImage,
-      description:
-        "Jane is a backend developer who loves creating eco-friendly solutions.",
-    },
-    {
-      name: "Everett Tung",
-      title: "Research Intern",
-      imageSrc: hollandProfileImage,
-      description:
-        "Everett is an incoming junior at Northwestern, double-majoring in Econ and Math. Alongside his education, he has experience in financial case competitions for Houlihan Lokey, Credit Suisse, and EY Parthenon, and previously interned at Hadrian Capital. He is deeply passionate about bridging business operations with the planet's well-being. Outside the classroom, Everett enjoys biking along Lake Michigan, playing Club Volleyball, and cheering on the Lakers.",
-    },
-    {
-      name: "Boris Bashirov",
-      title: "Freelance Illustrator",
-      imageSrc: hollandProfileImage,
-      description:
-        "Everett is an incoming junior at Northwestern, double-majoring in Econ and Math. Alongside his education, he has experience in financial case competitions for Houlihan Lokey, Credit Suisse, and EY Parthenon, and previously interned at Hadrian Capital. He is deeply passionate about bridging business operations with the planet's well-being. Outside the classroom, Everett enjoys biking along Lake Michigan, playing Club Volleyball, and cheering on the Lakers.",
-    },
+
     // Add more team members here
   ];
 
@@ -41,15 +24,123 @@ function About() {
       <div className="about">
         <div className="about-page-blurb">
           <div className="welcome-about">
-            ABOUT{" "}
-            <div className="yin-yang-container">
+            About
+            {/*  <div className="yin-yang-container">
               <img src={YinYang} className="yin-yang" alt="YinYang" />
-            </div>
-            💬
+            </div> */}
+            {/* 💬 */}
           </div>
           Divot is a website for people to help their favorite brands become
           more eco-friendly and track their progress.
         </div>{" "}
+        <div className="team-title" style={{ marginTop: "4rem" }}>
+          Meet the Team
+        </div>
+        {/*   <div className="info-avatar-wrapper-about">
+          <img
+            src={GradientHexagon}
+            className="hexagon-gradient-about"
+            style={{ opacity: 0.9 }}
+          />
+
+          <div className="avatar-background">
+            <Avatar
+              src={hollandProfileImage}
+              sx={{ height: "430px", width: "430px" }}
+              style={{}}
+            />
+          </div>
+        </div> */}
+        <div className="about-icons">
+          <div
+            style={{
+              textAlign: "center",
+            }}
+          >
+            {" "}
+            <div className="info-avatar-wrapper">
+              <img
+                src={GradientHexagon}
+                className="hexagon-gradient-about"
+                style={{ opacity: 0.9 }}
+              />
+
+              <div className="avatar-background">
+                <Avatar
+                  src={hollandProfileImage}
+                  sx={{ height: "107px", width: "107px" }}
+                  style={{}}
+                />
+              </div>
+            </div>
+            Holland
+          </div>
+          <div
+            style={{
+              textAlign: "center",
+            }}
+          >
+            <div className="info-avatar-wrapper">
+              <img
+                src={GradientHexagon}
+                className="hexagon-gradient-about"
+                style={{ opacity: 0.9 }}
+              />
+              <div className="avatar-background">
+                <Avatar
+                  src={hollandProfileImage}
+                  sx={{ height: "107px", width: "107px" }}
+                  style={{}}
+                />
+              </div>
+            </div>
+            Valentina
+          </div>
+          <div
+            style={{
+              textAlign: "center",
+            }}
+          >
+            <div className="info-avatar-wrapper">
+              <img
+                src={GradientHexagon}
+                className="hexagon-gradient-about"
+                style={{ opacity: 0.9 }}
+              />
+
+              <div className="avatar-background">
+                <Avatar
+                  src={hollandProfileImage}
+                  sx={{ height: "107px", width: "107px" }}
+                  style={{}}
+                />
+              </div>
+            </div>
+            Boris
+          </div>
+          <div
+            style={{
+              textAlign: "center",
+            }}
+          >
+            <div className="info-avatar-wrapper">
+              <img
+                src={GradientHexagon}
+                className="hexagon-gradient-about"
+                style={{ opacity: 0.9 }}
+              />
+
+              <div className="avatar-background">
+                <Avatar
+                  src={hollandProfileImage}
+                  sx={{ height: "107px", width: "107px" }}
+                  style={{}}
+                />
+              </div>
+            </div>
+            Everette
+          </div>
+        </div>
         <div className="meet-team">
           {" "}
           {/*  <div className="meet-team-buttons">
