@@ -214,7 +214,7 @@
   overflow-y: scroll;
   padding-top: 6rem;
   margin-top: 1.7rem;
-  margin-bottom: 5rem;
+  margin-bottom: 5.5rem;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none;
 }
@@ -338,7 +338,7 @@
   color: #1d1c1b;
   color: #1d1c1b;
   color: #36252d;
-  font-size: 14pt;
+  font-size: 16pt;
   font-weight: 500;
   letter-spacing: 0.2px;
 }
@@ -369,6 +369,9 @@
   background: #e2dedc;
   background: none;
   border: none;
+  border: 1px solid #aa7950;
+  color: #aa7950;
+  padding: 3px 9px;
   margin-right: 0.4rem;
   margin-right: 1.3rem;
   border-radius: 15px;
@@ -381,13 +384,14 @@
   background: #bdb7ad;
   background: linear-gradient(110deg, #b07849, #e1d6cd);
   background: none;
-  color: white;
   color: #aa7950;
-  border: none;
+  border: 1px solid #cccaca;
+  background: #cccaca;
+  color: white;
   font-size: 17px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-family: "sofia-pro";
-  font-weight: 500;
+  font-weight: 400;
 }
 .top-charts-sort-button:hover {
   background: #8fcf8f;
@@ -404,10 +408,9 @@
   background: #ba9169;
   background: #525350;
   background: linear-gradient(110deg, #b07849, #e1d6cd);
-  background: none;
-  border: none;
+  background: #dbdada;
+  border: 1px solid #dbdada;
   color: #ffffff;
-  color: #aa7950;
 }
 
 .select-wrapper {

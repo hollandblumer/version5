@@ -8,7 +8,7 @@ function Footer2() {
       <div className="footer-links">
         <Link to="/contact-us">Contact Us</Link>
         <Link to="/about">About</Link>
-        <Link to="/terms">Terms of Service</Link>
+        <Link to="/faqs">FAQs</Link>
         <Link to="/apply">Apply</Link>
       </div>
     </div>

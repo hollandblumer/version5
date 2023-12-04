@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Dirt from "../../user/stats/Dirt";
+import TempDirt from "../../user/stats/TempDirt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLock,
@@ -50,13 +51,15 @@ function SignedInUserSoil({ brandArray }) {
         {brandArray.length === 0 ? (
           <div className="featured-brands">
             {[...Array(5)].map((_, index) => (
-              <Dirt key={index} showBlankAvatar={true} />
+              // <Dirt key={index} showBlankAvatar={true} />
+              <TempDirt key={index} showBlankAvatar={true} index={index} />
             ))}
           </div>
         ) : (
           brandArray.map((p, index) => (
             <div className="featured-brands" key={index}>
-              <Dirt brand={p} showBlankAvatar={false} />
+              {/* <Dirt brand={p} showBlankAvatar={false} /> */}
+              <TempDirt brand={p} showBlankAvatar={false} index={index} />
             </div>
           ))
         )}
@@ -83,7 +86,8 @@ function SignedInUserSoil({ brandArray }) {
         brandArray.length > 7 &&
         brandArray.slice(7).map((p, index) => (
           <div className="featured-brands" key={index}>
-            <Dirt brand={p} showBlankAvatar={false} />
+            {/*<Dirt brand={p} showBlankAvatar={false} />*/}
+            <TempDirt brand={p} showBlankAvatar={false} index={index} />
           </div>
         ))}
 

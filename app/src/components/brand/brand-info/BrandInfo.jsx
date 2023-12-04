@@ -332,4 +332,4 @@ function BrandInfo({
   );
 }
 
-export default withAuthenticator(BrandInfo);
+export default BrandInfo;

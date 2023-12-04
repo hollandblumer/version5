@@ -67,6 +67,7 @@ div.like-share > * {
   background: #e3d9c2;
   background: rgba(239, 239, 239, 0.6);
   background: #d6d4d5;
+  background: none;
 }
 .suggestion-container:hover {
   /* background-image: linear-gradient(
@@ -77,6 +78,7 @@ div.like-share > * {
   );
   background-image: linear-gradient(to right, #aa7950, #e1d6cd); */
   background: rgba(255, 255, 255, 0.375);
+  background: none;
   border-radius: 1rem;
 }
 
@@ -142,6 +144,7 @@ div.suggestion-content-container > * {
   background-image: linear-gradient(to right, #aa7950, #e1d6cd);
   background-image: linear-gradient(to right, #d6d4d5, #d5d1d3);
   background-image: linear-gradient(to right, #d6d4d5, #d6d4d5);
+  background: none;
   opacity: 0.9;
 }
 

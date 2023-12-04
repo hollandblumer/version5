@@ -1,5 +1,4 @@
 import React from "react";
-import { withAuthenticator } from "@aws-amplify/ui-react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
@@ -38,7 +37,6 @@ function BrandDashboard({ SignedInUser }) {
   const [verification, setVerification] = useState(false);
   const [milestones, setMilestones] = useState([]);
   const [memberSinceDate, setMemberSinceDate] = useState("");
-
   const [sliderPosition, setSliderPosition] = useState(0);
 
   useEffect(() => {

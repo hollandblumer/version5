@@ -34,7 +34,7 @@ function About() {
           more eco-friendly and track their progress.
         </div>{" "}
         <div className="team-title" style={{ marginTop: "4rem" }}>
-          Meet the Team
+          Meet the Founder
         </div>
         {/*   <div className="info-avatar-wrapper-about">
           <img
@@ -51,7 +51,7 @@ function About() {
             />
           </div>
         </div> */}
-        <div className="about-icons">
+        {/*         <div className="about-icons">
           <div
             style={{
               textAlign: "center",
@@ -140,7 +140,7 @@ function About() {
             </div>
             Everette
           </div>
-        </div>
+        </div> */}
         <div className="meet-team">
           {" "}
           {/*  <div className="meet-team-buttons">

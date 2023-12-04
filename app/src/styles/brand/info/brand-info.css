@@ -100,6 +100,8 @@
 .unverified {
   background: #efefef;
   background: #e2dddd;
+  background: rgba(97, 74, 74, 0.5);
+  background: rgba(255, 253, 253, 0.5);
   padding: 2px 8px;
   border-radius: 10rem;
   font-size: 10pt;

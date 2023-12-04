@@ -220,6 +220,7 @@ is-reverse .marquee__scroll {
 .logo-gif {
   width: 120px;
   height: 100px;
+  margin-top: -0.5rem;
 }
 
 .logo {
@@ -327,6 +328,7 @@ is-reverse .marquee__scroll {
   color: #1d1c1b;
   color: #36252d;
   font-family: "neutra-text-2";
+  font-weight: 600;
   font-size: 20px;
   line-height: 22px;
 }

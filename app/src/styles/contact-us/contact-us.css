@@ -22,9 +22,12 @@
 }
 
 .contact-us-textbox {
-  border: 1px solid #cac3b2;
   border: 1.5px solid #cac3b2;
   border: 1.5px solid #b68862;
+  border: 1px solid #cac3b2;
+  border: 1px solid rgb(204, 204, 204);
+  background: #e0e0e0;
+  background: #e4e3e3;
   border-radius: none;
   margin-top: 2rem;
   min-height: 10rem;
@@ -68,6 +71,15 @@ form .character-limit {
 }
 form button[type=submit] {
   background-color: #ad937a;
+  background: #e1dada;
+  background: rgba(97, 74, 74, 0.5);
+  background: #9d9090;
+  background: linear-gradient(109.6deg, rgb(242, 219, 148) 10%, rgb(242, 211, 153) 30%, rgb(242, 192, 162) 60%);
+  background: linear-gradient(109.6deg, rgb(242, 219, 148) 10%, rgb(242, 211, 153) 30%);
+  background: #f5995e;
+  background: linear-gradient(109.6deg, rgb(217, 160, 124) 30%, rgb(245, 153, 94) 70%);
+  background: linear-gradient(40deg, rgb(236, 190, 163) 10%, rgb(245, 153, 94) 70%);
+  background: rgba(245, 153, 94, 0.85);
   color: white;
   padding: 12px 30px;
   border: none;

@@ -21,7 +21,7 @@ import About from "./pages/about/About";
 import ContactUs from "./pages/contact-us/ContactUs";
 import Apply from "./pages/apply/Apply";
 import SignUpBrandForm from "./components/signup/SignUpBrandForm";
-import TermsOfService from "./pages/terms-of-service/TermsOfService";
+import FAQs from "./pages/FAQs/FAQs";
 import Notifications from "./components/notification/Notifications";
 import GetNotificationsCount from "./components/notification/GetNotificationCount";
 import CustomSignIn from "./components/signin/CustomSignIn";
@@ -266,7 +266,7 @@ function App() {
                 path !== "/about" &&
                 path !== "/contact-us" &&
                 path !== "/terms" &&
-                path !== "/terms" &&
+                path !== "/faqs" &&
                 path !== "/claim-brand" &&
                 path !== "/apply" ? (
                   <Dashboard SignedInUser={userData} />
@@ -288,7 +288,7 @@ function App() {
             <Route path="/complete-profile" element={<CompleteProfile />} />
             <Route path="/about" element={<About />} />
             <Route path="/apply" element={<Apply />} />
-            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/faqs" element={<FAQs />} />
             <Route path="/contact-us" element={<ContactUs />} />
           </Routes>
         </div>

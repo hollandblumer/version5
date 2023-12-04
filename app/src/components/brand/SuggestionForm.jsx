@@ -3,7 +3,9 @@ import { DataStore } from "@aws-amplify/datastore";
 import { Suggestion, UserSuggestion, User } from "../../models";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { Auth } from "@aws-amplify/auth";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
+import AuthForm from "./AuthForm"; // Import your AuthForm component
 
 function SuggestionForm({ name, email, thisID, businessName }) {
   const [suggestion, setSuggestion] = useState("");
@@ -11,6 +13,7 @@ function SuggestionForm({ name, email, thisID, businessName }) {
   const [suggestionCheck, setSuggestionCheck] = useState(false);
   const [compliment, setCompliment] = useState(false);
   const [similarSuggestions, setSimilarSuggestions] = useState([]); // State for similar suggestions
+  const [showAuthForm, setShowAuthForm] = useState(false);
 
   const createSearch = async (e) => {
     e.preventDefault();
@@ -23,6 +26,18 @@ function SuggestionForm({ name, email, thisID, businessName }) {
   const createSuggestion = async (e) => {
     e.preventDefault();
 
+    // Check if the user is authenticated
+    try {
+      const currentUser = await Auth.currentAuthenticatedUser();
+      // User is already authenticated, proceed with creating the suggestion
+      handleCreateSuggestion();
+    } catch (error) {
+      // User is not authenticated, display the form to collect email and name
+      setShowAuthForm(true); // You need to manage the state for displaying the form
+    }
+  };
+
+  const handleCreateSuggestion = async () => {
     const isCompliment = suggestionCheck === true;
     setCompliment(isCompliment);
 
@@ -63,7 +78,6 @@ function SuggestionForm({ name, email, thisID, businessName }) {
         })
       );
     } else {
-      console.log("suggestion", typeof suggestion);
       const newSuggestion = await DataStore.save(
         new Suggestion({
           businessName,
@@ -151,6 +165,11 @@ function SuggestionForm({ name, email, thisID, businessName }) {
 
   let array = [];
 
+  /*  const handleAuthentication = () => {
+    setShowAuthForm(false); // Hide the AuthForm component after successful authentication
+    handleCreateSuggestion(); // Proceed with creating the suggestion
+  }; */
+
   return (
     <div className="suggestion-form">
       <div className="suggestion-form-container">
@@ -162,7 +181,6 @@ function SuggestionForm({ name, email, thisID, businessName }) {
             <option value="false"> Suggestion</option>
             <option value="true"> Compliment </option>
           </select>
-
           <div className="form-input" onChange={createSearch}>
             <input
               className="suggestion-input"
@@ -201,7 +219,13 @@ function SuggestionForm({ name, email, thisID, businessName }) {
           </div>
         )}
       </div>
-
+      {showAuthForm && (
+        <AuthForm
+          suggestion={suggestion}
+          compliment={compliment}
+          businessName={businessName}
+        />
+      )}
       {suggestion !== "" ? (
         <div className="suggestionSearchListContainer">
           {searchList.length !== 0 ? (

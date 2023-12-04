@@ -151,6 +151,7 @@ is-reverse .marquee__scroll {
   background: #403f3f;
   background: #f7f6f0;
   background: none;
+
   // background: #e8e7e4; fave color
   // background: #e4dfdf;
   z-index: 100000;
@@ -249,6 +250,7 @@ $color: #b3e5fc;
 .logo-gif {
   width: 120px;
   height: 100px;
+  margin-top: -0.5rem;
 }
 
 .logo {
@@ -356,7 +358,10 @@ $color: #b3e5fc;
   color: #1d1c1b;
   color: #36252d;
   font-family: "neutra-text-2";
+
+  font-weight: 600;
   font-size: 20px;
+
   line-height: 22px;
 }
 

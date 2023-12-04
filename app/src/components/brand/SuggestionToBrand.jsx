@@ -1,5 +1,6 @@
 import React from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
+import { Auth } from "@aws-amplify/auth";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
@@ -30,6 +31,21 @@ function SuggestionToBrand({
   const [milestones, setMilestones] = useState([]);
   const [hasClickedThumbsUp, setHasClickedThumbsUp] = useState(false);
   const [userHasMadeSuggestion, setUserHasMadeSuggestion] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const checkUserAuthentication = async () => {
+      try {
+        const currentUser = await Auth.currentAuthenticatedUser();
+        setUser(currentUser);
+      } catch (error) {
+        // User is not authenticated
+        setUser(null);
+      }
+    };
+
+    checkUserAuthentication();
+  }, []);
 
   useEffect(() => {
     const getData = async () => {
@@ -198,7 +214,12 @@ function SuggestionToBrand({
             <div key={p.id}>
               {avatararray.length < 4 ? (
                 <div>
-                  <SuggestionSupporterBrand username={p.name} />
+                  {p.isVerified == true ? (
+                    <SuggestionSupporterBrand username={p.name} />
+                  ) : (
+                    <></>
+                  )}
+
                   {avatararray.push(p.name).hide}
                 </div>
               ) : (
@@ -206,7 +227,7 @@ function SuggestionToBrand({
               )}
             </div>
           ))}
-
+          Support this
           <div>
             {" "}
             {avatararray.length > 4 ? (
@@ -216,15 +237,16 @@ function SuggestionToBrand({
             )}{" "}
           </div>
         </div>
-
         <div className="like-share right">
-          <FontAwesomeIcon
-            icon={faThumbsUp}
-            className="share"
-            color={getThumbsUpColor()}
-            size="lg"
-            onClick={handleThumbsUpClick}
-          />
+          {user && ( // Check if the user is authenticated
+            <FontAwesomeIcon
+              icon={faThumbsUp}
+              className="share"
+              color={getThumbsUpColor()}
+              size="lg"
+              onClick={handleThumbsUpClick}
+            />
+          )}
           <FontAwesomeIcon
             icon={faShareNodes}
             className="share"
