@@ -151,6 +151,7 @@ function BrandDashboard({ SignedInUser }) {
             >
               Milestones
             </div>
+            /
             <div
               className={`business-nav-item ${
                 activeContainer === "projects" ? "active" : ""
@@ -162,6 +163,7 @@ function BrandDashboard({ SignedInUser }) {
             >
               Projects
             </div>
+            /
             <div
               className={`business-nav-item ${
                 activeContainer === "certifications" ? "active" : ""

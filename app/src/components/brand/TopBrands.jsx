@@ -264,6 +264,7 @@ function TopBrands() {
         >
           All
         </button>
+        /
         <button
           className={`top-charts-sort-button ${
             selectedIndustry === "Restaurant" ? "active" : ""
@@ -272,6 +273,7 @@ function TopBrands() {
         >
           Restaurant
         </button>
+        /
         <button
           className={`top-charts-sort-button ${
             selectedIndustry === "Retail" ? "active" : ""
@@ -280,6 +282,7 @@ function TopBrands() {
         >
           Retail
         </button>
+        /
         <button
           className={`top-charts-sort-button ${
             selectedIndustry === "Beauty" ? "active" : ""
@@ -288,7 +291,7 @@ function TopBrands() {
         >
           Beauty
         </button>
-
+        /
         <button
           className={`top-charts-sort-button ${
             selectedIndustry === "Industrial" ? "active" : ""
@@ -297,7 +300,6 @@ function TopBrands() {
         >
           Healthcare
         </button>
-
         <button
           className={`top-charts-sort-button ${
             selectedIndustry === "hopsitality" ? "active" : ""
@@ -306,7 +308,6 @@ function TopBrands() {
         >
           Hospitality
         </button>
-
         {/* <div className="select-wrapper">
           <select
             className="sort-select"

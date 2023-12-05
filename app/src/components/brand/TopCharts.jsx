@@ -100,6 +100,7 @@ function TopCharts(thisID) {
             ></div>
           )}
         </button>
+        /
         <button
           onClick={() => setSelectedFilter("Suggestions")}
           className={selectedFilter === "Suggestions" ? "active" : ""}
@@ -118,6 +119,7 @@ function TopCharts(thisID) {
             ></div>
           )}
         </button>
+        /
         <button
           onClick={() => setSelectedFilter("Compliments")}
           className={selectedFilter === "Compliments" ? "active" : ""}

@@ -14,6 +14,7 @@ import {
   faShareNodes,
   faArrowUpRightFromSquare,
   faThumbsUp,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
@@ -227,11 +228,11 @@ function SuggestionToBrand({
               )}
             </div>
           ))}
-          Support this
+
           <div>
             {" "}
-            {avatararray.length > 4 ? (
-              <div className="avatar-length">{avatararray.length - 4}+</div>
+            {avatararray.length > 0 ? (
+              <div className="avatar-length">+{avatararray.length}</div>
             ) : (
               <div></div>
             )}{" "}
@@ -247,6 +248,13 @@ function SuggestionToBrand({
               onClick={handleThumbsUpClick}
             />
           )}
+          {/*   <FontAwesomeIcon
+            icon={faPlusCircle}
+            className="share"
+            color="#8c8c8c"
+            size="lg"
+            onClick={handleThumbsUpClick}
+          /> */}
           <FontAwesomeIcon
             icon={faShareNodes}
             className="share"

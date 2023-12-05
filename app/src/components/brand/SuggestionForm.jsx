@@ -170,13 +170,23 @@ function SuggestionForm({ name, email, thisID, businessName }) {
     handleCreateSuggestion(); // Proceed with creating the suggestion
   }; */
 
+  const handleSelectChange = (e) => {
+    // Update the selected option when the select value changes
+    setSuggestionCheck(e.target.value === "true");
+  };
+
   return (
     <div className="suggestion-form">
       <div className="suggestion-form-container">
         <div className="suggestion-form-content">
           <select
             className="suggestion-select"
-            onChange={(e) => setSuggestionCheck(e.target.value === "true")}
+            onChange={handleSelectChange}
+            style={{
+              paddingRight: `${
+                suggestionCheck === "true" ? suggestion.length * 6 : 0
+              }px`, // Adjust the multiplier as needed
+            }}
           >
             <option value="false"> Suggestion</option>
             <option value="true"> Compliment </option>

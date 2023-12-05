@@ -121,7 +121,17 @@
 }
 
 .info-website {
+  color: #2d6da6;
+  color: #37252c;
   color: #757575;
+  color: #00376b;
+  font-weight: 300;
   font-size: 17px;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
+}
+
+.link-icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 0.3rem;
 }

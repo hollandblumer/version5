@@ -12,10 +12,12 @@ import {
   faLink,
   faArrowUpRightFromSquare,
   faBed,
+  faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 import AvatarDesign from "../../../assets/images/avatar-design-5.png";
 import "../../../styles/brand/info/brand-info.css";
 import GradientHexagon from "../../../assets/images/header-blob-2.svg";
+import LinkIcon from "../../../assets/images/link-icon.svg";
 function BrandInfo({
   url,
   username,
@@ -28,6 +30,14 @@ function BrandInfo({
 }) {
   let formatdate = new Date(date);
   let link = null;
+
+  let icon =
+    industry === "food"
+      ? faUtensils
+      : industry === "Hospitality"
+      ? faBed
+      : null;
+
   return (
     <div className="brand-info">
       <div className="info-avatar-wrapper">
@@ -187,7 +197,7 @@ function BrandInfo({
                 color="#aa7950"
                 style={{ marginRight: "5px" }}
               />{" "}
-              Kiawah Island
+              Kiawah Island, SC
             </div>
           )}
 
@@ -206,7 +216,9 @@ function BrandInfo({
           ) : (
             <div className="industry-row">
               {" "}
-              <FontAwesomeIcon icon={faBed} size="sm" color="#aa7950" />{" "}
+              {icon && (
+                <FontAwesomeIcon icon={icon} size="sm" color="#aa7950" />
+              )}
               <div className="left">{industry}</div>
             </div>
           )}
@@ -248,14 +260,15 @@ function BrandInfo({
           {link != null ? (
             <div className="info-website">
               {" "}
-              <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" /> Add
+              <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" />
               Link
             </div>
           ) : (
             <div className="info-website">
               {" "}
-              <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" /> Add
-              Link
+              {/* <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" /> */}
+              <img src={LinkIcon} className="link-icon" />
+              kiawahisland.com
             </div>
           )}
         </div>
