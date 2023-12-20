@@ -6,14 +6,12 @@
   display: flex; /* Use flexbox for centering */
   justify-content: center; /* Center content horizontally */
   align-items: center;
-  background-color: none;
+  margin: 0rem 2.6rem 0 2.6rem;
 }
 
 .profile {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   height: auto;
 }
@@ -21,11 +19,11 @@
 .profile-info {
   display: flex;
   flex-direction: column;
+  flex: 1 1;
   align-items: space-between;
-  justify-content: center;
-  height: 100%;
-  margin-left: 2rem;
-  background: none;
+  justify-content: space-between;
+  padding: 0.5rem 0rem;
+  margin-left: 1.5rem;
 }
 
 .hexagon-gradient {
@@ -92,7 +90,7 @@
   height: auto;
   flex: 1;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .detailed-brand-info-row {
@@ -120,8 +118,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: space-between;
-  margin-top: 0.8rem;
+  margin-top: 10px;
 }
 
 .user-action-button {
@@ -144,12 +141,10 @@
 .info-share {
   background: none;
   border: none;
-  margin-right: 0.4rem;
 }
 
 .action-buttons button:nth-child(2) {
-  margin-left: 0rem;
-  margin-right: 0.2rem;
+  margin-left: 0.5rem;
 }
 
 .info-container {
@@ -190,10 +185,9 @@
   margin-top: 10px;
   font-weight: 400;
   font-size: 19px;
-  font-family: "neutra-text";
+  font-family: "neutra-text-2";
 }
 .member-since button {
-  border: none;
   background: #e8e5dd;
   background: #d8d6d8;
   background: #f9f9f9;
@@ -205,12 +199,21 @@
   background: #dcd3d3;
   background: #dedfe2;
   background: #dbdada;
+  background: #939392;
+  border: 1px solid rgb(219, 219, 219);
+  box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1); /* Add the box shadow here */
+  color: white;
   margin-left: 10px;
-  border-radius: 20px;
-  padding: 3px 10px;
+  border-radius: 25px;
+  padding: 3px 9px;
   font-size: 15px;
 }
 
+@media (max-width: 768px) {
+  .member-since {
+    font-size: 15px;
+  }
+}
 .member-since-date {
   font-weight: 500;
   color: #281e17;
@@ -223,7 +226,10 @@
   color: #37252c;
   margin-left: 5px;
   font-family: "neutra-text-2";
-  margin-top: 0.27rem;
+}
+
+.member-since-text {
+  font-family: "neutra-text-2";
 }
 
 .follower-cell {
@@ -241,6 +247,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .strength {
@@ -306,7 +313,7 @@
 }
 
 .bio-emphasis {
-  font-size: 17px;
+  font-size: 18px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -315,21 +322,28 @@
   color: #8e8e8e;
   color: #aa7950;
   color: #37252c;
+  color: rgb(82, 80, 80);
+  color: black;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  line-height: 22px;
+  font-family: "sofia-pro";
   font-weight: 500;
-  margin-top: 0.2rem;
+}
+
+.space {
+  margin-left: 0.4rem;
 }
 
 .bio-emphasis-text {
-  color: #757575;
   color: #37252c;
+  color: #757575;
   font-size: 17px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-top: 0.2rem;
+  margin-left: 0.3rem;
 }
 
 .bio-emphasis-date {

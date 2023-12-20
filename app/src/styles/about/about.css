@@ -21,17 +21,21 @@
 }
 
 .about-page-blurb {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 25px;
-  color: #5d5a54;
+  font-family: "campton-book";
+  font-size: 18px;
   color: #aa7950;
   color: #bdb7ad;
+  color: rgb(188, 184, 184);
+  color: #36252d;
+  color: #b9b4b4;
+  color: #525050;
+  color: #5d5a54;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-top: 0.2rem;
-  padding: 0 1rem;
   width: 100%;
+  letter-spacing: 0.007em;
+  letter-spacing: 0.2px;
 }
 
 .about-icons {
@@ -67,6 +71,38 @@
   display: flex;
   flex-direction: row;
   font-weight: 500;
+  position: relative;
+  width: 100%;
+  text-align: left;
+  padding: 0.4rem 0.2rem;
+  /* Define the animation keyframes */
+}
+.welcome-about::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.08rem; /* Height of the gradient border */
+  background: linear-gradient(to right, #aa7950, transparent 25%, #aa7950 50%, transparent 75%, #aa7950); /* Gradient color */
+  /* Add animation to the background-position */
+  animation: moveGradient 10s linear infinite;
+  background-size: 200% 100%; /* Double the width to allow for movement */
+  animation-delay: 2s;
+}
+@keyframes moveGradient {
+  0% {
+    background-position: 100% 0; /* Start the gradient offscreen to the right */
+  }
+  100% {
+    background-position: -100% 0; /* Move the gradient offscreen to the left */
+  }
+}
+
+.earth {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
 }
 
 .team-title {
@@ -80,7 +116,29 @@
   flex-direction: row;
   width: 100%;
   text-align: left;
-  padding: 0 1rem;
+  padding: 0.4rem 0.2rem;
+  position: relative;
+  /* Define the animation keyframes */
+}
+.team-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.08rem; /* Height of the gradient border */
+  background: linear-gradient(to right, #aa7950, transparent 25%, #aa7950 50%, transparent 75%, #aa7950); /* Gradient color */
+  /* Add animation to the background-position */
+  animation: moveGradient 10s linear infinite;
+  background-size: 200% 100%; /* Double the width to allow for movement */
+}
+@keyframes moveGradient {
+  0% {
+    background-position: 100% 0; /* Start the gradient offscreen to the right */
+  }
+  100% {
+    background-position: -100% 0; /* Move the gradient offscreen to the left */
+  }
 }
 
 .yin-yang-container {
@@ -139,8 +197,9 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .member-name {
@@ -150,7 +209,7 @@
   color: #bdb7ad;
   font-weight: 500;
   color: #5d5a54;
-  text-align: center;
+  margin-top: 0.2rem;
 }
 
 .member-title {
@@ -160,15 +219,13 @@
 }
 
 .team-members {
-  display: flex; /* Use flexbox to stack columns vertically */
-  flex-direction: column; /* Stack items vertically */
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 .team-member {
   display: flex;
   width: 100%;
-  flex-direction: column;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
@@ -183,14 +240,18 @@
 
 .member-description {
   flex: 1;
-  font-family: "Helvetica Neue";
+  font-family: "sofia-pro";
+  font-family: "campton-book";
   color: #bdb7ae;
-  font-size: 20px;
+  color: rgb(188, 184, 184);
+  color: #36252d;
+  color: #757575;
+  color: #5d5a54;
+  font-size: 18px;
   background: #f7f6f0;
   background: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  text-align: left;
+  margin-bottom: 3rem;
 }
 
 /* Additional styles as needed */

@@ -206,17 +206,19 @@ function SignedInUserInfo({
               <div className="cell">
                 {" "}
                 <div className="bio-emphasis">{suggestionCount}</div>{" "}
-                <div className="bio-emphasis-text left">Suggestions</div>{" "}
+                <div className="bio-emphasis-text ">Suggestions</div>{" "}
               </div>
               <div className="cell left">
                 {" "}
-                <div className="bio-emphasis left">{complimentCount}</div>{" "}
-                <div className="bio-emphasis-text left">Compliments</div>{" "}
+                <div className="bio-emphasis space ">
+                  {complimentCount}
+                </div>{" "}
+                <div className="bio-emphasis-text ">Compliments</div>{" "}
               </div>
               <div className="cell left">
                 {" "}
-                <div className="bio-emphasis left">0</div>{" "}
-                <div className="bio-emphasis-text left">Awards</div>{" "}
+                <div className="bio-emphasis space ">0</div>{" "}
+                <div className="bio-emphasis-text ">Awards</div>{" "}
                 {/*   <div className="strength">
                   {" "}
                   <div className="light green"> </div>
@@ -230,22 +232,22 @@ function SignedInUserInfo({
 
               {/* <div className="username">#</div>{" "} */}
             </div>
-            {location == "" ? (
-              <></>
-            ) : (
-              <div className="location-row">
-                <div className="location">
-                  {/* <div className="grey bio">{bio}</div> */}
-                  <FontAwesomeIcon icon={faLocationDot} size="sm" />
-                  <div className="grey left">{location}</div>
-                </div>
+          </div>
+          {location == "" ? (
+            <></>
+          ) : (
+            <div className="location-row">
+              <div className="location">
+                {/* <div className="grey bio">{bio}</div> */}
+                <FontAwesomeIcon icon={faLocationDot} size="sm" />
+                <div className="grey left">{location}</div>
               </div>
-            )}
-            <div className="member-since">
-              {" "}
-              <div className="bio-emphasis-text">Member since</div>{" "}
-              <div className="member-since-date-user">{joinMonthYear}</div>{" "}
             </div>
+          )}
+          <div className="member-since">
+            {" "}
+            <div className="member-since-text">Member since</div>{" "}
+            <div className="member-since-date-user">{joinMonthYear}</div>{" "}
           </div>
         </div>
       </div>

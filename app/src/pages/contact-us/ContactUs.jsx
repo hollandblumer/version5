@@ -83,19 +83,16 @@ function ContactUs() {
   return (
     <div className="contact-us">
       <div className="contact-us-container">
-        <div className="contact-us-title">
-          Contact us
-          <div className="chat-box-text">
+        <div className="contact-us-title">Contact Us</div>
+        <div className="chat-box-text">
+          {" "}
+          <div
+            className={`chat-box-text ${isChatAvailable ? "highlight" : ""}`}
+          >
             {" "}
-            <div
-              className={`chat-box-text ${isChatAvailable ? "highlight" : ""}`}
-            >
-              {" "}
-              <TidioWrapper icon="info2" />{" "}
-            </div>
+            <TidioWrapper icon="h" />{" "}
           </div>
         </div>
-
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label
@@ -113,7 +110,7 @@ function ContactUs() {
               required
             />
           </div>
-          <div className="form-group">
+          <div className="form-group-delay">
             <label
               className={`form-label ${usernameFocused ? "focused-label" : ""}`}
               htmlFor="username"

@@ -21,7 +21,7 @@ import { faClock, faCalendar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MilestoneUpdate from "../user/MilestoneUpdate";
 import { Link } from "react-router-dom";
-
+import ShareNodes from "../../assets/images/share-nodes.svg";
 import "../../styles/suggestion/suggestion-user/suggestions.css";
 import "../../styles/suggestion/suggestion-general/suggestion.css";
 
@@ -243,10 +243,10 @@ function SignedInSuggestionFromUser({
               D
             </button> */}{" "}
             <FontAwesomeIcon
-              icon={faShare}
-              style={{ marginTop: "-.2rem" }}
-              color="#5b584a"
-              size="xl"
+              icon={faShareNodes}
+              className="share"
+              color="#525050"
+              size="lg"
             />
             <FontAwesomeIcon
               icon={faEllipsis}

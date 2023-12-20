@@ -170,7 +170,7 @@ function Info({
             )}
             <div className="member-since">
               {" "}
-              <div className="grey">Member since</div>{" "}
+              <div className="bio-emphasis">Member since</div>{" "}
               <div className="bio-emphasis">{joinMonthYear}</div>{" "}
             </div>
           </div>

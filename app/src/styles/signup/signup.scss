@@ -21,11 +21,11 @@
     // background: rgba(140, 133, 119, 0.7);
     background-color: #c9bfad;
     background: #d6d4d5;
-    border: 1px solid #e7e5dd;
-
+    background: #d1ccc8 !important;
+    border: none;
     font-family: "Helvetica Neue";
     font-size: 15px;
-    padding: 5px 12px;
+    padding: 7px 12px;
     margin-left: 5px;
     color: #000000;
   }
@@ -33,7 +33,8 @@
   button:hover {
     background: #aa9b82;
     background: #b7b6b6;
-    color: white;
+    background: #d1ccc8ea !important;
+    color: #000000;
   }
 }
 

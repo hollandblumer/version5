@@ -39,8 +39,8 @@ body {
   background: url(./assets/images/magic-pattern.png);
   background: url(./assets/images/wood-lines.png);
   background: #f7f6f0;
-  background: url(./assets/images/natural-backdrop.png);
   background: #faf2de;
+  background: url(./assets/images/natural-backdrop.png);
 }
 
 @media (max-width: 768px) {
@@ -48,12 +48,15 @@ body {
     background: linear-gradient(60deg, #f5f1e5, #faf9f3);
     background: #fffaf2;
     background: #f5f1e5;
-    background: #f7f6f0;
     background: url(./assets/images/white-page-texture.png);
     background: url(./assets/images/magic-pattern.png);
     background: url(./assets/images/wood-lines.png);
-    background: url(./assets/images/natural-backdrop.png);
     background: #faf2de;
+
+    background: #f7f6f0;
+    background: #ebebeb;
+    background: #071307;
+    background: url(./assets/images/natural-backdrop.png);
     margin: 0;
   }
 }
@@ -78,7 +81,7 @@ h3 {
   padding: 0;
   font-family: "wintter-test";
   font-family: "itc-souvenir-demi";
-  color: #36252d;
+  color: #36252c;
   font-size: 14pt;
   font-weight: 500;
   letter-spacing: 0.2px;
@@ -146,4 +149,16 @@ input {
   src: url("./assets/fonts/neutra-medium/Neutra\ Display\ Medium.woff");
   /* Super Modern Browsers */
   font-weight: 500;
+}
+
+@font-face {
+  font-family: "grover";
+  src: url("./assets/fonts/grover/groverrad.woff2");
+  /* Super Modern Browsers */
+}
+
+@font-face {
+  font-family: "campton-book";
+  src: url("./assets/fonts/campton/CamptonBook.woff2");
+  /* Super Modern Browsers */
 }

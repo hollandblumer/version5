@@ -169,7 +169,7 @@ function CustomSignIn() {
                 <div className="circle"></div>
               </div>
             ) : (
-              "SIGN IN"
+              "Sign In"
             )}
           </button>
         </form>

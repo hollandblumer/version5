@@ -36,7 +36,7 @@
   flex-direction: row;
   justify-content: flex-start;
   margin-top: 0.3rem;
-  margin-left: -0.4rem;
+
   // border-bottom: 1.5px solid #eeeeee;
   // margin: 0.4rem 0.6rem; //real
   // margin: 0.4rem 0rem;
@@ -75,9 +75,8 @@
 }
 
 .business-nav-item {
-  width: 6rem;
   font-family: "neutra-text";
-  font-size: 18px;
+  font-size: 17px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -102,6 +101,10 @@
   padding: 0.1rem;
   font-weight: 500;
   margin-top: 10px;
+}
+
+.brand-divider {
+  margin: 0 0.6rem;
 }
 
 .business-nav-grey {

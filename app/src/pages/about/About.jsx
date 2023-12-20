@@ -2,16 +2,18 @@ import Footer2 from "../../components/footer/Footer2";
 import "../../styles/about/about.css";
 import hollandProfileImage from "../../assets/images/hollandprofile.jpg";
 import hollandProfileImage2 from "../../assets/images/about-me-5.png";
+import hollandProfileImage3 from "../../assets/images/hexagon-holland.png";
 import YinYang from "../../assets/images/yin-yang.png";
 import GradientHexagon from "../../assets/images/header-blob-2.svg";
 import { Avatar } from "@mui/material";
+import Earth from "../../assets/images/green-earth.png";
 
 function About() {
   const teamMembers = [
     {
       name: "Holland Blumer",
-      title: "CEO/Founder",
-      imageSrc: hollandProfileImage2,
+      title: " /  Founder & CEO",
+      imageSrc: hollandProfileImage3,
       description:
         "With two engineering degrees from Northwestern University (B.S.) and Dartmouth College (M.Eng), as well as experience in Silicon Valley and the automotive sector, Holland has a thorough understanding of the rapidly evolving technology industry and will leverage technology to enhance global communication, sustainability, and accessibility efforts.",
     },
@@ -30,8 +32,13 @@ function About() {
             </div> */}
             {/* 💬 */}
           </div>
-          Divot is a website for people to help their favorite brands become
-          more eco-friendly and track their progress.
+          <p>
+            Divot is on a mission to improve communication efforts between
+            brands and consumers for the sake of the planet{" "}
+            <img src={Earth} className="earth" /> In other words, it's a website
+            for people to help their favorite brands become more eco-friendly
+            and track their progress.
+          </p>
         </div>{" "}
         <div className="team-title" style={{ marginTop: "4rem" }}>
           Meet the Founder
@@ -182,13 +189,13 @@ function About() {
           <div className="team-members">
             {teamMembers.map((member, index) => (
               <div className="team-member" key={index}>
-                <div className="profile-image">
+                {/*  <div className="profile-image">
                   <img
                     src={member.imageSrc}
                     alt={member.name}
-                    style={{ width: "400px", height: "400px" }}
+                    style={{ width: "500px", height: "500px" }}
                   />
-                </div>
+                </div> */}
                 <div className="member-description">
                   <div className="member-name-title">
                     {" "}
@@ -196,7 +203,7 @@ function About() {
                     <div className="member-title">{member.title}</div>
                   </div>
 
-                  <p>{member.description}</p>
+                  {member.description}
                 </div>
               </div>
             ))}

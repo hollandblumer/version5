@@ -19,6 +19,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
 import "../../styles/suggestion/suggestion-general/suggestion.css";
+import ShareNodes from "../../assets/images/share-nodes.svg";
 
 function SuggestionToBrand({
   suggestion,
@@ -97,7 +98,7 @@ function SuggestionToBrand({
   }, [hasClickedThumbsUp]);
 
   const getThumbsUpColor = () => {
-    return userHasMadeSuggestion ? "#5bab5c" : "black";
+    return userHasMadeSuggestion ? "#5bab5c" : "#525050";
   };
 
   const handleThumbsUpClick = async () => {
@@ -195,11 +196,11 @@ function SuggestionToBrand({
                         )}{" "}
                       </div>
                       <div className="update">
-                        <FontAwesomeIcon
+                        {/*   <FontAwesomeIcon
                           icon={faArrowUpRightFromSquare}
                           className="share"
                           color="#a7a7a7"
-                        />
+                        /> */}
                       </div>
                     </div>
                   )}
@@ -255,10 +256,11 @@ function SuggestionToBrand({
             size="lg"
             onClick={handleThumbsUpClick}
           /> */}
+
           <FontAwesomeIcon
             icon={faShareNodes}
             className="share"
-            color="#5b584a"
+            color="#525050"
             size="lg"
           />
           <FontAwesomeIcon

@@ -218,9 +218,12 @@ is-reverse .marquee__scroll {
 }
 
 .logo-gif {
-  width: 120px;
+  /*   width: 120px;
   height: 100px;
-  margin-top: -0.5rem;
+  margin-top: -0.5rem; */
+  height: 75px;
+  width: 100px;
+  margin-top: 10px;
 }
 
 .logo {
@@ -325,12 +328,21 @@ is-reverse .marquee__scroll {
   color: #554f32;
   color: #191919;
   color: #36252d;
+  color: RGB(93, 73, 54);
+  color: #333333;
+  color: #757474;
+  color: #b1a1a7;
+  color: rgb(34, 26, 51);
+  font-size: 17px;
   color: #1d1c1b;
+  color: #939392;
   color: #36252d;
   font-family: "neutra-text-2";
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 22px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.home-button:hover {
+  color: #525050;
+  color: #36252c;
 }
 
 .join-button {

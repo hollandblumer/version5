@@ -13,7 +13,11 @@ import { faBell, faBars } from "@fortawesome/free-solid-svg-icons";
 import "./styles/header/header.css";
 import Search from "./components/header/Search";
 import Dropdown from "./components/header/Dropdown";
-import { faMagnifyingGlass, faHome } from "@fortawesome/free-solid-svg-icons";
+import {
+  faMagnifyingGlass,
+  faHome,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import SignInComponent from "./components/signin/SignInComponent";
 import TidioWrapper from "./TidioWrapper";
 import CompleteProfile from "./components/signin/CompleteProfile";
@@ -32,7 +36,7 @@ import Verification from "./components/signup/Verification";
 import SearchMagnifyingGlass from "./assets/images/header-search.png";
 import Loading from "./components/loading/Loading";
 import "./App.css";
-import LogoGIF from "./assets/images/spirit-desire.png";
+import LogoGIF from "./assets/images/future-wise.svg";
 import WaveBar from "./components/WaveBar";
 import OrbEffect from "./components/OrbEffect";
 import MenuIcon from "./assets/images/menu-icon-1.svg";
@@ -103,6 +107,7 @@ function App() {
   return (
     <div className="App">
       <OrbEffect />
+
       <div className="header">
         <div className="header-left">
           {/*   <img className="menu-icon" src={MenuIcon} /> */}

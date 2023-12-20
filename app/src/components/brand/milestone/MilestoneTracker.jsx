@@ -11,6 +11,7 @@ import {
   faShareNodes,
   faEllipsis,
 } from "@fortawesome/free-solid-svg-icons";
+import MilestonBlob from "../../../assets/images/milestone-blob.svg";
 
 function formatDate(date) {
   const parsedDate = new Date(date);
@@ -55,13 +56,15 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
   }, []);
 
   return (
-    <div className="milestone-tracker">
-      {milestones.length > 0 ? (
-        <div>
-          <div className="milestone-subtle-suggestion-info">
-            <div>{formatDate(date)}</div>
-          </div>{" "}
-          {/*  <Avatar
+    <div>
+      <img src={MilestonBlob} className="milestone-blob" />
+      <div className="milestone-tracker">
+        {milestones.length > 0 ? (
+          <div>
+            <div className="milestone-subtle-suggestion-info">
+              <div>{formatDate(date)}</div>
+            </div>{" "}
+            {/*  <Avatar
             src={url}
             // sx={{ height: "90px", width: "90px" }}
             sx={{ height: "40px", width: "40px" }}
@@ -69,32 +72,32 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
               border: "1px solid #ffffff",
             }}
           />{" "} */}
-          <div className="milestone-update">
-            <div className="milestone-title"> {milestone} </div>
-            <span className="milestone-businessname"> @{businessname} </span>
-            <span className="actual-milestone"> {milestone} </span>
-            {/*    <FontAwesomeIcon
+            <div className="milestone-update">
+              <div className="milestone-title"> {milestone} </div>
+              <span className="milestone-businessname"> @{businessname} </span>
+              <span className="actual-milestone"> {milestone} </span>
+              {/*    <FontAwesomeIcon
                 icon={faArrowUpRightFromSquare}
                 className="share"
                 color="rgb(47,47,47)"
               /> */}
-            {/* <div className="milestone-suggestion"> */}{" "}
-            <span className="milestone-grey"> in response to the </span>
-            <span className="actual-milestone-suggestion">
-              {loadedSuggestion.suggestion}
-            </span>
-            <span className="actual-milestone">
-              {" "}
-              {loadedSuggestion.compliment ? (
-                <span className="actual-milestone">compliment</span>
-              ) : (
-                <span className="actual-milestone-suggestion">
-                  {loadedSuggestion.suggestion}
-                </span>
-              )}
-            </span>
-            {/* </div> */}
-            {/* <div
+              {/* <div className="milestone-suggestion"> */}{" "}
+              <span className="milestone-grey"> in response to the </span>
+              <span className="actual-milestone-suggestion">
+                {loadedSuggestion.suggestion}
+              </span>
+              <span className="actual-milestone">
+                {" "}
+                {loadedSuggestion.compliment ? (
+                  <span className="actual-milestone">compliment</span>
+                ) : (
+                  <span className="actual-milestone-suggestion">
+                    {loadedSuggestion.suggestion}
+                  </span>
+                )}
+              </span>
+              {/* </div> */}
+              {/* <div
               className={` ${
                 icon != null && index != 0
                   ? "milestone-icon "
@@ -105,11 +108,11 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
             >
               <Icon icon={icon} />
             </div> */}
-          </div>
-          <div className="see-more-milestone">
-            Liked by hollandblumer eleanorblumer and see more{" "}
-          </div>
-          {/*   <div className="milestone-follower-container">
+            </div>
+            <div className="see-more-milestone">
+              Liked by hollandblumer eleanorblumer and see more{" "}
+            </div>
+            {/*   <div className="milestone-follower-container">
          
                 </div>
               )}
@@ -136,10 +139,11 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
               />
             </div>
           </div> */}
-        </div>
-      ) : (
-        <div className="text">Not started</div>
-      )}
+          </div>
+        ) : (
+          <div className="text">Not started</div>
+        )}
+      </div>
     </div>
   );
 }

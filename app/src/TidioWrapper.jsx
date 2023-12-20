@@ -54,13 +54,12 @@ function TidioWrapper({ icon }) {
           </div>
         ) : tempIcon == "h" ? (
           <div className="chat-now-text">
-            <img src={InfoIcon} className="info-icon" />{" "}
-            {/*  Chat box available from 9AM-6PM EST{" "}
+            Chat box available from 9AM-6PM EST{" "}
             <FontAwesomeIcon
               icon={faComments}
               className="chat-icon"
               size="lg"
-            /> */}
+            />
           </div>
         ) : (
           <></>

@@ -290,16 +290,31 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
 
 .chat-now-text {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "campton-book";
   font-size: 20px;
   font-weight: 400;
   color: #494948;
+  color: #5d5a54;
   display: flex;
   margin-left: 0.2rem;
   height: 100%;
 }
 .chat-now-text .chat-icon {
   margin-left: 0.5rem;
-  color: #b7b1a7;
+  color: #b67138;
+  color: #a6a6a6;
+  color: #939392;
+  color: #f23e06;
+  color: #882e2a;
+  color: #d1ccc8;
+  color: #c49d7d;
+  color: #c3c1c1;
+  color: #ffa177;
+  color: #f0b46e;
+  color: #ecae7c;
+  color: rgb(193, 190, 190);
+  color: #ffa07a;
+  color: #0000ff;
 }
 
 .info-logo {
@@ -349,8 +364,16 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   background: #c9bfad;
   background: #e9bd6c;
   background: #d6d4d5;
-  border: 1px solid rgba(185, 173, 163, 0.9);
-  border: 1px solid #e7e5dd;
+  background-image: radial-gradient(103.73% 266.85% at 0% 16.08%, #e69b26, #f0b46f) !important;
+  background: #ebbc6d !important;
+  background-image: radial-gradient(103.73% 266.85% at 0% 16.08%, #f0b46f 38.44%, #ecae7c 100%) !important;
+  background: #ecae7c !important;
+  background: #f0b46e !important;
+  background: #d1ccc8 !important;
+  background: none !important;
+  border: 1.5px solid #42265a;
+  border: 1.5px solid #ffffff;
+  color: blue;
   font-family: "Helvetica Neue";
   font-size: 15px;
   padding: 10px 25px;
@@ -361,7 +384,10 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   background: #a29c93;
   background: #b7b6b6;
   background: #a6a6a6;
-  color: white;
+  background: rgba(209, 204, 200, 0.8352941176) !important;
+  background: rgba(52, 37, 53, 0.5411764706) !important;
+  background: #d1ccc8 !important;
+  background: rgba(254, 253, 254, 0.3) !important;
 }
 
 .signin-title {
@@ -406,6 +432,29 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   background: linear-gradient(to right, #aa7950, transparent 25%, #aa7950 50%, transparent 75%, #aa7950); /* Gradient color */
   /* Add animation to the background-position */
   animation: moveGradient 10s linear infinite;
+  background-size: 200% 100%; /* Double the width to allow for movement */
+}
+
+.form-group-delay {
+  position: relative;
+  margin-top: 3.4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-group-delay::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.05rem; /* Height of the gradient border */
+  background: linear-gradient(to right, #aa7950, transparent 25%, #aa7950 50%, transparent 75%, #aa7950); /* Gradient color */
+  /* Add animation to the background-position */
+  animation: moveGradient 10s linear infinite;
+  animation-delay: 2s;
   background-size: 200% 100%; /* Double the width to allow for movement */
 }
 
@@ -481,23 +530,42 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
 }
 
 .signin-button {
-  background-color: #aa7950;
+  /*   background-color: #aa7950;
   background-color: #ad866a;
+  background: #89874c !important;
   background: #8c8577 !important;
-  background: #37272e !important;
+  background: rgb(226, 210, 190) !important;
+  background-image: radial-gradient(
+    103.73% 266.85% at 0% 16.08%,
+    #ecae7c 0%,
+    #f0b46f 38.44%,
+    #ecae7c 100%
+  ) !important;
   background: #35252d !important;
-  color: #fff;
-  width: 35rem;
-  padding: 15px 0 !important; /* Increase padding for a larger button */
+  background: rgb(45, 44, 45) !important; // really like this
+  background: rgb(123, 146, 169) !important;
+  background: #939392 !important;
+  background: #37272e !important;
+  background: #c6a884 !important; */
+  background: linear-gradient(90deg, #b07849, #e1d6cd) !important;
+  background: linear-gradient(90deg, #c1895c, #c49d7d, #e1d6cd) !important;
+  background-size: 200% 100%;
+  animation: gradientMove 3s infinite alternate;
+  border: 1px solid rgb(219, 219, 219) !important;
+  box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1) !important;
+  color: #fff !important;
   border: none;
   border-radius: 30px !important;
-  font-size: 18px; /* Increase font size */
   cursor: pointer;
-  transition: background-color 0.2s ease;
-  letter-spacing: 1px;
-  font-family: "wintter-test";
-  font-weight: 300;
   margin: 6.7rem auto 0 auto; /* Adjusted this line */
+}
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 0%;
+  }
 }
 .signin-button:hover {
   background-color: #cec4af !important;

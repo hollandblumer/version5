@@ -30,7 +30,7 @@
 
 .milestone-title {
   font-size: 20px;
-  font-family: "itc-souvenir";
+  font-family: "itc-souvenir-demi";
   margin-bottom: 10px;
   color: #2e2c2c;
   color: #aa7950;
@@ -175,8 +175,19 @@
   background: #d6d4d5;
   background: #dedfe2;
   background: rgba(255, 253, 253, 0.5);
+  box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1);
+  box-shadow: none;
+  background: none;
   padding: 10px 25px;
   border-radius: 12px;
+  margin-top: 2rem;
+}
+
+.milestone-blob {
+  height: 18rem;
+  position: absolute;
+  z-index: -5;
+  margin-left: -20px;
 }
 
 .milestone-subtle-suggestion-info {

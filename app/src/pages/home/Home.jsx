@@ -34,6 +34,7 @@ import EnterBlob from "../../assets/images/enter-blob.svg";
 import EyeWorldButton from "../../assets/images/Eye-world-button.png";
 import GoEarth from "../../assets/images/GO.png";
 import GoEarthYellow from "../../assets/images/GO-Brown.svg";
+import Articles from "../../components/articles/Articles";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);
@@ -49,6 +50,7 @@ function Home() {
   const [isGoHovered, setIsGoHovered] = useState(false);
   const { transcript, resetTranscript } = useSpeechRecognition();
   const [recording, setRecording] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleQRCodeClick = () => {
     setQRScannerVisible(true);
@@ -137,6 +139,16 @@ function Home() {
     setIsGoHovered(false);
   };
 
+  useEffect(() => {
+    // Set a timeout to change the visibility after 15 seconds
+    const timeoutId = setTimeout(() => {
+      setIsVisible(true);
+    }, 3000);
+
+    // Clear the timeout if the component unmounts
+    return () => clearTimeout(timeoutId);
+  }, []); // Empty dependency array ensures that the effect runs only once
+
   const handleMicrophoneClick = () => {
     if (!recording) {
       if (SpeechRecognition.browserSupportsSpeechRecognition()) {
@@ -184,7 +196,10 @@ function Home() {
             setTimeout(() => setShowPopup(false), 300); // adjust 300 to your desired animation duration
           }}
         >
-          <img className="welcome-x" src={WelcomeX} />
+          {" "}
+          {isVisible && (
+            <img className="welcome-x" src={WelcomeX} alt="Welcome X" />
+          )}
         </div>
         {/* <img className="logo-gif-popup" src={LogoGIF} /> */}
         <div className="welcome-title"> WELCOME </div>
@@ -205,7 +220,7 @@ function Home() {
           {" "}
           <img
             className="go-blob"
-            src={isGoHovered ? GoEarthYellow : GoEarth}
+            src={isGoHovered ? GoEarth : GoEarthYellow}
             alt="Go Earth"
           />
         </button>
@@ -325,6 +340,7 @@ function Home() {
           </div>
         )}
       </div>
+      <Articles />
       <TopBrands />
 
       {qrScannerVisible && (

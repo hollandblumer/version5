@@ -1,8 +1,8 @@
-.faq-container {
+.apply-container {
   margin: 4rem 2rem;
 }
 
-.question-title {
+.apply-title {
   font-family: "itc-souvenir-demi";
   color: #bdb7ad;
   color: #aa7950;
@@ -13,10 +13,11 @@
   font-weight: 500;
   position: relative;
   width: 100%;
+  text-align: left;
   margin-top: 2rem;
   /* Define the animation keyframes */
 }
-.question-title::after {
+.apply-title::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -36,20 +37,4 @@
   100% {
     background-position: -100% 0; /* Move the gradient offscreen to the left */
   }
-}
-
-.question {
-  margin-top: 2rem;
-  font-size: 30px;
-  font-family: "itc-souvenir-demi";
-  color: #5c252c;
-  color: #333333;
-  color: #5e5b58;
-}
-
-.answer {
-  font-family: "campton-book";
-  letter-spacing: 0.01em;
-  font-size: 18px;
-  color: #5d5a54;
 }

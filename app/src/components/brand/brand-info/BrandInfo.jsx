@@ -127,7 +127,7 @@ function BrandInfo({
             {verification == false ? (
               <div className="unverified">
                 {" "}
-                Unclaimed{" "}
+                unverfied{" "}
                 <FontAwesomeIcon
                   icon={faCircleQuestion}
                   size="sm"
@@ -268,7 +268,6 @@ function BrandInfo({
               {" "}
               {/* <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" /> */}
               <img src={LinkIcon} className="link-icon" />
-              kiawahisland.com
             </div>
           )}
         </div>
@@ -298,10 +297,16 @@ function BrandInfo({
                 })}
                 <button>
                   Claim this brand
-                  <FontAwesomeIcon
+                  {/*  <FontAwesomeIcon
                     icon={faArrowUpRightFromSquare}
                     size="sm"
                     color="#8c8c8c"
+                    style={{ marginLeft: "1px" }}
+                  /> pretty color grey */}
+                  <FontAwesomeIcon
+                    icon={faArrowUpRightFromSquare}
+                    size="sm"
+                    color="#ffffff"
                     style={{ marginLeft: "1px" }}
                   />
                 </button>
@@ -322,9 +327,9 @@ function BrandInfo({
                 <FontAwesomeIcon
                   icon={faArrowUpRightFromSquare}
                   size="sm"
-                  color="#8c8c8c"
+                  color="#ffffff"
                   style={{ marginLeft: "1px" }}
-                />
+                />{" "}
               </button>
             </>
           ) : (

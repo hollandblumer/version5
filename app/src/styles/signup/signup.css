@@ -19,17 +19,19 @@
   border-radius: 25px;
   background-color: #c9bfad;
   background: #d6d4d5;
-  border: 1px solid #e7e5dd;
+  background: #d1ccc8 !important;
+  border: none;
   font-family: "Helvetica Neue";
   font-size: 15px;
-  padding: 5px 12px;
+  padding: 7px 12px;
   margin-left: 5px;
   color: #000000;
 }
 .business-form-redirect button:hover {
   background: #aa9b82;
   background: #b7b6b6;
-  color: white;
+  background: rgba(209, 204, 200, 0.9176470588) !important;
+  color: #000000;
 }
 
 .signup-header {

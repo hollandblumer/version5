@@ -264,7 +264,7 @@ function TopBrands() {
         >
           All
         </button>
-        /
+        <div className="divider">/</div>
         <button
           className={`top-charts-sort-button ${
             selectedIndustry === "Restaurant" ? "active" : ""
@@ -273,7 +273,7 @@ function TopBrands() {
         >
           Restaurant
         </button>
-        /
+        <div className="divider">/</div>
         <button
           className={`top-charts-sort-button ${
             selectedIndustry === "Retail" ? "active" : ""
@@ -282,7 +282,7 @@ function TopBrands() {
         >
           Retail
         </button>
-        /
+        <div className="divider">/</div>
         <button
           className={`top-charts-sort-button ${
             selectedIndustry === "Beauty" ? "active" : ""
@@ -291,23 +291,18 @@ function TopBrands() {
         >
           Beauty
         </button>
-        /
+        <div className="divider">/</div>
+
         <button
           className={`top-charts-sort-button ${
-            selectedIndustry === "Industrial" ? "active" : ""
+            selectedIndustry === "Automotive" ? "active" : ""
           }`}
-          onClick={() => setSelectedIndustry("Industrial")}
+          onClick={() => setSelectedIndustry("Automotive")}
         >
-          Healthcare
+          Tech
         </button>
-        <button
-          className={`top-charts-sort-button ${
-            selectedIndustry === "hopsitality" ? "active" : ""
-          }`}
-          onClick={() => setSelectedIndustry("hospitality")}
-        >
-          Hospitality
-        </button>
+        {/* <div className="divider">/</div> */}
+
         {/* <div className="select-wrapper">
           <select
             className="sort-select"
@@ -348,19 +343,28 @@ function TopBrands() {
         <div className="top-brands-sort-select-container">
           <button
             className={`top-charts-sort-button ${
-              selectedIndustry === "Automotive" ? "active" : ""
+              selectedIndustry === "Industrial" ? "active" : ""
             }`}
-            onClick={() => setSelectedIndustry("Automotive")}
+            onClick={() => setSelectedIndustry("Industrial")}
           >
-            Technology
+            Healthcare
           </button>
+          <button
+            className={`top-charts-sort-button ${
+              selectedIndustry === "hopsitality" ? "active" : ""
+            }`}
+            onClick={() => setSelectedIndustry("hospitality")}
+          >
+            Hospitality
+          </button>
+
           <button
             className={`top-charts-sort-button ${
               selectedIndustry === "Automotive" ? "active" : ""
             }`}
             onClick={() => setSelectedIndustry("Automotive")}
           >
-            Technology
+            Tech
           </button>
 
           <button

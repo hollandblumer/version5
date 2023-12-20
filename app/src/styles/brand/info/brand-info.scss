@@ -15,6 +15,16 @@
   margin-left: 1.5rem;
 }
 
+@media (max-width: 768px) {
+  .brand-info-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: stretch;
+    justify-content: space-between;
+    margin-left: 1rem;
+  }
+}
 .brand-user-follow {
   display: flex;
   flex-direction: row;
@@ -36,6 +46,16 @@
   align-items: center;
   justify-content: flex-end;
   margin-left: 2rem;
+}
+
+@media (max-width: 768px) {
+  .brand-action-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 0rem;
+  }
 }
 
 .chart-select {
@@ -103,12 +123,14 @@
   background: #e2dddd;
   background: rgba(97, 74, 74, 0.5);
   background: rgba(255, 253, 253, 0.5);
+  box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1); /* Add the box shadow here */
   padding: 2px 8px;
   border-radius: 10rem;
   font-size: 10pt;
   color: rgb(49, 48, 48);
   text-align: center;
-  margin-left: 3px;
+  margin-left: 5px;
+  letter-spacing: 0.5px;
 }
 
 .parent-brand {
@@ -121,6 +143,12 @@
   font-size: 17px;
 }
 
+@media (max-width: 768px) {
+  .info-location {
+    font-size: 15px;
+  }
+}
+
 .info-website {
   color: #2d6da6;
   color: #37252c;
@@ -129,6 +157,13 @@
   font-weight: 300;
   font-size: 17px;
   margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .info-website {
+    font-size: 16px;
+    margin-left: 0rem;
+  }
 }
 
 .link-icon {
