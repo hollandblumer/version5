@@ -23,13 +23,21 @@
   width: 100%;
   margin-top: 7px;
   font-family: "neutra-text";
+  font-family: "sofia-pro";
+  font-family: "Muli";
+  color: #67645e;
+  margin-top: 2px;
 }
 .trending-filter-buttons button {
   background: none;
   padding: 0px 10px;
   border: none;
-  font-size: 17px;
+  font-size: 16px;
   color: #272727;
+  color: #67645e;
+  font-family: "sofia-pro";
+  font-family: "Muli";
+  font-weight: 500;
   /* Active state */
   /* Active state */
 }
@@ -42,7 +50,6 @@
 }
 .trending-filter-buttons button.active {
   color: #aa7950;
-  text-underline-offset: 5px;
   /* Add wavy lines to the active button */
 }
 

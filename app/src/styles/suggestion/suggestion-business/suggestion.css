@@ -168,6 +168,8 @@
   margin-top: 0.1rem;
 }
 .suggestion-input::placeholder {
+  color: #67645e;
+  color: #8e8e8e;
   color: #bdb8b0;
 }
 

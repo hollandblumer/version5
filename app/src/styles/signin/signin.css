@@ -312,9 +312,11 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   color: #ffa177;
   color: #f0b46e;
   color: #ecae7c;
-  color: rgb(193, 190, 190);
   color: #ffa07a;
-  color: #0000ff;
+  color: rgb(171, 124, 82);
+  color: rgb(193, 190, 190);
+  color: #a89f9f;
+  color: rgba(210, 202, 202, 0.5);
 }
 
 .info-logo {

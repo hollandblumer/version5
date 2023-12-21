@@ -21,17 +21,24 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
-  margin-top: 7px;
+  margin-top: 7px; // I liked this originally
   font-family: "neutra-text";
+  font-family: "sofia-pro";
+  font-family: "Muli";
+  color: #67645e;
+  margin-top: 2px;
 
   button {
     background: none;
     padding: 0px 10px;
     border: none;
-    font-size: 17px;
+    font-size: 16px;
     // background: #e8e5dd;
     color: #272727;
-
+    color: #67645e;
+    font-family: "sofia-pro";
+    font-family: "Muli";
+    font-weight: 500;
     &:nth-child(1) {
       padding-left: 0px;
     }
@@ -47,7 +54,6 @@
     &.active {
       color: #aa7950;
 
-      text-underline-offset: 5px;
       /* Add wavy lines to the active button */
     }
   }

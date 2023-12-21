@@ -41,6 +41,7 @@ body {
   background: #f7f6f0;
   background: #faf2de;
   background: url(./assets/images/natural-backdrop.png);
+  background: #f1f0ec;
 }
 
 @media (max-width: 768px) {
@@ -57,6 +58,7 @@ body {
     background: #ebebeb;
     background: #071307;
     background: url(./assets/images/natural-backdrop.png);
+
     margin: 0;
   }
 }
@@ -160,5 +162,11 @@ input {
 @font-face {
   font-family: "campton-book";
   src: url("./assets/fonts/campton/CamptonBook.woff2");
+  /* Super Modern Browsers */
+}
+
+@font-face {
+  font-family: "averta-regular";
+  src: url("./assets/fonts/averta/AvertaDemoPE-Regular.woff2");
   /* Super Modern Browsers */
 }

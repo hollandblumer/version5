@@ -39,8 +39,7 @@
   display: flex;
   flex-direction: row;
   position: relative; /* Add this for positioning */
-  align-items: center;
-
+  padding-bottom: 7px;
   /* Add the gradient border as a pseudo-element */
   &::after {
     content: "";
@@ -89,8 +88,7 @@
   color: #b7b1a7;
   color: #37252c;
   outline-width: 0;
-  font-size: 18pt;
-  font-size: 22px;
+
   background: none;
   flex: 1;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -109,8 +107,7 @@
   background-color: black;
   background-color: #a6a6a6;
   background-color: #bdb8b0;
-  height: 1.8em; /* Adjust based on the font size of your input field */
-  width: 0.09em;
+  width: 0.1em;
   margin-right: -2px;
 }
 
@@ -126,10 +123,13 @@
 }
 
 .magnifying-glass {
-  width: 2rem;
-  height: 2rem;
-
-  margin-right: 0.1rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #34252c;
+  color: #585456;
+  color: #5b5a57;
+  margin-top: 2px;
+  margin-right: 0.15rem;
 }
 
 @keyframes subtleAnimation {
@@ -158,8 +158,8 @@
 }
 
 .microphone {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.2rem;
+  height: 1.25rem;
   color: #36252d;
   color: #8c8577;
   color: #56466b;
@@ -167,6 +167,8 @@
   color: #42265a;
   color: #36252c;
   color: #33232e;
+  color: #34252c;
+  margin-top: 1px;
 }
 
 .QR-link {
@@ -198,16 +200,26 @@
 .placeholder-text {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  display: flex;
-  font-size: 17px;
-  color: #8e8e8e;
-  color: #757474;
+  font-family: "sofia-pro";
+  font-weight: 500;
+
+  /*   color: #757474;
   color: #bdb8b0;
   color: #a6a6a6;
   color: #b7b1a7;
-  margin-left: 0.2rem;
+ 
   color: #37252c;
+  color: #8e8e8e;
   color: rgb(188, 184, 184);
+  color: #acacac; */
+  font-size: 17px;
+  letter-spacing: 0.2px;
+  color: #8e8e8e;
+  color: #67645e;
+  margin-left: 0.2rem;
+  font-weight: normal;
+
+  line-height: 1; /* Set line height to 1 for tight spacing */
 }
 
 /* styles/header/search/search.css or another appropriate file */
@@ -224,7 +236,7 @@
 
 .cursor-blink {
   display: inline-block;
-  width: 1ch; /* approximate width of one character */
+  width: 0.2em; /* approximate width of one character */
   animation: blink 0.7s infinite;
   text-align: center;
 }
@@ -383,17 +395,18 @@
 .top-brands-title {
   width: 100%;
   text-align: left;
-
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-family: "itc-souvenir";
-  font-size: 36px;
+  font-family: "itc-souvenir-demi";
+  color: #36252c;
+  font-size: 14pt;
+  font-weight: 500;
+  letter-spacing: 0.2px;
   color: #1d1c1b;
   color: #1d1c1b;
   color: #36252c;
   color: #35252d;
+  color: #2c2c2c;
   color: black;
-  font-size: 18px;
+  margin-bottom: 3px;
 
   /*   letter-spacing: 0.2px; */
 }
@@ -403,8 +416,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-
+  justify-content: flex-start;
   font-family: "neutra-text";
   color: #c1bcbc;
   color: #8e8e8e;
@@ -426,19 +438,25 @@
   border: 1px solid #aa7950;
   border: none;
   color: #aa7950;
+
+  padding: 0 8px;
   // padding: 3px 9px;
   // margin-right: 0.4rem;
   // margin-right: 1.3rem;
   font-size: 16px;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "sofia-pro";
   font-weight: normal;
   color: #c1bcbc; // pretty color
   color: #272727;
   color: rgb(188, 184, 184);
-
   color: #272727;
-  margin-top: 5px;
+  color: #67645e;
+  letter-spacing: 0.2px;
+  &:first-child {
+    padding: 0 8px 0 0;
+  }
 
   &.active {
     background: #bdb7ad;
@@ -459,14 +477,13 @@
     color: rgb(93, 7, 54);
     color: #ffa07a;
     color: #e13500;
-    color: #aa7950;
+
     color: #ab7a4f;
     color: #bc8e71;
+    color: #aa7950;
     background: none;
     font-size: 16px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: "sofia-pro";
   }
 
   &:hover {
@@ -498,7 +515,9 @@
 .divider {
   color: rgb(193, 190, 190);
   color: #37252c;
-  margin-top: 7px;
+  color: #67645e;
+  font-family: "sofia-pro";
+  font-size: 16px;
 }
 
 .select-wrapper {
@@ -524,7 +543,7 @@
   width: 16px;
   height: 13px;
   color: #b7b1a7;
-  margin-top: 9px;
+  margin-top: 5px;
 }
 
 .gradient-star {
@@ -537,10 +556,6 @@
   display: flex;
   align-items: center;
   font-family: "sofia-pro", sans-serif;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: 700;
-  font-style: normal;
   color: #37252c;
   font-size: 16px;
   font-weight: 500;

@@ -73,7 +73,9 @@ function Articles() {
 
   return (
     <div className="wellness">
-      <div className="projects-title">Recommended Projects</div>
+      <div className="projects-title">
+        <h3> Featured Projects</h3>
+      </div>
       <Row className="gy-4 ms-3 me-3 justify-content-between">
         <Col className="mb-4">
           <Card

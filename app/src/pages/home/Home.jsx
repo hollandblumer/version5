@@ -17,7 +17,7 @@ import "../../styles/header/search/search.css";
 import "../../styles/home/home.css";
 import { useNavigate } from "react-router-dom";
 import Search from "../../components/header/Search";
-import SearchMagnifyingGlass from "../../assets/images/search.svg";
+import SearchMagnifyingGlass from "../../assets/images/magnifying-glass-3.svg";
 import QRCode from "../../assets/images/DivotQR.png";
 import QRScanner from "../../components/qrscanner/QRScanner";
 import Footer2 from "../../components/footer/Footer2";
@@ -35,6 +35,7 @@ import EyeWorldButton from "../../assets/images/Eye-world-button.png";
 import GoEarth from "../../assets/images/GO.png";
 import GoEarthYellow from "../../assets/images/GO-Brown.svg";
 import Articles from "../../components/articles/Articles";
+import TopUsers from "../../components/top-users/TopUsers";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);
@@ -232,12 +233,17 @@ function Home() {
         onMouseEnter={() => setShowInput(true)}
       >
         <div className="home-search-form">
-          {/*  <img
+          {/*   <img
             src={SearchMagnifyingGlass}
             className="magnifying-glass"
             alt="Logo image"
+          /> */}
+
+          <FontAwesomeIcon
+            icon={faMagnifyingGlass}
+            className="magnifying-glass"
           />
- */}
+
           <div
             onChange={createSearch}
             className="home-search-input-container"
@@ -255,7 +261,7 @@ function Home() {
             <span className="placeholder-animation">
               {search ? null : (
                 <div style={{ display: "flex" }}>
-                  <div className="placeholder-blink"></div>
+                  {/*        <div className="placeholder-blink"></div> */}
                   <div className="placeholder-text">
                     Search brands, users, more...
                   </div>
@@ -341,6 +347,7 @@ function Home() {
         )}
       </div>
       <Articles />
+
       <TopBrands />
 
       {qrScannerVisible && (
