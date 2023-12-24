@@ -67,6 +67,12 @@
   width: 280px;
 }
 
+@media (max-width: 768px) {
+  .suggestion-core {
+    width: 210px;
+  }
+}
+
 .suggestion-active {
   background: #dcd8cd;
   background: url(../../../assets/images/speckletexture.png);

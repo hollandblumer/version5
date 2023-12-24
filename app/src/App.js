@@ -107,7 +107,11 @@ function App() {
   return (
     <div className="App">
       <OrbEffect />
-
+      {/*   <div className="banner">
+        {" "}
+        Conference Join on 1/1 and win tickets to this blah blah blah / Trying
+        to check if it's working to make it fit all
+      </div> */}
       <div className="header">
         <div className="header-left">
           {/*   <img className="menu-icon" src={MenuIcon} /> */}

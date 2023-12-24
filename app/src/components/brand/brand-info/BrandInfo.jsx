@@ -91,7 +91,8 @@ function BrandInfo({
           /> */}
           <Avatar
             src={url}
-            sx={{ height: "107px", width: "107px" }}
+            // sx={{ height: "107px", width: "107px" }}
+            className="avatar-icon"
             style={
               {
                 // border: "0.4px solid #eeeeee",
@@ -153,12 +154,11 @@ function BrandInfo({
               <FontAwesomeIcon
                 icon={faUserPlus}
                 className="share"
-                color="#aa7950"
-                size="lg"
+                color="#007AFF"
               />{" "}
             </button>
 
-            <button className="user-action-button follow">
+            <button className="user-action-ellipsis">
               <FontAwesomeIcon
                 icon={faEllipsis}
                 className="share"
@@ -223,7 +223,7 @@ function BrandInfo({
             </div>
           )}
 
-          {size == 1 ? (
+          {/*   {size == 1 ? (
             <div className="row flex-start">
               <div>
                 {" "}
@@ -249,14 +249,14 @@ function BrandInfo({
               {" "}
               {username == "starbucks" ? (
                 <div>
-                  <b> {/* &lt;20 */} 1000+</b>{" "}
+                  <b>  1000+</b>{" "}
                   <div className="grey left"> Employees</div>
                 </div>
               ) : (
                 <div></div>
               )}
             </div>
-          )}
+          )} */}
           {link != null ? (
             <div className="info-website">
               {" "}
@@ -296,7 +296,7 @@ function BrandInfo({
                   month: "short",
                 })}
                 <button>
-                  Claim this brand
+                  Claim brand
                   {/*  <FontAwesomeIcon
                     icon={faArrowUpRightFromSquare}
                     size="sm"
@@ -319,11 +319,11 @@ function BrandInfo({
                 {"  "}
                 {formatdate.toLocaleDateString(undefined, {
                   year: "numeric",
-                  month: "short",
+                  month: "numeric",
                 })}
               </div>
               <button>
-                Claim this brand{" "}
+                Claim brand{" "}
                 <FontAwesomeIcon
                   icon={faArrowUpRightFromSquare}
                   size="sm"

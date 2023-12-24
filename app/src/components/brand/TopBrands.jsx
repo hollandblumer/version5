@@ -292,7 +292,7 @@ function TopBrands() {
           Beauty
         </button>
 
-        {/* <div className="divider">/</div> */}
+        <div className="divider">/</div>
 
         {/* <div className="select-wrapper">
           <select
@@ -318,6 +318,14 @@ function TopBrands() {
           </select>
           <img src={CaretDown} className="caret-down" />
         </div> */}
+        <button
+          className={`top-charts-sort-button ${
+            selectedIndustry === "Automotive" ? "active" : ""
+          }`}
+          onClick={() => setSelectedIndustry("Automotive")}
+        >
+          Tech
+        </button>
         <img
           className="top-eye-brands-icon"
           src={EyeIcon}
@@ -332,14 +340,6 @@ function TopBrands() {
       </div>
       {showBrandsSortSelect == true ? (
         <div className="top-brands-sort-select-container">
-          <button
-            className={`top-charts-sort-button ${
-              selectedIndustry === "Automotive" ? "active" : ""
-            }`}
-            onClick={() => setSelectedIndustry("Automotive")}
-          >
-            Tech
-          </button>
           <div className="divider">/</div>
           <button
             className={`top-charts-sort-button ${

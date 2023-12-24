@@ -170,3 +170,9 @@ input {
   src: url("./assets/fonts/averta/AvertaDemoPE-Regular.woff2");
   /* Super Modern Browsers */
 }
+
+@font-face {
+  font-family: "futura-lt-book";
+  src: url("./assets/fonts/futura-lt/futura-lt-book-reg.woff2");
+  /* Super Modern Browsers */
+}

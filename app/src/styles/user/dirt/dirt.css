@@ -9,6 +9,11 @@
   padding: 0rem 2rem;
 }
 
+@media (max-width: 768px) {
+  .dirt-container {
+    padding: 0rem 1rem;
+  }
+}
 .eye-brands-icon {
   width: 16px;
   height: 14px;
@@ -115,8 +120,12 @@
 }
 @media screen and (max-width: 1024px) {
   .dirt-avatar {
-    height: 65px !important;
-    width: 65px !important;
+    height: 55px !important;
+    width: 55px !important;
+  }
+  .temp-dirt-container {
+    width: 20px !important;
+    height: 60px;
   }
 }
 .dirt-user {

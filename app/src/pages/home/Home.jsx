@@ -17,7 +17,7 @@ import "../../styles/header/search/search.css";
 import "../../styles/home/home.css";
 import { useNavigate } from "react-router-dom";
 import Search from "../../components/header/Search";
-import SearchMagnifyingGlass from "../../assets/images/magnifying-glass-3.svg";
+import SearchMagnifyingGlass from "../../assets/images/magnifying.svg";
 import QRCode from "../../assets/images/DivotQR.png";
 import QRScanner from "../../components/qrscanner/QRScanner";
 import Footer2 from "../../components/footer/Footer2";
@@ -233,16 +233,16 @@ function Home() {
         onMouseEnter={() => setShowInput(true)}
       >
         <div className="home-search-form">
-          {/*   <img
+          <img
             src={SearchMagnifyingGlass}
             className="magnifying-glass"
             alt="Logo image"
-          /> */}
+          />
 
-          <FontAwesomeIcon
+          {/*  <FontAwesomeIcon
             icon={faMagnifyingGlass}
             className="magnifying-glass"
-          />
+          /> */}
 
           <div
             onChange={createSearch}

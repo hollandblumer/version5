@@ -56,7 +56,7 @@ function TempDirt({ brand, showBlankAvatar, index }) {
   };
 
   return (
-    <div style={containerStyle}>
+    <div style={containerStyle} className="temp-dirt-container">
       {showBlankAvatar ? (
         <Avatar src={signedProfileURL} style={avatarStyle} />
       ) : (

@@ -155,13 +155,14 @@ form {
       #dbb88e 100%
     ) !important;
     color: #083136;
+
     font-size: 16px;
     background: #ffa177 !important;
     background: linear-gradient(130deg, #ffa177, #af465b) !important;
     background-size: 200% 200%;
     background: #083136 !important;
     background: #352531 !important;
-
+    background: #3f293b !important;
     padding: 15px 30px;
     color: white;
     border: none;
@@ -171,7 +172,9 @@ form {
     display: block;
     width: 100%;
     border-radius: 20rem;
-
+    letter-spacing: 1px;
+    font-family: "wintter-test";
+    text-transform: uppercase;
     &:hover {
       /*  background-color: #aba9a6;
       background: #a99ca2;

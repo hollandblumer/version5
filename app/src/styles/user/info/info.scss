@@ -76,6 +76,11 @@
   justify-content: center;
 }
 
+.avatar-icon {
+  width: 107px !important;
+  height: 107px !important;
+}
+
 .action-buttons {
   display: flex;
   flex-direction: row;
@@ -102,7 +107,7 @@
 
 .industry-row {
   color: #757575;
-  margin-left: 1rem;
+
   display: flex;
   align-items: center;
 }
@@ -132,15 +137,21 @@
 }
 
 .user-action-button.follow {
-  border: none;
+  border: 1px solid white;
+  padding: 4px 27px;
+  padding: 4px 24px;
   font-family: "Inter";
   font-family: "itc-souvenir";
   // font-size: 13px;
-  font-size: 16px;
+
   font-weight: 500;
+  border-radius: 30px;
   //letter-spacing: 1.5pt; works with hippie mojo
 }
 
+.user-action-ellipsis {
+  border: none;
+}
 .info-share {
   background: none;
   border: none;
@@ -178,6 +189,20 @@
   align-items: center;
   justify-content: center;
   height: 25px;
+}
+
+@media (max-width: 768px) {
+  .cell {
+    flex-direction: column;
+  }
+
+  .user-dashboard-bottom {
+    padding: 0 1rem;
+  }
+  .suggestion-core {
+    width: 100px;
+    background: blue;
+  }
 }
 
 .member-since {

@@ -119,6 +119,28 @@
   outline: none;
 }
 
+@media screen and (max-width: 600px) {
+  .hexagon-gradient {
+    width: 107px;
+    height: 112px;
+    margin-left: 5px;
+    margin-top: -2px;
+  }
+  .avatar-icon {
+    width: 93px !important;
+    height: 93px !important;
+  }
+  .info-avatar-wrapper {
+    width: 100px;
+    height: 100px;
+  }
+  .brand-dashboard-left {
+    margin: 2rem 5rem 0 5rem;
+  }
+  .username {
+    font-size: 20px;
+  }
+}
 .suggestion-form-container::after {
   content: "";
   position: absolute;

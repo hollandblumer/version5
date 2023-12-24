@@ -327,7 +327,8 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
     color: rgb(171, 124, 82);
     color: rgb(193, 190, 190); //pretty color
     color: #a89f9f;
-    color: rgba(210, 202, 202, 0.5);
+    color: rgba(210, 202, 202, 0.5); //pretty color
+    color: #6070d2;
   }
 }
 
@@ -364,6 +365,17 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   width: 35rem;
   margin-top: 6rem;
 }
+@media screen and (max-width: 600px) {
+  .signin-form {
+    width: 21rem;
+    margin-top: 4.5rem;
+  }
+  .forgot-password-text {
+    width: 21rem;
+    margin-top: 2.7rem;
+    margin-bottom: 4rem;
+  }
+}
 
 .signin-header {
   font-size: 24px;
@@ -397,7 +409,7 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
     background: none !important;
     border: 1.5px solid #42265a;
     border: 1.5px solid #ffffff;
-    color: blue;
+    color: #007aff;
     font-family: "Helvetica Neue";
     font-size: 15px;
     padding: 10px 25px;
@@ -603,7 +615,7 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
   border: none;
   border-radius: 30px !important;
   cursor: pointer;
-  margin: 6.7rem auto 0 auto; /* Adjusted this line */
+  margin: 5rem auto 0 auto; /* Adjusted this line */
 
   @keyframes gradientMove {
     0% {
@@ -667,9 +679,9 @@ button.amplify-button.amplify-field-group__control.amplify-button--link.amplify-
 }
 
 .forgot-password-text {
-  width: 35rem;
   margin-top: 2.7rem;
   margin-bottom: 4.5rem;
+  text-align: left;
 }
 
 .forgot-password-redirect {

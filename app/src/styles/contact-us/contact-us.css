@@ -105,6 +105,7 @@ form button[type=submit] {
   background-size: 200% 200%;
   background: #083136 !important;
   background: #352531 !important;
+  background: #3f293b !important;
   padding: 15px 30px;
   color: white;
   border: none;
@@ -114,6 +115,9 @@ form button[type=submit] {
   display: block;
   width: 100%;
   border-radius: 20rem;
+  letter-spacing: 1px;
+  font-family: "wintter-test";
+  text-transform: uppercase;
 }
 form button[type=submit]:hover {
   /*  background-color: #aba9a6;
