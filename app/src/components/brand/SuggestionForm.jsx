@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Suggestion, UserSuggestion, User } from "../../models";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faCaretDown,
+  faSortDown,
+} from "@fortawesome/free-solid-svg-icons";
 import { Auth } from "@aws-amplify/auth";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
 import AuthForm from "./AuthForm"; // Import your AuthForm component
@@ -14,6 +18,8 @@ function SuggestionForm({ name, email, thisID, businessName }) {
   const [compliment, setCompliment] = useState(false);
   const [similarSuggestions, setSimilarSuggestions] = useState([]); // State for similar suggestions
   const [showAuthForm, setShowAuthForm] = useState(false);
+  const [selectedOption, setSelectedOption] = useState("false");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const createSearch = async (e) => {
     e.preventDefault();
@@ -170,27 +176,48 @@ function SuggestionForm({ name, email, thisID, businessName }) {
     handleCreateSuggestion(); // Proceed with creating the suggestion
   }; */
 
-  const handleSelectChange = (e) => {
-    // Update the selected option when the select value changes
-    setSuggestionCheck(e.target.value === "true");
+  const handleSelectChange = (value) => {
+    setSelectedOption(value);
+    setIsDropdownOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen((prev) => !prev);
   };
 
   return (
     <div className="suggestion-form">
       <div className="suggestion-form-container">
         <div className="suggestion-form-content">
-          <select
+          {/* <select
             className="suggestion-select"
             onChange={handleSelectChange}
             style={{
-              paddingRight: `${
-                suggestionCheck === "true" ? suggestion.length * 6 : 0
-              }px`, // Adjust the multiplier as needed
+              paddingRight: `0px`, //
             }}
           >
             <option value="false"> Suggestion</option>
             <option value="true"> Compliment </option>
           </select>
+          <FontAwesomeIcon icon={faCaretDown} className="dropdown-icon" /> */}
+          <div className="custom-dropdown">
+            <div
+              className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
+              onClick={toggleDropdown}
+            >
+              {selectedOption === "false" ? "Suggestion" : "Compliment"}
+
+              <FontAwesomeIcon icon={faSortDown} className="dropdown-icon" />
+            </div>
+            {isDropdownOpen && (
+              <div className="dropdown-options">
+                <div onClick={() => handleSelectChange("false")}>
+                  Suggestion
+                </div>
+                <div onClick={() => handleSelectChange("true")}>Compliment</div>
+              </div>
+            )}
+          </div>
           <div className="form-input" onChange={createSearch}>
             <input
               className="suggestion-input"

@@ -46,40 +46,74 @@ function Articles() {
     {
       title: "Card 1",
       content: "Content for Card 1",
-      imageUrl: "https://example.com/image1.jpg",
-      linkUrl: "https://example.com/link1",
+      imageUrl:
+        "https://lh3.googleusercontent.com/p/AF1QipP5yL_4HCJr1le2nwE1Mvcz-j79QzbT2-8EaomH=s1360-w1360-h1020",
+      linkUrl:
+        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
       title: "Card 2",
       content: "Content for Card 2",
+      imageUrl:
+        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+      linkUrl:
+        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
       title: "Card 3",
       content: "Content for Card 3",
+      imageUrl:
+        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+      linkUrl:
+        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
       title: "Card 4",
       content: "Content for Card 4",
+      imageUrl:
+        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+      linkUrl:
+        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
       title: "Card 5",
       content: "Content for Card 5",
+      imageUrl:
+        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+      linkUrl:
+        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
       title: "Card 6",
       content: "Content for Card 6",
+      imageUrl:
+        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+      linkUrl:
+        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
       title: "Card 7",
       content: "Content for Card 7",
+      imageUrl:
+        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+      linkUrl:
+        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
       title: "Card 8",
       content: "Content for Card 8",
+      imageUrl:
+        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+      linkUrl:
+        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
       title: "Card 9",
       content: "Content for Card 9",
+      imageUrl:
+        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+      linkUrl:
+        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
   ];
 
@@ -95,15 +129,18 @@ function Articles() {
           <h3> Featured Projects</h3>
         </div>
       </div>
-      <Row
-        className={`gy-4 ms-3 me-3 justify-content-between slides-${numCards}`}
-      >
+      <Row>
         {slicedCardsData.map((card, index) => (
           <Col key={index} className="mb-4">
             <a href={card.linkUrl} target="_blank" rel="noopener noreferrer">
-              <Card>
-                {/* Add background image */}
-                <Card.Img variant="top" src={card.imageUrl} />
+              <Card
+                className="h-100 shadow-sm bg-white border-light rounded position-relative card-background"
+                style={{
+                  background: `url("${card.imageUrl}") `,
+                }}
+              >
+                {console.log("Image URL:", slicedCardsData[index].imageUrl)}{" "}
+                {/* Add this line for logging */}
                 <Card.Body>
                   <Card.Title>{card.title}</Card.Title>
                   <Card.Text>{card.content}</Card.Text>
@@ -113,7 +150,6 @@ function Articles() {
           </Col>
         ))}
       </Row>
-
       <div className="dot-row">
         {activeSlide !== 0 && (
           <FontAwesomeIcon

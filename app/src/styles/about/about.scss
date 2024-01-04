@@ -36,8 +36,8 @@
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  letter-spacing: 0.007em;
-  letter-spacing: 0.2px;
+  // letter-spacing: 0.007em;
+  // letter-spacing: 0.2px;
 }
 
 .about-icons {
@@ -116,6 +116,16 @@
   width: 30px;
   height: 30px;
   vertical-align: middle;
+  animation: rotateEarth 10s linear infinite; /* Adjust duration and timing function as needed */
+
+  @keyframes rotateEarth {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 .team-title {

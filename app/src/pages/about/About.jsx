@@ -2,7 +2,7 @@ import Footer2 from "../../components/footer/Footer2";
 import "../../styles/about/about.css";
 import hollandProfileImage from "../../assets/images/hollandprofile.jpg";
 import hollandProfileImage2 from "../../assets/images/about-me-5.png";
-import hollandProfileImage3 from "../../assets/images/hexagon-holland.png";
+import hollandProfileImage3 from "../../assets/images/dress-temp.jpg";
 import YinYang from "../../assets/images/yin-yang.png";
 import GradientHexagon from "../../assets/images/header-blob-2.svg";
 import { Avatar } from "@mui/material";
@@ -189,13 +189,13 @@ function About() {
           <div className="team-members">
             {teamMembers.map((member, index) => (
               <div className="team-member" key={index}>
-                {/*  <div className="profile-image">
+                <div className="profile-image">
                   <img
                     src={member.imageSrc}
                     alt={member.name}
                     style={{ width: "500px", height: "500px" }}
                   />
-                </div> */}
+                </div>
                 <div className="member-description">
                   <div className="member-name-title">
                     {" "}

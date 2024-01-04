@@ -59,6 +59,11 @@
   align-items: center;
 }
 
+.share.button {
+  cursor: pointer;
+  /* Add any other styling you want for the button appearance */
+}
+
 .content {
   width: 10rem;
   white-space: nowrap;
@@ -171,6 +176,11 @@
 }
 .suggestion-form-content div {
   margin-left: 10px;
+}
+
+.dropdown-icon {
+  color: #007afe;
+  margin-left: 0.2rem;
 }
 
 .form-input {

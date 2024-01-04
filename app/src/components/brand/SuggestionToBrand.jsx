@@ -20,6 +20,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
 import "../../styles/suggestion/suggestion-general/suggestion.css";
 import ShareNodes from "../../assets/images/share-nodes.svg";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function SuggestionToBrand({
   suggestion,
@@ -34,6 +35,8 @@ function SuggestionToBrand({
   const [hasClickedThumbsUp, setHasClickedThumbsUp] = useState(false);
   const [userHasMadeSuggestion, setUserHasMadeSuggestion] = useState(false);
   const [user, setUser] = useState(null);
+  const [copied, setCopied] = useState(false); // To track if the link has been copied
+  const [showTooltip, setShowTooltip] = useState(false);
 
   useEffect(() => {
     const checkUserAuthentication = async () => {
@@ -99,6 +102,33 @@ function SuggestionToBrand({
 
   const getThumbsUpColor = () => {
     return userHasMadeSuggestion ? "#5bab5c" : "#525050";
+  };
+
+  const handleCopyLink = () => {
+    // You can construct your shareable link using businessName, counter, suggestion, and iscompliment
+    const shareableLink = `${
+      window.location.origin
+    }/share?businessName=${encodeURIComponent(
+      businessName
+    )}&counter=${counter}&suggestion=${encodeURIComponent(suggestion)}&type=${
+      iscompliment ? "compliment" : "suggestion"
+    }`;
+
+    // Copy the link to the clipboard
+    navigator.clipboard
+      .writeText(shareableLink)
+      .then(() => {
+        setCopied(true);
+
+        // Show the tooltip for a short duration
+        setShowTooltip(true);
+        setTimeout(() => {
+          setShowTooltip(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Failed to copy link to clipboard:", error);
+      });
   };
 
   const handleThumbsUpClick = async () => {
@@ -257,12 +287,19 @@ function SuggestionToBrand({
             onClick={handleThumbsUpClick}
           /> */}
 
-          <FontAwesomeIcon
-            icon={faShareNodes}
-            className="share"
-            color="#525050"
-            size="lg"
-          />
+          <CopyToClipboard
+            text={`Shareable Link: ${businessName} has ${counter} people supporting ${suggestion} ${
+              iscompliment ? "compliment" : "suggestion"
+            }`}
+          >
+            <FontAwesomeIcon
+              icon={faShareNodes}
+              className="share button"
+              color="#525050"
+              size="lg"
+              onClick={handleCopyLink}
+            />
+          </CopyToClipboard>
           <FontAwesomeIcon
             icon={faEllipsis}
             className="share"
@@ -270,6 +307,7 @@ function SuggestionToBrand({
             size="lg"
           />
         </div>
+        {showTooltip && <div className="tooltip">Copied to clipboard!</div>}
       </div>
     </div>
   );
