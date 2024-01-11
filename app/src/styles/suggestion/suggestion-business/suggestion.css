@@ -173,22 +173,36 @@
   flex-direction: row;
   align-items: center;
   flex: 1;
+  /*  div {
+    margin-left: 10px;
+  } */
 }
-.suggestion-form-content div {
-  margin-left: 10px;
+
+.dropdown-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .dropdown-icon {
   color: #007afe;
-  margin-left: 0.2rem;
+  margin-left: 4px;
 }
 
 .form-input {
   flex: 1;
   flex-direction: row;
   align-items: center;
+  margin-left: 7px;
 }
 
+/* Media query for iPhones */
+@media only screen and (max-width: 767px) {
+  .form-input {
+    margin-left: 10px;
+  }
+}
 .suggestion-input {
   border: hidden;
   text-decoration: none;
@@ -201,8 +215,10 @@
 }
 .suggestion-input::placeholder {
   color: #67645e;
-  color: #8e8e8e;
   color: #bdb8b0;
+  color: #8e8e8e;
+  font-size: 14px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .create-suggestion-button {

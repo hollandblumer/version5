@@ -253,7 +253,10 @@ function TopBrands() {
   return (
     <div className="top-brands">
       <div className="top-charts-title-sort">
-        <h3> Most Complimented Brands</h3>
+        <h3>
+          {" "}
+          <i>Most Complimented Brands</i>{" "}
+        </h3>
       </div>
       <div className="top-brands-sort-select-container">
         <button

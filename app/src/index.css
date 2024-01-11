@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans&family=Questrial&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:wght@300&family=Noto+Sans&family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap");
 
 body {
   margin: 0;
@@ -84,7 +84,9 @@ h3 {
   font-family: "wintter-test";
   font-family: "itc-souvenir-demi";
   color: #36252c;
+  color: #14242d;
   font-size: 14pt;
+  font-size: 15pt;
   font-weight: 500;
   letter-spacing: 0.2px;
 }
@@ -92,6 +94,12 @@ h3 {
 input {
   margin: 0;
   padding: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  h3 {
+    font-size: 14pt;
+  }
 }
 
 /* Fonts  */

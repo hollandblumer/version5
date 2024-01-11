@@ -22,8 +22,8 @@
 
 .about-page-blurb {
   font-family: "campton-book";
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: inherit;
+  font-size: 17px;
   color: #aa7950;
   color: #bdb7ad;
   color: rgb(188, 184, 184);
@@ -33,6 +33,7 @@
   color: #36252c;
   color: #67645e;
   color: #5d5a54;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -85,7 +86,14 @@
   left: 0;
   width: 100%;
   height: 0.08rem; /* Height of the gradient border */
-  background: linear-gradient(to right, #aa7950, transparent 25%, #aa7950 50%, transparent 75%, #aa7950); /* Gradient color */
+  background: linear-gradient(
+    to right,
+    #aa7950,
+    transparent 25%,
+    #aa7950 50%,
+    transparent 75%,
+    #aa7950
+  ); /* Gradient color */
   /* Add animation to the background-position */
   animation: moveGradient 10s linear infinite;
   background-size: 200% 100%; /* Double the width to allow for movement */
@@ -137,7 +145,14 @@
   left: 0;
   width: 100%;
   height: 0.08rem; /* Height of the gradient border */
-  background: linear-gradient(to right, #aa7950, transparent 25%, #aa7950 50%, transparent 75%, #aa7950); /* Gradient color */
+  background: linear-gradient(
+    to right,
+    #aa7950,
+    transparent 25%,
+    #aa7950 50%,
+    transparent 75%,
+    #aa7950
+  ); /* Gradient color */
   /* Add animation to the background-position */
   animation: moveGradient 10s linear infinite;
   background-size: 200% 100%; /* Double the width to allow for movement */

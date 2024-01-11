@@ -44,26 +44,26 @@ function Articles() {
 
   const cardsData = [
     {
-      title: "Card 1",
-      content: "Content for Card 1",
+      title: "Can The CEO Of Canada Goose...",
+      content: "by Diane Brady",
       imageUrl:
-        "https://lh3.googleusercontent.com/p/AF1QipP5yL_4HCJr1le2nwE1Mvcz-j79QzbT2-8EaomH=s1360-w1360-h1020",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Gn-kvY8_vzYv4SJKKKCqqb9uy8mST3TqS6oHyEN9ZpIfd1HpB8wqvUQ6WtVW4h6DqxU&usqp=CAU",
       linkUrl:
         "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
-      title: "Card 2",
-      content: "Content for Card 2",
+      title: "15 Biggest Environmental..",
+      content: "By Deena Robinson",
       imageUrl:
-        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+        "https://u4d2z7k9.rocketcdn.me/wp-content/uploads/2021/06/ND46979-Roy-Mangersnes-1536x864.jpg.webp",
       linkUrl:
         "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
-      title: "Card 3",
-      content: "Content for Card 3",
+      title: "World Leaders at COP28",
+      content: "By MARTINA IGINI",
       imageUrl:
-        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+        "https://u4d2z7k9.rocketcdn.me/wp-content/uploads/2022/10/Untitled-1024-%C3%97-768px-4.jpg.webp",
       linkUrl:
         "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
@@ -126,7 +126,10 @@ function Articles() {
     <div className="wellness">
       <div className="projects-row">
         <div className="projects-title">
-          <h3> Featured Projects</h3>
+          <h3>
+            {" "}
+            <i>Featured Projects</i>{" "}
+          </h3>
         </div>
       </div>
       <Row>

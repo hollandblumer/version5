@@ -57,7 +57,7 @@
   font-family: "neutra-text";
   font-size: 17px;
   color: #67645e;
-  font-family: "sofia-pro-med";
+  font-family: "sofia-pro";
   font-weight: 500;
   font-size: 16px;
   display: flex;
@@ -72,7 +72,7 @@
 .active {
   color: #aa7950;
   font-family: "neutra-text-2";
-  font-family: "sofia-pro-med";
+  font-family: "sofia-pro";
   font-weight: 500;
 }
 
@@ -89,7 +89,11 @@
 }
 
 .brand-divider {
-  margin: 0 0.6rem;
+  margin: 0 0.55rem;
+  color: #67645e;
+  font-family: "sofia-pro";
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .business-nav-grey {

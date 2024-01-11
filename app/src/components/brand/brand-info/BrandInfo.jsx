@@ -197,7 +197,7 @@ function BrandInfo({
                 color="#aa7950"
                 style={{ marginRight: "5px" }}
               />{" "}
-              Kiawah Island, SC
+              SC
             </div>
           )}
 
@@ -314,14 +314,14 @@ function BrandInfo({
             </>
           ) : verification === false ? (
             <>
-              <div> Added in </div>
+              {/*  <div> Added in </div>
               <div className="member-since-date">
                 {"  "}
                 {formatdate.toLocaleDateString(undefined, {
                   year: "numeric",
                   month: "numeric",
                 })}
-              </div>
+              </div> */}
               <button>
                 Claim brand{" "}
                 <FontAwesomeIcon

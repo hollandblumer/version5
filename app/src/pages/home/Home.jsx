@@ -32,10 +32,11 @@ import Earth from "../../assets/images/earth.png";
 import LogoGIF from "../../assets/images/future-wise.png";
 import EnterBlob from "../../assets/images/enter-blob.svg";
 import EyeWorldButton from "../../assets/images/Eye-world-button.png";
-import GoEarth from "../../assets/images/GO.png";
-import GoEarthYellow from "../../assets/images/GO-Brown.svg";
+import GoEarth from "../../assets/images/GO-slanted5.png";
+import GoEarthYellow from "../../assets/images/GO-slanted2.png";
 import Articles from "../../components/articles/Articles";
 import TopUsers from "../../components/top-users/TopUsers";
+import WelcomeText from "../../assets/images/welcome-text.svg";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);
@@ -203,10 +204,14 @@ function Home() {
           )}
         </div>
         {/* <img className="logo-gif-popup" src={LogoGIF} /> */}
-        <div className="welcome-title"> WELCOME </div>
+        {/* <img className="welcome-title" src={WelcomeText} /> */}
+        <div className="welcome-title">
+          {" "}
+          <i>WELCOME</i>
+        </div>
         <div className="welcome-info">
-          Help your favorite brands become more eco-friendly and track their
-          progress.
+          Help your<i> favorite brands</i> become more<i> eco-friendly </i> and
+          <i> track their progress.</i>
         </div>
         <button
           onMouseEnter={handleGoMouseEnter}

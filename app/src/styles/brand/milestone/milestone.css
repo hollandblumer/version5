@@ -1,5 +1,14 @@
 .milestone-container {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.milestone-cards {
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
@@ -29,7 +38,7 @@
 }
 
 .milestone-title {
-  font-size: 20px;
+  font-size: 18px;
   font-family: "itc-souvenir-demi";
   margin-bottom: 10px;
   color: #2e2c2c;
@@ -65,20 +74,20 @@
 }
 
 .see-more-milestone {
-  text-align: end;
   width: 100%;
-  margin-left: -0.5rem;
   margin-bottom: 0.8rem;
   font-size: 13pt;
   color: #8c8c8c;
   font-size: 10pt;
   font-weight: 600;
   letter-spacing: 1px;
+  width: 15rem;
+  margin-top: 0.7rem;
 }
 
 .actual-milestone {
   font-weight: 500;
-  font-size: 19px;
+  font-size: 14px;
   color: #928c7f;
 }
 
@@ -88,8 +97,7 @@
   color: #5c5848;
   color: #928c7f;
   font-weight: 500;
-  font-size: 19px;
-  font-family: "itc-souvenir";
+  font-size: 14px;
 }
 
 .milestone-container::-webkit-scrollbar {
@@ -181,6 +189,15 @@
   padding: 10px 25px;
   border-radius: 12px;
   margin-top: 2rem;
+  position: relative;
+  border-radius: 1.4rem;
+  width: 14rem;
+  height: 12rem;
+  display: flex;
+  border: none;
+  margin: 0 1.1rem 0 0rem;
+  background: rgba(255, 253, 253, 0.5);
+  box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1);
 }
 
 .milestone-blob {
@@ -201,6 +218,16 @@
   font-size: 8pt;
   font-weight: 600;
   letter-spacing: 1.4px;
+}
+
+.milestone-counter {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgb(161, 140, 209), rgb(251, 194, 235));
+  box-shadow: rgba(157, 78, 236, 0.3) 0px 2px 16px;
+  color: black;
+  text-align: center;
 }
 
 .milestone-grey {

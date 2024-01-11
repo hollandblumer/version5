@@ -5,9 +5,9 @@
     "serviceName": "AppSync",
     "defaultAuthType": {
       "mode": "API_KEY",
-      "expirationTime": 30,
-      "apiKeyExpirationDate": "2023-12-30T22:55:25.757Z",
-      "keyDescription": "nov30"
+      "expirationTime": 60,
+      "apiKeyExpirationDate": "2024-03-04T17:27:40.071Z",
+      "keyDescription": "jan4"
     },
     "additionalAuthTypes": [
       {

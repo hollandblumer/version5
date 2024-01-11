@@ -12,15 +12,7 @@ import Icon from "../icon/Icon";
 import "../../styles/brand/dashboard/brand-dashboard.css";
 import "../../styles/brand/top-charts/top-charts.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faLeaf,
-  faComments,
-  faClipboardCheck,
-  faEllipsis,
-  faPlusCircle,
-  faShareNodes,
-  faCaretDown,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import TopCharts from "./TopCharts";
 import "../../styles/brand/milestone/milestone.css";
 import MilestoneTracker from "./milestone/MilestoneTracker";
@@ -197,28 +189,47 @@ function BrandDashboard({ SignedInUser }) {
             </div>
           ) : (
             <div className="milestone-container">
-              {milestones.map((p, index) => (
-                <div
-                  key={p.id}
-                  className={`${
-                    index % 2 === 0 && index === 0
-                      ? "milestone-active corner milestone"
-                      : index % 2 === 0
-                      ? " milestone-active milestone"
-                      : "milestone-inactive milestone"
-                  }`}
-                >
-                  <div className="milestone-padding">
-                    <MilestoneTracker
-                      url={brandURL}
-                      businessname={p.brandName}
-                      suggestionID={p.suggestionID}
-                      date={p.createdAt}
-                      milestone={p.milestone}
-                    />
+              <div className="milestone-cards">
+                {milestones.map((p, index) => (
+                  <div
+                    key={p.id}
+                    className={`${
+                      index % 2 === 0 && index === 0
+                        ? "milestone-active corner milestone"
+                        : index % 2 === 0
+                        ? " milestone-active milestone"
+                        : "milestone-inactive milestone"
+                    }`}
+                  >
+                    <div className="milestone-padding">
+                      <MilestoneTracker
+                        url={brandURL}
+                        businessname={p.brandName}
+                        suggestionID={p.suggestionID}
+                        date={p.createdAt}
+                        milestone={p.milestone}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+              <div className="dot-row">
+                <FontAwesomeIcon
+                  icon={faArrowLeft}
+                  className="home-arrow-space"
+                  size="sm"
+                  color="#afa9a1"
+                />
+                <div className="dot active"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <FontAwesomeIcon
+                  icon={faArrowRight}
+                  className="home-arrow-space"
+                  size="sm"
+                  color="#afa9a1"
+                />
+              </div>
             </div>
           )
         ) : activeContainer === "projects" ? (

@@ -40,6 +40,7 @@ import LogoGIF from "./assets/images/future-wise.svg";
 import WaveBar from "./components/WaveBar";
 import OrbEffect from "./components/OrbEffect";
 import MenuIcon from "./assets/images/menu-icon-1.svg";
+import ToggleOutline from "./assets/images/toggle-outline.png";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -56,6 +57,8 @@ function App() {
   const isAbout = location.pathname === "/about";
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive] = useState(false);
+  const [circlePosition, setCirclePosition] = useState(100);
+
   DataStore.start();
 
   useEffect(() => {
@@ -104,6 +107,11 @@ function App() {
   const toggleOpenState = () => {
     setIsOpen(!isOpen);
   };
+
+  const handleToggleClick = () => {
+    setCirclePosition(circlePosition === 0 ? 100 : 0);
+  };
+
   return (
     <div className="App">
       <OrbEffect />
@@ -180,6 +188,18 @@ function App() {
             </Link>
           )} */}
         </div>
+        <div className="toggle" onClick={handleToggleClick}>
+          <img
+            className="toggle-outline"
+            src={ToggleOutline}
+            alt="Toggle Outline"
+          />
+          <div
+            className="toggle-circle"
+            style={{ left: `${circlePosition}%` }}
+          ></div>
+        </div>
+
         <div className="header-logo">
           <a href="/">
             <img className="logo-gif" src={LogoGIF} />

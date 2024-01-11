@@ -57,12 +57,13 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
 
   return (
     <div>
-      <img src={MilestonBlob} className="milestone-blob" />
+      {/* <img src={MilestonBlob} className="milestone-blob" /> */}
       <div className="milestone-tracker">
         {milestones.length > 0 ? (
           <div>
             <div className="milestone-subtle-suggestion-info">
               <div>{formatDate(date)}</div>
+              <div className="milestone-counter"> 2</div>
             </div>{" "}
             {/*  <Avatar
             src={url}
@@ -109,9 +110,6 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
               <Icon icon={icon} />
             </div> */}
             </div>
-            <div className="see-more-milestone">
-              Liked by hollandblumer eleanorblumer and see more{" "}
-            </div>
             {/*   <div className="milestone-follower-container">
          
                 </div>
@@ -143,6 +141,9 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
         ) : (
           <div className="text">Not started</div>
         )}
+      </div>
+      <div className="see-more-milestone">
+        Liked by hollandblumer eleanorblumer and see more{" "}
       </div>
     </div>
   );
