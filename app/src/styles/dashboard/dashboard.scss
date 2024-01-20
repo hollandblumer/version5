@@ -161,16 +161,30 @@
 .ranking-number {
   font-weight: 500;
   margin-right: 15px;
+  margin-right: 10px;
   font-size: 17px;
   background: linear-gradient(40deg, #5b595ae1, #979595);
   background: #939392;
   border: 1px solid rgb(219, 219, 219);
-  padding: 0px 13px;
+  padding: 0px 12px;
   box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1);
   color: white;
   border-radius: 30px;
   margin-top: 3px;
 }
+
+/* @media screen and (max-width: 610px) {
+  .ranking-number {
+    font-size: 13px;
+    padding: 0px 9px;
+    margin-right: 8px;
+    background: #939392;
+    background: #007afe;
+    box-shadow: 0 2px 4px rgba(233, 230, 230, 0.1);
+    border: 1px solid rgb(219, 219, 219);
+    color: #fcfcfc;
+  }
+} */
 
 .suggestion-update {
   display: flex;

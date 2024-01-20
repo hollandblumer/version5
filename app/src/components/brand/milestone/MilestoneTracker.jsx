@@ -5,12 +5,7 @@ import { Milestone, Suggestion } from "../../../models";
 import Avatar from "@mui/material/Avatar";
 import "../../../styles/brand/milestone/milestone.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUpRightFromSquare,
-  faPlusCircle,
-  faShareNodes,
-  faEllipsis,
-} from "@fortawesome/free-solid-svg-icons";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import MilestonBlob from "../../../assets/images/milestone-blob.svg";
 
 function formatDate(date) {
@@ -61,10 +56,10 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
       <div className="milestone-tracker">
         {milestones.length > 0 ? (
           <div>
-            <div className="milestone-subtle-suggestion-info">
+            {/* <div className="milestone-subtle-suggestion-info">
               <div>{formatDate(date)}</div>
               <div className="milestone-counter"> 2</div>
-            </div>{" "}
+            </div>{" "} */}
             {/*  <Avatar
             src={url}
             // sx={{ height: "90px", width: "90px" }}
@@ -75,7 +70,9 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
           />{" "} */}
             <div className="milestone-update">
               <div className="milestone-title"> {milestone} </div>
-              <span className="milestone-businessname"> @{businessname} </span>
+              <div className="milestone-counter"> 2</div>
+              {/* <span className="milestone-businessname"> @{businessname} </span> */}
+              <div className="milestone-dot"></div>
               <span className="actual-milestone"> {milestone} </span>
               {/*    <FontAwesomeIcon
                 icon={faArrowUpRightFromSquare}

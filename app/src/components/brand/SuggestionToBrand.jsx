@@ -288,7 +288,7 @@ function SuggestionToBrand({
             size="xl"
           /> */}
           {/* <FontAwesomeIcon icon={faHeartCirclePlus} color="#e2bd75" size="xl" /> */}
-          <FontAwesomeIcon icon={faHeartCirclePlus} color="#FF4A4A" size="xl" />
+          <FontAwesomeIcon icon={faHeartCirclePlus} color="#E8542B" size="xl" />
           {/* <CopyToClipboard
             text={`Shareable Link: ${businessName} has ${counter} people supporting ${suggestion} ${
               iscompliment ? "compliment" : "suggestion"

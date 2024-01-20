@@ -210,10 +210,28 @@ function SuggestionForm({ name, email, thisID, businessName }) {
             </div>
             {isDropdownOpen && (
               <div className="dropdown-options">
-                <div onClick={() => handleSelectChange("false")}>
-                  Suggestion
+                <div className="checkbox-option">
+                  <label>
+                    <input
+                      type="checkbox"
+                      value="false"
+                      checked={selectedOption === "false"}
+                      onChange={() => handleSelectChange("false")}
+                    />
+                    Suggestion
+                  </label>
                 </div>
-                <div onClick={() => handleSelectChange("true")}>Compliment</div>
+                <div className="checkbox-option">
+                  <label>
+                    <input
+                      type="checkbox"
+                      value="true"
+                      checked={selectedOption === "true"}
+                      onChange={() => handleSelectChange("true")}
+                    />
+                    Compliment
+                  </label>
+                </div>
               </div>
             )}
           </div>

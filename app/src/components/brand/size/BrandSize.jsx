@@ -12,8 +12,8 @@ function BrandSize({ size }) {
             <div className="info-location">
               <FontAwesomeIcon icon={faUser} />
               <div className="specific-info">
-                <div className="city">1</div>
-                <p className="small-info"> employee</p>
+                <div className="city">&lt; 10</div>
+                <p className="small-info"> employees</p>
               </div>
             </div>
           </div>

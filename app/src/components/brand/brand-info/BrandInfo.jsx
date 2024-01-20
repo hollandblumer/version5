@@ -147,25 +147,25 @@ function BrandInfo({
               </>
             )}
           </div>
-        </div>
-        <div className="brand-action-buttons">
-          <button className="user-action-button follow">
-            {" "}
-            <FontAwesomeIcon
-              icon={faUserPlus}
-              className="share"
-              color="#007AFF"
-            />{" "}
-          </button>
+          <div className="brand-action-buttons">
+            <button className="user-action-button follow">
+              {" "}
+              <FontAwesomeIcon
+                icon={faUserPlus}
+                className="share"
+                color="#007AFF"
+              />{" "}
+            </button>
 
-          <button className="user-action-ellipsis">
-            <FontAwesomeIcon
-              icon={faEllipsis}
-              className="share"
-              color="#8c8577"
-              size="lg"
-            />
-          </button>
+            <button className="user-action-ellipsis">
+              <FontAwesomeIcon
+                icon={faEllipsis}
+                className="share"
+                color="#8c8577"
+                size="lg"
+              />
+            </button>
+          </div>
         </div>
 
         {parentBrand == null ? (
