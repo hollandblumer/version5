@@ -14,7 +14,9 @@ import {
   faShareNodes,
   faArrowUpRightFromSquare,
   faThumbsUp,
+  faHeartCirclePlus,
   faPlus,
+  faHeartCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
@@ -200,6 +202,7 @@ function SuggestionToBrand({
       <div className="brand-suggestion-content">
         <div className="ranking-content">
           <div className="ranking-number">{counter}</div>
+
           <div className="suggestion-update">
             <div className="content">{suggestion}</div>
             <div className="brand-subtle-suggestion-info">
@@ -270,7 +273,7 @@ function SuggestionToBrand({
           </div>
         </div>
         <div className="like-share right">
-          {user && ( // Check if the user is authenticated
+          {/* {user && ( // Check if the user is authenticated
             <FontAwesomeIcon
               icon={faThumbsUp}
               className="share"
@@ -278,16 +281,15 @@ function SuggestionToBrand({
               size="lg"
               onClick={handleThumbsUpClick}
             />
-          )}
-          {/*   <FontAwesomeIcon
-            icon={faPlusCircle}
-            className="share"
-            color="#8c8c8c"
-            size="lg"
-            onClick={handleThumbsUpClick}
+          )} */}
+          {/*    <FontAwesomeIcon
+            icon={faHeartCircleCheck}
+            color="#5BAB5C"
+            size="xl"
           /> */}
-
-          <CopyToClipboard
+          {/* <FontAwesomeIcon icon={faHeartCirclePlus} color="#e2bd75" size="xl" /> */}
+          <FontAwesomeIcon icon={faHeartCirclePlus} color="#FF4A4A" size="xl" />
+          {/* <CopyToClipboard
             text={`Shareable Link: ${businessName} has ${counter} people supporting ${suggestion} ${
               iscompliment ? "compliment" : "suggestion"
             }`}
@@ -299,7 +301,7 @@ function SuggestionToBrand({
               size="lg"
               onClick={handleCopyLink}
             />
-          </CopyToClipboard>
+          </CopyToClipboard> */}
           <FontAwesomeIcon
             icon={faEllipsis}
             className="share"

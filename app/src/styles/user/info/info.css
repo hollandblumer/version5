@@ -132,13 +132,13 @@
   align-items: center;
   justify-content: center;
   background: none;
-  width: 35px;
+  width: 20px;
 }
 
 .user-action-button.follow {
   border: none;
   padding: 4px 27px;
-  padding: 4px 24px;
+  padding: 4px 20px;
   font-family: "Inter";
   font-family: "itc-souvenir";
   font-weight: 500;
@@ -148,7 +148,6 @@
 .user-action-ellipsis {
   border: none;
   background: none;
-  margin-left: 5px;
 }
 
 .info-share {
@@ -270,7 +269,7 @@
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
 }
@@ -351,7 +350,7 @@
   color: black;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-family: "sofia-pro";
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .space {
@@ -369,6 +368,7 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin-top: 0.2rem;
   margin-left: 0.3rem;
+  font-style: italic;
 }
 
 .bio-emphasis-date {

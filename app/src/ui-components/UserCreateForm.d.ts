@@ -35,6 +35,10 @@ export declare type UserCreateFormInputValues = {
     isVerified?: boolean;
     hasCompletedForm?: boolean;
     industry?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    size?: number;
 };
 export declare type UserCreateFormValidationValues = {
     name?: ValidationFunction<string>;
@@ -50,6 +54,10 @@ export declare type UserCreateFormValidationValues = {
     isVerified?: ValidationFunction<boolean>;
     hasCompletedForm?: ValidationFunction<boolean>;
     industry?: ValidationFunction<string>;
+    city?: ValidationFunction<string>;
+    state?: ValidationFunction<string>;
+    country?: ValidationFunction<string>;
+    size?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserCreateFormOverridesProps = {
@@ -67,6 +75,10 @@ export declare type UserCreateFormOverridesProps = {
     isVerified?: PrimitiveOverrideProps<SwitchFieldProps>;
     hasCompletedForm?: PrimitiveOverrideProps<SwitchFieldProps>;
     industry?: PrimitiveOverrideProps<TextFieldProps>;
+    city?: PrimitiveOverrideProps<TextFieldProps>;
+    state?: PrimitiveOverrideProps<TextFieldProps>;
+    country?: PrimitiveOverrideProps<TextFieldProps>;
+    size?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UserCreateFormProps = React.PropsWithChildren<{
     overrides?: UserCreateFormOverridesProps | undefined | null;

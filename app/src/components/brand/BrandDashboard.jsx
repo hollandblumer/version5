@@ -24,6 +24,9 @@ function BrandDashboard({ SignedInUser }) {
   const [brandURL, setBrandURL] = useState("");
   const [parentBrand, setParentBrand] = useState("");
   const [brandLocation, setBrandLocation] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [country, setCountry] = useState("");
   const [brandIndustry, setBrandIndustry] = useState("");
   const [brandSize, setBrandSize] = useState(0);
   const [verification, setVerification] = useState(false);
@@ -46,7 +49,10 @@ function BrandDashboard({ SignedInUser }) {
         setMemberSinceDate(brandData[0].createdAt);
         setBrandURL(signedBrandFilePath);
         setVerification(brandData[0].isVerified);
-
+        setCity(brandData[0].city);
+        setCountry(brandData[0].country);
+        setState(brandData[0].state);
+        setBrandSize(brandData[0].size);
         const suggestions = await DataStore.query(
           UserSuggestion,
           (p) => p.suggestion.businessName.eq(name),
@@ -115,6 +121,9 @@ function BrandDashboard({ SignedInUser }) {
             industry={brandIndustry}
             verification={verification}
             size={brandSize}
+            city={city}
+            state={state}
+            country={country}
           />
           <SuggestionForm
             name={SignedInUser.name}
@@ -130,7 +139,10 @@ function BrandDashboard({ SignedInUser }) {
       </div>
       <div className="brand-dashboard-bottom">
         <div className="brand-nav">
-          <h3> Business Activity </h3>
+          <h3>
+            {" "}
+            <i>Business Activity</i>{" "}
+          </h3>
           <div className="business-nav-row">
             <div
               className={`business-nav-item ${

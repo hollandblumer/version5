@@ -41,7 +41,6 @@ body {
   background: #f7f6f0;
   background: #faf2de;
   background: url(./assets/images/natural-backdrop.png);
-  background: #f1f0ec;
 }
 
 @media (max-width: 768px) {
@@ -53,12 +52,11 @@ body {
     background: url(./assets/images/magic-pattern.png);
     background: url(./assets/images/wood-lines.png);
     background: #faf2de;
-
     background: #f7f6f0;
     background: #ebebeb;
     background: #071307;
+    background: rgb(225, 222, 222);
     background: url(./assets/images/natural-backdrop.png);
-
     margin: 0;
   }
 }
@@ -85,6 +83,7 @@ h3 {
   font-family: "itc-souvenir-demi";
   color: #36252c;
   color: #14242d;
+
   font-size: 14pt;
   font-size: 15pt;
   font-weight: 500;

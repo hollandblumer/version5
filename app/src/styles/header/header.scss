@@ -223,12 +223,28 @@ is-reverse .marquee__scroll {
   border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
+  margin-left: 1.2rem;
 
   .toggle-outline {
-    width: 100%;
-    height: 100%;
+    width: 2.6rem;
+    height: 1.4rem;
     display: block;
     border-radius: inherit;
+    background: linear-gradient(to right, #f27c38, #fdb63f);
+    background: linear-gradient(to right, #e49a39, #f37c1b);
+    background: linear-gradient(to right, #74809d, #74809d);
+    background: #ffa46a;
+    background: linear-gradient(to right, #ffa46a, #f27c38);
+    background: #e9cd78;
+    box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1);
+    box-shadow: rgba(157, 78, 236, 0.5) 0px 2px 16px;
+    background: rgba(78, 74, 74, 0.5);
+
+    background: #ff5100;
+    background: linear-gradient(137deg, #ff5100, #ff2a00);
+    background: #ff6242;
+    background: #ff6242fb;
+    background: linear-gradient(137deg, rgb(175, 156, 221), rgb(251, 194, 235));
   }
 
   .toggle-circle {
@@ -236,14 +252,16 @@ is-reverse .marquee__scroll {
     top: 50%;
     left: 20px;
     transform: translate(-20px, -50%);
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: #dbdada;
     background: rgba(255, 253, 253, 0.5);
     background: rgba(250, 250, 250, 0.5);
+    background: rgba(250, 250, 250, 0.8);
     box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1);
     border: 1px solid #aa7950;
+    border: none;
     z-index: 1;
     transition: left 0.5s;
   }
@@ -251,19 +269,62 @@ is-reverse .marquee__scroll {
 
 @media screen and (max-width: 500px) {
   .toggle {
-    width: 50px;
-    height: auto;
+    width: 32px;
+    height: 20px;
+    border-radius: 40px;
+    margin-left: 0.8rem;
   }
+}
+
+.toggle-checkbox {
+  display: none;
+}
+.switch {
+  background-color: #121211;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  height: 26px;
+  width: 50px;
+  /* Scale the size to your need */
+  transform: scale(0.8);
+  margin-left: 0.4rem;
+  transition: background-color 0.3s ease; /* Add transition for smoother color change */
+}
+
+.switch .ball {
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  height: 22px;
+  width: 22px;
+  transform: translateX(0px);
+  transition: transform 0.2s linear;
+}
+
+.toggle-checkbox:checked + .switch {
+  background-color: #34252c; /* Change the background color when checked */
+}
+
+.toggle-checkbox:checked + .switch .ball {
+  transform: translateX(24px);
 }
 
 .header-logo {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   height: 100%;
   width: auto;
+  margin-top: 20px;
 }
 
 .menu-icon {
@@ -348,9 +409,19 @@ $color: #b3e5fc;
   /*   width: 120px;
   height: 100px;
   margin-top: -0.5rem; */
-  height: 75px;
-  width: 100px;
+  height: 85px;
+  width: 85px;
   margin-top: 10px;
+}
+
+@media screen and (max-width: 610px) {
+  .logo-gif {
+    height: 85px;
+    width: 85px;
+    height: 85px;
+    width: 87px;
+    margin-top: 10px;
+  }
 }
 
 .logo {
@@ -375,13 +446,14 @@ $color: #b3e5fc;
   vertical-align: center;
   color: #a27a55;
   color: #aa7950;
-  font-size: 21px;
-  font-size: 22px;
   font-weight: 500;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  position: relative;
+  top: 21px; /* Set the top position */
+  left: -13px; /* Set the left position */
   color: #8c5223;
   color: #261c17;
   color: #554f32;
@@ -398,14 +470,6 @@ $color: #b3e5fc;
   color: #ece7d1;
   color: #524b2e;
   color: #a9784f;
-}
-
-.info-logo {
-  font-family: cursive;
-  font-size: 12pt;
-  font-weight: 600;
-  margin-top: 0.2rem;
-  margin-left: 0.05rem;
 }
 
 .info-message {
@@ -434,12 +498,16 @@ $color: #b3e5fc;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: 10rem;
+  width: 6rem;
+}
+
+.header-right {
+  width: 6rem;
 }
 
 .header-icons {
   display: flex;
-  width: 10rem;
+
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;

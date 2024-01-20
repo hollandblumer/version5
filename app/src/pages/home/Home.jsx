@@ -232,7 +232,6 @@ function Home() {
         </button>
       </div>
 
-      <div className="about-blurb"></div>
       <div
         className="home-search-container"
         onMouseEnter={() => setShowInput(true)}

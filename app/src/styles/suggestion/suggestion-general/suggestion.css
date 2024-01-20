@@ -32,6 +32,14 @@ div.like-share > * {
   height: 18px;
 }
 
+.add-button {
+  font-size: 15px;
+  font-family: "inter";
+  color: #f7f7f7;
+  font-weight: 600;
+  background: linear-gradient(to right, #a96f44, #bc8e71);
+}
+
 .brand-username {
   font-weight: 500;
   font-size: 18px;

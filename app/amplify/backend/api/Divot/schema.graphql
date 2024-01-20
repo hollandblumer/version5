@@ -1,3 +1,9 @@
+type Project @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  about: String
+}
+
 type Follow @model @auth(rules: [{allow: public}]) {
   id: ID!
   Users: [User] @manyToMany(relationName: "FollowUser")
@@ -38,6 +44,10 @@ type User @model @auth(rules: [{allow: public}]) {
   industry: String
   Suggestions: [Suggestion] @manyToMany(relationName: "UserSuggestion")
   followers: [Follow] @manyToMany(relationName: "FollowUser")
+  city: String
+  state: String
+  country: String
+  size: Int
 }
 
 type Suggestion @model @auth(rules: [{allow: public}]) {

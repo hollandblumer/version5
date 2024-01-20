@@ -6,6 +6,36 @@ import { LazyLoading, LazyLoadingDisabled, AsyncCollection, AsyncItem } from "@a
 
 
 
+type EagerProject = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Project, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name?: string | null;
+  readonly about?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+type LazyProject = {
+  readonly [__modelMeta__]: {
+    identifier: ManagedIdentifier<Project, 'id'>;
+    readOnlyFields: 'createdAt' | 'updatedAt';
+  };
+  readonly id: string;
+  readonly name?: string | null;
+  readonly about?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+}
+
+export declare type Project = LazyLoading extends LazyLoadingDisabled ? EagerProject : LazyProject
+
+export declare const Project: (new (init: ModelInit<Project>) => Project) & {
+  copyOf(source: Project, mutator: (draft: MutableModel<Project>) => MutableModel<Project> | void): Project;
+}
+
 type EagerFollow = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Follow, 'id'>;
@@ -129,6 +159,10 @@ type EagerUser = {
   readonly industry?: string | null;
   readonly Suggestions?: (UserSuggestion | null)[] | null;
   readonly followers?: (FollowUser | null)[] | null;
+  readonly city?: string | null;
+  readonly state?: string | null;
+  readonly country?: string | null;
+  readonly size?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -154,6 +188,10 @@ type LazyUser = {
   readonly industry?: string | null;
   readonly Suggestions: AsyncCollection<UserSuggestion>;
   readonly followers: AsyncCollection<FollowUser>;
+  readonly city?: string | null;
+  readonly state?: string | null;
+  readonly country?: string | null;
+  readonly size?: number | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

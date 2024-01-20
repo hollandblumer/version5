@@ -79,6 +79,7 @@
   color: #36252d;
   font-family: "itc-souvenir-demi";
   letter-spacing: 0.2px;
+  font-style: italic;
 }
 
 .sort-select {
@@ -138,7 +139,28 @@
 
 .info-location {
   color: #757575;
-  font-size: 17px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.specific-info {
+  margin-left: 0.5rem;
+}
+
+.city {
+  color: #14242d;
+  font-family: "sofia-pro";
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.small-info {
+  margin-top: -5px;
+  text-transform: lowercase;
+  color: #838385;
+  font-size: 14px;
 }
 
 @media (max-width: 768px) {
@@ -166,4 +188,9 @@
   width: 15px;
   height: 15px;
   margin-right: 0.3rem;
+}
+
+.tree-icon {
+  width: 20px;
+  height: 20px;
 }

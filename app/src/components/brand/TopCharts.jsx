@@ -79,7 +79,10 @@ function TopCharts(thisID) {
   return (
     <div className="top-charts">
       <div className="top-charts-title-sort">
-        <h3> Trending</h3>
+        <h3>
+          {" "}
+          <i>Trending</i>{" "}
+        </h3>
       </div>
       <div className="trending-filter-buttons">
         <button

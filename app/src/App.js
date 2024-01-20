@@ -17,6 +17,8 @@ import {
   faMagnifyingGlass,
   faHome,
   faUser,
+  faMoon,
+  faSun,
 } from "@fortawesome/free-solid-svg-icons";
 import SignInComponent from "./components/signin/SignInComponent";
 import TidioWrapper from "./TidioWrapper";
@@ -187,17 +189,27 @@ function App() {
               <div className="home-button">Home</div>
             </Link>
           )} */}
-        </div>
-        <div className="toggle" onClick={handleToggleClick}>
-          <img
-            className="toggle-outline"
-            src={ToggleOutline}
-            alt="Toggle Outline"
-          />
-          <div
-            className="toggle-circle"
-            style={{ left: `${circlePosition}%` }}
-          ></div>
+          {/*  <div className="toggle" onClick={handleToggleClick}>
+           
+            <div className="toggle-outline"> </div>
+            <div
+              className="toggle-circle"
+              style={{ left: `${circlePosition}%` }}
+            ></div>
+          </div> */}
+          <div>
+            <input
+              type="checkbox"
+              className="toggle-checkbox"
+              id="toggleBtn"
+              onChange={handleToggleClick}
+            />
+            <label className="switch" htmlFor="toggleBtn">
+              <FontAwesomeIcon icon={faMoon} style={{ color: "#f1c40f" }} />
+              <FontAwesomeIcon icon={faSun} style={{ color: "#f39c12" }} />
+              <div className="ball"></div>
+            </label>
+          </div>
         </div>
 
         <div className="header-logo">
@@ -205,38 +217,38 @@ function App() {
             <img className="logo-gif" src={LogoGIF} />
             {/* <div class="logo">DIVOT</div> */}
           </a>
+          <div className="beta">
+            <TidioWrapper icon="info" />
+          </div>
         </div>
-
-        <div className="beta">
-          <TidioWrapper icon="header" />
-        </div>
-
-        <div className="header-icons">
-          {loggedIn ? (
-            <Dropdown url={signedProfileURL} username={userName} />
-          ) : (
-            <div className="signin-signup-links">
-              <Link to="/sign-in" className="sign-in-link">
-                <div className="home-button">Sign In</div>
-              </Link>
-            </div>
-          )}
-          {loggedIn ? (
-            <div
-              className="notifications"
-              onClick={() => setShowNotifications(!showNotifications)}
-            >
-              <FontAwesomeIcon
-                className="bell-icon"
-                icon={faBell}
-                color="#b7b1a7"
-                size="lg"
-              />
-              <GetNotificationsCount userId={userId} />
-            </div>
-          ) : (
-            <div></div>
-          )}
+        <div className="header-right">
+          <div className="header-icons">
+            {loggedIn ? (
+              <Dropdown url={signedProfileURL} username={userName} />
+            ) : (
+              <div className="signin-signup-links">
+                <Link to="/sign-in" className="sign-in-link">
+                  <div className="home-button">Sign In </div>
+                </Link>
+              </div>
+            )}
+            {loggedIn ? (
+              <div
+                className="notifications"
+                onClick={() => setShowNotifications(!showNotifications)}
+              >
+                <FontAwesomeIcon
+                  className="bell-icon"
+                  icon={faBell}
+                  color="#b7b1a7"
+                  size="lg"
+                />
+                <GetNotificationsCount userId={userId} />
+              </div>
+            ) : (
+              <div></div>
+            )}
+          </div>
         </div>
       </div>
       {/* <WaveBar /> */}

@@ -204,11 +204,33 @@
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  border: 1px solid #d6d6d6;
+}
+
+.dropdown-options {
+  position: absolute;
+  margin-top: 2px;
+  background: rgba(255, 253, 253, 0.925);
+  color: rgb(0, 0, 0);
+  z-index: 100000;
+  padding: 0.2rem 0.9rem;
+  border: 1px solid #ccc; /* Add a border for separation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  border-radius: 4px; /* Optional: Add rounded corners for a softer look */
+  max-height: 200px; /* Optional: Set a max height for the dropdown */
+  overflow-y: auto; /* Optional: Add a scrollbar if content exceeds max height */
+  > div {
+    &:hover {
+      color: #007afe; // Set your desired hover color
+    }
+  }
 }
 
 .dropdown-icon {
   color: #007afe;
-  margin-left: 4px;
+  margin-left: 5px;
 }
 
 .form-input {

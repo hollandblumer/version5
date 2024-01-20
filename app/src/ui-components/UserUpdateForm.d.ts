@@ -36,6 +36,10 @@ export declare type UserUpdateFormInputValues = {
     isVerified?: boolean;
     hasCompletedForm?: boolean;
     industry?: string;
+    city?: string;
+    state?: string;
+    country?: string;
+    size?: number;
 };
 export declare type UserUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
@@ -51,6 +55,10 @@ export declare type UserUpdateFormValidationValues = {
     isVerified?: ValidationFunction<boolean>;
     hasCompletedForm?: ValidationFunction<boolean>;
     industry?: ValidationFunction<string>;
+    city?: ValidationFunction<string>;
+    state?: ValidationFunction<string>;
+    country?: ValidationFunction<string>;
+    size?: ValidationFunction<number>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type UserUpdateFormOverridesProps = {
@@ -68,6 +76,10 @@ export declare type UserUpdateFormOverridesProps = {
     isVerified?: PrimitiveOverrideProps<SwitchFieldProps>;
     hasCompletedForm?: PrimitiveOverrideProps<SwitchFieldProps>;
     industry?: PrimitiveOverrideProps<TextFieldProps>;
+    city?: PrimitiveOverrideProps<TextFieldProps>;
+    state?: PrimitiveOverrideProps<TextFieldProps>;
+    country?: PrimitiveOverrideProps<TextFieldProps>;
+    size?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type UserUpdateFormProps = React.PropsWithChildren<{
     overrides?: UserUpdateFormOverridesProps | undefined | null;

@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import "./styles/signin/signin.css";
 import { Helmet } from "react-helmet";
-import { faComments } from "@fortawesome/free-solid-svg-icons";
+import { faCircleInfo, faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InfoIcon from "./assets/images/itc-info-icon.png";
+import InfoIcon2 from "./assets/images/brown-info.svg";
 
 function TidioWrapper({ icon }) {
   const [hover, setHover] = useState(false);
@@ -50,7 +51,8 @@ function TidioWrapper({ icon }) {
         {tempIcon === "info" ? (
           <div>
             {" "}
-            <img src={InfoIcon} className="info-icon" />{" "}
+            {/* <FontAwesomeIcon icon={faCircleInfo} className="info-icon" /> */}
+            <img src={InfoIcon2} className="info-icon" />
           </div>
         ) : tempIcon == "h" ? (
           <div className="chat-now-text">

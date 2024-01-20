@@ -205,8 +205,7 @@ function SuggestionForm({ name, email, thisID, businessName }) {
               className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
               onClick={toggleDropdown}
             >
-              {selectedOption === "false" ? "Suggestion" : "Compliment"}
-
+              {selectedOption === "true" ? "Compliment" : "Suggestion"}
               <FontAwesomeIcon icon={faSortDown} className="dropdown-icon" />
             </div>
             {isDropdownOpen && (
@@ -218,13 +217,14 @@ function SuggestionForm({ name, email, thisID, businessName }) {
               </div>
             )}
           </div>
+
           <div className="form-input" onChange={createSearch}>
             <input
               className="suggestion-input"
               type="text"
               value={suggestion}
               placeholder={
-                suggestionCheck === true
+                selectedOption === "true"
                   ? "Start typing compliment here.."
                   : "Start typing suggestion here.."
               }

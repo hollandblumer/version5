@@ -84,7 +84,7 @@ function AddBrand() {
     <div className="brand-form-background">
       <div className="brand-form">
         <div className="brand-form-description">
-          <h2> Add a Company or Brand</h2>
+          <div className="add-brand-title"> Add a Company or Brand</div>
           <div className="p-font">
             {" "}
             Can't find a brand? Submit a name and start sharing.
@@ -192,7 +192,7 @@ function AddBrand() {
 
         <button className="brand-form-submit-button" onClick={brandChecker}>
           {" "}
-          <div> Submit</div>
+          <i>SUBMIT</i>
         </button>
       </div>
       <Footer2 />

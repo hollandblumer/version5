@@ -5,9 +5,6 @@ import {
   faLeaf,
   faBoxOpen,
   faCubesStacked,
-  faCirclePlus,
-  faShareNodes,
-  faTruckFront,
   faMugHot,
 } from "@fortawesome/free-solid-svg-icons";
 

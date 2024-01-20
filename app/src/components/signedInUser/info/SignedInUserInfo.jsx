@@ -192,12 +192,20 @@ function SignedInUserInfo({
                 />{" "}
               </button> */}
               <button className="info-share">
-                <FontAwesomeIcon
+                <button className="info-share">
+                  <FontAwesomeIcon
+                    icon={faArrowUpRightFromSquare}
+                    size="1x"
+                    color="#111111"
+                    className="share"
+                  />{" "}
+                </button>
+                {/*  <FontAwesomeIcon
                   icon={faEllipsis}
                   className="share"
                   color="#8c8577"
                   size="lg"
-                />
+                /> */}
               </button>
             </div>
           </div>
@@ -245,11 +253,11 @@ function SignedInUserInfo({
               </div>
             </div>
           )}
-          <div className="member-since">
+          {/*   <div className="member-since">
             {" "}
             <div className="member-since-text">Member since</div>{" "}
             <div className="member-since-date-user">{joinMonthYear}</div>{" "}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

@@ -42,6 +42,10 @@ export default function UserUpdateForm(props) {
     isVerified: false,
     hasCompletedForm: false,
     industry: "",
+    city: "",
+    state: "",
+    country: "",
+    size: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [email, setEmail] = React.useState(initialValues.email);
@@ -60,6 +64,10 @@ export default function UserUpdateForm(props) {
     initialValues.hasCompletedForm
   );
   const [industry, setIndustry] = React.useState(initialValues.industry);
+  const [city, setCity] = React.useState(initialValues.city);
+  const [state, setState] = React.useState(initialValues.state);
+  const [country, setCountry] = React.useState(initialValues.country);
+  const [size, setSize] = React.useState(initialValues.size);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = userRecord
@@ -78,6 +86,10 @@ export default function UserUpdateForm(props) {
     setIsVerified(cleanValues.isVerified);
     setHasCompletedForm(cleanValues.hasCompletedForm);
     setIndustry(cleanValues.industry);
+    setCity(cleanValues.city);
+    setState(cleanValues.state);
+    setCountry(cleanValues.country);
+    setSize(cleanValues.size);
     setErrors({});
   };
   const [userRecord, setUserRecord] = React.useState(userModelProp);
@@ -105,6 +117,10 @@ export default function UserUpdateForm(props) {
     isVerified: [],
     hasCompletedForm: [],
     industry: [],
+    city: [],
+    state: [],
+    country: [],
+    size: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -145,6 +161,10 @@ export default function UserUpdateForm(props) {
           isVerified,
           hasCompletedForm,
           industry,
+          city,
+          state,
+          country,
+          size,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -213,6 +233,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -249,6 +273,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.email ?? value;
@@ -285,6 +313,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.update ?? value;
@@ -321,6 +353,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.filePath ?? value;
@@ -361,6 +397,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.strength ?? value;
@@ -397,6 +437,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.isBusiness ?? value;
@@ -433,6 +477,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.location ?? value;
@@ -469,6 +517,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.bio ?? value;
@@ -505,6 +557,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.isPrivate ?? value;
@@ -541,6 +597,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.parentBrand ?? value;
@@ -577,6 +637,10 @@ export default function UserUpdateForm(props) {
               isVerified: value,
               hasCompletedForm,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.isVerified ?? value;
@@ -613,6 +677,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm: value,
               industry,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.hasCompletedForm ?? value;
@@ -649,6 +717,10 @@ export default function UserUpdateForm(props) {
               isVerified,
               hasCompletedForm,
               industry: value,
+              city,
+              state,
+              country,
+              size,
             };
             const result = onChange(modelFields);
             value = result?.industry ?? value;
@@ -662,6 +734,170 @@ export default function UserUpdateForm(props) {
         errorMessage={errors.industry?.errorMessage}
         hasError={errors.industry?.hasError}
         {...getOverrideProps(overrides, "industry")}
+      ></TextField>
+      <TextField
+        label="City"
+        isRequired={false}
+        isReadOnly={false}
+        value={city}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              email,
+              update,
+              filePath,
+              strength,
+              isBusiness,
+              location,
+              bio,
+              isPrivate,
+              parentBrand,
+              isVerified,
+              hasCompletedForm,
+              industry,
+              city: value,
+              state,
+              country,
+              size,
+            };
+            const result = onChange(modelFields);
+            value = result?.city ?? value;
+          }
+          if (errors.city?.hasError) {
+            runValidationTasks("city", value);
+          }
+          setCity(value);
+        }}
+        onBlur={() => runValidationTasks("city", city)}
+        errorMessage={errors.city?.errorMessage}
+        hasError={errors.city?.hasError}
+        {...getOverrideProps(overrides, "city")}
+      ></TextField>
+      <TextField
+        label="State"
+        isRequired={false}
+        isReadOnly={false}
+        value={state}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              email,
+              update,
+              filePath,
+              strength,
+              isBusiness,
+              location,
+              bio,
+              isPrivate,
+              parentBrand,
+              isVerified,
+              hasCompletedForm,
+              industry,
+              city,
+              state: value,
+              country,
+              size,
+            };
+            const result = onChange(modelFields);
+            value = result?.state ?? value;
+          }
+          if (errors.state?.hasError) {
+            runValidationTasks("state", value);
+          }
+          setState(value);
+        }}
+        onBlur={() => runValidationTasks("state", state)}
+        errorMessage={errors.state?.errorMessage}
+        hasError={errors.state?.hasError}
+        {...getOverrideProps(overrides, "state")}
+      ></TextField>
+      <TextField
+        label="Country"
+        isRequired={false}
+        isReadOnly={false}
+        value={country}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              email,
+              update,
+              filePath,
+              strength,
+              isBusiness,
+              location,
+              bio,
+              isPrivate,
+              parentBrand,
+              isVerified,
+              hasCompletedForm,
+              industry,
+              city,
+              state,
+              country: value,
+              size,
+            };
+            const result = onChange(modelFields);
+            value = result?.country ?? value;
+          }
+          if (errors.country?.hasError) {
+            runValidationTasks("country", value);
+          }
+          setCountry(value);
+        }}
+        onBlur={() => runValidationTasks("country", country)}
+        errorMessage={errors.country?.errorMessage}
+        hasError={errors.country?.hasError}
+        {...getOverrideProps(overrides, "country")}
+      ></TextField>
+      <TextField
+        label="Size"
+        isRequired={false}
+        isReadOnly={false}
+        type="number"
+        step="any"
+        value={size}
+        onChange={(e) => {
+          let value = isNaN(parseInt(e.target.value))
+            ? e.target.value
+            : parseInt(e.target.value);
+          if (onChange) {
+            const modelFields = {
+              name,
+              email,
+              update,
+              filePath,
+              strength,
+              isBusiness,
+              location,
+              bio,
+              isPrivate,
+              parentBrand,
+              isVerified,
+              hasCompletedForm,
+              industry,
+              city,
+              state,
+              country,
+              size: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.size ?? value;
+          }
+          if (errors.size?.hasError) {
+            runValidationTasks("size", value);
+          }
+          setSize(value);
+        }}
+        onBlur={() => runValidationTasks("size", size)}
+        errorMessage={errors.size?.errorMessage}
+        hasError={errors.size?.hasError}
+        {...getOverrideProps(overrides, "size")}
       ></TextField>
       <Flex
         justifyContent="space-between"

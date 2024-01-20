@@ -12,12 +12,16 @@ import {
   faLink,
   faArrowUpRightFromSquare,
   faBed,
-  faUtensils,
 } from "@fortawesome/free-solid-svg-icons";
 import AvatarDesign from "../../../assets/images/avatar-design-5.png";
 import "../../../styles/brand/info/brand-info.css";
 import GradientHexagon from "../../../assets/images/header-blob-2.svg";
 import LinkIcon from "../../../assets/images/link-icon.svg";
+import IconGenerator from "../icon/IconGenerator";
+import BrandSize from "../size/BrandSize";
+import Tree from "../../../assets/images/subsidiary.png";
+import SisterBrands from "../../../assets/images/sister-brands.png";
+
 function BrandInfo({
   url,
   username,
@@ -27,16 +31,12 @@ function BrandInfo({
   industry,
   verification,
   size,
+  city,
+  state,
+  country,
 }) {
   let formatdate = new Date(date);
   let link = null;
-
-  let icon =
-    industry === "food"
-      ? faUtensils
-      : industry === "Hospitality"
-      ? faBed
-      : null;
 
   return (
     <div className="brand-info">
@@ -147,26 +147,25 @@ function BrandInfo({
               </>
             )}
           </div>
+        </div>
+        <div className="brand-action-buttons">
+          <button className="user-action-button follow">
+            {" "}
+            <FontAwesomeIcon
+              icon={faUserPlus}
+              className="share"
+              color="#007AFF"
+            />{" "}
+          </button>
 
-          <div className="brand-action-buttons">
-            <button className="user-action-button follow">
-              {" "}
-              <FontAwesomeIcon
-                icon={faUserPlus}
-                className="share"
-                color="#007AFF"
-              />{" "}
-            </button>
-
-            <button className="user-action-ellipsis">
-              <FontAwesomeIcon
-                icon={faEllipsis}
-                className="share"
-                color="#8c8577"
-                size="lg"
-              />
-            </button>
-          </div>
+          <button className="user-action-ellipsis">
+            <FontAwesomeIcon
+              icon={faEllipsis}
+              className="share"
+              color="#8c8577"
+              size="lg"
+            />
+          </button>
         </div>
 
         {parentBrand == null ? (
@@ -179,27 +178,13 @@ function BrandInfo({
         )}
 
         <div className="detailed-brand-info-row">
-          {location ? (
-            <div className="info-location">
-              <FontAwesomeIcon
-                icon={faCompass}
-                size="sm"
-                color="#aa7950"
-                style={{ marginRight: "5px" }}
-              />{" "}
-              {location}
+          <div className="info-location">
+            <FontAwesomeIcon icon={faCompass} size="lg" color="#939392" />{" "}
+            <div className="specific-info">
+              <div className="city">{city}</div>
+              <p className="small-info"> {country}</p>
             </div>
-          ) : (
-            <div className="info-location">
-              <FontAwesomeIcon
-                icon={faCompass}
-                size="sm"
-                color="#aa7950"
-                style={{ marginRight: "5px" }}
-              />{" "}
-              SC
-            </div>
-          )}
+          </div>
 
           {industry == null ? (
             <div className="industry-row">
@@ -214,107 +199,93 @@ function BrandInfo({
               </> */}
             </div>
           ) : (
-            <div className="industry-row">
+            <div className="info-location">
               {" "}
-              {icon && (
-                <FontAwesomeIcon icon={icon} size="sm" color="#aa7950" />
-              )}
-              <div className="left">{industry}</div>
-            </div>
-          )}
-
-          {/*   {size == 1 ? (
-            <div className="row flex-start">
-              <div>
-                {" "}
-                <b> </b>
+              <IconGenerator industry={industry} />
+              <div className="specific-info">
+                <div className="city">{industry}</div>
+                <p className="small-info"> industry</p>
               </div>
-            </div>
-          ) : size == 2 ? (
-            <div className="row flex-start">
-              <div>
-                {" "}
-                <b>{industry}</b> Industry
-              </div>
-            </div>
-          ) : size == 3 ? (
-            <div>
-              {" "}
-              <b>{industry}</b> Industry
-            </div>
-          ) : size == 4 ? (
-            <div></div>
-          ) : (
-            <div className="row flex-start">
-              {" "}
-              {username == "starbucks" ? (
-                <div>
-                  <b>  1000+</b>{" "}
-                  <div className="grey left"> Employees</div>
-                </div>
-              ) : (
-                <div></div>
-              )}
-            </div>
-          )} */}
-          {link != null ? (
-            <div className="info-website">
-              {" "}
-              <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" />
-              Link
-            </div>
-          ) : (
-            <div className="info-website">
-              {" "}
-              {/* <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" /> */}
-              <img src={LinkIcon} className="link-icon" />
             </div>
           )}
         </div>
 
-        {parentBrand != null ? (
-          <div className="row flex-start">
+        {/* {link != null ? (
+          <div className="info-website">
             {" "}
-            Part of{" "}
-            <Link to={`/${parentBrand}`} replace className="parent-brand">
-              <div className="username left">{parentBrand}</div>{" "}
-            </Link>
+            <FontAwesomeIcon icon={faLink} size="sm" color="#aa7950" />
+            Link
           </div>
         ) : (
-          <div></div>
-        )}
-
-        <div className="member-since">
-          {verification === null ? (
-            <>
+          <div className="info-website">
+            {" "}
+            <img src={LinkIcon} className="link-icon" />
+            Link
+          </div>
+        )} */}
+        <div className="row">
+          <BrandSize size={size} />
+          {/* <img src={LinkIcon} className="link-icon" /> */}
+          {/*   <div className="info-location">
+            {" "}
+            <img src={SisterBrands} className="tree-icon" />
+            <div className="specific-info">
               {" "}
-              <div className="grey">Added in </div>
-              <div className=" member-since-date">
-                {"  "}
-                {formatdate.toLocaleDateString(undefined, {
-                  year: "numeric",
-                  month: "short",
-                })}
-                <button>
-                  Claim brand
-                  {/*  <FontAwesomeIcon
+              <div className="city right">
+                <p> 3 subsidiaries</p>
+              </div>
+            </div>
+            <div className="city right">
+              <p> 4 sibling brands</p>
+            </div>
+          </div>{" "} */}
+          {/*      <div className="specific-info">
+            <div className="row"> </div>
+          </div>
+          {parentBrand != null ? (
+            <div className="row flex-start">
+              {" "}
+              Part of{" "}
+              <Link to={`/${parentBrand}`} replace className="parent-brand">
+                <div className="username left">{parentBrand}</div>{" "}
+              </Link>
+            </div>
+          ) : (
+            <div></div>
+          )} */}
+          <div className="member-since">
+            {verification === null ? (
+              <>
+                {" "}
+                <div className="grey">Added in </div>
+                <div className=" member-since-date">
+                  {"  "}
+                  {formatdate.toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "short",
+                  })}
+                  <Link to="/claim-brand">
+                    <button>
+                      Claim brand
+                      {/*  <FontAwesomeIcon
                     icon={faArrowUpRightFromSquare}
                     size="sm"
                     color="#8c8c8c"
                     style={{ marginLeft: "1px" }}
                   /> pretty color grey */}
-                  <FontAwesomeIcon
-                    icon={faArrowUpRightFromSquare}
-                    size="sm"
-                    color="#ffffff"
-                    style={{ marginLeft: "1px" }}
-                  />
-                </button>
-              </div>
-            </>
-          ) : verification === false ? (
-            <>
-              {/*  <div> Added in </div>
+                      <FontAwesomeIcon
+                        icon={faArrowUpRightFromSquare}
+                        size="sm"
+                        color="#ffffff"
+                        style={{ marginLeft: "1px" }}
+                      />
+                    </button>
+                  </Link>
+                </div>
+              </>
+            ) : verification === false ? (
+              <>
+                {/*  <div> Added in </div>
               <div className="member-since-date">
                 {"  "}
                 {formatdate.toLocaleDateString(undefined, {
@@ -322,28 +293,31 @@ function BrandInfo({
                   month: "numeric",
                 })}
               </div> */}
-              <button>
-                Claim brand{" "}
-                <FontAwesomeIcon
-                  icon={faArrowUpRightFromSquare}
-                  size="sm"
-                  color="#ffffff"
-                  style={{ marginLeft: "1px" }}
-                />{" "}
-              </button>
-            </>
-          ) : (
-            <>
-              <div> Member since{"  "} </div>
-              <div className="member-since-date">
-                {"  "}
-                {formatdate.toLocaleDateString(undefined, {
-                  year: "numeric",
-                  month: "short",
-                })}
-              </div>
-            </>
-          )}
+                <Link to="/claim-brand">
+                  <button>
+                    Claim brand{" "}
+                    <FontAwesomeIcon
+                      icon={faArrowUpRightFromSquare}
+                      size="sm"
+                      color="#ffffff"
+                      style={{ marginLeft: "1px" }}
+                    />{" "}
+                  </button>
+                </Link>
+              </>
+            ) : (
+              <>
+                <div> Member since{"  "} </div>
+                <div className="member-since-date">
+                  {"  "}
+                  {formatdate.toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "short",
+                  })}
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </div>

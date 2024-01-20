@@ -8,6 +8,8 @@ export { default as FollowCreateForm } from "./FollowCreateForm";
 export { default as FollowUpdateForm } from "./FollowUpdateForm";
 export { default as NotificationCreateForm } from "./NotificationCreateForm";
 export { default as NotificationUpdateForm } from "./NotificationUpdateForm";
+export { default as ProjectCreateForm } from "./ProjectCreateForm";
+export { default as ProjectUpdateForm } from "./ProjectUpdateForm";
 export { default as SuggestionCreateForm } from "./SuggestionCreateForm";
 export { default as SuggestionUpdateForm } from "./SuggestionUpdateForm";
 export { default as UserCreateForm } from "./UserCreateForm";

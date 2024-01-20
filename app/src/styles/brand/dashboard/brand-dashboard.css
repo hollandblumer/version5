@@ -4,6 +4,11 @@
   flex: 1;
   margin-top: 2.5rem;
 }
+@media screen and (max-width: 600px) {
+  .brand-dashboard {
+    margin-top: 1.5rem;
+  }
+}
 
 .brand-dashboard-top {
   display: flex;
