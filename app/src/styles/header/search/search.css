@@ -109,26 +109,27 @@
 }
 
 .suggestionSearchListContainer {
-  height: 13rem;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
   overflow-y: scroll;
   margin-top: 1rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  width: 100%;
 }
 
 .suggestionSearchList {
-  width: 100%;
-  height: auto;
-  margin-top: 0.3rem;
-  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
 }
 .suggestionSearchList button {
+  background: rgb(67, 67, 69);
+  background: #007afe;
   border: none;
-  background: none;
-  border-bottom: 1px solid #e9e5dc;
-  width: 100%;
-  flex: 1;
+  margin: 4px 4px 4px 0px;
+  padding: 2px 8px;
+  color: white;
+  border-radius: 20px;
 }
 
 .search-form {
@@ -159,4 +160,17 @@
   width: 100%;
   border-bottom: 1px solid #ebebeb;
   height: 1rem;
+}
+
+.similar-suggestions {
+  display: flex;
+  flex-flow: row wrap;
+}
+.similar-suggestions button {
+  background: blue;
+  border: none;
+  margin: 4px;
+  padding: 2px 4px;
+  border-radius: 20px;
+  color: white;
 }

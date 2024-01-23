@@ -258,7 +258,10 @@
   width: 100%;
   flex: 1;
   padding: 0;
-  margin-top: 0.1rem;
+  margin: none;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
 
   &::placeholder {
     color: #67645e;

@@ -1,8 +1,6 @@
 import Footer2 from "../../components/footer/Footer2";
 import "../../styles/about/about.css";
 import hollandProfileImage from "../../assets/images/hollandprofile.jpg";
-import hollandProfileImage2 from "../../assets/images/about-me-5.png";
-import hollandProfileImage3 from "../../assets/images/dress-temp.jpg";
 import YinYang from "../../assets/images/yin-yang.png";
 import GradientHexagon from "../../assets/images/header-blob-2.svg";
 import { Avatar } from "@mui/material";
@@ -13,7 +11,7 @@ function About() {
     {
       name: "Holland Blumer",
       title: " /  Founder & CEO",
-      imageSrc: hollandProfileImage3,
+      imageSrc: hollandProfileImage,
       description:
         "With two engineering degrees from Northwestern University (B.S.) and Dartmouth College (M.Eng), as well as experience in Silicon Valley and the automotive sector, Holland has a thorough understanding of the rapidly evolving technology industry and will leverage technology to enhance global communication, sustainability, and accessibility efforts.",
     },
@@ -26,7 +24,7 @@ function About() {
       <div className="about">
         <div className="about-page-blurb">
           <div className="welcome-about">
-            About
+            <i>About</i>
             {/*  <div className="yin-yang-container">
               <img src={YinYang} className="yin-yang" alt="YinYang" />
             </div> */}
@@ -41,7 +39,7 @@ function About() {
           </p>
         </div>{" "}
         <div className="team-title" style={{ marginTop: "4rem" }}>
-          Meet the Founder
+          <i>Meet the Founder</i>
         </div>
         {/*   <div className="info-avatar-wrapper-about">
           <img
@@ -190,11 +188,7 @@ function About() {
             {teamMembers.map((member, index) => (
               <div className="team-member" key={index}>
                 <div className="profile-image">
-                  <img
-                    src={member.imageSrc}
-                    alt={member.name}
-                    style={{ width: "500px", height: "500px" }}
-                  />
+                  <img src={member.imageSrc} alt={member.name} />
                 </div>
                 <div className="member-description">
                   <div className="member-name-title">

@@ -62,7 +62,7 @@ function SuggestionToBrand({
           UserSuggestion,
           (c) =>
             c.and((c) => [
-              c.user.id.eq(thisID.thisID),
+              c.user.id.eq(thisID),
               c.suggestion.suggestion.eq(suggestion),
               c.suggestion.businessName.eq(businessName),
             ])
@@ -100,13 +100,13 @@ function SuggestionToBrand({
       }
     };
     getData();
-  }, [hasClickedThumbsUp]);
+  }, [userHasMadeSuggestion]);
 
   const getThumbsUpColor = () => {
     return userHasMadeSuggestion ? "#5bab5c" : "#525050";
   };
 
-  const handleCopyLink = () => {
+  /*  const handleCopyLink = () => {
     // You can construct your shareable link using businessName, counter, suggestion, and iscompliment
     const shareableLink = `${
       window.location.origin
@@ -131,7 +131,7 @@ function SuggestionToBrand({
       .catch((error) => {
         console.error("Failed to copy link to clipboard:", error);
       });
-  };
+  }; */
 
   const handleThumbsUpClick = async () => {
     try {
@@ -141,7 +141,7 @@ function SuggestionToBrand({
           UserSuggestion,
           (c) =>
             c.and((c) => [
-              c.user.id.eq(thisID.thisID),
+              c.user.id.eq(thisID),
               c.suggestion.suggestion.eq(suggestion),
               c.suggestion.businessName.eq(businessName),
             ])
@@ -151,12 +151,11 @@ function SuggestionToBrand({
           const suggestionToDelete = existingUserSuggestion[0];
           await DataStore.delete(suggestionToDelete);
 
-          // Update the state to reflect the removal
-          setHasClickedThumbsUp(false);
           // Set userHasMadeSuggestion to false immediately after removing
           setUserHasMadeSuggestion(false);
         }
       } else {
+        console.log("get here");
         // User hasn't made this suggestion, so add it
         const matchingSuggestions = await DataStore.query(Suggestion, (p) =>
           p.and((c) => [
@@ -169,13 +168,13 @@ function SuggestionToBrand({
           const suggestionToSave = matchingSuggestions[0];
           await DataStore.save(
             new UserSuggestion({
-              userId: thisID.thisID,
+              userId: thisID,
               suggestion: suggestionToSave,
             })
           );
 
           // Update the state to reflect the addition
-          setHasClickedThumbsUp(true);
+
           // Set userHasMadeSuggestion to true immediately after adding
           setUserHasMadeSuggestion(true);
         } else {
@@ -273,22 +272,31 @@ function SuggestionToBrand({
           </div>
         </div>
         <div className="like-share right">
-          {/* {user && ( // Check if the user is authenticated
-            <FontAwesomeIcon
-              icon={faThumbsUp}
-              className="share"
-              color={getThumbsUpColor()}
-              size="lg"
-              onClick={handleThumbsUpClick}
-            />
-          )} */}
+          {/* <FontAwesomeIcon
+            icon={faThumbsUp}
+            className="share"
+            color={getThumbsUpColor()}
+            size="lg"
+            onClick={handleThumbsUpClick}
+          /> */}
+
+          <FontAwesomeIcon
+            icon={
+              userHasMadeSuggestion ? faHeartCircleCheck : faHeartCirclePlus
+            }
+            className="share"
+            color={userHasMadeSuggestion ? "#5BAB5C" : "#E8542B"}
+            size="lg"
+            onClick={handleThumbsUpClick}
+          />
+
           {/*    <FontAwesomeIcon
             icon={faHeartCircleCheck}
             color="#5BAB5C"
             size="xl"
           /> */}
           {/* <FontAwesomeIcon icon={faHeartCirclePlus} color="#e2bd75" size="xl" /> */}
-          <FontAwesomeIcon icon={faHeartCirclePlus} color="#E8542B" size="xl" />
+          {/* <FontAwesomeIcon icon={faHeartCirclePlus} color="#E8542B" size="xl" /> */}
           {/* <CopyToClipboard
             text={`Shareable Link: ${businessName} has ${counter} people supporting ${suggestion} ${
               iscompliment ? "compliment" : "suggestion"

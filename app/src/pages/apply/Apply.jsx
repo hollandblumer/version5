@@ -6,7 +6,9 @@ function Apply() {
   return (
     <div>
       <div className="apply-container">
-        <div className="apply-title">Join the team</div>
+        <div className="apply-title">
+          <i>Join the team</i>
+        </div>
         <div className="answer">
           Use this as a tool to communicate among the masses to your favorite
           brands the thoughts you have in your head

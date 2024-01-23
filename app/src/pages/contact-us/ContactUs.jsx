@@ -175,7 +175,9 @@ function ContactUs() {
               onChange={handleHoneypotChange}
             />
           </div>
-          <button type="submit">Submit</button>
+          <button type="submit">
+            <i>Submit</i>
+          </button>
         </form>
       </div>
       <Footer2 />

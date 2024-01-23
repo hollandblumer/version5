@@ -6,7 +6,9 @@ function FAQs() {
   return (
     <div>
       <div className="faq-container">
-        <div className="question-title">Frequently Asked Questions</div>
+        <div className="question-title">
+          <i>Frequently Asked Questions</i>
+        </div>
         <div className="question">How do I use Divot?</div>
         <div className="answer">
           Use this tool to communicate among the masses your thoughts about your

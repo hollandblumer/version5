@@ -33,14 +33,13 @@ function BrandDashboard({ SignedInUser }) {
   const [milestones, setMilestones] = useState([]);
   const [memberSinceDate, setMemberSinceDate] = useState("");
   const [sliderPosition, setSliderPosition] = useState(0);
+  const [topChartsSearchTerm, setTopChartsSearchTerm] = useState("");
 
   useEffect(() => {
     const getData = async () => {
       try {
         const brandData = await DataStore.query(User, (p) => p.name.eq(name));
-
         const brandFilePath = brandData[0].filePath;
-
         const signedBrandFilePath = await Storage.get(brandFilePath);
         console.log("hello", signedBrandFilePath);
         setBrandLocation(brandData[0].location);
@@ -60,7 +59,6 @@ function BrandDashboard({ SignedInUser }) {
             sort: (s) => s.createdAt(SortDirection.ASCENDING),
           }
         );
-
         let promisearray = [];
         suggestions.map((p) => promisearray.push(p.suggestion));
         await Promise.all(promisearray).then((values) => {
@@ -88,7 +86,20 @@ function BrandDashboard({ SignedInUser }) {
           sort: (s) => s.createdAt(SortDirection.DESCENDING),
         });
  */
-        setMilestones(milestones);
+        const uniqueSuggestionIds = [
+          ...new Set(milestones.map((milestone) => milestone.suggestionID)),
+        ];
+
+        const uniqueMilestones = uniqueSuggestionIds.map(
+          (uniqueSuggestionId) => {
+            // Find the first milestone for each unique suggestionId
+            return milestones.find(
+              (milestone) => milestone.suggestionID === uniqueSuggestionId
+            );
+          }
+        );
+
+        setMilestones(uniqueMilestones);
 
         /*    const milestones = await DataStore.query(Milestone, (c) => c.and(c => [
           c.brandName.eq(name),
@@ -130,11 +141,15 @@ function BrandDashboard({ SignedInUser }) {
             email={SignedInUser.email}
             thisID={SignedInUser.id}
             businessName={name}
+            setTopChartsSearchTerm={setTopChartsSearchTerm}
           />
         </div>
 
         <div className="brand-dashboard-right">
-          <TopCharts thisID={SignedInUser.id} />
+          <TopCharts
+            thisID={SignedInUser.id}
+            initialSearchTerm={topChartsSearchTerm}
+          />
         </div>
       </div>
       <div className="brand-dashboard-bottom">
@@ -203,25 +218,13 @@ function BrandDashboard({ SignedInUser }) {
             <div className="milestone-container">
               <div className="milestone-cards">
                 {milestones.map((p, index) => (
-                  <div
-                    key={p.id}
-                    className={`${
-                      index % 2 === 0 && index === 0
-                        ? "milestone-active corner milestone"
-                        : index % 2 === 0
-                        ? " milestone-active milestone"
-                        : "milestone-inactive milestone"
-                    }`}
-                  >
-                    <div className="milestone-padding">
-                      <MilestoneTracker
-                        url={brandURL}
-                        businessname={p.brandName}
-                        suggestionID={p.suggestionID}
-                        date={p.createdAt}
-                        milestone={p.milestone}
-                      />
-                    </div>
+                  <div key={p.id}>
+                    <MilestoneTracker
+                      url={brandURL}
+                      businessname={name}
+                      suggestionID={p.suggestionID}
+                      milestone={p.milestone}
+                    />
                   </div>
                 ))}
               </div>

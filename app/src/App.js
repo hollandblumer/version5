@@ -217,9 +217,9 @@ function App() {
             <img className="logo-gif" src={LogoGIF} />
             {/* <div class="logo">DIVOT</div> */}
           </a>
-          <div className="beta">
+          {/*   <div className="beta">
             <TidioWrapper icon="info" />
-          </div>
+          </div> */}
         </div>
         <div className="header-right">
           <div className="header-icons">

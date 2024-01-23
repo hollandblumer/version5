@@ -6,12 +6,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
 import SuggestionToBrand from "./SuggestionToBrand";
 
-function TopCharts(thisID) {
+function TopCharts({ thisID, initialSearchTerm }) {
   const { name } = useParams();
   const [suggestions, setSuggestions] = useState([]);
   const [verification, setVerification] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState("All");
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState(initialSearchTerm || "");
   const [showSearchInput, setShowSearchInput] = useState(false);
   const seenSuggestions = new Set();
   let count = 0;
@@ -22,10 +22,8 @@ function TopCharts(thisID) {
         const brandData = await DataStore.query(User, (p) => p.name.eq(name));
         setVerification(brandData[0].isVerified);
 
-        const suggestions = await DataStore.query(
-          Suggestion,
-          (p) => p.businessName.eq(name)
-          // { sort: (s) => s.createdAt(SortDirection.ASCENDING) }
+        const suggestions = await DataStore.query(Suggestion, (p) =>
+          p.businessName.eq(name)
         );
 
         const suggestionsWithUserCount = await Promise.all(
@@ -53,23 +51,33 @@ function TopCharts(thisID) {
       }
     };
     fetchData();
-  }, [name]);
+  }, [name, initialSearchTerm]);
+
+  useEffect(() => {
+    // Update searchTerm whenever initialSearchTerm changes
+    setSearchTerm(initialSearchTerm || "");
+  }, [initialSearchTerm]);
 
   const filterSuggestionsBySearch = () => {
+    const lowerCaseSearchTerm = String(searchTerm).toLowerCase();
+
     return suggestions.filter((suggestion) => {
       if (selectedFilter === "All") {
-        return suggestion.suggestion
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase());
+        return (
+          lowerCaseSearchTerm === "" ||
+          suggestion.suggestion.toLowerCase().includes(lowerCaseSearchTerm)
+        );
       } else if (selectedFilter === "Suggestions") {
         return (
           !suggestion.compliment &&
-          suggestion.suggestion.toLowerCase().includes(searchTerm.toLowerCase())
+          (lowerCaseSearchTerm === "" ||
+            suggestion.suggestion.toLowerCase().includes(lowerCaseSearchTerm))
         );
       } else if (selectedFilter === "Compliments") {
         return (
           suggestion.compliment &&
-          suggestion.suggestion.toLowerCase().includes(searchTerm.toLowerCase())
+          (lowerCaseSearchTerm === "" ||
+            suggestion.suggestion.toLowerCase().includes(lowerCaseSearchTerm))
         );
       }
       return true;
@@ -78,12 +86,22 @@ function TopCharts(thisID) {
 
   return (
     <div className="top-charts">
-      <div className="top-charts-title-sort">
-        <h3>
-          {" "}
-          <i>Trending</i>{" "}
-        </h3>
-      </div>
+      {searchTerm.length === 0 ? (
+        <div className="top-charts-title-sort">
+          <h3>
+            {" "}
+            <i>Trending</i>{" "}
+          </h3>
+        </div>
+      ) : (
+        <div className="top-charts-title-sort">
+          <h3>
+            {" "}
+            <i>Search Results</i>{" "}
+          </h3>
+        </div>
+      )}
+
       <div className="trending-filter-buttons">
         <button
           onClick={() => setSelectedFilter("All")}
@@ -141,47 +159,67 @@ function TopCharts(thisID) {
             ></div>
           )}
         </button>
-        <div
-          className={
-            showSearchInput
-              ? "trending-search-container"
-              : "trending-search-container false"
-          }
-        >
-          <FontAwesomeIcon
-            icon={faSearch}
-            size="lg"
-            color="#b7b1a7"
-            style={{}}
-            onClick={() => setShowSearchInput(!showSearchInput)}
-          />
-          {showSearchInput && (
-            <div>
-              <input
-                type="text"
-                className="trending-search"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              <FontAwesomeIcon
-                icon={faTimesCircle} // You can replace this with the desired close icon
-                size="sm"
-                color="#b7b1a7" // Adjust the color as needed
-                onClick={() => setShowSearchInput(false)} // Click event to close the search
-                style={{ cursor: "pointer" }}
-              />
-            </div>
-          )}
-        </div>
+        {searchTerm.length === 0 && (
+          <div
+            className={
+              showSearchInput
+                ? "trending-search-container"
+                : "trending-search-container false"
+            }
+          >
+            <FontAwesomeIcon
+              icon={faSearch}
+              size="lg"
+              color="#b7b1a7"
+              style={{}}
+              onClick={() => setShowSearchInput(!showSearchInput)}
+            />
+            {showSearchInput && (
+              <div>
+                <input
+                  type="text"
+                  className="trending-search"
+                  placeholder="Search"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                />
+                <FontAwesomeIcon
+                  icon={faTimesCircle} // You can replace this with the desired close icon
+                  size="sm"
+                  color="#b7b1a7" // Adjust the color as needed
+                  onClick={() => setShowSearchInput(false)} // Click event to close the search
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
+            )}
+          </div>
+        )}
       </div>
+
       <div
         className={`top-suggestions-box ${
           filterSuggestionsBySearch().length > 3 ? "suggestions-scroll" : ""
         }`}
       >
         {filterSuggestionsBySearch().length === 0 ? (
-          <div className="no-results-message">No search results, add it</div>
+          searchTerm === "" ? (
+            // Show preloaded suggestions when searchTerm is empty
+            suggestions.map((p, index) => (
+              <div key={p.id}>
+                <SuggestionToBrand
+                  suggestion={p.suggestion}
+                  iscompliment={p.compliment}
+                  businessName={p.businessName}
+                  counter={index + 1}
+                  actualindex={index}
+                  thisID={thisID}
+                />
+              </div>
+            ))
+          ) : (
+            // Show "No search results, add it" message when searchTerm is not empty
+            <div className="no-results-message">No search results, add it</div>
+          )
         ) : (
           filterSuggestionsBySearch().map((p, index) => {
             count = index + 1;

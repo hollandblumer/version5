@@ -11,7 +11,13 @@ import { Auth } from "@aws-amplify/auth";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
 import AuthForm from "./AuthForm"; // Import your AuthForm component
 
-function SuggestionForm({ name, email, thisID, businessName }) {
+function SuggestionForm({
+  name,
+  email,
+  thisID,
+  businessName,
+  setTopChartsSearchTerm,
+}) {
   const [suggestion, setSuggestion] = useState("");
   const [searchList, setSearchList] = useState([]);
   const [suggestionCheck, setSuggestionCheck] = useState(false);
@@ -185,6 +191,14 @@ function SuggestionForm({ name, email, thisID, businessName }) {
     setIsDropdownOpen((prev) => !prev);
   };
 
+  const handleSearchInputChange = (e) => {
+    const value = e.target.value;
+    setSuggestion(value);
+
+    // Set the searchTerm in the TopCharts component
+    setTopChartsSearchTerm(String(value));
+  };
+
   return (
     <div className="suggestion-form">
       <div className="suggestion-form-container">
@@ -246,7 +260,7 @@ function SuggestionForm({ name, email, thisID, businessName }) {
                   ? "Start typing compliment here.."
                   : "Start typing suggestion here.."
               }
-              onChange={(e) => setSuggestion(e.target.value)}
+              onChange={handleSearchInputChange}
             />
           </div>
         </div>
@@ -284,24 +298,24 @@ function SuggestionForm({ name, email, thisID, businessName }) {
       {suggestion !== "" ? (
         <div className="suggestionSearchListContainer">
           {searchList.length !== 0 ? (
-            <div>
+            <>
               {searchList.map((suggestionItem) => (
                 <div className="suggestionSearchList" key={suggestionItem.id}>
                   {array.includes(suggestionItem.suggestion) ? (
-                    <div></div>
+                    <></>
                   ) : (
                     <button
                       onClick={() => {
                         setSuggestion(suggestionItem.suggestion);
                       }}
                     >
-                      <p>{suggestionItem.suggestion}</p>
+                      {suggestionItem.suggestion}
                       {array.push(suggestionItem.suggestion).hide}
                     </button>
                   )}
                 </div>
               ))}
-            </div>
+            </>
           ) : (
             <> </>
           )}
@@ -313,22 +327,19 @@ function SuggestionForm({ name, email, thisID, businessName }) {
       {/* Display similar suggestions */}
       {similarSuggestions.length > 0 && (
         <div className="similar-suggestions">
-          <p>Did you mean:</p>
-          <ul>
-            {similarSuggestions.map((simSuggestion) => (
-              <li key={simSuggestion.suggestion}>
-                <button
-                  onClick={() => {
-                    setSuggestion(simSuggestion.suggestion);
-                  }}
-                >
-                  {simSuggestion.suggestion}{" "}
-                  {/* (Similarity:{" "}
+          {similarSuggestions.map((simSuggestion) => (
+            <div key={simSuggestion.suggestion}>
+              <button
+                onClick={() => {
+                  setSuggestion(simSuggestion.suggestion);
+                }}
+              >
+                {simSuggestion.suggestion}{" "}
+                {/* (Similarity:{" "}
                   {(simSuggestion.similarity * 100).toFixed(2)}%) */}
-                </button>
-              </li>
-            ))}
-          </ul>
+              </button>
+            </div>
+          ))}
         </div>
       )}
     </div>

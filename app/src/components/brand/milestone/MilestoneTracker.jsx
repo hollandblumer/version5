@@ -1,12 +1,9 @@
-import { useState, useEffect } from "react";
-import Icon from "../../icon/Icon";
-import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
+import React, { useState, useEffect } from "react";
+import { DataStore, SortDirection } from "@aws-amplify/datastore";
 import { Milestone, Suggestion } from "../../../models";
-import Avatar from "@mui/material/Avatar";
 import "../../../styles/brand/milestone/milestone.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfo } from "@fortawesome/free-solid-svg-icons";
-import MilestonBlob from "../../../assets/images/milestone-blob.svg";
+import { faThumbsUp, faEllipsis } from "@fortawesome/free-solid-svg-icons";
 
 function formatDate(date) {
   const parsedDate = new Date(date);
@@ -16,20 +13,21 @@ function formatDate(date) {
   return formattedDate;
 }
 
-function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
-  const [milestones, setMilestones] = useState([]);
-  const [icon, setIcon] = useState();
-  const [loadedSuggestion, setLoadedSuggestion] = useState(null); // To store the loaded suggestion
+function MilestoneTracker({ businessname, suggestionID }) {
+  const [loadedSuggestion, setLoadedSuggestion] = useState(null);
+  const [groupedMilestones, setGroupedMilestones] = useState([]);
 
   useEffect(() => {
     const getData = async () => {
       try {
+        // Fetch the loaded suggestion data
         const loadedSuggestion = await DataStore.query(
           Suggestion,
           suggestionID
         );
         setLoadedSuggestion(loadedSuggestion);
 
+        // Fetch milestones related to the suggestion
         const milestones = await DataStore.query(
           Milestone,
           (c) =>
@@ -38,110 +36,72 @@ function MilestoneTracker({ businessname, suggestionID, milestone, date }) {
               c.suggestionID.eq(suggestionID),
             ]),
           {
-            sort: (s) => s.createdAt(SortDirection.DESCENDING),
+            sort: (s) => s.createdAt(SortDirection.ASCENDING),
           }
         );
 
-        setMilestones(milestones);
+        // Group milestones by suggestion ID
+        const groupedBySuggestion = milestones.reduce((acc, milestone) => {
+          const suggestionID = milestone.suggestionID;
+          acc[suggestionID] = acc[suggestionID] || [];
+          acc[suggestionID].push(milestone);
+          return acc;
+        }, {});
+
+        // Set the grouped milestones in the state
+        setGroupedMilestones(groupedBySuggestion);
       } catch (err) {
         console.error(err);
       }
     };
+
     getData();
-  }, []);
+  }, [businessname, suggestionID]);
 
   return (
-    <div>
-      {/* <img src={MilestonBlob} className="milestone-blob" /> */}
-      <div className="milestone-tracker">
-        {milestones.length > 0 ? (
-          <div>
-            {/* <div className="milestone-subtle-suggestion-info">
-              <div>{formatDate(date)}</div>
-              <div className="milestone-counter"> 2</div>
-            </div>{" "} */}
-            {/*  <Avatar
-            src={url}
-            // sx={{ height: "90px", width: "90px" }}
-            sx={{ height: "40px", width: "40px" }}
-            style={{
-              border: "1px solid #ffffff",
-            }}
-          />{" "} */}
-            <div className="milestone-update">
-              <div className="milestone-title"> {milestone} </div>
-              <div className="milestone-counter"> 2</div>
-              {/* <span className="milestone-businessname"> @{businessname} </span> */}
-              <div className="milestone-dot"></div>
-              <span className="actual-milestone"> {milestone} </span>
-              {/*    <FontAwesomeIcon
-                icon={faArrowUpRightFromSquare}
-                className="share"
-                color="rgb(47,47,47)"
-              /> */}
-              {/* <div className="milestone-suggestion"> */}{" "}
-              <span className="milestone-grey"> in response to the </span>
-              <span className="actual-milestone-suggestion">
-                {loadedSuggestion.suggestion}
-              </span>
-              <span className="actual-milestone">
-                {" "}
-                {loadedSuggestion.compliment ? (
-                  <span className="actual-milestone">compliment</span>
-                ) : (
-                  <span className="actual-milestone-suggestion">
-                    {loadedSuggestion.suggestion}
-                  </span>
+    <div className="milestone">
+      {Object.keys(groupedMilestones).length > 0 && (
+        <div>
+          {Object.keys(groupedMilestones).map((currentSuggestionID, index) => (
+            <div key={index}>
+              <div className="milestone-title">
+                {loadedSuggestion?.suggestion}
+              </div>
+              <div className="milestone-update">
+                {groupedMilestones[currentSuggestionID].map(
+                  (milestone, milestoneIndex, milestonesArray) => (
+                    <div key={milestoneIndex}>
+                      <div className="actual-milestone">
+                        <div
+                          className={`milestone-dot ${
+                            milestoneIndex === milestonesArray.length - 1
+                              ? "last-milestone-dot"
+                              : ""
+                          }`}
+                        ></div>{" "}
+                        <div className="actual-milestone-content">
+                          <div>{milestone.milestone}</div>
+                          <div className="text">
+                            {" "}
+                            {formatDate(milestone.updatedAt)}
+                          </div>
+                        </div>
+                        <FontAwesomeIcon icon={faThumbsUp} />
+                        <FontAwesomeIcon icon={faEllipsis} />
+                      </div>
+                    </div>
+                  )
                 )}
-              </span>
-              {/* </div> */}
-              {/* <div
-              className={` ${
-                icon != null && index != 0
-                  ? "milestone-icon "
-                  : icon != null && index === 0
-                  ? "milestone-white-icon "
-                  : "milestone-no-icon"
-              }`}
-            >
-              <Icon icon={icon} />
-            </div> */}
-            </div>
-            {/*   <div className="milestone-follower-container">
-         
+                <div className="project-incompleted">
+                  {" "}
+                  <div className="incomplete-dot"> </div>
+                  <p>finished project</p>
                 </div>
-              )}
+              </div>
             </div>
-
-            <div className="milestone-like-share">
-              <FontAwesomeIcon
-                icon={faPlusCircle}
-                className="share"
-                color="#2f2f2f"
-                size="lg"
-              />
-              <FontAwesomeIcon
-                icon={faShareNodes}
-                className="share"
-                color="#2f2f2f"
-                size="lg"
-              />
-              <FontAwesomeIcon
-                icon={faEllipsis}
-                className="share"
-                color="#2f2f2f"
-                size="lg"
-              />
-            </div>
-          </div> */}
-          </div>
-        ) : (
-          <div className="text">Not started</div>
-        )}
-      </div>
-      <div className="see-more-milestone">
-        Liked by hollandblumer eleanorblumer and see more{" "}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -16,17 +16,33 @@
   }
 
   .p-font {
-    font-family: "Helvetica Neue";
-    font-size: 14pt;
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+    font-family: "Inter";
+    font-size: 13pt;
+    color: #67645e;
     // color: #757575;
+  }
+
+  .contact-us-button {
+    border-radius: 40px;
+    background: none;
+    border: 1.5px solid #ffffff;
+    color: #007aff;
+    font-family: "Helvetica Neue";
+    font-size: 15px;
+    padding: 10px 0px;
+    width: 125px;
+
+    &:hover {
+      background: rgba(254, 253, 254, 0.3);
+    }
   }
 
   .brand-form-description {
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin-bottom: 3rem;
+    margin-bottom: 2.6rem;
   }
 
   .brand-form-container {
@@ -76,9 +92,10 @@
   }
 
   .add-brand-title {
-    font-family: "itc-souvenir";
+    font-family: "itc-souvenir-demi";
+
     color: #1d1c1b;
-    font-size: 30px;
+    font-size: 42px;
     font-weight: 500;
   }
 
@@ -130,6 +147,7 @@
     letter-spacing: 1px;
     font-size: 16px;
     transition: background-color 0.3s, color 0.2s ease 0s;
+    margin-top: 4rem;
 
     &:hover {
       background-color: #aba9a6;
