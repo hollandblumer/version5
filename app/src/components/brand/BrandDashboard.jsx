@@ -149,6 +149,7 @@ function BrandDashboard({ SignedInUser }) {
           <TopCharts
             thisID={SignedInUser.id}
             initialSearchTerm={topChartsSearchTerm}
+            email={SignedInUser.email}
           />
         </div>
       </div>

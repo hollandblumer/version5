@@ -4,7 +4,6 @@ import { Storage } from "aws-amplify";
 import { UserSuggestion } from "../../models";
 import { User } from "../../models";
 import Avatar from "@mui/material/Avatar";
-import topbrandsimage from "../../assets/images/top-brands-compliment.png";
 import AvatarDesign from "../../assets/images/avatar-design1.png";
 import { Link } from "react-router-dom";
 import EyeWorld from "../../assets/images/eye-world.png";

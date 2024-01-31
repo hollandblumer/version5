@@ -6,6 +6,7 @@ import {
   faArrowRight,
   faCaretDown,
   faSortDown,
+  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import { Auth } from "@aws-amplify/auth";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
@@ -227,7 +228,7 @@ function SuggestionForm({
                 <div className="checkbox-option">
                   <label>
                     <input
-                      type="checkbox"
+                      type="radio"
                       value="false"
                       checked={selectedOption === "false"}
                       onChange={() => handleSelectChange("false")}
@@ -238,7 +239,7 @@ function SuggestionForm({
                 <div className="checkbox-option">
                   <label>
                     <input
-                      type="checkbox"
+                      type="radio"
                       value="true"
                       checked={selectedOption === "true"}
                       onChange={() => handleSelectChange("true")}
@@ -246,6 +247,11 @@ function SuggestionForm({
                     Compliment
                   </label>
                 </div>
+                <FontAwesomeIcon
+                  icon={faX}
+                  size="xs"
+                  onClick={() => setIsDropdownOpen(false)}
+                />
               </div>
             )}
           </div>
@@ -297,6 +303,7 @@ function SuggestionForm({
       )}
       {suggestion !== "" ? (
         <div className="suggestionSearchListContainer">
+          Did you mean?
           {searchList.length !== 0 ? (
             <>
               {searchList.map((suggestionItem) => (

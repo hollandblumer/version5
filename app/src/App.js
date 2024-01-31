@@ -13,13 +13,7 @@ import { faBell, faBars } from "@fortawesome/free-solid-svg-icons";
 import "./styles/header/header.css";
 import Search from "./components/header/Search";
 import Dropdown from "./components/header/Dropdown";
-import {
-  faMagnifyingGlass,
-  faHome,
-  faUser,
-  faMoon,
-  faSun,
-} from "@fortawesome/free-solid-svg-icons";
+import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import SignInComponent from "./components/signin/SignInComponent";
 import TidioWrapper from "./TidioWrapper";
 import CompleteProfile from "./components/signin/CompleteProfile";
@@ -116,7 +110,7 @@ function App() {
 
   return (
     <div className="App">
-      <OrbEffect />
+      {circlePosition !== 0 && <OrbEffect />}
       {/*   <div className="banner">
         {" "}
         Conference Join on 1/1 and win tickets to this blah blah blah / Trying
@@ -215,9 +209,8 @@ function App() {
         <div className="header-logo">
           <a href="/">
             <img className="logo-gif" src={LogoGIF} />
-            {/* <div class="logo">DIVOT</div> */}
           </a>
-          {/*   <div className="beta">
+          {/*  <div className="beta">
             <TidioWrapper icon="info" />
           </div> */}
         </div>

@@ -3,7 +3,6 @@ import "./styles/signin/signin.css";
 import { Helmet } from "react-helmet";
 import { faCircleInfo, faComments } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import InfoIcon from "./assets/images/itc-info-icon.png";
 import InfoIcon2 from "./assets/images/brown-info.svg";
 
 function TidioWrapper({ icon }) {
@@ -55,7 +54,7 @@ function TidioWrapper({ icon }) {
             <img src={InfoIcon2} className="info-icon" />
           </div>
         ) : tempIcon == "h" ? (
-          <div className="chat-now-text">
+          <div className="signin-redirect">
             Chat box available from 9AM-6PM EST{" "}
             <FontAwesomeIcon
               icon={faComments}

@@ -377,20 +377,22 @@
 
 .top-brands-sort-select-container {
   width: 100%;
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   font-family: "neutra-text";
   color: #c1bcbc;
   color: #8e8e8e;
 }
 
+@media only screen and (max-width: 600px) {
+  .top-brands-sort-select-container {
+    justify-content: space-between;
+  }
+}
 .top-charts-sort-button {
-  border: 0.07rem solid #dedede;
-  background: none;
-  color: #1a1a1a;
-  color: #272727;
   background: rgb(231, 228, 228);
   background: #e7e6ec;
   background: rgba(214, 212, 213, 0.5);
@@ -407,9 +409,6 @@
   font-family: "sofia-pro";
   font-weight: normal;
   color: #c1bcbc;
-  color: #272727;
-  color: rgb(188, 184, 184);
-  color: #272727;
   color: #67645e;
   letter-spacing: 0.2px;
 }
@@ -423,37 +422,15 @@
   border: 1px solid #cccaca;
   border: none;
   background: #cccaca;
-  color: rgb(20, 19, 19);
-  color: #36252d;
-  color: #0f65d0;
-  color: #4caf50;
-  color: #76073f;
-  color: rgb(93, 7, 54);
-  color: #ffa07a;
-  color: #e13500;
-  color: #ab7a4f;
-  color: #bc8e71;
-  color: #aa7950;
+  color: #e07a54;
+  color: #35252d;
+  color: #724848;
+  color: #b17d58;
   background: none;
   font-size: 16px;
   font-family: "sofia-pro";
 }
 .top-charts-sort-button:hover {
-  background: #8fcf8f;
-  background: #c4cbb6;
-  background: #5bab5c;
-  background: #aa7950;
-  background: #493b41;
-  background: #92c893;
-  background: linear-gradient(135deg, rgb(161, 140, 209), rgb(251, 194, 235));
-  background: rgb(184, 140, 209);
-  background: #e6e4db;
-  background: rgb(167, 151, 129);
-  background: #bcb2ab;
-  background: #ba9169;
-  background: #525350;
-  background: linear-gradient(110deg, #b07849, #e1d6cd);
-  background: #dbdada;
   border: 1px solid #dbdada;
   border: none;
   background: none;
@@ -462,6 +439,14 @@
   color: #a87f65;
 }
 
+@media only screen and (min-width: 600px) {
+  .top-charts-sort-button {
+    padding: 0rem 1.5rem;
+  }
+  .top-charts-sort-button:first-child {
+    padding: 0 1.5rem 0 0;
+  }
+}
 .divider {
   color: rgb(193, 190, 190);
   color: #37252c;

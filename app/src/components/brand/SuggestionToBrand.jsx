@@ -1,36 +1,36 @@
 import React from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { Auth } from "@aws-amplify/auth";
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { DataStore, SortDirection } from "@aws-amplify/datastore";
-import { UserSuggestion, Milestone, Suggestion } from "../../models";
+import { UserSuggestion, Milestone, Suggestion, User } from "../../models";
 import { Storage } from "aws-amplify";
 import Icon from "../icon/Icon";
 import SuggestionSupporterBrand from "../follower/SuggestionSupporterBrand";
 import {
   faEllipsis,
-  faPlusCircle,
-  faShareNodes,
-  faArrowUpRightFromSquare,
-  faThumbsUp,
   faHeartCirclePlus,
-  faPlus,
   faHeartCircleCheck,
+  faBell,
+  faShare,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
 import "../../styles/suggestion/suggestion-general/suggestion.css";
 import ShareNodes from "../../assets/images/share-nodes.svg";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Link } from "react-router-dom";
 
 function SuggestionToBrand({
   suggestion,
+  suggestionID,
   businessName,
   actualindex,
   iscompliment,
   counter,
   thisID,
+  email,
 }) {
   const [users, setUsers] = useState([]);
   const [milestones, setMilestones] = useState([]);
@@ -39,7 +39,10 @@ function SuggestionToBrand({
   const [user, setUser] = useState(null);
   const [copied, setCopied] = useState(false); // To track if the link has been copied
   const [showTooltip, setShowTooltip] = useState(false);
+  const [isPopupVisible, setPopupVisible] = useState(false);
+  const [enteredEmail, setEnteredEmail] = useState("");
 
+  const navigate = useNavigate();
   useEffect(() => {
     const checkUserAuthentication = async () => {
       try {
@@ -92,7 +95,10 @@ function SuggestionToBrand({
         });
 
         const milestones = await DataStore.query(Milestone, (c) =>
-          c.and((c) => [c.brandName.eq(businessName)])
+          c.and((c) => [
+            c.brandName.eq(businessName),
+            c.suggestionID.eq(suggestionID),
+          ])
         );
         setMilestones(milestones);
       } catch (err) {
@@ -189,6 +195,96 @@ function SuggestionToBrand({
 
   let avatararray = [];
   let array = [];
+
+  const popupRef = useRef(null);
+
+  const handleClick = (event) => {
+    const ellipsisIcon = document.querySelector(
+      ".brand-suggestion-container .like-share .share"
+    );
+
+    if (ellipsisIcon && ellipsisIcon.contains(event.target)) {
+      // Click on the ellipsis icon or its child elements, toggle the popup
+      togglePopup();
+      return; // Add this line to stop event propagation
+    }
+
+    // Click outside the popup or ellipsis icon, close it
+    setPopupVisible(false);
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClick);
+
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  }, []);
+
+  const togglePopup = () => {
+    setPopupVisible(!isPopupVisible);
+  };
+
+  const handleEmailPrompt = async () => {
+    // Prompt the user for their email
+    const userEmail = prompt("Please enter your email:");
+
+    // Check if the email is empty or 'na'
+    if (userEmail && userEmail.toLowerCase() !== "na") {
+      // Check if the entered email is already stored in the User table
+      const existingUser = await DataStore.query(User, (c) =>
+        c.email.eq(userEmail)
+      );
+
+      if (existingUser.length > 0) {
+        // User is found, prompt for sign in
+        const signInConfirmation = window.confirm(
+          "An account with this email already exists. Do you want to sign in?"
+        );
+
+        if (signInConfirmation) {
+          // Redirect to sign-in page
+          navigate("/sign-in");
+        }
+      } else {
+        // Email is not in User table, save the entered email or handle as needed
+        setEnteredEmail(userEmail);
+      }
+    }
+  };
+
+  const handleShareClick = () => {
+    // You can construct your shareable message
+    const shareableMessage = `Check out "${suggestion}" suggestion made to ${businessName}'s profile.`;
+
+    // Copy the message to the clipboard
+    navigator.clipboard
+      .writeText(shareableMessage)
+      .then(() => {
+        // Set state to indicate that the message has been copied
+        setCopied(true);
+
+        // Show the tooltip for a short duration
+        setTimeout(() => {
+          // Reset the state after a short duration
+          setCopied(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.error("Failed to copy info to clipboard:", error);
+      });
+  };
+
+  const handleReportClick = () => {
+    // You can construct the mailto link
+    const subject = `Reporting "${suggestion}" on ${businessName}'s profile`;
+    const content = `Feel free to add more specific details below:`;
+
+    // Open the default mail client with the mailto link
+    window.location.href = `mailto:?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(content)}`;
+  };
 
   return (
     <div
@@ -287,7 +383,15 @@ function SuggestionToBrand({
             className="share"
             color={userHasMadeSuggestion ? "#5BAB5C" : "#E8542B"}
             size="lg"
-            onClick={handleThumbsUpClick}
+            onClick={() => {
+              if (!email || email.toLowerCase() === "na") {
+                // Prompt for email if it's empty or 'na'
+                handleEmailPrompt();
+              } else {
+                // Proceed with existing logic for handleThumbsUpClick
+                handleThumbsUpClick();
+              }
+            }}
           />
 
           {/*    <FontAwesomeIcon
@@ -315,8 +419,21 @@ function SuggestionToBrand({
             className="share"
             color="#5b584a"
             size="lg"
+            onClick={togglePopup}
           />
         </div>
+        {isPopupVisible && (
+          <div ref={popupRef} className="trending-ellipsis-popup-menu">
+            <button onClick={handleShareClick}>
+              {copied ? "Copied!" : "Share"}
+              <FontAwesomeIcon icon={faShare} />
+            </button>
+
+            <button onClick={handleReportClick}>
+              Report <FontAwesomeIcon icon={faBell} />
+            </button>
+          </div>
+        )}
         {showTooltip && <div className="tooltip">Copied to clipboard!</div>}
       </div>
     </div>

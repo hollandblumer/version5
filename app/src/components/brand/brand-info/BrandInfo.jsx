@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
@@ -9,9 +9,8 @@ import {
   faCircleQuestion,
   faEllipsis,
   faUserPlus,
-  faLink,
   faArrowUpRightFromSquare,
-  faBed,
+  faX,
 } from "@fortawesome/free-solid-svg-icons";
 import AvatarDesign from "../../../assets/images/avatar-design-5.png";
 import "../../../styles/brand/info/brand-info.css";
@@ -21,6 +20,11 @@ import IconGenerator from "../icon/IconGenerator";
 import BrandSize from "../size/BrandSize";
 import Tree from "../../../assets/images/subsidiary.png";
 import SisterBrands from "../../../assets/images/sister-brands.png";
+import { CopyToClipboard } from "react-copy-to-clipboard";
+import { FacebookShareButton, TwitterShareButton } from "react-share";
+import { ToastContainer, toast } from "react-toastify";
+import emailjs from "emailjs-com";
+import { useClipboard } from "use-clipboard-copy";
 
 function BrandInfo({
   url,
@@ -37,6 +41,41 @@ function BrandInfo({
 }) {
   let formatdate = new Date(date);
   let link = null;
+  const [reportReason, setReportReason] = useState("");
+  const [isProfileCopied, setIsProfileCopied] = useState(false);
+  const [isPopupVisible, setPopupVisible] = useState(false);
+
+  const togglePopup = () => {
+    setPopupVisible(!isPopupVisible);
+  };
+
+  const clipboard = useClipboard();
+
+  const handleCopyToClipboard = () => {
+    clipboard.copy(shareText);
+    setIsProfileCopied(true); // Set state to true after successful copy
+  };
+
+  useEffect(() => {
+    return () => {
+      setIsProfileCopied(false);
+    };
+  }, []);
+
+  const shareText = `Check out ${username} on Divot. ${window.location.href}`;
+
+  const handleReportProfile = () => {
+    const subject = `Report ${username}'s Profile`;
+    const body = `If there is a specific reason for reporting ${username}, please let us know below:\n\n`;
+
+    // Construct the mailto link
+    const mailtoLink = `mailto:support@example.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    // Open the default email client
+    window.location.href = mailtoLink;
+  };
 
   return (
     <div className="brand-info">
@@ -61,34 +100,6 @@ function BrandInfo({
           style={{ opacity: 0.9 }}
         />
         <div className="avatar-background">
-          {/*   <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 313 313"
-            width="110"
-            height="110"
-          >
-            <defs>
-              <clipPath id="new-clip-shape">
-                <path d="m184.39,299.57l-92.1-12.81c-22.66-3.15-41.99-18.01-50.86-39.1L5.39,161.94C-3.65,140.44-.45,115.74,13.77,97.26L68.83,25.65C83.04,7.16,106.09-2.27,129.19,.94l92.1,12.81c22.66,3.15,41.99,18.01,50.86,39.1l36.04,85.72c9.04,21.5,5.84,46.19-8.37,64.68l-55.06,71.61c-14.22,18.49-37.26,27.92-60.36,24.71Z" />
-              </clipPath>
-            </defs>
-            <image
-              xlinkHref={url}
-              x="-3" // A slight offset to center better
-              y="-3" // A slight offset to center better
-              width="320" // Adjusted to match the viewBox dimensions
-              height="320" // Adjusted to match the viewBox dimensions
-              clipPath="url(#new-clip-shape)"
-            />
-          </svg> */}
-          {/*    <Avatar
-            src={url}
-            // sx={{ height: "90px", width: "90px" }}
-            sx={{ height: "110px", width: "110px" }}
-            style={{
-              border: "0.4px solid #eeeeee",
-            }}
-          /> */}
           <Avatar
             src={url}
             // sx={{ height: "107px", width: "107px" }}
@@ -99,26 +110,6 @@ function BrandInfo({
               }
             }
           />
-          {/*    <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 270.12 263.07"
-            width="114"
-            height="114"
-          >
-            <defs>
-              <clipPath id="new-clip-shape">
-                <path d="m234.46,45.03l24.29,43.15c15.16,26.92,15.16,59.8,0,86.73l-24.29,43.15c-15.66,27.82-45.1,45.03-77.02,45.03h-44.76c-31.92,0-61.36-17.21-77.02-45.03l-24.29-43.15c-15.16-26.92-15.16-59.8,0-86.73l24.29-43.15C51.32,17.21,80.76,0,112.68,0h44.76c31.92,0,61.36,17.21,77.02,45.03Z" />
-              </clipPath>
-            </defs>
-            <image
-              xlinkHref={url}
-              x="-15"
-              y="-15"
-              width="290.12"
-              height="300.07"
-              clipPath="url(#new-clip-shape)"
-            />
-          </svg> */}
         </div>
       </div>
       <div className="brand-info-container">
@@ -128,7 +119,7 @@ function BrandInfo({
             {verification == false ? (
               <div className="unverified">
                 {" "}
-                unverfied{" "}
+                unclaimed{" "}
                 <FontAwesomeIcon
                   icon={faCircleQuestion}
                   size="sm"
@@ -149,15 +140,16 @@ function BrandInfo({
           </div>
           <div className="brand-action-buttons">
             <button className="user-action-button follow">
-              {" "}
-              <FontAwesomeIcon
-                icon={faUserPlus}
-                className="share"
-                color="#007AFF"
-              />{" "}
+              <Link to="/sign-in">
+                <FontAwesomeIcon
+                  icon={faUserPlus}
+                  className="share"
+                  color="#007AFF"
+                />{" "}
+              </Link>
             </button>
 
-            <button className="user-action-ellipsis">
+            <button className="user-action-ellipsis" onClick={togglePopup}>
               <FontAwesomeIcon
                 icon={faEllipsis}
                 className="share"
@@ -165,6 +157,42 @@ function BrandInfo({
                 size="lg"
               />
             </button>
+
+            {isPopupVisible && (
+              <div className="ellipsis-popup-menu">
+                <div className="ellipsis-popup-header">
+                  <i>Share to</i>
+                  <button onClick={togglePopup}>
+                    <FontAwesomeIcon icon={faX} size="xs" color="ffffff" />
+                  </button>
+                </div>
+                <CopyToClipboard
+                  text={shareText}
+                  onCopy={handleCopyToClipboard}
+                >
+                  <button disabled={isProfileCopied}>
+                    {isProfileCopied ? "Copied!" : "Copy Profile"}
+                  </button>
+                </CopyToClipboard>
+
+                {/* Use react-share for social media sharing */}
+                <FacebookShareButton
+                  url={window.location.href}
+                  quote={`Check out ${username} on Divot.`}
+                >
+                  <button>Share on Facebook</button>
+                </FacebookShareButton>
+
+                <TwitterShareButton
+                  url={window.location.href}
+                  title={`Check out ${username} on Divot.`}
+                >
+                  <button>Share on Twitter</button>
+                </TwitterShareButton>
+
+                <button onClick={handleReportProfile}>Report Profile</button>
+              </div>
+            )}
           </div>
         </div>
 

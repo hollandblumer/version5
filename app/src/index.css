@@ -41,6 +41,7 @@ body {
   background: #f7f6f0;
   background: #faf2de;
   background: url(./assets/images/natural-backdrop.png);
+  background: url(./assets/images/black-background.png);
 }
 
 @media (max-width: 768px) {
@@ -56,7 +57,7 @@ body {
     background: #ebebeb;
     background: #071307;
     background: rgb(225, 222, 222);
-    background: url(./assets/images/natural-backdrop.png);
+    background: url(./assets/images/black-background.png);
     margin: 0;
   }
 }

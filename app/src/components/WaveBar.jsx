@@ -1,5 +1,3 @@
-import React from "react";
-
 function generateSVG(
   startColor,
   endColor,
@@ -43,15 +41,15 @@ function WaveBar() {
               style={{
                 animationDuration: "16s",
                 paddingRight: "0em",
-                background: "#F1F2F2",
+                background: "#f7f6f0",
               }}
             >
               <span class="marquee__content">
                 <div class="scrolling-banner__wave-group">
                   {/* First SVG with Original Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#b07849",
+                    "#E1D6CD",
                     "waveGradient1",
                     "640px",
                     "100px"
@@ -59,8 +57,8 @@ function WaveBar() {
 
                   {/* Second SVG with Reversed Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#E1D6CD",
+                    "#b07849",
                     "waveGradient2",
                     "640px",
                     "100px"
@@ -68,8 +66,8 @@ function WaveBar() {
 
                   {/* Third SVG with Original Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#b07849",
+                    "#E1D6CD",
                     "waveGradient3",
                     "640px",
                     "100px"
@@ -77,8 +75,8 @@ function WaveBar() {
 
                   {/* Fourth SVG with Reversed Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#E1D6CD",
+                    "#b07849",
                     "waveGradient4",
                     "640px",
                     "100px"
@@ -91,15 +89,15 @@ function WaveBar() {
               style={{
                 animationDuration: "16s",
                 paddingRight: "0em",
-                background: "#F1F2F2",
+                background: "#f7f6f0",
               }}
             >
               <span class="marquee__content">
                 <div class="scrolling-banner__wave-group">
                   {/* Fifth SVG with Original Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#b07849",
+                    "#E1D6CD",
                     "waveGradient5",
                     "640px",
                     "100px"
@@ -107,8 +105,8 @@ function WaveBar() {
 
                   {/* Sixth SVG with Reversed Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#E1D6CD",
+                    "#b07849",
                     "waveGradient6",
                     "640px",
                     "100px"
@@ -116,8 +114,8 @@ function WaveBar() {
 
                   {/* Seventh SVG with Original Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#b07849",
+                    "#E1D6CD",
                     "waveGradient7",
                     "640px",
                     "100px"
@@ -125,8 +123,8 @@ function WaveBar() {
 
                   {/* Eighth SVG with Reversed Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#E1D6CD",
+                    "#b07849",
                     "waveGradient8",
                     "640px",
                     "100px"
@@ -134,8 +132,8 @@ function WaveBar() {
 
                   {/* Ninth SVG with Original Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#b07849",
+                    "#E1D6CD",
                     "waveGradient9",
                     "640px",
                     "100px"
@@ -143,8 +141,8 @@ function WaveBar() {
 
                   {/* Tenth SVG with Original Colors */}
                   {generateSVG(
-                    "#000",
-                    "#000",
+                    "#E1D6CD",
+                    "#b07849",
                     "waveGradient10",
                     "640px",
                     "100px"
@@ -156,14 +154,14 @@ function WaveBar() {
           <span
             aria-hidden="true"
             className="marquee__ref"
-            style={{ paddingRight: "0em", background: "#F1F2F2" }}
+            style={{ paddingRight: "0em", background: "#f7f6f0" }}
           >
             <span class="marquee__content">
               <div class="scrolling-banner__wave-group">
                 {/* 11th SVG with Original Colors */}
                 {generateSVG(
-                  "#000",
-                  "#000",
+                  "#b07849",
+                  "#E1D6CD",
                   "waveGradient11",
                   "640px",
                   "100px"
@@ -171,8 +169,8 @@ function WaveBar() {
 
                 {/* 12th SVG with Original Colors */}
                 {generateSVG(
-                  "#000",
-                  "#000",
+                  "#E1D6CD",
+                  "#b07849",
                   "waveGradient12",
                   "640px",
                   "100px"
@@ -180,8 +178,8 @@ function WaveBar() {
 
                 {/* 13th SVG with Original Colors */}
                 {generateSVG(
-                  "#000",
-                  "#000",
+                  "#b07849",
+                  "#E1D6CD",
                   "waveGradient13",
                   "640px",
                   "100px"
@@ -189,8 +187,8 @@ function WaveBar() {
 
                 {/* 14th SVG with Original Colors */}
                 {generateSVG(
-                  "#000",
-                  "#000",
+                  "#E1D6CD",
+                  "#b07849",
                   "waveGradient14",
                   "640px",
                   "100px"
@@ -198,8 +196,8 @@ function WaveBar() {
 
                 {/* 15th SVG with Original Colors */}
                 {generateSVG(
-                  "#000",
-                  "#000",
+                  "#b07849",
+                  "#E1D6CD",
                   "waveGradient15",
                   "640px",
                   "100px"
@@ -207,8 +205,8 @@ function WaveBar() {
 
                 {/* 16th SVG with Original Colors */}
                 {generateSVG(
-                  "#000",
-                  "#000",
+                  "#E1D6CD",
+                  "#b07849",
                   "waveGradient16",
                   "640px",
                   "100px"

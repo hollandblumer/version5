@@ -31,12 +31,15 @@
     "react-qr-reader": "^3.0.0-beta-1",
     "react-router-dom": "^6.15.0",
     "react-scripts": "^5.0.1",
+    "react-share": "^5.0.3",
     "react-slick": "^0.29.0",
     "react-speech-recognition": "^3.10.0",
     "react-spring": "^9.7.3",
+    "react-toastify": "^10.0.4",
     "simplex-noise": "^4.0.1",
     "slick-carousel": "^1.8.1",
     "three": "^0.157.0",
+    "use-clipboard-copy": "^0.2.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

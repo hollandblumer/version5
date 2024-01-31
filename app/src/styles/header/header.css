@@ -377,7 +377,7 @@ is-reverse .marquee__scroll {
   margin-top: -0.5rem; */
   height: 85px;
   width: 85px;
-  margin-top: 10px;
+  width: 95px;
 }
 
 @media screen and (max-width: 610px) {
@@ -389,22 +389,6 @@ is-reverse .marquee__scroll {
     margin-top: 10px;
   }
 }
-.logo {
-  font-family: "hippie-mojo";
-  font-size: 70px;
-  /* Clip the background to the text */
-  -webkit-background-clip: text;
-  background-clip: text;
-  opacity: 1;
-  /* Make the text transparent so the gradient background shows through */
-  color: #554f32;
-  color: #524b2e;
-  color: #ece7d1;
-  color: #300510;
-  color: #f4f1e5;
-  color: #aa7950;
-}
-
 .beta {
   font-family: "itc-souvenir-demi";
   text-align: center;

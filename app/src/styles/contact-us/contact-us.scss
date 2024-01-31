@@ -9,9 +9,17 @@
 }
 
 .contact-us-container {
-  width: 60%;
+  width: 35rem;
   height: auto;
   margin-top: 6rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .contact-us-container {
+    width: 20rem;
+    height: auto;
+    margin-top: 4.5rem;
+  }
 }
 
 .contact-us-title {
@@ -30,7 +38,6 @@
   border: 1px solid rgb(204, 204, 204);
   background: #e0e0e0;
   background: #e4e3e3; // pretty color
-
   border-radius: none;
   margin-top: 2rem;
   min-height: 10rem;
@@ -167,7 +174,7 @@ form {
     background: #3b3b3a !important;
     padding: 15px 30px;
     color: white;
-
+    margin: 5rem auto 0 auto;
     border-radius: 30px;
     border: 1px solid rgb(219, 219, 219);
     box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1);

@@ -113,10 +113,6 @@
   justify-content: center;
 }
 
-.top-brands-sort-select-container {
-  position: relative; /* Make the container a positioning context */
-}
-
 .unverified {
   background: #efefef;
   background: #e2dddd;

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle, faSearch } from "@fortawesome/free-solid-svg-icons";
 import SuggestionToBrand from "./SuggestionToBrand";
 
-function TopCharts({ thisID, initialSearchTerm }) {
+function TopCharts({ thisID, initialSearchTerm, email }) {
   const { name } = useParams();
   const [suggestions, setSuggestions] = useState([]);
   const [verification, setVerification] = useState(false);
@@ -208,11 +208,13 @@ function TopCharts({ thisID, initialSearchTerm }) {
               <div key={p.id}>
                 <SuggestionToBrand
                   suggestion={p.suggestion}
+                  suggestionID={p.id}
                   iscompliment={p.compliment}
                   businessName={p.businessName}
                   counter={index + 1}
                   actualindex={index}
                   thisID={thisID}
+                  email={email}
                 />
               </div>
             ))
@@ -230,6 +232,7 @@ function TopCharts({ thisID, initialSearchTerm }) {
                 <div key={p.id}>
                   <SuggestionToBrand
                     suggestion={p.suggestion}
+                    suggestionID={p.id}
                     iscompliment={p.compliment}
                     businessName={p.businessName}
                     counter={count}

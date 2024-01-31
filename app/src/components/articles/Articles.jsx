@@ -1,8 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faArrowLeft,
+  faInfoCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import "../../styles/articles/articles.css";
+import FeaturedProject2 from "../../assets/images/featured-project-2.png";
+import FeaturedProject3 from "../../assets/images/featured-project-3.png";
+import FeaturedProject4 from "../../assets/images/featured-project-4.png";
+import FeaturedProject5 from "../../assets/images/featured-project-5.png";
+import FeaturedProject6 from "../../assets/images/featured-project-6.png";
+import SuggestionSupporterBrand from "../follower/SuggestionSupporterBrand";
+import BrandAvatar from "./BrandAvatar";
+import InfoIcon from "../../assets/images/black-info-icon.svg";
+import PurpleBackground from "../../assets/images/protect-energy.png";
+import GreyBackground from "../../assets/images/grey-background-2.png";
+import LightningBolt from "../../assets/images/lightning-bolt.svg";
+import Utensils from "../../assets/images/utensils.svg";
+import Water from "../../assets/images/recycle-water.svg";
 
 function Articles() {
   const getNumCards = () => {
@@ -41,26 +58,43 @@ function Articles() {
       setActiveSlide((prevSlide) => (prevSlide - 1 + numSlides) % numSlides);
     }
   };
+  const backgroundColors = [
+    {
+      color: "#EB6039",
+      svg: `${LightningBolt}`,
+    },
+    {
+      color: "#D2AAE0",
+      svg: `${Utensils}`,
+    },
+
+    {
+      color: "#A4B0BE",
+      svg: `${Water}`,
+    },
+    // Add more backgrounds as needed
+  ];
 
   const cardsData = [
     {
-      title: "Can The CEO Of Canada Goose...",
+      title: "Decrease the Energy Usage",
       content: "by Diane Brady",
-      imageUrl:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_Gn-kvY8_vzYv4SJKKKCqqb9uy8mST3TqS6oHyEN9ZpIfd1HpB8wqvUQ6WtVW4h6DqxU&usqp=CAU",
+      brandName: "divot",
+
       linkUrl:
         "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
-      title: "15 Biggest Environmental..",
+      title: "Switch Utensils",
       content: "By Deena Robinson",
+      brandName: "examplecoffeeshop",
       imageUrl:
         "https://u4d2z7k9.rocketcdn.me/wp-content/uploads/2021/06/ND46979-Roy-Mangersnes-1536x864.jpg.webp",
       linkUrl:
         "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
     {
-      title: "World Leaders at COP28",
+      title: "Save Water",
       content: "By MARTINA IGINI",
       imageUrl:
         "https://u4d2z7k9.rocketcdn.me/wp-content/uploads/2022/10/Untitled-1024-%C3%97-768px-4.jpg.webp",
@@ -70,8 +104,7 @@ function Articles() {
     {
       title: "Card 4",
       content: "Content for Card 4",
-      imageUrl:
-        "https://th-thumbnailer.cdn-si-edu.com/O3Dusr-SN-E1cuLzmavjspVhrxQ=/1000x750/filters:no_upscale():focal(1061x707:1062x708)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/6a/80/6a8057cd-5459-48f6-bbe9-a60cf978d469/gettyimages-1208881002.jpg",
+      imageUrl: FeaturedProject6,
       linkUrl:
         "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
     },
@@ -129,6 +162,7 @@ function Articles() {
           <h3>
             {" "}
             <i>Featured Projects</i>{" "}
+            {/* <img className="info-icon" src={InfoIcon} /> */}
           </h3>
         </div>
       </div>
@@ -137,16 +171,28 @@ function Articles() {
           <Col key={index} className="mb-4">
             <a href={card.linkUrl} target="_blank" rel="noopener noreferrer">
               <Card
-                className="h-100 shadow-sm bg-white border-light rounded position-relative card-background"
+                className="h-100 shadow-sm bg-white border-light rounded position-relative"
                 style={{
-                  background: `url("${card.imageUrl}") `,
+                  background:
+                    index < backgroundColors.length
+                      ? backgroundColors[index].color
+                      : "linear-gradient(130deg, #F39C12 0%, #e12318 100%)",
                 }}
               >
-                {console.log("Image URL:", slicedCardsData[index].imageUrl)}{" "}
-                {/* Add this line for logging */}
+                <div className="dimming-overlay"></div>
+                {backgroundColors[index] && (
+                  <img
+                    className="overlay-svg"
+                    src={backgroundColors[index].svg}
+                    alt="overlay"
+                  />
+                )}
                 <Card.Body>
                   <Card.Title>{card.title}</Card.Title>
-                  <Card.Text>{card.content}</Card.Text>
+                  <Card.Text>
+                    by <b>{card.brandName} </b>
+                    <BrandAvatar username={card.brandName} />
+                  </Card.Text>
                 </Card.Body>
               </Card>
             </a>

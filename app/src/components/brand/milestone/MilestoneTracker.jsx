@@ -4,9 +4,9 @@ import { Milestone, Suggestion } from "../../../models";
 import "../../../styles/brand/milestone/milestone.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faThumbsUp,
   faEllipsis,
   faHeartCirclePlus,
+  faCaretDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 function formatDate(date) {
@@ -83,16 +83,18 @@ function MilestoneTracker({ businessname, suggestionID }) {
   return (
     <div className="milestone">
       {Object.keys(groupedMilestones).length > 0 && (
-        <div>
+        <>
           {Object.keys(groupedMilestones).map((currentSuggestionID, index) => (
             <div key={index}>
               <div className="milestone-title">
                 {loadedSuggestion?.suggestion}
+                <FontAwesomeIcon
+                  icon={faCaretDown}
+                  style={{ color: "#007AFE", marginLeft: "6px" }}
+                />
               </div>
-
-              {/* Render the first and last milestones always */}
               <div className="milestone-update">
-                <div className="actual-milestone-1">
+                <div className="actual-milestone-container">
                   <div className={`milestone-dot first-milestone-dot`}></div>{" "}
                   <div className="actual-milestone-content">
                     <div>
@@ -105,7 +107,11 @@ function MilestoneTracker({ businessname, suggestionID }) {
                     </div>
                   </div>
                   <FontAwesomeIcon icon={faHeartCirclePlus} color="#939392" />
-                  <FontAwesomeIcon icon={faEllipsis} />
+                  <FontAwesomeIcon
+                    icon={faEllipsis}
+                    color="#5b584a"
+                    style={{ marginLeft: "6px" }}
+                  />
                 </div>
                 {groupedMilestones[currentSuggestionID].length > 2 && (
                   <button
@@ -142,7 +148,11 @@ function MilestoneTracker({ businessname, suggestionID }) {
                               icon={faHeartCirclePlus}
                               color="#939392"
                             />
-                            <FontAwesomeIcon icon={faEllipsis} />
+                            <FontAwesomeIcon
+                              icon={faEllipsis}
+                              color="#5b584a"
+                              style={{ marginLeft: "6px" }}
+                            />
                           </div>
                         </div>
                       )
@@ -167,7 +177,11 @@ function MilestoneTracker({ businessname, suggestionID }) {
                     </div>
                   </div>
                   <FontAwesomeIcon icon={faHeartCirclePlus} color="#939392" />
-                  <FontAwesomeIcon icon={faEllipsis} />
+                  <FontAwesomeIcon
+                    icon={faEllipsis}
+                    color="#5b584a"
+                    style={{ marginLeft: "6px" }}
+                  />
                 </div>
               </div>
             </div>
@@ -177,7 +191,7 @@ function MilestoneTracker({ businessname, suggestionID }) {
             <div className="incomplete-dot"> </div>
             <p>finished project</p>
           </div>
-        </div>
+        </>
       )}
     </div>
   );
