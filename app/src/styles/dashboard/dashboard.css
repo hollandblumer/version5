@@ -178,6 +178,7 @@
     align-items: center;
     position: relative;
     text-align: center;
+    color: #f8f6f3;
     /*    background: #939392;
     background: #f4f4f4;
     box-shadow: 0 2px 4px rgba(233, 230, 230, 0.1);
@@ -203,11 +204,29 @@
 }
 .first-ranking {
   position: absolute;
-  width: 30px;
-  height: 30px;
+  width: 29px;
+  height: 29px;
   z-index: 0;
+  animation: spin 17s linear infinite;
 }
 
+@keyframes spin {
+  0% {
+    transform: scale(1) rotate(-7deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(7deg);
+  }
+  50% {
+    transform: scale(1) rotate(-7deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(-7deg);
+  }
+  100% {
+    transform: scale(1) rotate(14deg);
+  }
+}
 .suggestion-update {
   display: flex;
   flex-direction: column;

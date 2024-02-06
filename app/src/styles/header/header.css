@@ -375,11 +375,8 @@ is-reverse .marquee__scroll {
   /*   width: 120px;
   height: 100px;
   margin-top: -0.5rem; */
-  height: 85px;
-  width: 85px;
-  width: 95px;
-  height: 170px;
-  width: 170px;
+  height: 100px;
+  width: 100px;
   margin-top: 5px;
 }
 
@@ -387,8 +384,6 @@ is-reverse .marquee__scroll {
   .logo-gif {
     height: 85px;
     width: 85px;
-    height: 135px;
-    width: 115px;
     margin-top: 10px;
   }
 }

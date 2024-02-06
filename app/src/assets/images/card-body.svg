@@ -4,7 +4,16 @@
     <style>
       .cls-1 {
         stroke-width: 0px;
-        fill:  #3b3b3ad8;
+        fill: #3b3b3ad8;
+        fill: #3b3b3aa3;
+        fill: #a9784f9c;
+        fill: #F2E1C1;
+        fill: #BE6FCA;
+        fill: #be6fcae6;
+        fill: #EFEFE8;
+        fill: linear-gradient(130deg, #F39C12, #e12318);
+        fill: #3b3b3a9c;
+        fill: rgba(111, 112, 114, 0.7);
       }
     </style>
   </defs>

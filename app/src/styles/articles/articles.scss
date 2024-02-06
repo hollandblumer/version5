@@ -50,7 +50,7 @@
   background: rgba(255, 253, 253, 0.3);
  */
   position: relative;
-  border-radius: 16px;
+  border-radius: 12px;
   display: flex;
   margin: 0 1.1rem 0 0rem;
   border: 1px solid rgb(224, 224, 217);
@@ -62,6 +62,7 @@
   flex-direction: column;
   height: 200px; // Set a fixed height for the card
   justify-content: flex-end;
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Add opacity transition */
 
   // Add styles for the position-relative class
   .overlay-svg {
@@ -82,12 +83,20 @@
   flex-direction: column;
   justify-content: flex-end;
   background: url(../../assets/images/card-body.svg);
+  /*   background: #ba4d0092;
+  background: #a9784f9c;
+  background: #be6fcab2;
+  background: #be6fcae6;
+  background: #efefe8b4;
+    background: #f85625c2;
+  background: #f856259c;
+  */
+
   z-index: 10000;
-  border-radius: 0 0 0px 0px;
+  border-radius: 0 0 15px 15px;
   width: 200px;
   background-size: 200px;
   background-repeat: no-repeat;
-  height: 80px;
 }
 
 /* .card-body {
@@ -131,7 +140,7 @@
 
 .card-image {
   position: absolute;
-  border-radius: 0px 0px 0px 0px;
+  border-radius: 15px;
   height: 100%;
   width: 100%;
   background-size: cover; // Make sure the image covers the entire container
@@ -199,11 +208,13 @@
   font-weight: 600;
   font-size: 12pt;
   text-align: left;
-  margin-top: 1rem;
   padding: 0 5px;
   color: #f8f6f3;
   z-index: 10;
   position: relative;
+  height: 50px;
+  padding: 17px 10px 5px 10px;
+  letter-spacing: 0.5px;
 }
 
 .card-text {
@@ -211,7 +222,7 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0 !important;
   /* height: 1.2rem; */ /* Remove or adjust this line to allow the text to wrap */
-  padding: 5px 1rem;
+
   z-index: 10;
   position: relative;
   display: flex;
@@ -220,6 +231,9 @@
   flex-flow: row wrap;
   color: black;
   color: #f8f6f3;
+  padding-right: 10px;
+  padding-bottom: 5px;
+  font-weight: 500;
   /* Add any other styles as needed */
 }
 
@@ -289,7 +303,7 @@
 
 .card-transition {
   opacity: 100;
-  transform: translateY(-10px);
+  transform: translateY(5px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 

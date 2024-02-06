@@ -100,6 +100,7 @@ function Articles({ showPopup }) {
     },
     {
       title: "Save Water",
+      brandName: "examplerestaurant",
 
       imageUrl:
         "https://u4d2z7k9.rocketcdn.me/wp-content/uploads/2022/10/Untitled-1024-%C3%97-768px-4.jpg.webp",
@@ -108,7 +109,8 @@ function Articles({ showPopup }) {
     },
     {
       title: "Card 4",
-      content: "Content for Card 4",
+
+      brandName: "examplecoffeebrand",
       imageUrl: FeaturedProject6,
       linkUrl:
         "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
@@ -184,10 +186,10 @@ function Articles({ showPopup }) {
                   className="card-image"
                   style={{
                     backgroundImage: `url(${card.imageUrl})`,
-                    background:
+                    /* background:
                       index < backgroundColors.length
                         ? backgroundColors[index].color
-                        : "linear-gradient(130deg, #F39C12 0%, #e12318 100%)",
+                        : "linear-gradient(130deg, #F39C12 0%, #e12318 100%)", */
                   }}
                 >
                   {/*   {backgroundColors[index] && (

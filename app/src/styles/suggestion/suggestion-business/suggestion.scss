@@ -162,6 +162,9 @@
   }
 }
 @media screen and (max-width: 600px) {
+  .suggestion-form-container {
+    margin: 3rem 1.3rem 0 1.3rem;
+  }
   .hexagon-gradient {
     width: 107px;
     height: 112px;
@@ -178,6 +181,7 @@
     width: 100px;
     height: 100px;
   }
+
   .brand-dashboard-left {
     margin: 2rem 5rem 0 5rem;
   }
@@ -280,9 +284,6 @@
 }
 
 .form-input {
-  flex: 1;
-  flex-direction: row;
-  align-items: center;
   margin-left: 7px;
 }
 
@@ -299,12 +300,8 @@
   outline: none;
   background: none;
   width: 100%;
-  flex: 1;
-  padding: 0;
-  margin: none;
   font-size: 18px;
   display: flex;
-  align-items: center;
 
   &::placeholder {
     color: #67645e;
