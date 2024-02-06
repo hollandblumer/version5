@@ -16,6 +16,7 @@
   height: 100vh;
   width: 100%;
   margin-top: 1.8rem;
+  z-index: 200000;
 }
 
 .slide-out2 {
@@ -126,11 +127,18 @@
   background: rgb(67, 67, 69);
   background: #007afe;
   background: #e8542b;
+  background: #c8c8c8;
+  background: #2ecc71;
   border: none;
   margin: 4px 4px 4px 0px;
-  padding: 2px 8px;
+  padding: 1px 8px;
   color: white;
   border-radius: 20px;
+  color: #36353c;
+  font-family: "sofia-pro";
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .search-form {

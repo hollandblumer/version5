@@ -39,59 +39,103 @@
   height: auto;
 }
 
+.question-icon {
+  width: 14px;
+  height: auto;
+}
+
 .card {
   /*   background: rgba(255, 253, 253, 0.2);
   box-shadow: rgba(61, 58, 58, 0.1) 0px 4px 12px;
   background: rgba(255, 253, 253, 0.3);
  */
   position: relative;
-  border-radius: 20px;
-  width: 10.8rem;
-  height: 8.2rem;
+  border-radius: 16px;
   display: flex;
   margin: 0 1.1rem 0 0rem;
   border: 1px solid rgb(224, 224, 217);
   border: 1px solid #d6d6d6;
-  border: 2px solid #beb7b7;
+  border: 1px solid #934f93;
+  border: 1px solid #d1b4d1;
+  border: 1px solid #e7e7e7;
+  border: none;
+  flex-direction: column;
+  height: 200px; // Set a fixed height for the card
+  justify-content: flex-end;
 
-  &:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.15);
-    border-radius: 1.4rem;
-    z-index: 1;
-  }
-
-  .dimming-overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: 20px;
-    z-index: 2;
-  }
   // Add styles for the position-relative class
   .overlay-svg {
-    position: absolute;
-    top: 50%;
+    position: relative;
+    top: 10%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 135px;
-    height: 135px;
+    transform: translate(-50%, 0%);
+    width: 112px;
+    height: 112px;
+    border-radius: 20px;
     z-index: 2; // Adjust the z-index as needed
   }
 }
 
-.card-img-top {
+.card-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: url(../../assets/images/card-body.svg);
+  z-index: 10000;
+  border-radius: 0 0 0px 0px;
+  width: 200px;
+  background-size: 200px;
+  background-repeat: no-repeat;
+  height: 80px;
+}
+
+/* .card-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 0 0 15px 15px;
+  padding: 0 0 0 0; // Adjust the padding as needed
+  align-self: flex-end;
+  background: #d9cec7; // love this color
+  background: #ecedee; // pretty for dark mode
+  background: #36252c;
+  background: #c8c8c8;
+  background: #2f2f2f;
+  background: white;
+  background: #35252d;
+  background: #14242d;
+  background-color: #35252ce3;
+  background: #3b3b3ad8;
+  z-index: 10000;
+  width: 200px;
+  height: 70px; // Set the desired height
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: calc(100% + 10px);
+    top: -8px; // Change this to top to position the border at the top
+    left: -5px;
+    border-image-source: url(../../assets/images/border-top.svg);
+    border-image-slice: 0 0 100%;
+    border-image-width: 0 0 15px;
+    border-image-repeat: stretch;
+    border-width: 15px 0 0; // Adjust only the top border width
+    border-top-style: solid; // Set the top border style
+    border-color: initial;
+    z-index: 20000;
+  }
+} */
+
+.card-image {
+  position: absolute;
+  border-radius: 0px 0px 0px 0px;
+  height: 100%;
   width: 100%;
-  height: 6rem;
-  object-fit: cover;
-  border-radius: 1rem 1rem 0rem 0rem;
+  background-size: cover; // Make sure the image covers the entire container
+  background-position: center;
 }
 
 .card-footer {
@@ -104,6 +148,7 @@
 .wellness {
   width: 100%;
   padding: 0 2rem;
+  // background: #343434;
 }
 
 @media screen and (max-width: 1024px) {
@@ -151,14 +196,12 @@
 
 .card-title {
   font-family: "itc-souvenir";
-  // background: #2a292976;
   font-weight: 600;
   font-size: 12pt;
   text-align: left;
-  height: 3rem;
   margin-top: 1rem;
-  padding: 0 1rem;
-  color: #ffffff;
+  padding: 0 5px;
+  color: #f8f6f3;
   z-index: 10;
   position: relative;
 }
@@ -166,16 +209,18 @@
 .card-text {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  text-align: left;
   margin: 0 !important;
-  height: 1.2rem;
-  padding: 0 1rem;
+  /* height: 1.2rem; */ /* Remove or adjust this line to allow the text to wrap */
+  padding: 5px 1rem;
   z-index: 10;
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  color: white;
+  justify-content: flex-end;
+  flex-flow: row wrap;
+  color: black;
+  color: #f8f6f3;
+  /* Add any other styles as needed */
 }
 
 .form-button {
@@ -214,6 +259,24 @@
 .home-arrow-space {
   margin-left: 0.2rem;
   cursor: pointer;
+
+  &.initial-scale {
+    animation: initialScale 10s forwards; // Adjust the duration as needed
+  }
+
+  &.clickable-icon {
+    transition: transform 0.2s ease-in-out; // Adjust the duration and easing as needed
+
+    &:hover {
+      transform: scale(1.1); // Adjust the scale factor for the growing effect
+    }
+  }
+}
+
+@keyframes initialScale {
+  to {
+    transform: scale(1);
+  }
 }
 
 .slides-2 .gy-4 {
@@ -222,4 +285,15 @@
 
 .slides-4 .gy-4 {
   flex-wrap: nowrap;
+}
+
+.card-transition {
+  opacity: 100;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/* Add another class for completely opaque state */
+.card-visible {
+  opacity: 1;
 }

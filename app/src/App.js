@@ -9,7 +9,7 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 import AddBrand from "./components/brand/AddBrand";
 import Dashboard from "./Dashboard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import "./styles/header/header.css";
 import Search from "./components/header/Search";
 import Dropdown from "./components/header/Dropdown";
@@ -35,8 +35,7 @@ import "./App.css";
 import LogoGIF from "./assets/images/future-wise.svg";
 import WaveBar from "./components/WaveBar";
 import OrbEffect from "./components/OrbEffect";
-import MenuIcon from "./assets/images/menu-icon-1.svg";
-import ToggleOutline from "./assets/images/toggle-outline.png";
+import PinkLines from "./assets/images/pink-lines.svg";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -116,6 +115,7 @@ function App() {
         Conference Join on 1/1 and win tickets to this blah blah blah / Trying
         to check if it's working to make it fit all
       </div> */}
+      {/* <WaveBar /> */}
       <div className="header">
         <div className="header-left">
           {/*   <img className="menu-icon" src={MenuIcon} /> */}
@@ -210,20 +210,18 @@ function App() {
           <a href="/">
             <img className="logo-gif" src={LogoGIF} />
           </a>
-          {/*  <div className="beta">
-            <TidioWrapper icon="info" />
-          </div> */}
+          <div className="beta">
+            <TidioWrapper />
+          </div>
         </div>
         <div className="header-right">
           <div className="header-icons">
             {loggedIn ? (
               <Dropdown url={signedProfileURL} username={userName} />
             ) : (
-              <div className="signin-signup-links">
-                <Link to="/sign-in" className="sign-in-link">
-                  <div className="home-button">Sign In </div>
-                </Link>
-              </div>
+              <Link to="/sign-in" className="sign-in-link">
+                <div className="home-button">Sign In </div>
+              </Link>
             )}
             {loggedIn ? (
               <div
@@ -244,7 +242,7 @@ function App() {
           </div>
         </div>
       </div>
-      {/* <WaveBar /> */}
+
       {/*  <header-wave class="header-wave">
         <div class="relative overflow-hidden w-100 h2 h3-ns">
           <svg
@@ -286,7 +284,7 @@ function App() {
           >
             <Search />{" "}
           </div>
-
+          {/* <img src={PinkLines} className="app-background" />{" "} */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route

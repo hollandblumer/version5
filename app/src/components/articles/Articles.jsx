@@ -14,14 +14,16 @@ import FeaturedProject5 from "../../assets/images/featured-project-5.png";
 import FeaturedProject6 from "../../assets/images/featured-project-6.png";
 import SuggestionSupporterBrand from "../follower/SuggestionSupporterBrand";
 import BrandAvatar from "./BrandAvatar";
-import InfoIcon from "../../assets/images/black-info-icon.svg";
+import InfoIcon from "../../assets/images/projects-info-icon.svg";
 import PurpleBackground from "../../assets/images/protect-energy.png";
 import GreyBackground from "../../assets/images/grey-background-2.png";
 import LightningBolt from "../../assets/images/lightning-bolt.svg";
 import Utensils from "../../assets/images/utensils.svg";
 import Water from "../../assets/images/recycle-water.svg";
+import QuestionIcon from "../../assets/images/question-icon.svg";
+import MothersKitchen from "../../assets/images/motherskitchen.jpg";
 
-function Articles() {
+function Articles({ showPopup }) {
   const getNumCards = () => {
     // Determine the number of cards based on screen width
     const screenWidth = window.innerWidth;
@@ -60,7 +62,7 @@ function Articles() {
   };
   const backgroundColors = [
     {
-      color: "#EB6039",
+      color: "linear-gradient(130deg, #F39C12 0%, #e12318 100%)",
       svg: `${LightningBolt}`,
     },
     {
@@ -72,21 +74,24 @@ function Articles() {
       color: "#A4B0BE",
       svg: `${Water}`,
     },
+    {
+      color: "#EB6039",
+      svg: `${LightningBolt}`,
+    },
     // Add more backgrounds as needed
   ];
 
   const cardsData = [
     {
       title: "Decrease the Energy Usage",
-      content: "by Diane Brady",
+
       brandName: "divot",
 
-      linkUrl:
-        "https://www.nytimes.com/interactive/2023/12/24/climate/groundwater-crisis-chicken-cheese.html",
+      imageUrl: MothersKitchen,
     },
     {
       title: "Switch Utensils",
-      content: "By Deena Robinson",
+
       brandName: "examplecoffeeshop",
       imageUrl:
         "https://u4d2z7k9.rocketcdn.me/wp-content/uploads/2021/06/ND46979-Roy-Mangersnes-1536x864.jpg.webp",
@@ -95,7 +100,7 @@ function Articles() {
     },
     {
       title: "Save Water",
-      content: "By MARTINA IGINI",
+
       imageUrl:
         "https://u4d2z7k9.rocketcdn.me/wp-content/uploads/2022/10/Untitled-1024-%C3%97-768px-4.jpg.webp",
       linkUrl:
@@ -162,7 +167,7 @@ function Articles() {
           <h3>
             {" "}
             <i>Featured Projects</i>{" "}
-            {/* <img className="info-icon" src={InfoIcon} /> */}
+            <img className="question-icon" src={QuestionIcon} />
           </h3>
         </div>
       </div>
@@ -171,27 +176,34 @@ function Articles() {
           <Col key={index} className="mb-4">
             <a href={card.linkUrl} target="_blank" rel="noopener noreferrer">
               <Card
-                className="h-100 shadow-sm bg-white border-light rounded position-relative"
-                style={{
-                  background:
-                    index < backgroundColors.length
-                      ? backgroundColors[index].color
-                      : "linear-gradient(130deg, #F39C12 0%, #e12318 100%)",
-                }}
+                className={`h-100 shadow-sm border-light rounded position-relative ${
+                  showPopup ? "card-visible" : "card-transition"
+                }`}
               >
-                <div className="dimming-overlay"></div>
-                {backgroundColors[index] && (
-                  <img
-                    className="overlay-svg"
-                    src={backgroundColors[index].svg}
-                    alt="overlay"
-                  />
-                )}
-                <Card.Body>
-                  <Card.Title>{card.title}</Card.Title>
-                  <Card.Text>
-                    by <b>{card.brandName} </b>
-                    <BrandAvatar username={card.brandName} />
+                <div
+                  className="card-image"
+                  style={{
+                    backgroundImage: `url(${card.imageUrl})`,
+                    background:
+                      index < backgroundColors.length
+                        ? backgroundColors[index].color
+                        : "linear-gradient(130deg, #F39C12 0%, #e12318 100%)",
+                  }}
+                >
+                  {/*   {backgroundColors[index] && (
+                    <img
+                      className="overlay-svg"
+                      src={backgroundColors[index].svg}
+                      alt="overlay"
+                    />
+                  )} */}
+                </div>
+
+                <Card.Body className="p-3 mt-auto">
+                  <Card.Title className="text-white">{card.title}</Card.Title>
+                  <Card.Text className="text-white">
+                    @{card.brandName}
+                    {/* <BrandAvatar username={card.brandName} /> */}
                   </Card.Text>
                 </Card.Body>
               </Card>
@@ -199,6 +211,7 @@ function Articles() {
           </Col>
         ))}
       </Row>
+
       <div className="dot-row">
         {activeSlide !== 0 && (
           <FontAwesomeIcon
@@ -219,7 +232,7 @@ function Articles() {
         {activeSlide !== Math.ceil(cardsData.length / numCards) - 1 && (
           <FontAwesomeIcon
             icon={faArrowRight}
-            className="home-arrow-space"
+            className="home-arrow-space clickable-icon initial-scale"
             size="sm"
             color="#afa9a1"
             onClick={() => handleArrowClick("right")}

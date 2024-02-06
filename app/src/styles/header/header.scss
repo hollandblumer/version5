@@ -17,13 +17,15 @@
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 12px;
-  color: #6070d2;
+
   color: white;
   background-color: #fdde71;
   border-bottom: 1px solid rgb(219, 219, 219);
-  background: linear-gradient(40deg, #4d4e50, #979595);
+
   background: linear-gradient(40deg, #403e3fe1, #979595);
+  background: linear-gradient(40deg, #4d4e50, #979595);
   overflow-x: hidden;
+  background: #6070d2;
 }
 
 .announcement-bar {
@@ -167,7 +169,6 @@ is-reverse .marquee__scroll {
   background: #403f3f;
   background: #f7f6f0;
   background: none;
-
   // background: #e8e7e4; fave color
   // background: #e4dfdf;
   z-index: 100000;
@@ -414,6 +415,11 @@ $color: #b3e5fc;
   width: 85px;
 
   width: 95px;
+
+  height: 170px;
+  width: 170px;
+  margin-top: 5px;
+
   // margin-top: 10px;
 }
 
@@ -421,8 +427,8 @@ $color: #b3e5fc;
   .logo-gif {
     height: 85px;
     width: 85px;
-    height: 80px;
-    width: 80px;
+    height: 135px;
+    width: 115px;
     margin-top: 10px;
   }
 }
@@ -519,12 +525,12 @@ $color: #b3e5fc;
   color: #1d1c1b;
   color: #939392;
   color: #36252d;
-  font-family: "neutra-text-2";
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-
   // letter-spacing: 0.2px;
 
+  font-weight: 400;
+  font-style: normal;
   &:hover {
     color: #525050;
     color: #36252c;
@@ -543,11 +549,9 @@ $color: #b3e5fc;
   margin-left: 0.7rem;
 }
 
-.signin-signup-links {
-  display: flex;
-}
 .sign-in-link {
   color: #5c5848;
+  display: flex;
 }
 
 .sign-in-link:hover {

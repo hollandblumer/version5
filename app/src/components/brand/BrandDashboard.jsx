@@ -219,14 +219,12 @@ function BrandDashboard({ SignedInUser }) {
             <div className="milestone-container">
               <div className="milestone-cards">
                 {milestones.map((p, index) => (
-                  <div key={p.id}>
-                    <MilestoneTracker
-                      url={brandURL}
-                      businessname={name}
-                      suggestionID={p.suggestionID}
-                      milestone={p.milestone}
-                    />
-                  </div>
+                  <MilestoneTracker
+                    url={brandURL}
+                    businessname={name}
+                    suggestionID={p.suggestionID}
+                    milestone={p.milestone}
+                  />
                 ))}
               </div>
               <div className="dot-row">

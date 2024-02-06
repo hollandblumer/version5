@@ -22,6 +22,7 @@ function BrandAvatar({ username }) {
       src={signedProfileURL}
       style={{
         border: "1px solid white",
+        marginLeft: "6px",
       }}
     />
   );

@@ -36,8 +36,6 @@
   color: #67645e;
   font-family: "sofia-pro";
   font-weight: 500;
-  /* Active state */
-  /* Active state */
 }
 .trending-filter-buttons button:nth-child(1) {
   padding-left: 0px;
@@ -47,8 +45,9 @@
   cursor: pointer; /* Change cursor to a pointer on hover */
 }
 .trending-filter-buttons button.active {
+  color: #4b4941;
+  color: #aa794f;
   color: #aa7950;
-  /* Add wavy lines to the active button */
 }
 
 .trending-search-container {

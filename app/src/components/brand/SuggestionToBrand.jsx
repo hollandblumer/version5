@@ -15,6 +15,7 @@ import {
   faBell,
   faShare,
 } from "@fortawesome/free-solid-svg-icons";
+import FirstRanking from "../../assets/images/first-ranking.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
 import "../../styles/suggestion/suggestion-general/suggestion.css";
@@ -111,6 +112,7 @@ function SuggestionToBrand({
   const getThumbsUpColor = () => {
     return userHasMadeSuggestion ? "#5bab5c" : "#525050";
   };
+  const [clickedSuggestionID, setClickedSuggestionID] = useState(null);
 
   /*  const handleCopyLink = () => {
     // You can construct your shareable link using businessName, counter, suggestion, and iscompliment
@@ -161,7 +163,6 @@ function SuggestionToBrand({
           setUserHasMadeSuggestion(false);
         }
       } else {
-        console.log("get here");
         // User hasn't made this suggestion, so add it
         const matchingSuggestions = await DataStore.query(Suggestion, (p) =>
           p.and((c) => [
@@ -178,13 +179,8 @@ function SuggestionToBrand({
               suggestion: suggestionToSave,
             })
           );
-
-          // Update the state to reflect the addition
-
-          // Set userHasMadeSuggestion to true immediately after adding
           setUserHasMadeSuggestion(true);
         } else {
-          // Handle the case where there's no matching Suggestion
           console.error("No matching Suggestion found.");
         }
       }
@@ -199,13 +195,13 @@ function SuggestionToBrand({
   const popupRef = useRef(null);
 
   const handleClick = (event) => {
-    const ellipsisIcon = document.querySelector(
-      ".brand-suggestion-container .like-share .share"
-    );
+    const ellipsisIconClicked =
+      event.target.classList.contains("share") ||
+      event.target.closest(".brand-suggestion-container .like-share .share");
 
-    if (ellipsisIcon && ellipsisIcon.contains(event.target)) {
+    if (ellipsisIconClicked) {
       // Click on the ellipsis icon or its child elements, toggle the popup
-      togglePopup();
+      setClickedSuggestionID(suggestionID);
       return; // Add this line to stop event propagation
     }
 
@@ -226,28 +222,21 @@ function SuggestionToBrand({
   };
 
   const handleEmailPrompt = async () => {
-    // Prompt the user for their email
     const userEmail = prompt("Please enter your email:");
-
-    // Check if the email is empty or 'na'
     if (userEmail && userEmail.toLowerCase() !== "na") {
-      // Check if the entered email is already stored in the User table
       const existingUser = await DataStore.query(User, (c) =>
         c.email.eq(userEmail)
       );
 
       if (existingUser.length > 0) {
-        // User is found, prompt for sign in
         const signInConfirmation = window.confirm(
           "An account with this email already exists. Do you want to sign in?"
         );
 
         if (signInConfirmation) {
-          // Redirect to sign-in page
           navigate("/sign-in");
         }
       } else {
-        // Email is not in User table, save the entered email or handle as needed
         setEnteredEmail(userEmail);
       }
     }
@@ -296,7 +285,10 @@ function SuggestionToBrand({
     >
       <div className="brand-suggestion-content">
         <div className="ranking-content">
-          <div className="ranking-number">{counter}</div>
+          <div className="ranking-number">
+            <p className="counter">{counter}</p>
+            <img src={FirstRanking} className="first-ranking" alt="Ranking" />
+          </div>
 
           <div className="suggestion-update">
             <div className="content">{suggestion}</div>
@@ -381,7 +373,7 @@ function SuggestionToBrand({
               userHasMadeSuggestion ? faHeartCircleCheck : faHeartCirclePlus
             }
             className="share"
-            color={userHasMadeSuggestion ? "#5BAB5C" : "#E8542B"}
+            color={userHasMadeSuggestion ? "#2ECC71" : "#E8542B"}
             size="lg"
             onClick={() => {
               if (!email || email.toLowerCase() === "na") {

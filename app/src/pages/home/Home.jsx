@@ -348,7 +348,7 @@ function Home() {
           </div>
         )}
       </div>
-      <Articles />
+      <Articles showPopup={showPopup} />
 
       <TopBrands />
 
