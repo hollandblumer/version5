@@ -7,6 +7,29 @@
   height: 100%;
 }
 
+.milestone-update {
+  position: relative;
+}
+.milestone-update::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0.04rem;
+  background: linear-gradient(to bottom, #aa7950, transparent 25%, #aa7950 50%, transparent 75%, #aa7950);
+  animation: moveGradientLeft 10s linear infinite;
+  background-size: 100% 200%;
+}
+@keyframes moveGradientLeft {
+  0% {
+    background-position: 0 100%; /* Start the gradient offscreen at the bottom */
+  }
+  100% {
+    background-position: 0 -100%; /* Move the gradient offscreen to the top */
+  }
+}
+
 .milestone-cards {
   display: flex;
   flex-flow: row wrap;
@@ -18,30 +41,6 @@
 
 .milestone {
   width: 100%;
-}
-
-.milestone-update {
-  position: relative;
-  /* Define the animation keyframes for the left border */
-}
-.milestone-update::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0.04rem; /* Width of the gradient border */
-  background: linear-gradient(to bottom, #aa7950, transparent 25%, #aa7950 50%, transparent 75%, #aa7950); /* Gradient color */
-  animation: moveGradientLeft 10s linear infinite;
-  background-size: 100% 200%; /* Double the height to allow for movement */
-}
-@keyframes moveGradientLeft {
-  0% {
-    background-position: 0 100%; /* Start the gradient offscreen at the bottom */
-  }
-  100% {
-    background-position: 0 -100%; /* Move the gradient offscreen to the top */
-  }
 }
 
 .milestone-title {
@@ -67,6 +66,7 @@
   align-items: center;
   padding: 2px 6px;
   width: 17rem;
+  background: rgba(255, 255, 255, 0.198);
 }
 
 .actual-milestone {
@@ -100,6 +100,10 @@
   font-family: "neutra-text-2";
   font-size: 14px;
   color: #8e8e8e;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .milestone-dot {
@@ -176,6 +180,7 @@
   align-items: center;
   margin-top: 1rem;
   color: #cecaca;
+  border-left: 1px solid #d6d6d6;
 }
 
 .incomplete-dot {
@@ -187,4 +192,112 @@
   margin-right: 1rem;
   position: relative;
   z-index: 1000;
+}
+
+.started-dot {
+  width: 10px;
+  height: 10px;
+  background: #d6d6d6;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1000;
+}
+
+.custom-select {
+  appearance: none; /* Hide the default appearance */
+  -webkit-appearance: none; /* Hide the default appearance for WebKit browsers */
+  -moz-appearance: none; /* Hide the default appearance for Firefox */
+  background-color: transparent; /* Make background transparent */
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right center;
+  border: 1px solid #ccc; /* Add border for styling */
+  border-radius: 10px; /* Add border radius for styling */
+  font-size: 16px; /* Adjust font size as needed */
+  margin-bottom: 20px;
+}
+
+.custom-select::after {
+  content: "\f078";
+  color: blue;
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none; /* Ensure icon does not interfere with select functionality */
+}
+
+@media only screen and (min-width: 800px) {
+  .milestone-dot {
+    margin-bottom: 20px;
+  }
+  .toggle-button {
+    margin-top: -10px;
+    height: 20px;
+  }
+  .milestone-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+  .milestone-cards {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+  .milestone {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+  }
+  .project-incompleted {
+    padding-top: 0rem;
+    flex-direction: column;
+    padding-top: 2rem;
+    margin-top: 0rem;
+    border-top: 1px solid #d6d6d6;
+    border-left: none;
+  }
+  .actual-milestone {
+    padding-top: 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .actual-milestone-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .milestone-update {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+  }
+  .milestone-update::before {
+    content: "";
+    position: absolute;
+    top: 0; /* Position it at the top */
+    left: 0;
+    width: 100%; /* Full width */
+    height: 0.04rem; /* Thickness of the border */
+    background: linear-gradient(to right, #aa7950, transparent 25%, #aa7950 50%, transparent 75%, #aa7950);
+    animation: moveGradientTop 10s linear infinite;
+    background-size: 100% 200%;
+  }
+  @keyframes moveGradientTop {
+    0% {
+      background-position: -100% 0; /* Start the gradient offscreen on the left */
+    }
+    100% {
+      background-position: 100% 0; /* Move the gradient offscreen to the right */
+    }
+  }
 }

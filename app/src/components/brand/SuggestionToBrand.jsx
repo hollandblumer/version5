@@ -15,8 +15,8 @@ import {
   faBell,
   faShare,
 } from "@fortawesome/free-solid-svg-icons";
-import FirstRanking from "../../assets/images/first-ranking.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import GoBlob from "../../assets/images/grey-earth-blank.png";
 import "../../styles/suggestion/suggestion-business/suggestion.css";
 import "../../styles/suggestion/suggestion-general/suggestion.css";
 import ShareNodes from "../../assets/images/share-nodes.svg";
@@ -285,10 +285,10 @@ function SuggestionToBrand({
     >
       <div className="brand-suggestion-content">
         <div className="ranking-content">
-          <div className="ranking-number">
+          {/*  <div className="ranking-number">
+            <img className="first-ranking" src={GoBlob} />
             <p className="counter">{counter}</p>
-            <img src={FirstRanking} className="first-ranking" alt="Ranking" />
-          </div>
+          </div> */}
 
           <div className="suggestion-update">
             <div className="content">{suggestion}</div>

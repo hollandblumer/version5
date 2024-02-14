@@ -20,6 +20,7 @@
   border-radius: 2rem;
   margin-top: 3rem;
   letter-spacing: 0.5px;
+  letter-spacing: 0px;
 }
 
 .activity-row {
@@ -159,54 +160,62 @@
 }
 
 .ranking-number {
-  font-weight: 500;
-  font-size: 15px;
-
-  /*   background: linear-gradient(40deg, #5b595ae1, #979595);
   background: #939392;
-  background: #c9c6c0;
-  background: #3b3b3a;
-  background: linear-gradient(40deg, #a6a2a4e1, #979595);
-  background: linear-gradient(40deg, #a6a2a4e1, #767373);
-  background: linear-gradient(40deg, #a0968c, #b0a39a, #c4b8ac);
-  background: url(../../assets/images/gradient.jpeg);
-  border: 1px solid rgb(219, 219, 219);
-  border: none;
-  padding: 0px 10px;
+  border: 1px solid #d6d6d6;
   box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1);
   color: #f8f7f1;
   border-radius: 30px;
   margin-top: 3px;
-  border: 1px solid #d6d6d6; */
-
+  width: 20px;
+  height: 20px;
   text-align: center;
   display: flex;
   align-items: center;
+  margin-right: 7px;
+  margin-right: 4px;
+  font-weight: 500;
+  background: linear-gradient(135deg, rgb(161, 140, 209), rgb(251, 194, 235));
+  background: #94b9b9;
+  background: #deead6;
   position: relative;
   text-align: center;
   justify-content: center;
-  width: 30px;
-  height: 30px;
-  margin-right: 7px;
+  text-align: center;
+  margin-top: -15px;
 }
 
 .counter {
   position: relative;
   z-index: 1; /* Counter appears on top */
   font-weight: 500;
-  font-size: 15px;
+  font-weight: 600;
+  border-radius: 50%;
+  font-size: 10pt;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1);
+  background: #c39b7f;
+  border: 1px solid #d7d4d4;
+  background: none;
+  border: none;
+  box-shadow: none;
+  color: #7c7c7c;
+  color: #393b3b; //love this color too
+
+  color: #696868; //yesss love color
+  color: #4d4b4b; //love this color
+  color: white;
+  font-family: "itc-souvenir-demi";
 }
 
 @media screen and (max-width: 610px) {
   .ranking-number {
     font-size: 13px;
-    padding: 0px 9px;
-
     text-align: center;
     align-items: center;
     position: relative;
     text-align: center;
-    color: #f8f6f3;
+    color: #35252d;
+
     /*    background: #939392;
     background: #f4f4f4;
     box-shadow: 0 2px 4px rgba(233, 230, 230, 0.1);
@@ -225,7 +234,7 @@
     border: 1px solid #d6d6d6;
     border: none;
     color: #fcfcfc;
-    color: #f8f6f3;
+
     color: #f8f7f1;
     box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1); */
   }
@@ -233,8 +242,8 @@
 
 .first-ranking {
   position: absolute;
-  width: 29px;
-  height: 29px;
+  width: 20px;
+  height: 20px;
   z-index: 0;
   animation: spin 17s linear infinite;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { DataStore, Predicates, SortDirection } from "@aws-amplify/datastore";
 import { Suggestion, User, UserSuggestion, Milestone } from "../../models";
@@ -12,7 +12,7 @@ import Icon from "../icon/Icon";
 import "../../styles/brand/dashboard/brand-dashboard.css";
 import "../../styles/brand/top-charts/top-charts.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 import TopCharts from "./TopCharts";
 import "../../styles/brand/milestone/milestone.css";
 import MilestoneTracker from "./milestone/MilestoneTracker";
@@ -34,6 +34,9 @@ function BrandDashboard({ SignedInUser }) {
   const [memberSinceDate, setMemberSinceDate] = useState("");
   const [sliderPosition, setSliderPosition] = useState(0);
   const [topChartsSearchTerm, setTopChartsSearchTerm] = useState("");
+  const [selectedSuggestionId, setSelectedSuggestionId] = useState("");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -41,7 +44,6 @@ function BrandDashboard({ SignedInUser }) {
         const brandData = await DataStore.query(User, (p) => p.name.eq(name));
         const brandFilePath = brandData[0].filePath;
         const signedBrandFilePath = await Storage.get(brandFilePath);
-        console.log("hello", signedBrandFilePath);
         setBrandLocation(brandData[0].location);
         setParentBrand(brandData[0].parentBrand);
         setBrandIndustry(brandData[0].industry);
@@ -85,7 +87,8 @@ function BrandDashboard({ SignedInUser }) {
         /*    const milestones = await DataStore.query(Milestone, Predicates.ALL, {
           sort: (s) => s.createdAt(SortDirection.DESCENDING),
         });
- */
+      */
+
         const uniqueSuggestionIds = [
           ...new Set(milestones.map((milestone) => milestone.suggestionID)),
         ];
@@ -104,21 +107,37 @@ function BrandDashboard({ SignedInUser }) {
         /*    const milestones = await DataStore.query(Milestone, (c) => c.and(c => [
           c.brandName.eq(name),
           c.businessname.eq(businessname)
-
-
         ]));
- */
+        
+ */ if (suggestions.length > 0 && !selectedSuggestionId) {
+          setSelectedSuggestionId(suggestions[0].id);
+        }
       } catch (err) {
         console.error(err);
       }
+
+      if (suggestions.length > 0 && !selectedSuggestionId) {
+        // If there are suggestions and no selected suggestion ID is set,
+        // set the selected suggestion ID to the first suggestion's ID
+        setSelectedSuggestionId(suggestions[0].id);
+      }
     };
+
     getData();
-  }, []);
-  let array = [];
+  }, [suggestions, selectedSuggestionId]);
+
+  const handleSelect = (suggestionId) => {
+    setSelectedSuggestionId(suggestionId);
+  };
+
+  const toggleDropdown = () => {
+    // Define toggleDropdown function
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+  /*  let array = [];
   let milestonearray = [];
   let avatararray = [];
-  let count = 0;
-
+  let count = 0; */
   return (
     <div className="brand-dashboard">
       <div className="brand-dashboard-top">
@@ -169,9 +188,9 @@ function BrandDashboard({ SignedInUser }) {
                 setSliderPosition(0);
               }}
             >
-              Milestones
+              Projects
             </div>
-            <div className="brand-divider">/</div>
+            {/*  <div className="brand-divider">/</div>
             <div
               className={`business-nav-item ${
                 activeContainer === "projects" ? "active" : ""
@@ -182,7 +201,7 @@ function BrandDashboard({ SignedInUser }) {
               }}
             >
               Projects
-            </div>
+            </div> */}
             <div className="brand-divider">/</div>
             <div
               className={`business-nav-item ${
@@ -207,7 +226,7 @@ function BrandDashboard({ SignedInUser }) {
 
         {activeContainer === "milestones" ? (
           milestones.length === 0 ? (
-            <div className="milestone-container">
+            <div className="no-milestone-container">
               <div className="no-suggestions-container">
                 <div className="no-suggestions">No Milestones Yet</div>
                 <div className="no-suggestions-small">
@@ -217,31 +236,72 @@ function BrandDashboard({ SignedInUser }) {
             </div>
           ) : (
             <div className="milestone-container">
+              <div
+                ref={dropdownRef}
+                // onChange={(e) => setSelectedSuggestionId(e.target.value)}
+                onClick={toggleDropdown}
+                style={{ marginBottom: "40px" }}
+              >
+                <div className="dropdown-header">
+                  {/*   {suggestions.map((suggestion) => (
+                  <div key={suggestion.id} value={suggestion.id}>
+                    {suggestion.suggestion}
+                    <FontAwesomeIcon
+                      icon={faSortDown}
+                      className="dropdown-icon"
+                    />
+                  </div>
+                ))} */}
+                  {selectedSuggestionId !== null
+                    ? suggestions.map((suggestion) => {
+                        if (suggestion.id === selectedSuggestionId) {
+                          return suggestion.suggestion;
+                        }
+                        return null;
+                      })
+                    : "Select a suggestion"}
+                  <FontAwesomeIcon
+                    icon={faSortDown}
+                    className="dropdown-icon"
+                  />
+                </div>
+
+                {isDropdownOpen && (
+                  <div className="dropdown-options">
+                    {suggestions.map((suggestion) => (
+                      <div
+                        key={suggestion.id}
+                        className="dropdown-option"
+                        onClick={() => handleSelect(suggestion.id)}
+                      >
+                        <div className="checkbox-option">
+                          {suggestion.suggestion}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
               <div className="milestone-cards">
-                {milestones.map((p, index) => (
+                {/*   {milestones.map((p, index) => (
                   <MilestoneTracker
                     url={brandURL}
                     businessname={name}
                     suggestionID={p.suggestionID}
                     milestone={p.milestone}
                   />
-                ))}
-              </div>
-              <div className="dot-row">
-                <FontAwesomeIcon
-                  icon={faArrowLeft}
-                  className="home-arrow-space"
-                  size="sm"
-                  color="#afa9a1"
-                />
-                <div className="dot active"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <FontAwesomeIcon
-                  icon={faArrowRight}
-                  className="home-arrow-space"
-                  size="sm"
-                  color="#afa9a1"
+                ))} */}
+
+                <MilestoneTracker
+                  url={brandURL}
+                  businessname={name}
+                  milestone={selectedSuggestionId.milestone}
+                  key={selectedSuggestionId}
+                  suggestionID={selectedSuggestionId}
+                  milestones={milestones.filter(
+                    (milestone) =>
+                      milestone.suggestionID === selectedSuggestionId
+                  )}
                 />
               </div>
             </div>

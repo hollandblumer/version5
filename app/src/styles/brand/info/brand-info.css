@@ -118,7 +118,7 @@
   background: #e2dddd;
   background: rgba(97, 74, 74, 0.5);
   background: rgba(255, 253, 253, 0.5);
-  box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1); /* Add the box shadow here */
+  box-shadow: 0 2px 4px rgba(185, 182, 182, 0.1);
   padding: 2px 8px;
   border-radius: 10rem;
   font-size: 10pt;
@@ -139,6 +139,7 @@
   display: flex;
   align-items: center;
   margin-right: 1rem;
+  width: 90px;
 }
 
 .specific-info {

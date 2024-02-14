@@ -35,6 +35,7 @@ import GoEarthYellow from "../../assets/images/GO-slanted2.png";
 import Articles from "../../components/articles/Articles";
 import TopUsers from "../../components/top-users/TopUsers";
 import WelcomeText from "../../assets/images/welcome-text.svg";
+import BrandAvatar from "../../components/articles/BrandAvatar";
 
 function Home() {
   const [showInput, setShowInput] = useState(false);
@@ -273,7 +274,12 @@ function Home() {
           </div>
           {search !== "" && (
             <button className="xbutton" onClick={() => setSearch("")}>
-              <FontAwesomeIcon icon={faCircleXmark} size="sm" color="#c7c7c7" />
+              <FontAwesomeIcon
+                icon={faCircleXmark}
+                size="sm"
+                color="#c7c7c7"
+                style={{ marginRight: "10px" }}
+              />
             </button>
           )}
 
@@ -304,14 +310,20 @@ function Home() {
                         goLink(user.name);
                       }}
                     >
-                      <div>{user.name}</div>
+                      <div className="search-button-content">
+                        <BrandAvatar username={user.name} />
+                        <div className="searchList-info">
+                          <div>{user.name}</div>
+                          <div>{user.city !== null ? user.city : ""}</div>
+                        </div>
+                      </div>
                     </button>
                   </div>
                 ))}
                 <div>
                   {" "}
                   <button
-                    className="search-button"
+                    className="cant-find-button"
                     onClick={() => {
                       navigate(`/brand-form`);
                     }}
@@ -324,7 +336,7 @@ function Home() {
               <div>
                 {" "}
                 <button
-                  className="search-button"
+                  className="cant-find-button"
                   onClick={() => {
                     navigate(`/brand-form`);
                   }}
@@ -338,7 +350,7 @@ function Home() {
           <div>
             {" "}
             <button
-              className="search-button"
+              className="cant-find-button"
               onClick={() => {
                 navigate(`/brand-form`);
               }}

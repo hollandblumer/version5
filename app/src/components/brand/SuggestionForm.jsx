@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { DataStore } from "@aws-amplify/datastore";
 import { Suggestion, UserSuggestion, User } from "../../models";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRight,
-  faCaretDown,
+  faCheck,
   faSortDown,
   faX,
 } from "@fortawesome/free-solid-svg-icons";
@@ -27,6 +27,7 @@ function SuggestionForm({
   const [showAuthForm, setShowAuthForm] = useState(false);
   const [selectedOption, setSelectedOption] = useState("false");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const createSearch = async (e) => {
     e.preventDefault();
@@ -174,6 +175,17 @@ function SuggestionForm({
 
     // Update similar suggestions whenever user input changes
     updateSimilarSuggestions();
+
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, [suggestion]);
 
   let array = [];
@@ -215,7 +227,7 @@ function SuggestionForm({
             <option value="true"> Compliment </option>
           </select>
           <FontAwesomeIcon icon={faCaretDown} className="dropdown-icon" /> */}
-          <div className="custom-dropdown">
+          <div className="custom-dropdown" ref={dropdownRef}>
             <div
               className={`dropdown-header ${isDropdownOpen ? "open" : ""}`}
               onClick={toggleDropdown}
@@ -233,6 +245,9 @@ function SuggestionForm({
                       checked={selectedOption === "false"}
                       onChange={() => handleSelectChange("false")}
                     />
+                    {selectedOption === "false" && (
+                      <FontAwesomeIcon icon={faCheck} />
+                    )}
                     Suggestion
                   </label>
                 </div>
@@ -244,14 +259,17 @@ function SuggestionForm({
                       checked={selectedOption === "true"}
                       onChange={() => handleSelectChange("true")}
                     />
+                    {selectedOption === "true" && (
+                      <FontAwesomeIcon icon={faCheck} />
+                    )}
                     Compliment
                   </label>
                 </div>
-                <FontAwesomeIcon
+                {/*    <FontAwesomeIcon
                   icon={faX}
                   size="xs"
                   onClick={() => setIsDropdownOpen(false)}
-                />
+                /> */}
               </div>
             )}
           </div>
@@ -276,11 +294,11 @@ function SuggestionForm({
             className="create-suggestion-button"
             onClick={createSuggestion}
           >
-            {" "}
             <FontAwesomeIcon
               icon={faArrowRight}
               size="sm"
-              color="#aa7950"
+              color="#2ecc71"
+              className="arrow-icon"
             />{" "}
           </button>
         ) : (
@@ -289,7 +307,7 @@ function SuggestionForm({
             <FontAwesomeIcon
               icon={faArrowRight}
               size="sm"
-              color="dark grey"
+              color="#aa7950"
             />{" "}
           </div>
         )}
@@ -303,7 +321,6 @@ function SuggestionForm({
       )}
       {suggestion !== "" ? (
         <div className="suggestionSearchListContainer">
-          Did you mean?
           {searchList.length !== 0 ? (
             <>
               {searchList.map((suggestionItem) => (

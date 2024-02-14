@@ -72,12 +72,9 @@ function AddBrand() {
       })
     );
 
-    console.log("selected", selectedFile);
-
     if (selectedFile !== null) {
       Storage.put(`${brandName}.jpg`, selectedFile)
         .then((item) => {
-          console.log("hello");
           setBrandName("");
           setBrandEmail("");
           setBrandIndustry("");

@@ -37,7 +37,7 @@
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   padding: 0.8rem 0 0.8rem 0;
 
-  border-bottom: 1px solid #d6d6d6;
+  // border-bottom: 1px solid #d6d6d6;
   &.first {
     margin-top: 8px; /* Apply the desired margin for the first element */
   }
@@ -81,6 +81,8 @@
   margin: 0;
   font-weight: 500;
   color: #2f2f2f;
+  letter-spacing: 0.2px;
+  text-transform: capitalize;
 }
 
 .ranking-progress {
@@ -102,6 +104,15 @@
   align-items: center;
   justify-content: flex-start;
   width: 4rem;
+}
+
+.scale {
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.2);
+    cursor: pointer; // Optional: Change cursor to pointer to indicate clickability
+  }
 }
 
 .trending-ellipsis-popup-menu {
@@ -234,8 +245,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  flex: 1;
-
+  width: 100%;
   /*  div {
     margin-left: 10px;
   } */
@@ -265,16 +275,23 @@
   color: #36353c;
   z-index: 100000;
   padding: 0.2rem 1rem;
-  border: 1px solid #ccc; /* Add a border for separation */
 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
-  border-radius: 4px; /* Optional: Add rounded corners for a softer look */
-  max-height: 200px; /* Optional: Set a max height for the dropdown */
-  overflow-y: auto; /* Optional: Add a scrollbar if content exceeds max height */
-  > div {
-    &:hover {
-      color: #007afe; // Set your desired hover color
-    }
+  border-radius: 8px; /* Rounded corners */
+  background: #f0f3f4;
+  background: #e8e5eb;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 6px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #b4b4b4;
+  border: 1px solid #ccc;
+  border: 1px solid -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+  box-shadow: 0 7px 30px -10px rgba(150, 170, 180, 0.5);
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px,
+    rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.checkbox-option {
+  &:hover {
+    background: #007afe;
+    color: white;
   }
 }
 
@@ -285,12 +302,15 @@
 
 .form-input {
   margin-left: 7px;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 /* Media query for iPhones */
 @media only screen and (max-width: 767px) {
   .form-input {
-    margin-left: 10px;
+    margin-left: 5px;
   }
 }
 
@@ -301,8 +321,8 @@
   background: none;
   width: 100%;
   font-size: 18px;
-  display: flex;
-
+  flex-grow: 1;
+  height: auto;
   &::placeholder {
     color: #67645e;
     color: #bdb8b0; // Change this to the desired color altho this one is pretty
@@ -311,6 +331,7 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
       Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
       sans-serif;
+    flex-grow: 1;
   }
 }
 
@@ -319,6 +340,19 @@
   background: none;
   color: #aa7950;
   margin-right: 0.3rem; //hardcoded
+}
+
+.arrow-icon {
+  animation: pulse 1s infinite alternate linear; /* Change animation duration as needed */
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.4); /* Adjust the scaling factor as needed */
+  }
 }
 
 .suggestion-type-button:active {

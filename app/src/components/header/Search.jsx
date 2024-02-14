@@ -9,6 +9,7 @@ import {
 import "../../styles/header/header.css";
 import "../../styles/header/search/search.css";
 import { useNavigate } from "react-router-dom";
+import BrandAvatar from "../articles/BrandAvatar";
 
 function Search() {
   const [showInput, setShowInput] = useState(false);
@@ -70,6 +71,7 @@ function Search() {
                       goLink(user.name);
                     }}
                   >
+                    <BrandAvatar user={user.name} />
                     <div>{user.name}</div>
                   </button>
                 </div>

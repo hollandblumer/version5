@@ -317,7 +317,10 @@ is-reverse .marquee__scroll {
   justify-content: flex-start;
   height: 100%;
   width: auto;
-  margin-top: 20px;
+  font-family: "wintter-test";
+  font-size: 40pt;
+  color: #804c46;
+  letter-spacing: -3px;
 }
 
 .menu-icon {
@@ -377,14 +380,14 @@ is-reverse .marquee__scroll {
   margin-top: -0.5rem; */
   height: 100px;
   width: 100px;
-  margin-top: 5px;
+  margin-top: 60px;
 }
 
 @media screen and (max-width: 610px) {
   .logo-gif {
     height: 85px;
-    width: 85px;
-    margin-top: 10px;
+    width: 89px;
+    margin-top: 40px;
   }
 }
 .beta {
@@ -478,6 +481,7 @@ is-reverse .marquee__scroll {
   color: #1d1c1b;
   color: #939392;
   color: #36252d;
+  color: #272626;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-weight: 400;
   font-style: normal;

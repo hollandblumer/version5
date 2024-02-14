@@ -36,6 +36,7 @@ import LogoGIF from "./assets/images/future-wise.svg";
 import WaveBar from "./components/WaveBar";
 import OrbEffect from "./components/OrbEffect";
 import PinkLines from "./assets/images/pink-lines.svg";
+import ReactGA from "react-ga";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -221,6 +222,11 @@ function App() {
             ) : (
               <Link to="/sign-in" className="sign-in-link">
                 <div className="home-button">Sign In </div>
+                <FontAwesomeIcon
+                  icon={faSortDown}
+                  color="#007AFE"
+                  style={{ marginTop: "1px", marginLeft: "4px" }}
+                />
               </Link>
             )}
             {loggedIn ? (

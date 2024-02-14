@@ -60,9 +60,9 @@
   border: 1px solid #e7e7e7;
   border: none;
   flex-direction: column;
-  height: 200px; // Set a fixed height for the card
+  height: 200px;
   justify-content: flex-end;
-  transition: transform 0.5s ease, opacity 0.5s ease; /* Add opacity transition */
+  transition: transform 0.5s ease, opacity 0.5s ease;
 
   // Add styles for the position-relative class
   .overlay-svg {
@@ -163,6 +163,16 @@
 @media screen and (max-width: 1024px) {
   .wellness {
     padding: 0 1.3rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card {
+    width: 180px;
+    height: 180px;
+    justify-content: flex-end;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    // Add styles for the position-relative class
   }
 }
 

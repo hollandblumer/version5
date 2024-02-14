@@ -19,7 +19,6 @@ function Follower({ signedInUser }) {
 
         if (userData.length === 1) {
           const user = userData[0];
-          console.log("ufollow", user);
           const followData = await DataStore.query(Follow);
 
           const usersInFollow = await Promise.all(
